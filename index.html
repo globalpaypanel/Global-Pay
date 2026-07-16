@@ -13,6 +13,9 @@
 </div>
 
 <div class="container">
+  <div class="top-bar">
+    <button class="admin-btn" onclick="showAdmin()">🛡 PANEL ADMIN</button>
+  </div>
 
 <h1>GLOBAL PAY</h1>
 <p>Secure Payments Panel</p>
@@ -39,7 +42,32 @@
 <p id="msg"></p>
 
 </div>
+<div id="adminPopup" class="popup" style="display:none;">
+  <div class="popup-box">
+    <h2>Customer Support</h2>
 
+    <p><b>Primary Number</b><br>+91 9572025885</p>
+    <p><b>Secondary Number</b><br>+91 8294497070</p>
+    <p><b>Email</b><br>ajaysingh40cr@gmail.com</p>
+
+    <p><b>Company Address</b><br>
+    Global Pay Support Office<br>
+    Office 1204, Bay Square,<br>
+    Business Bay,<br>
+    Dubai, United Arab Emirates</p>
+
+    <button onclick="hideAdmin()">Close</button>
+  </div>
+</div>
+
+<script>
+function showAdmin(){
+  document.getElementById("adminPopup").style.display="flex";
+}
+function hideAdmin(){
+  document.getElementById("adminPopup").style.display="none";
+}
+  </script>
 <script src="script.js"></script>
 
 </body>
