@@ -282,3 +282,40 @@ font-size:32px;
 color:#7d8ca5;
 margin:5px 0;
   }
+.top-header h1{
+font-size:48px;
+font-weight:900;
+margin:0;
+text-transform:uppercase;
+
+background:linear-gradient(
+90deg,
+#FFD700,
+#FF6A00,
+#00FF99,
+#00CFFF,
+#7B4DFF,
+#FF1493
+);
+
+background-size:300% 300%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+animation:logoGlow 4s linear infinite;
+}
+
+@keyframes logoGlow{
+0%{
+background-position:0% 50%;
+filter:drop-shadow(0 0 5px #00e5ff);
+}
+50%{
+background-position:100% 50%;
+filter:drop-shadow(0 0 18px #7b4dff);
+}
+100%{
+background-position:0% 50%;
+filter:drop-shadow(0 0 5px #00e5ff);
+}
+}
