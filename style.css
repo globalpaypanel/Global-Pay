@@ -6,141 +6,69 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#f4f7fb;
-color:#222;
-}
-
-.top-header{
-background:#0b7a3b;
+background:linear-gradient(135deg,#050816,#0b132b,#1c2541);
 color:#fff;
-padding:15px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-position:sticky;
-top:0;
+min-height:100vh;
 }
 
-.top-header h1{
-font-size:22px;
-font-weight:700;
-}
-
-.top-buttons{
-display:flex;
-gap:8px;
-}
-
-.top-buttons button{
-background:#fff;
-color:#0b7a3b;
-border:none;
-padding:8px 14px;
-border-radius:6px;
-font-weight:600;
-cursor:pointer;
+.topbar{
+padding:16px;
+text-align:center;
+font-weight:bold;
+font-size:18px;
+background:linear-gradient(90deg,#ff9800,#ff2d55);
+color:#fff;
+box-shadow:0 0 20px rgba(255,80,80,.4);
 }
 
 .container{
+max-width:420px;
+margin:20px auto;
 padding:15px;
 }
 
-.card{
-background:#fff;
-border-radius:10px;
-padding:18px;
-margin-bottom:15px;
-border-left:5px solid #0b7a3b;
-box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
-
-.card h3{
-font-size:16px;
-color:#666;
-margin-bottom:8px;
-}
-
-.card h2{
-font-size:28px;
-color:#0b7a3b;
-}
-
-.setup-box,
-.notice,
-.helpline{
-background:#fff;
-padding:18px;
-margin-top:18px;
-border-radius:10px;
-box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
-
-.setup-box h2,
-.notice h2,
-.helpline h2{
-margin-bottom:10px;
-color:#0b7a3b;
-}
-
-.setup-box p,
-.notice p{
-color:#555;
-line-height:1.6;
-margin-bottom:12px;
-}
-
-.setup-box ol{
-padding-left:20px;
+.top-right{
+display:flex;
+justify-content:flex-end;
 margin-bottom:15px;
 }
 
-.setup-box li{
-margin:8px 0;
-}
-
-.setup-box button,
-.helpline button{
-width:100%;
-padding:13px;
-margin-top:10px;
+.admin-btn{
+padding:12px 22px;
 border:none;
-border-radius:8px;
-background:#0b7a3b;
-color:#fff;
-font-size:15px;
-font-weight:600;
+border-radius:30px;
+background:linear-gradient(90deg,#ffe600,#00cfff);
+font-weight:bold;
+font-size:16px;
 cursor:pointer;
-transition:.2s;
+color:#111;
+box-shadow:0 0 20px rgba(255,255,0,.45);
 }
 
-.setup-box button:hover,
-.helpline button:hover{
-background:#08662f;
-}
-.dark-mode{
-background:#111827;
-color:#ffffff;
-}
-
-.dark-mode .card,
-.dark-mode .setup-box,
-.dark-mode .notice,
-.dark-mode .helpline{
-background:#1f2937;
-color:#ffffff;
+.logo{
+font-size:58px;
+text-align:center;
+font-weight:900;
+background:linear-gradient(90deg,#FFD700,#FF9800,#00ff99,#00d4ff,#6a5cff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+margin-top:15px;
 }
 
-.dark-mode .top-header{
-background:#065f46;
+.subtitle{
+text-align:center;
+font-size:20px;
+color:#d9e6ff;
+margin-bottom:25px;
 }
 
-.dark-mode .top-buttons button{
-background:#ffffff;
-color:#065f46;
-}
-
-.dark-mode .notice p,
-.dark-mode .setup-box p,
-.dark-mode .setup-box li{
-color:#e5e7eb;
+.card,
+.login-box{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(14px);
+padding:24px;
+border-radius:22px;
+border:1px solid rgba(255,255,255,.12);
+box-shadow:0 0 25px rgba(0,198,255,.15);
+margin-bottom:22px;
 }
