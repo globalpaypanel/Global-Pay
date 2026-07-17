@@ -395,35 +395,6 @@ color:#111;
     -webkit-text-fill-color:transparent;
     text-shadow:0 0 15px rgba(0,191,255,.5);
 }
-.top-header{
-    position:relative;
-}
-
-.profile-btn{
-    position:absolute;
-    top:12px;
-    right:12px;
-    width:50px;
-    height:50px;
-    border-radius:50%;
-    background:#162447;
-    border:2px solid #00d4ff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    box-shadow:0 0 15px #00d4ff;
-    transition:.3s;
-}
-
-.profile-btn img{
-    width:28px;
-    filter:invert(1);
-}
-
-.profile-btn:hover{
-    transform:scale(1.1);
-    box-shadow:0 0 25px #00d4ff;
-  }
 
 .top-header{
     display:flex;
@@ -433,15 +404,32 @@ color:#111;
     gap:20px;
 }
 
+.header-top{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
 .header-left{
     flex:1;
 }
 
+.logo{
+    font-size:60px;
+    font-weight:900;
+    line-height:.9;
+    text-transform:uppercase;
+    background:linear-gradient(90deg,#ffffff,#b7ecff,#00aaff,#0066ff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 20px rgba(0,180,255,.5);
+}
+
 .header-right{
     display:flex;
-    flex-direction:column;
-    align-items:flex-end;
-    gap:16px;
+    align-items:center;
+    gap:14px;
 }
 
 .top-buttons{
@@ -456,9 +444,10 @@ color:#111;
     border-radius:14px;
     background:linear-gradient(135deg,#FFD54F,#FFC107);
     color:#111;
-    font-size:18px;
+    font-size:17px;
     font-weight:700;
     cursor:pointer;
+    box-shadow:0 6px 15px rgba(255,193,7,.35);
 }
 
 .profile-btn{
@@ -468,6 +457,7 @@ color:#111;
     display:flex;
     justify-content:center;
     align-items:center;
+    background:#162447;
     border:3px solid #00d4ff;
     box-shadow:0 0 18px #00d4ff;
     flex-shrink:0;
@@ -478,27 +468,25 @@ color:#111;
     filter:invert(1);
 }
 
-.logo{
-    font-size:62px;
-    line-height:0.9;
-}
-
 @media (max-width:480px){
 
-.top-header{
+.header-top{
     flex-direction:row;
     align-items:flex-start;
-}
-
-.header-right{
-    gap:10px;
 }
 
 .logo{
     font-size:48px;
 }
 
+.header-right{
+    flex-direction:column;
+    align-items:flex-end;
+    gap:12px;
+}
+
 .top-buttons{
+    display:flex;
     gap:8px;
 }
 
@@ -512,5 +500,4 @@ color:#111;
     width:52px;
     height:52px;
 }
-
   }
