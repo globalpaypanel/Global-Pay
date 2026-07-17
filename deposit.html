@@ -50,9 +50,7 @@
 
 <label>UTR / Transaction ID</label>
 
-<input
-type="text"
-placeholder="Enter UTR Number"
+<input type="text" placeholder="Enter UTR Number" maxlength="12" inputmode="numeric" pattern="[0-9]{12}" oninput="this.value=this.value.replace(/[^0-9]/g,'')">
 style="width:100%;padding:12px;margin-top:8px;border:1px solid #ccc;border-radius:6px;">
 
 <br><br>
