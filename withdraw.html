@@ -345,6 +345,47 @@ let usdt=(amount/87).toFixed(2);
 usdtAmount.innerHTML=usdt+" USDT";
 
 });
+ if(paymentMethod.value=="binance"){
+
+let uid=document.getElementById("binanceUid").value.trim();
+let wallet=document.getElementById("wallet").value.trim();
+
+if(uid==""){
+alert("❌ Enter Binance UID.");
+return;
+}
+
+if(wallet.length<20){
+alert("❌ Enter a valid USDT Wallet Address.");
+return;
+}
+
+}
+
+alert(
+"✅ Withdrawal Request Submitted!\n\n"+
+"Amount: ₹"+amount.toLocaleString()+
+"\nMethod: "+paymentMethod.options[paymentMethod.selectedIndex].text+
+"\nStatus: Pending"+
+"\nProcessing Time: 24-48 Hours"
+);
+
+amountInput.value="";
+showAmount.innerHTML="₹0";
+finalAmount.innerHTML="₹0";
+usdtAmount.innerHTML="0 USDT";
+
+document.getElementById("holderName").value="";
+document.getElementById("bankName").value="";
+document.getElementById("accountNumber").value="";
+document.getElementById("confirmAccount").value="";
+document.getElementById("ifsc").value="";
+document.getElementById("upiId").value="";
+document.getElementById("binanceUid").value="";
+document.getElementById("wallet").value="";
+ }
+ changeMethod();
+</script>
 
 </body>
 </html>
