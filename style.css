@@ -285,6 +285,10 @@ margin:5px 0;
   }
 
 .logo{
+  display:flex;
+align-items:center;
+gap:10px;
+  
     font-size:34px;
     font-weight:900;
     margin:0;
