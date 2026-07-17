@@ -162,19 +162,19 @@ Minimum Withdraw : ₹5,000
 <div id="bankSection">
 
 <label>Account Holder Name</label>
-<input type="text" id="holderName">
+<input type="text" id="holderName" maxlength="30">
 
 <label>Bank Name</label>
-<input type="text" id="bankName">
+<input type="text" id="bankName" maxlength="30">
 
 <label>Account Number</label>
-<input type="number" id="accountNumber">
+<input type="number" id="accountNumber" maxlength="18" oninput="this.value=this.value.slice(0,18)">
 
 <label>Confirm Account Number</label>
-<input type="number" id="confirmAccount">
+<input type="number" id="confirmAccount" maxlength="18" oninput="this.value=this.value.slice(0,18)">
 
 <label>IFSC Code</label>
-<input type="text" id="ifsc">
+<input type="text" id="ifsc" maxlength="11">
 
 </div>
 
