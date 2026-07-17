@@ -383,3 +383,15 @@ color:#111;
     font-weight:bold;
     cursor:pointer;
   }
+/* GLOBAL PAY Header */
+.top-header h1{
+    font-size:42px;
+    font-weight:900;
+    text-align:center;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    background:linear-gradient(90deg,#ffffff 0%,#d9d9d9 45%,#00bfff 60%,#005eff 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 15px rgba(0,191,255,.5);
+}
