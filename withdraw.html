@@ -306,22 +306,7 @@ let usdt=(amount/87).toFixed(2);
 usdtAmount.innerHTML=usdt+" USDT";
 
 });
- if(paymentMethod.value=="binance"){
-
-let uid=document.getElementById("binanceUid").value.trim();
-let wallet=document.getElementById("wallet").value.trim();
-
-if(uid==""){
-alert("❌ Enter Binance UID.");
-return;
-}
-
-if(wallet.length<20){
-alert("❌ Enter a valid USDT Wallet Address.");
-return;
-}
-
-}
+paymentMethod.addEventListener("change", changeMethod);
 function submitWithdraw() {
 
 let amount = Number(amountInput.value);
