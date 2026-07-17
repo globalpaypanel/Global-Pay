@@ -48,13 +48,14 @@ animation:greenGlow 2s linear infinite;
 }
 
 .logo{
-font-size:58px;
-text-align:center;
-font-weight:900;
-background:linear-gradient(90deg,#FFD700,#FF9800,#00ff99,#00d4ff,#6a5cff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-margin-top:15px;
+    font-size:62px;
+    font-weight:900;
+    line-height:0.9;
+    background:linear-gradient(90deg,#ffffff,#9dd9ff,#00bfff,#005eff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 0 18px #00bfff;
+    margin:0;
 }
 
 .subtitle{
