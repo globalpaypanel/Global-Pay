@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Check Status</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#081120;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:#fff;
+}
+
+.box{
+width:90%;
+max-width:360px;
+background:#132544;
+padding:20px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.5);
+}
+
+.status{
+font-size:36px;
+font-weight:bold;
+color:red;
+margin-bottom:15px;
+}
+
+.notice{
+background:#2b1d1d;
+border-left:5px solid red;
+padding:12px;
+border-radius:8px;
+text-align:left;
+margin-top:15px;
+margin-bottom:20px;
+}
+
+.notice h3{
+margin:0 0 8px;
+color:#ff4d4d;
+}
+
+.notice p{
+margin:0;
+font-size:14px;
+color:#ddd;
+line-height:1.6;
+}
+
+button{
+width:100%;
+padding:14px;
+background:#ff9800;
+border:none;
+border-radius:10px;
+font-size:18px;
+font-weight:bold;
+color:#fff;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<div class="status">Inactive</div>
+
+<div class="notice">
+<h3>⚠ Notice</h3>
+<p>
+Your account is not activated yet.<br><br>
+Please activate your account first, then come back to this page and try again.
+</p>
+</div>
+
+<button onclick="history.back()">⬅ Back</button>
+
+</div>
+
+</body>
+</html>
