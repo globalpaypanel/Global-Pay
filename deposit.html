@@ -99,6 +99,22 @@ after verification by the Panel Admin.
 
 </div>
 <script>
+    function copyUPI() {
+const upi = document.getElementById("upiId").innerText;
+
+navigator.clipboard.writeText(upi).then(() => {
+Swal.fire({
+icon: "success",
+title: "UPI ID Copied",
+text: "UPI ID has been copied successfully.",
+confirmButtonColor: "#00c853",
+background: "#1b1f2a",
+color: "#ffffff",
+timer: 1800,
+showConfirmButton: false
+});
+});
+    }
 function submitPayment(){
 
 const utr = document.getElementById("utrNumber").value.trim();
