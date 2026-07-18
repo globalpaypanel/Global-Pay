@@ -493,3 +493,25 @@ color:#111;
     background:#d32f2f !important;
     color:#fff;
 }
+
+.google-btn{
+    width:100%;
+    height:50px;
+    border:none;
+    border-radius:12px;
+    background:#ffffff;
+    color:#333;
+    font-size:16px;
+    font-weight:600;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    margin:15px 0;
+    cursor:pointer;
+}
+
+.google-btn img{
+    width:24px;
+    height:24px;
+}
