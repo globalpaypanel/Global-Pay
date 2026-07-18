@@ -164,14 +164,23 @@ Email Support
 </div>
 
 <script>
-function showDepositPopup(){
-  document.getElementById("depositPopup").style.display="flex";
+function showDepositPopup() {
+    document.getElementById("depositPopup").style.display = "flex";
 }
 
-function closePopup(){
-  document.getElementById("depositPopup").style.display="none";
+function closePopup() {
+    document.getElementById("depositPopup").style.display = "none";
 }
-</script>
+
+// Google login check
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        console.log("Logged in:", user.displayName);
+    } else {
+        console.log("Not logged in");
+    }
+});
+                      </script>
 <script src="script.js"></script>
 </body>
 </html>
