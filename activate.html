@@ -67,19 +67,20 @@ button{
 </div>
 
 <script>
-function checkCode(){
+function checkCode() {
 
     let code = document.getElementById("code").value.trim();
 
-    if(code === "386282"){
-        localStorage.setItem("accountActive","yes");
-        window.location.href = "editprofile.html";
-    }else{
+    if (code === "386282") {
+        const params = new URLSearchParams(window.location.search);
+        const next = params.get("next") || "editprofile.html";
+        window.location.href = next;
+    } else {
         document.getElementById("msg").innerHTML = "❌ Invalid Activation Code";
         document.getElementById("msg").style.color = "red";
     }
 
-}
+    }
 </script>
 
 </body>
