@@ -51,5 +51,35 @@
 
 </div>
 
+  <script type="module" src="firebase-config.js"></script>
+
+<script type="module">
+import { auth, provider } from "./firebase-config.js";
+import {
+  signInWithPopup,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const btn = document.getElementById("googleSignInBtn");
+
+btn.onclick = async () => {
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (e) {
+    alert(e.message);
+  }
+};
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.querySelector("h2").innerText = user.displayName;
+    document.querySelector(".profile-photo img").src = user.photoURL;
+    btn.style.display = "none";
+  } else {
+    btn.style.display = "block";
+  }
+});
+</script>
 </body>
 </html>
