@@ -4,7 +4,10 @@ let user = document.getElementById("userid").value.trim();
 let pass = document.getElementById("password").value.trim();
 let msg = document.getElementById("msg");
 
-if(user==="AJAY@MU2026" && pass==="993428"){
+if (
+    (user === "AJAY@MU2026" && pass === "993428") ||
+    (user === "GLOBAL@2026" && pass === "993428")
+) {
 
 msg.style.color="#00ff88";
 msg.innerHTML="✅ Login Successful...";
