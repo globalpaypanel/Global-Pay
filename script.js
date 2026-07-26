@@ -6,7 +6,8 @@ let msg = document.getElementById("msg");
 
 if (
     (user === "AJAY@MU2026" && pass === "993428") ||
-    (user === "PARAS@7895" && pass === "993428")
+    (user === "PARAS@7895" && pass === "993428")  ||
+    (user === "PULKIT2002" && pass === "993428")
 ) {
 
 msg.style.color="#00ff88";
