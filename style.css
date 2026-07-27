@@ -515,3 +515,41 @@ color:#111;
     width:24px;
     height:24px;
 }
+
+.menu-container{
+    position:relative;
+    display:inline-block;
+}
+
+.menu-btn{
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.popup-menu{
+    display:none;
+    position:absolute;
+    right:0;
+    top:40px;
+    width:220px;
+    background:#111827;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(0,0,0,.4);
+    z-index:999;
+}
+
+.popup-menu a{
+    display:block;
+    padding:14px 18px;
+    color:white;
+    text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.popup-menu a:hover{
+    background:#1e293b;
+  }
