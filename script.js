@@ -53,3 +53,21 @@ function logout() {
     window.location.href = "index.html";
   });
             }
+function toggleMenu(){
+    let menu = document.getElementById("popupMenu");
+
+    if(menu.style.display=="block"){
+        menu.style.display="none";
+    }else{
+        menu.style.display="block";
+    }
+}
+
+window.addEventListener("click", function(event){
+    if(!event.target.matches(".menu-btn")){
+        let menu = document.getElementById("popupMenu");
+        if(menu){
+            menu.style.display="none";
+        }
+    }
+});
