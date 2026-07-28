@@ -16,7 +16,7 @@ msg.innerHTML="✅ Login Successful...";
     localStorage.setItem("userid", user);
 
 setTimeout(function(){
-window.location.href="home.html";
+window.location.href = "splash.html";
 },1000);
 
 }else{
