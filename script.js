@@ -73,3 +73,28 @@ window.addEventListener("click", function(event){
         }
     }
 });
+
+function savePhoto(){
+
+const file=document.getElementById("photo").files[0];
+
+if(!file){
+alert("Please Select Photo");
+return;
+}
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+localStorage.setItem("profilePhoto",e.target.result);
+
+alert("Photo Saved Successfully");
+
+window.location.href="profile.html";
+
+}
+
+reader.readAsDataURL(file);
+
+}
