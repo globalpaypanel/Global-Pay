@@ -21,6 +21,11 @@
 <div class="profile-photo">
 <img id="profileImage" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png">
 </div>
+  <input type="file" id="photo" accept="image/*" style="display:none" onchange="savePhoto()">
+
+<button onclick="document.getElementById('photo').click()">
+📷 Change Photo
+</button>
 
 <h2 id="profileName">User</h2>
 
@@ -66,6 +71,26 @@ document.getElementById("walletBalance").innerText="₹0.00";
 document.getElementById("totalIncome").innerText="₹0.00";
 
 }
+  function savePhoto() {
+    const file = document.getElementById("photo").files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+        document.getElementById("profileImage").src = e.target.result;
+        localStorage.setItem("profilePhoto", e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+}
+
+const photo = localStorage.getItem("profilePhoto");
+
+if (photo) {
+    document.getElementById("profileImage").src = photo;
+  }
 </script>
 </body>
 </html>
