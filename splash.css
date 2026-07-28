@@ -6,21 +6,23 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#020817;
+background:#020814;
 overflow:hidden;
-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-color:white;
+height:100vh;
+color:#fff;
 }
 
 .bg{
 position:fixed;
+top:0;
+left:0;
 width:100%;
 height:100%;
 background:
-radial-gradient(circle at center,#0d1b3a,#020817 70%);
+radial-gradient(circle at center,#061a3d 0%,#020814 70%);
 z-index:-3;
 }
 
@@ -29,144 +31,200 @@ position:fixed;
 width:100%;
 height:100%;
 background-image:
-radial-gradient(#00d9ff 1px,transparent 1px);
+radial-gradient(#1ecbff 1px,transparent 1px);
 background-size:40px 40px;
 opacity:.15;
-animation:move 20s linear infinite;
 z-index:-2;
 }
 
 .container{
 text-align:center;
+width:100%;
+padding:20px;
 }
 
 .earthBox{
 position:relative;
-width:230px;
-height:230px;
+width:260px;
+height:260px;
 margin:auto;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 .earth{
-width:230px;
-height:230px;
+width:220px;
+height:220px;
 border-radius:50%;
-box-shadow:0 0 70px #00d4ff;
-animation:earthSpin 18s linear infinite;
+object-fit:cover;
+box-shadow:0 0 40px #00bfff;
+animation:spin 18s linear infinite;
+z-index:5;
 }
 
 .orbit{
 position:absolute;
-border:2px solid rgba(0,212,255,.5);
+border:2px solid rgba(0,200,255,.6);
 border-radius:50%;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
+animation:orbit 8s linear infinite;
 }
 
 .orbit1{
-width:260px;
-height:260px;
-animation:orbit1 8s linear infinite;
+width:250px;
+height:250px;
 }
 
 .orbit2{
-width:300px;
-height:180px;
-animation:orbit2 6s linear infinite;
+width:260px;
+height:170px;
+transform:rotate(60deg);
 }
 
 .orbit3{
-width:180px;
-height:300px;
-animation:orbit3 10s linear infinite;
+width:170px;
+height:260px;
+transform:rotate(-60deg);
 }
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#020814;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:#fff;
+}
+
+.bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at center,#061a3d 0%,#020814 70%);
+z-index:-3;
+}
+
+.particles{
+position:fixed;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(#1ecbff 1px,transparent 1px);
+background-size:40px 40px;
+opacity:.15;
+z-index:-2;
+}
+
+.container{
+text-align:center;
+width:100%;
+padding:20px;
+}
+
+.earthBox{
+position:relative;
+width:260px;
+height:260px;
+margin:auto;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.earth{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover;
+box-shadow:0 0 40px #00bfff;
+animation:spin 18s linear infinite;
+z-index:5;
+}
+
+.orbit{
+position:absolute;
+border:2px solid rgba(0,200,255,.6);
+border-radius:50%;
+animation:orbit 8s linear infinite;
+}
+
+.orbit1{
+width:250px;
+height:250px;
+}
+
+.orbit2{
+width:260px;
+height:170px;
+transform:rotate(60deg);
+}
+
+.orbit3{
+width:170px;
+height:260px;
+transform:rotate(-60deg);
+                 }
+
 .logo{
-font-size:58px;
-font-weight:bold;
-margin-top:35px;
-letter-spacing:4px;
-color:#e8f7ff;
-text-shadow:0 0 25px #00d4ff;
-animation:logoGlow 2s infinite alternate;
+font-size:68px;
+font-weight:900;
+letter-spacing:3px;
+margin-top:15px;
+color:#eaf7ff;
+text-shadow:
+0 0 12px #00bfff,
+0 0 35px #008cff;
 }
 
 .tag{
-margin-top:15px;
-font-size:18px;
-letter-spacing:5px;
-color:#bfefff;
+margin-top:12px;
+font-size:22px;
+letter-spacing:8px;
+color:#d8eaff;
 }
 
 .loader{
-width:320px;
-height:12px;
-margin:40px auto 15px;
-border-radius:40px;
+width:90%;
+max-width:620px;
+height:18px;
+border:3px solid #00bfff;
+border-radius:30px;
+margin:45px auto 20px;
 overflow:hidden;
-border:2px solid #00bfff;
+box-shadow:0 0 20px #00bfff;
 }
 
 .progress{
 height:100%;
 width:0%;
-background:linear-gradient(90deg,#00c6ff,#00ffcc,#00c6ff);
-animation:loading 3s linear forwards;
+border-radius:30px;
+background:linear-gradient(90deg,#00a2ff,#39d5ff,#00a2ff);
+background-size:300% 100%;
+animation:loading 4s linear forwards,
+glow 2s linear infinite;
 }
 
 .loading{
-font-size:20px;
-color:#d8f6ff;
+font-size:18px;
+margin-top:20px;
+color:#ffffff;
 }
 
 .footer{
-margin-top:45px;
+margin-top:55px;
 font-size:18px;
-letter-spacing:3px;
-color:#3ec9ff;
-}
-
-@keyframes loading{
-0%{width:0;}
-100%{width:100%;}
-}
-
-@keyframes earthSpin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-@keyframes orbit1{
-100%{
-transform:translate(-50%,-50%) rotate(360deg);
-}
-}
-
-@keyframes orbit2{
-100%{
-transform:translate(-50%,-50%) rotate(-360deg);
-}
-}
-
-@keyframes orbit3{
-100%{
-transform:translate(-50%,-50%) rotate(360deg);
-}
-}
-
-@keyframes logoGlow{
-from{
-text-shadow:0 0 15px #00bfff;
-}
-to{
-text-shadow:0 0 45px cyan;
-}
-}
-
-@keyframes move{
-100%{
-background-position:0 1000px;
-}
-}
+letter-spacing:6px;
+color:#2ec7ff;
+font-weight:bold;
+  }
