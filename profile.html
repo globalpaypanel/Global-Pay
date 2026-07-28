@@ -22,15 +22,16 @@
 <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png">
 </div>
 
-<h2>User</h2>
+<h2 id="profileName">User</h2>
 
-<p>User ID : Inactive</p>
+<p>User ID : <span id="profileUserId">Inactive</span></p>
 
 <div class="profile-info">
-<p>📱 Mobile : +91 XXXXXXXXXX</p>
-<p>👤 Name : Invalid</p>
-<p>💳 Wallet Balance : ₹0.00</p>
-<p>💵 Total Income : ₹0.00</p>
+<p>📱 Mobile : <span id="profileMobile">+91 XXXXXXXXXX</span></p>
+<p>👤 Name : <span id="profileFullName">Invalid</span></p>
+<p>📧 Email : <span id="profileEmail">Not Available</span></p>
+<p>💳 Wallet Balance : <span id="walletBalance">₹0.00</span></p>
+<p>💵 Total Income : <span id="totalIncome">₹0.00</span></p>
 </div>
 
 <button onclick="location.href='activate.html'">Edit Profile</button>
@@ -51,5 +52,20 @@
 <script src="firebase-config.js"></script>
 <script src="script.js"></script>
 
+<script>
+const currentUser = localStorage.getItem("userid");
+
+if (currentUser === "Kamlesh@7878") {
+
+document.getElementById("profileName").innerText="Kamlesh";
+document.getElementById("profileUserId").innerText="Kamlesh@7878";
+document.getElementById("profileMobile").innerText="+91 7878562439";
+document.getElementById("profileFullName").innerText="Kamlesh";
+document.getElementById("profileEmail").innerText="makukamu11@gmail.com";
+document.getElementById("walletBalance").innerText="₹0.00";
+document.getElementById("totalIncome").innerText="₹0.00";
+
+}
+</script>
 </body>
 </html>
