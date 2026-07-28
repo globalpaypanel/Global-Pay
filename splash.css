@@ -1,1 +1,89 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
 
+body{
+background:#020817;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:#fff;
+}
+
+.splash{
+text-align:center;
+z-index:2;
+}
+
+.earth{
+width:180px;
+height:180px;
+margin:auto;
+border-radius:50%;
+background:url("https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg") center/cover;
+box-shadow:0 0 60px #00c8ff;
+animation:spin 6s linear infinite;
+}
+
+h1{
+margin-top:25px;
+font-size:55px;
+color:#00d4ff;
+letter-spacing:5px;
+text-shadow:0 0 25px cyan;
+animation:glow 2s infinite alternate;
+}
+
+p{
+margin-top:10px;
+font-size:18px;
+color:#d6e6ff;
+}
+
+.loader{
+width:260px;
+height:8px;
+background:#1d2b4a;
+margin:35px auto;
+border-radius:30px;
+overflow:hidden;
+}
+
+.loading{
+width:0%;
+height:100%;
+background:linear-gradient(90deg,#00ff88,#00d4ff);
+animation:load 3s linear forwards;
+}
+
+h3{
+margin-top:20px;
+font-weight:400;
+color:#9fdfff;
+}
+
+@keyframes spin{
+100%{
+transform:rotate(360deg);
+}
+}
+
+@keyframes glow{
+from{
+text-shadow:0 0 15px #00d4ff;
+}
+to{
+text-shadow:0 0 45px cyan;
+}
+}
+
+@keyframes load{
+100%{
+width:100%;
+}
+}
