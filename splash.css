@@ -8,82 +8,165 @@ font-family:Arial,sans-serif;
 body{
 background:#020817;
 overflow:hidden;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
-color:#fff;
+color:white;
 }
 
-.splash{
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at center,#0d1b3a,#020817 70%);
+z-index:-3;
+}
+
+.particles{
+position:fixed;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(#00d9ff 1px,transparent 1px);
+background-size:40px 40px;
+opacity:.15;
+animation:move 20s linear infinite;
+z-index:-2;
+}
+
+.container{
 text-align:center;
-z-index:2;
+}
+
+.earthBox{
+position:relative;
+width:230px;
+height:230px;
+margin:auto;
 }
 
 .earth{
-width:180px;
-height:180px;
-margin:auto;
+width:230px;
+height:230px;
 border-radius:50%;
-background:url("https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg") center/cover;
-box-shadow:0 0 60px #00c8ff;
-animation:spin 6s linear infinite;
+box-shadow:0 0 70px #00d4ff;
+animation:earthSpin 18s linear infinite;
 }
 
-h1{
-margin-top:25px;
-font-size:55px;
-color:#00d4ff;
-letter-spacing:5px;
-text-shadow:0 0 25px cyan;
-animation:glow 2s infinite alternate;
+.orbit{
+position:absolute;
+border:2px solid rgba(0,212,255,.5);
+border-radius:50%;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 }
 
-p{
-margin-top:10px;
+.orbit1{
+width:260px;
+height:260px;
+animation:orbit1 8s linear infinite;
+}
+
+.orbit2{
+width:300px;
+height:180px;
+animation:orbit2 6s linear infinite;
+}
+
+.orbit3{
+width:180px;
+height:300px;
+animation:orbit3 10s linear infinite;
+}
+
+.logo{
+font-size:58px;
+font-weight:bold;
+margin-top:35px;
+letter-spacing:4px;
+color:#e8f7ff;
+text-shadow:0 0 25px #00d4ff;
+animation:logoGlow 2s infinite alternate;
+}
+
+.tag{
+margin-top:15px;
 font-size:18px;
-color:#d6e6ff;
+letter-spacing:5px;
+color:#bfefff;
 }
 
 .loader{
-width:260px;
-height:8px;
-background:#1d2b4a;
-margin:35px auto;
-border-radius:30px;
+width:320px;
+height:12px;
+margin:40px auto 15px;
+border-radius:40px;
 overflow:hidden;
+border:2px solid #00bfff;
+}
+
+.progress{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#00c6ff,#00ffcc,#00c6ff);
+animation:loading 3s linear forwards;
 }
 
 .loading{
-width:0%;
-height:100%;
-background:linear-gradient(90deg,#00ff88,#00d4ff);
-animation:load 3s linear forwards;
+font-size:20px;
+color:#d8f6ff;
 }
 
-h3{
-margin-top:20px;
-font-weight:400;
-color:#9fdfff;
+.footer{
+margin-top:45px;
+font-size:18px;
+letter-spacing:3px;
+color:#3ec9ff;
 }
 
-@keyframes spin{
+@keyframes loading{
+0%{width:0;}
+100%{width:100%;}
+}
+
+@keyframes earthSpin{
 100%{
 transform:rotate(360deg);
 }
 }
 
-@keyframes glow{
+@keyframes orbit1{
+100%{
+transform:translate(-50%,-50%) rotate(360deg);
+}
+}
+
+@keyframes orbit2{
+100%{
+transform:translate(-50%,-50%) rotate(-360deg);
+}
+}
+
+@keyframes orbit3{
+100%{
+transform:translate(-50%,-50%) rotate(360deg);
+}
+}
+
+@keyframes logoGlow{
 from{
-text-shadow:0 0 15px #00d4ff;
+text-shadow:0 0 15px #00bfff;
 }
 to{
 text-shadow:0 0 45px cyan;
 }
 }
 
-@keyframes load{
+@keyframes move{
 100%{
-width:100%;
+background-position:0 1000px;
 }
 }
