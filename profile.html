@@ -58,6 +58,7 @@
 <script src="script.js"></script>
 
 <script>
+
 const currentUser = localStorage.getItem("userid");
 
 if (currentUser === "Kamlesh@7878") {
@@ -70,7 +71,18 @@ document.getElementById("profileEmail").innerText="makukamu11@gmail.com";
 document.getElementById("walletBalance").innerText="₹0.00";
 document.getElementById("totalIncome").innerText="₹0.00";
 
-}
+} else {
+
+document.getElementById("profileName").innerText="Invalid User";
+document.getElementById("profileUserId").innerText="Inactive";
+document.getElementById("profileFullName").innerText="Invalid";
+document.getElementById("profileMobile").innerText="+91 XXXXXXXXXX";
+document.getElementById("profileEmail").innerText="Not Available";
+document.getElementById("walletBalance").innerText="₹0.00";
+document.getElementById("totalIncome").innerText="₹0.00";
+
+  }
+  
   function savePhoto() {
     const file = document.getElementById("photo").files[0];
 
