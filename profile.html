@@ -98,24 +98,26 @@ document.getElementById("totalIncome").innerText="₹0.00";
   }
   
   function savePhoto() {
-    const file = document.getElementById("photo").files[0];
 
-    if (!file) return;
+const file = document.getElementById("photo").files[0];
 
-    const reader = new FileReader();
+if (!file) return;
 
-    reader.onload = function(e) {
-      const currentUser = localStorage.getItem("userid");
+const reader = new FileReader();
 
-const photo = localStorage.getItem("profilePhoto_" + currentUser);
+reader.onload = function(e) {
 
-if (photo) {
-    document.getElementById("profileImage").src = photo;
-}
-    };
+const currentUser = localStorage.getItem("userid");
 
-    reader.readAsDataURL(file);
-}
+localStorage.setItem("profilePhoto_" + currentUser, e.target.result);
+
+document.getElementById("profileImage").src = e.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+  }
 
 const currentUser = localStorage.getItem("userid");
 
