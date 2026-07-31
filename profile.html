@@ -112,11 +112,14 @@ document.getElementById("totalIncome").innerText="₹0.00";
     reader.readAsDataURL(file);
 }
 
-const photo = localStorage.getItem("profilePhoto");
+const currentUser = localStorage.getItem("userid");
+
+const photo = localStorage.getItem("profilePhoto_" + currentUser);
 
 if (photo) {
     document.getElementById("profileImage").src = photo;
-  }
+}
+  
 </script>
 </body>
 </html>
