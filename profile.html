@@ -60,7 +60,6 @@
 <script>
 
 const currentUser = localStorage.getItem("userid");
-document.getElementById("profileUserId").innerText = currentUser;
 
 if (currentUser === "Kamlesh@7878") {
 
@@ -71,7 +70,8 @@ document.getElementById("profileFullName").innerText="Kamlesh";
 document.getElementById("profileEmail").innerText="makukamu11@gmail.com";
 document.getElementById("walletBalance").innerText="₹0.00";
 document.getElementById("totalIncome").innerText="₹0.00";
-  }
+
+}
 
 else if (currentUser === "Anil@4488") {
 
@@ -85,7 +85,7 @@ document.getElementById("totalIncome").innerText="₹0.00";
 
 }
 
-} else {
+else {
 
 document.getElementById("profileName").innerText="Invalid User";
 document.getElementById("profileUserId").innerText="Inactive";
