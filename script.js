@@ -88,7 +88,8 @@ const reader=new FileReader();
 
 reader.onload=function(e){
 
-localStorage.setItem("profilePhoto",e.target.result);
+const currentUser = localStorage.getItem("userid");
+localStorage.setItem("profilePhoto_" + currentUser, e.target.result);
 
 alert("Photo Saved Successfully");
 
