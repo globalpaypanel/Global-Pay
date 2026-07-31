@@ -105,8 +105,13 @@ document.getElementById("totalIncome").innerText="₹0.00";
     const reader = new FileReader();
 
     reader.onload = function(e) {
-        document.getElementById("profileImage").src = e.target.result;
-        localStorage.setItem("profilePhoto", e.target.result);
+      const currentUser = localStorage.getItem("userid");
+
+const photo = localStorage.getItem("profilePhoto_" + currentUser);
+
+if (photo) {
+    document.getElementById("profileImage").src = photo;
+}
     };
 
     reader.readAsDataURL(file);
