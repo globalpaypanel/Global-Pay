@@ -120,7 +120,7 @@ color:#000;
 
 <h3>Available Balance</h3>
 
-<div class="balance">₹0.00</div>
+<div class="balance" id="balance">₹0.00</div>
 
 <div class="info">
 Minimum Withdraw : ₹5,000
@@ -398,5 +398,17 @@ document.getElementById("wallet").value="";
     </button>
   </div>
 </div>
+
+<script>
+const currentUser = localStorage.getItem("userid");
+
+if (currentUser === "Kamlesh@7878") {
+    document.getElementById("balance").innerHTML = "₹10,000.00";
+}
+else if (currentUser === "Anil@4488") {
+    document.getElementById("balance").innerHTML = "₹25,000.00";
+}
+</script>
+ 
 </body>
 </html>
