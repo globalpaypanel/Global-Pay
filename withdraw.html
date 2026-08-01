@@ -316,12 +316,12 @@ if (!amount) {
 }
 
 if (amount < 5000) {
-    alert("❌ Minimum withdrawal amount is ₹5,000.");
+    alert("❌ Minimum withdrawal amount is ₹1,000.");
     return;
 }
 
 if (amount > 100000) {
-    alert("❌ Maximum withdrawal amount is ₹1,00,000.");
+    alert("❌ Maximum withdrawal amount is ₹10,00,000.");
     return;
 }
 
@@ -361,7 +361,7 @@ alert(
 "Amount: ₹"+amount.toLocaleString()+
 "\nMethod: "+paymentMethod.options[paymentMethod.selectedIndex].text+
 "\nStatus: Pending"+
-"\nProcessing Time: 24-48 Hours"
+"\nProcessing Time: 30-1 Hours"
 );
 
 amountInput.value="";
