@@ -115,12 +115,8 @@ cursor:pointer;
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-import {
-  getDatabase,
-  ref,
-  push,
-  onChildAdded
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+
+import { getDatabase, ref, push, set, remove, onChildAdded } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAYav1adnLPBJcQyFho_DG8-xZiQG5HUw0",
