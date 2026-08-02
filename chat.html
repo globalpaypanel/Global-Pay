@@ -68,16 +68,6 @@ opacity:0.7;
 margin-top:5px;
 }
 
-  .deleteBtn{
-margin-top:6px;
-padding:5px 10px;
-border:none;
-border-radius:6px;
-background:#ff3b30;
-color:#fff;
-font-size:12px;
-cursor:pointer;
-  }
 
 .bottom{
 position:fixed;
@@ -174,14 +164,10 @@ onChildAdded(ref(db, "globalChat"), (snapshot) => {
 });
 
 document.getElementById("messages").innerHTML += `
-<div class="msg ${cls}">
+<div class="msg ${cls}" id="msg_${snapshot.key}">
 <b>${data.user}</b><br>
 ${data.text}
 <div class="time">${msgTime}</div>
-
-${data.user===currentUser ?
-`<button class="deleteBtn" onclick="deleteMessage('${snapshot.key}')">🗑 Delete</button>`
-: ""}
 
 </div>
 `;
