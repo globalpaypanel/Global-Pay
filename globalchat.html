@@ -77,5 +77,43 @@ font-size:16px;
 <button onclick="sendMessage()">Send</button>
 </div>
 
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import { getDatabase, ref, push, onChildAdded } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  databaseURL: "YOUR_DATABASE_URL",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+window.sendMessage = function () {
+  const text = document.getElementById("msg").value;
+  if (!text) return;
+
+  push(ref(db, "chat"), {
+    text: text
+  });
+
+  document.getElementById("msg").value = "";
+};
+
+onChildAdded(ref(db, "chat"), (snapshot) => {
+  const data = snapshot.val();
+
+  document.getElementById("messages").innerHTML +=
+    `<div class="msg">${data.text}</div>`;
+
+  document.getElementById("messages").scrollTop =
+    document.getElementById("messages").scrollHeight;
+});
+  </script>
 </body>
 </html>
