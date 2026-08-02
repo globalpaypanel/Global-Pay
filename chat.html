@@ -71,6 +71,15 @@ margin-top:5px;
 }
 
 
+.menu{
+float:right;
+font-size:22px;
+cursor:pointer;
+padding:2px 6px;
+color:white;
+}
+
+
 .bottom{
 position:fixed;
 bottom:0;
@@ -167,6 +176,7 @@ onChildAdded(ref(db, "globalChat"), (snapshot) => {
 
 document.getElementById("messages").innerHTML += `
 <div class="msg ${cls}" id="msg_${snapshot.key}">
+<div class="menu" onclick="openMenu('${snapshot.key}','${data.user}')">⋮</div>
 <b>${data.user}</b><br>
 ${data.text}
 <div class="time">${msgTime}</div>
@@ -200,6 +210,33 @@ window.deleteMessage = function(id){
         remove(ref(db,"globalChat/"+id));
 
     }
+
+}
+
+window.openMenu = function(id,user){
+
+if(user!==currentUser){
+alert("You can delete only your own message.");
+return;
+}
+
+let choice = prompt("1 = Delete\n2 = Copy");
+
+if(choice=="1"){
+
+deleteMessage(id);
+
+}
+
+else if(choice=="2"){
+
+navigator.clipboard.writeText(
+document.getElementById("msg_"+id).innerText
+);
+
+alert("Copied");
+
+}
 
 }
   
