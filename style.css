@@ -594,14 +594,17 @@ background:#f2f2f2;
 
 .miniMenu{
 display:none;
-position:absolute;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 background:#1b263b;
-border-radius:10px;
+border-radius:12px;
 overflow:hidden;
-box-shadow:0 5px 15px rgba(0,0,0,.4);
+box-shadow:0 8px 25px rgba(0,0,0,.45);
 z-index:9999;
-min-width:140px;
-}
+min-width:180px;
+  }
 
 .miniMenu div{
 padding:12px;
