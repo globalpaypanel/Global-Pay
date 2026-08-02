@@ -68,6 +68,17 @@ opacity:0.7;
 margin-top:5px;
 }
 
+  .deleteBtn{
+margin-top:6px;
+padding:5px 10px;
+border:none;
+border-radius:6px;
+background:#ff3b30;
+color:#fff;
+font-size:12px;
+cursor:pointer;
+  }
+
 .bottom{
 position:fixed;
 bottom:0;
@@ -178,6 +189,19 @@ ${data.user===currentUser ?
   document.getElementById("messages").scrollTop =
     document.getElementById("messages").scrollHeight;
 });
+
+window.deleteMessage = function(id){
+
+    if(confirm("Delete this message?")){
+
+        remove(ref(db,"globalChat/"+id));
+
+        location.reload();
+
+    }
+
+  }
+  
 </script>
 
 </body>
