@@ -196,6 +196,14 @@ onChildAdded(ref(db, "globalChat"), (snapshot) => {
 
   const data = snapshot.val();
 
+  if(data.user !== currentUser && data.seen === false){
+
+update(ref(db,"globalChat/"+snapshot.key),{
+seen:true
+});
+
+  }
+
   let cls =
     data.user === currentUser ? "myMsg" : "otherMsg";
 
@@ -209,7 +217,14 @@ document.getElementById("messages").innerHTML += `
 <div class="menu" onclick="openMenu('${snapshot.key}','${data.user}',event)">⋮</div>
 <b>${data.user}</b><br>
 ${data.text}
-<div class="time">${msgTime}</div>
+<div class="time">
+${msgTime}
+
+${data.user===currentUser ?
+(data.seen ? " ✓✓" : " ✓")
+: ""}
+
+</div>
 
 </div>
 `;
