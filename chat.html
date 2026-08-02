@@ -181,6 +181,13 @@ ${data.text}
 </div>
 `;
 
+  ${data.user===currentUser ?
+`<button class="deleteBtn" onclick="deleteMessage('${snapshot.key}')">🗑 Delete</button>`
+: ""}
+
+</div>
+`;
+
 const box = document.getElementById(snapshot.key);
 
 let timer;
