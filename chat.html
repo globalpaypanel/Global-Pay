@@ -167,6 +167,11 @@ document.getElementById("messages").innerHTML += `
 <b>${data.user}</b><br>
 ${data.text}
 <div class="time">${msgTime}</div>
+
+${data.user===currentUser ?
+`<button class="deleteBtn" onclick="deleteMessage('${snapshot.key}')">🗑 Delete</button>`
+: ""}
+
 </div>
 `;
 
