@@ -113,8 +113,12 @@ push(ref(db, "chat"), {
 onChildAdded(ref(db, "chat"), (snapshot) => {
   const data = snapshot.val();
 
-  document.getElementById("messages").innerHTML += `
-<div class="msg">
+  const currentUser = localStorage.getItem("userid");
+
+let bubbleClass = data.user === currentUser ? "myMsg" : "otherMsg";
+
+document.getElementById("messages").innerHTML += `
+<div class="msg ${bubbleClass}">
 <b>${data.user}</b><br>
 ${data.text}
 </div>`;
