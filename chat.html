@@ -185,7 +185,7 @@ const msgRef = push(ref(db, "globalChat"));
 set(msgRef, {
   user: currentUser,
   text: text,
-  time: Date.now()
+  time: Date.now(),
   seen: false
 });
   
