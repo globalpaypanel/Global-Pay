@@ -107,5 +107,63 @@ cursor:pointer;
 <button id="sendBtn">Send</button>
 </div>
 
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  push,
+  onChildAdded
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAYav1adnLPBJcQyFho_DG8-xZiQG5HUw0",
+  authDomain: "globalchat-54294.firebaseapp.com",
+  databaseURL: "https://globalchat-54294-default-rtdb.firebaseio.com",
+  projectId: "globalchat-54294",
+  storageBucket: "globalchat-54294.firebasestorage.app",
+  messagingSenderId: "449926167987",
+  appId: "1:449926167987:web:5590ccbef07cb309145fc6"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const currentUser = localStorage.getItem("chatUser");
+
+document.getElementById("sendBtn").onclick = function () {
+
+  const text = document.getElementById("msg").value.trim();
+
+  if (text === "") return;
+
+  push(ref(db, "globalChat"), {
+    user: currentUser,
+    text: text,
+    time: Date.now()
+  });
+
+  document.getElementById("msg").value = "";
+};
+
+onChildAdded(ref(db, "globalChat"), (snapshot) => {
+
+  const data = snapshot.val();
+
+  let cls =
+    data.user === currentUser ? "myMsg" : "otherMsg";
+
+  document.getElementById("messages").innerHTML += `
+    <div class="msg ${cls}">
+      <b>${data.user}</b><br>
+      ${data.text}
+    </div>
+  `;
+
+  document.getElementById("messages").scrollTop =
+    document.getElementById("messages").scrollHeight;
+});
+</script>
+
 </body>
 </html>
