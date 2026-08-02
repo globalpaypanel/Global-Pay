@@ -176,6 +176,34 @@ ${data.text}
     document.getElementById("messages").scrollHeight;
 });
 
+const msgBox = document.getElementById("msg_" + snapshot.key);
+
+if (data.user === currentUser) {
+
+  let pressTimer;
+
+  msgBox.addEventListener("touchstart", () => {
+
+    pressTimer = setTimeout(() => {
+
+      if (confirm("Delete this message?")) {
+        deleteMessage(snapshot.key);
+      }
+
+    }, 2000);
+
+  });
+
+  msgBox.addEventListener("touchend", () => {
+    clearTimeout(pressTimer);
+  });
+
+  msgBox.addEventListener("touchmove", () => {
+    clearTimeout(pressTimer);
+  });
+
+}
+
 window.deleteMessage = function(id){
 
     if(confirm("Delete this message?")){
