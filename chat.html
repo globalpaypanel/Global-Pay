@@ -232,6 +232,16 @@ if (data.user === currentUser) {
   
 });
 
+onChildRemoved(ref(db, "globalChat"), (snapshot) => {
+
+  const msg = document.getElementById("msg_" + snapshot.key);
+
+  if(msg){
+    msg.remove();
+  }
+
+});
+
 window.deleteMessage = function(id){
 
     if(confirm("Delete this message?")){
