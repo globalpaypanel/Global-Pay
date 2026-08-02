@@ -179,34 +179,6 @@ document.getElementById("messages").innerHTML += `
 ${data.text}
 <div class="time">${msgTime}</div>
 
-const box = document.getElementById(snapshot.key);
-
-let timer;
-
-if (data.user === currentUser) {
-
-box.addEventListener("touchstart", () => {
-
-timer = setTimeout(() => {
-
-if(confirm("Delete this message?")){
-
-deleteMessage(snapshot.key);
-
-}
-
-},2000);
-
-});
-
-box.addEventListener("touchend", () => {
-
-clearTimeout(timer);
-
-});
-
-  }
-
 ${data.user===currentUser ?
 `<button class="deleteBtn" onclick="deleteMessage('${snapshot.key}')">🗑 Delete</button>`
 : ""}
