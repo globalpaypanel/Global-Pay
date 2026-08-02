@@ -176,7 +176,7 @@ onChildAdded(ref(db, "globalChat"), (snapshot) => {
 
 document.getElementById("messages").innerHTML += `
 <div class="msg ${cls}" id="msg_${snapshot.key}">
-<div class="menu" onclick="openMenu('${snapshot.key}','${data.user}')">⋮</div>
+<div class="menu" onclick="openMenu('${snapshot.key}','${data.user}',event)">⋮</div>
 <b>${data.user}</b><br>
 ${data.text}
 <div class="time">${msgTime}</div>
