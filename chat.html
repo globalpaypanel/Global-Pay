@@ -258,6 +258,19 @@ window.closePopup = function(){
 document.getElementById("menuPopup").style.display="none";
 
   }
+
+  window.onclick = function(e){
+
+const menu = document.getElementById("miniMenu");
+
+if(e.target.id !== "miniMenu" &&
+   !e.target.classList.contains("menu")){
+
+menu.style.display = "none";
+
+}
+
+   }
   
 </script>
 
