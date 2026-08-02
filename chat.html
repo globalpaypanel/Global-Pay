@@ -216,18 +216,22 @@ window.deleteMessage = function(id){
 let selectedMsgId = "";
 let selectedMsgText = "";
 
-window.openMenu = function(id,user){
+window.openMenu = function(id,user,event){
 
-if(user!==currentUser){
-return;
-}
+if(user!==currentUser) return;
 
 selectedMsgId = id;
 
 selectedMsgText =
 document.getElementById("msg_"+id).innerText;
 
-document.getElementById("menuPopup").style.display="flex";
+const menu = document.getElementById("miniMenu");
+
+menu.style.display = "block";
+
+menu.style.left = event.pageX + "px";
+
+menu.style.top = event.pageY + "px";
 
   }
 
