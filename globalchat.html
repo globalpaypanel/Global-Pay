@@ -99,9 +99,13 @@ window.sendMessage = function () {
   const text = document.getElementById("msg").value;
   if (!text) return;
 
-  push(ref(db, "chat"), {
-    text: text
-  });
+  const currentUser = localStorage.getItem("userid");
+
+push(ref(db, "chat"), {
+    user: currentUser,
+    text: text,
+    time: Date.now()
+});
 
   document.getElementById("msg").value = "";
 };
@@ -109,8 +113,11 @@ window.sendMessage = function () {
 onChildAdded(ref(db, "chat"), (snapshot) => {
   const data = snapshot.val();
 
-  document.getElementById("messages").innerHTML +=
-    `<div class="msg">${data.text}</div>`;
+  document.getElementById("messages").innerHTML += `
+<div class="msg">
+<b>${data.user}</b><br>
+${data.text}
+</div>`;
 
   document.getElementById("messages").scrollTop =
     document.getElementById("messages").scrollHeight;
