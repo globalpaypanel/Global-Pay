@@ -179,13 +179,6 @@ document.getElementById("messages").innerHTML += `
 ${data.text}
 <div class="time">${msgTime}</div>
 
-  ${data.user===currentUser ?
-`<button class="deleteBtn" onclick="deleteMessage('${snapshot.key}')">🗑 Delete</button>`
-: ""}
-
-</div>
-`;
-
 const box = document.getElementById(snapshot.key);
 
 let timer;
@@ -214,7 +207,12 @@ clearTimeout(timer);
 
   }
 
+${data.user===currentUser ?
+`<button class="deleteBtn" onclick="deleteMessage('${snapshot.key}')">🗑 Delete</button>`
+: ""}
 
+</div>
+`;
 
   document.getElementById("messages").scrollTop =
     document.getElementById("messages").scrollHeight;
