@@ -139,12 +139,14 @@ document.getElementById("sendBtn").onclick = function () {
 
   if (text === "") return;
 
-  push(ref(db, "globalChat"), {
-    user: currentUser,
-    text: text,
-    time: Date.now()
-  });
+const msgRef = push(ref(db, "globalChat"));
 
+set(msgRef, {
+  user: currentUser,
+  text: text,
+  time: Date.now()
+});
+  
   document.getElementById("msg").value = "";
 };
 
