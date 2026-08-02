@@ -62,6 +62,12 @@ margin-right:auto;
 text-align:left;
 }
 
+.time{
+font-size:11px;
+opacity:0.7;
+margin-top:5px;
+}
+
 .bottom{
 position:fixed;
 bottom:0;
@@ -153,12 +159,18 @@ onChildAdded(ref(db, "globalChat"), (snapshot) => {
   let cls =
     data.user === currentUser ? "myMsg" : "otherMsg";
 
-  document.getElementById("messages").innerHTML += `
-    <div class="msg ${cls}">
-      <b>${data.user}</b><br>
-      ${data.text}
-    </div>
-  `;
+  const msgTime = new Date(data.time).toLocaleTimeString([], {
+  hour: "2-digit",
+  minute: "2-digit"
+});
+
+document.getElementById("messages").innerHTML += `
+<div class="msg ${cls}">
+<b>${data.user}</b><br>
+${data.text}
+<div class="time">${msgTime}</div>
+</div>
+`;
 
   document.getElementById("messages").scrollTop =
     document.getElementById("messages").scrollHeight;
