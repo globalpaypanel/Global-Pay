@@ -46,6 +46,8 @@ border-radius:12px;
 margin:8px 0;
 max-width:75%;
 word-wrap:break-word;
+-webkit-user-select: none;
+user-select: none;
 }
 
 .myMsg{
@@ -174,33 +176,21 @@ ${data.text}
 
   document.getElementById("messages").scrollTop =
     document.getElementById("messages").scrollHeight;
-  const msgBox = document.getElementById("msg_" + snapshot.key);
+
+const msgBox = document.getElementById("msg_" + snapshot.key);
 
 if (data.user === currentUser) {
 
-  let pressTimer;
+  msgBox.ondblclick = function () {
 
-  msgBox.addEventListener("touchstart", () => {
+    if (confirm("Delete this message?")) {
+      deleteMessage(snapshot.key);
+    }
 
-    pressTimer = setTimeout(() => {
-
-      if (confirm("Delete this message?")) {
-        deleteMessage(snapshot.key);
-      }
-
-    }, 2000);
-
-  });
-
-  msgBox.addEventListener("touchend", () => {
-    clearTimeout(pressTimer);
-  });
-
-  msgBox.addEventListener("touchmove", () => {
-    clearTimeout(pressTimer);
-  });
+  };
 
   }
+  
 });
 
 window.deleteMessage = function(id){
