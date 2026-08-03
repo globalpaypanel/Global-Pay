@@ -179,11 +179,17 @@ transform:translateY(0);
 
 <div id="messages"></div>
 
-<div id="typingStatus" style="color:#00ff99;padding:8px 15px;font-size:14px;font-style:italic;"></div>
+<div id="typingStatus"></div>
 
 <div class="bottom">
 <input id="msg" placeholder="Type message...">
 <button id="sendBtn">Send</button>
+</div>
+
+<div id="miniMenu" class="miniMenu">
+<div onclick="popupCopy()">📋 Copy</div>
+<div onclick="popupDelete()">🗑 Delete</div>
+<div onclick="closePopup()">❌ Cancel</div>
 </div>
 
 <script type="module">
