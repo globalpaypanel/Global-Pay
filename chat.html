@@ -133,23 +133,6 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.cameraBtn{
-width:45px;
-height:45px;
-background:#1b263b;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:22px;
-color:#fff;
-cursor:pointer;
-}
-
-.cameraBtn:hover{
-background:#2c3e50;
-}
-
 .miniMenu{
 display:none;
 position:fixed;
@@ -205,29 +188,9 @@ transform:translateY(0);
 <div id="typingStatus"></div>
 
 <div class="bottom">
-
 <input id="msg" placeholder="Type message...">
-
-<div class="cameraBtn" onclick="openCameraMenu()">
-📷
-</div>
-
 <button id="sendBtn">Send</button>
-
 </div>
-
-<input
-type="file"
-id="cameraInput"
-accept="image/*"
-capture="environment"
-style="display:none;">
-
-<input
-type="file"
-id="galleryInput"
-accept="image/*"
-style="display:none;">
 
 <div id="miniMenu" class="miniMenu">
 <div onclick="popupCopy()">📋 Copy</div>
@@ -431,28 +394,8 @@ if(e.target.id !== "miniMenu" &&
 menu.style.display = "none";
 
 }
-  };
 
-window.openCameraMenu = function(){
-
-let option = prompt(
-"1 = Camera\n2 = Gallery"
-);
-
-if(option=="1"){
-
-document.getElementById("cameraInput").click();
-
-}
-
-else if(option=="2"){
-
-document.getElementById("galleryInput").click();
-
-}
-
-  }
-    
+   }
 onValue(typingRef,(snapshot)=>{
 
 const data = snapshot.val();
