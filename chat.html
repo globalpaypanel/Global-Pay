@@ -390,28 +390,29 @@ menu.style.display = "none";
 }
 
    }
-
 onValue(typingRef,(snapshot)=>{
 
 const data = snapshot.val();
 
+const typingBox = document.getElementById("typingStatus");
+
 if(!data){
-document.getElementById("typingStatus").innerHTML="";
+typingBox.innerHTML="";
 return;
 }
 
-if(data.user!==currentUser && data.typing){
+if(data.user !== currentUser && data.typing){
 
-document.getElementById("typingStatus").innerHTML=
-"🟢 "+data.user+" is typing...";
+typingBox.innerHTML = "🟢 " + data.user + " is typing...";
 
 }else{
 
-document.getElementById("typingStatus").innerHTML="";
+typingBox.innerHTML = "";
 
 }
 
 });
+
   
 </script>
 
