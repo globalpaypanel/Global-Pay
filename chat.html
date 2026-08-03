@@ -151,6 +151,8 @@ background:#2c3e50;
 
 <div id="messages"></div>
 
+<div id="typingStatus" style="color:#00ff99;padding:8px 15px;font-size:14px;font-style:italic;"></div>
+
 <div class="bottom">
 <input id="msg" placeholder="Type message...">
 <button id="sendBtn">Send</button>
@@ -171,6 +173,8 @@ import { getDatabase, ref, push, set, remove, update, onChildAdded, onChildRemov
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+
+const currentUser = localStorage.getItem("chatUser");
 
 const typingRef = ref(db, "typing");
 
