@@ -172,7 +172,33 @@ import { getDatabase, ref, push, set, remove, update, onChildAdded, onChildRemov
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-const currentUser = localStorage.getItem("chatUser");
+const typingRef = ref(db, "typing");
+
+document.getElementById("msg").addEventListener("input", () => {
+
+const text = document.getElementById("msg").value;
+set(typingRef,{
+user:"",
+typing:false
+});
+
+if(text.length > 0){
+
+set(typingRef,{
+user:currentUser,
+typing:true
+});
+
+}else{
+
+set(typingRef,{
+user:"",
+typing:false
+});
+
+}
+
+});
 
 document.getElementById("sendBtn").onclick = function () {
 
