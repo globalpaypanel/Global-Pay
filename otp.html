@@ -19,8 +19,9 @@
 This verifies your identity and helps you securely log in.
 </p>
 
+
 <div class="phone" id="phoneNumber">
-+91
+OTP sent to +91
 </div>
 
 <div class="otpArea">
@@ -66,5 +67,15 @@ Resend OTP
 
 <script type="module" src="otp.js"></script>
 
+<script>
+const phone = localStorage.getItem("phone");
+
+if(phone){
+    document.getElementById("phoneNumber").innerHTML =
+    "OTP sent to +91 " + phone;
+}
+</script>
+
+  
 </body>
 </html>
