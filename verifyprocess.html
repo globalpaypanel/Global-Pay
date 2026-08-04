@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verifying...</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0d1b2a;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:#fff;
+}
+
+.box{
+width:90%;
+max-width:360px;
+background:#1b263b;
+padding:30px;
+border-radius:20px;
+text-align:center;
+box-shadow:0 0 25px rgba(0,0,0,.4);
+}
+
+.loader{
+width:80px;
+height:80px;
+margin:auto;
+border:8px solid rgba(255,255,255,.15);
+border-top:8px solid #16a34a;
+border-radius:50%;
+animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+
+100%{
+transform:rotate(360deg);
+}
+
+}
+
+h2{
+margin-top:25px;
+margin-bottom:15px;
+}
+
+.progress{
+width:100%;
+height:12px;
+background:#0f172a;
+border-radius:10px;
+overflow:hidden;
+margin-top:20px;
+}
+
+.bar{
+width:0%;
+height:100%;
+background:#16a34a;
+animation:load 3s linear forwards;
+}
+
+@keyframes load{
+
+100%{
+width:100%;
+}
+
+}
+
+.success{
+display:none;
+}
+
+.tick{
+font-size:70px;
+color:#16a34a;
+margin-bottom:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<div id="loading">
+
+<div class="loader"></div>
+
+<h2>Verifying Your Account...</h2>
+
+<p>Please wait while we verify your information.</p>
+
+<div class="progress">
+
+<div class="bar"></div>
+
+</div>
+
+</div>
+
+<div id="success" class="success">
+
+<div class="tick">✅</div>
+
+<h2>Verification Successful</h2>
+
+<p>Your account has been verified successfully.</p>
+
+</div>
+
+</div>
+
+<script>
+
+setTimeout(function(){
+
+document.getElementById("loading").style.display="none";
+
+document.getElementById("success").style.display="block";
+
+},3000);
+
+setTimeout(function(){
+
+window.location.href="runningaccount.html";
+
+},5000);
+
+</script>
+
+</body>
+  </html>
