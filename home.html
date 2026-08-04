@@ -174,14 +174,34 @@ style="width:100%;padding:12px;background:#777;color:#fff;border:none;border-rad
 </div>
 
 <script>
+
 function showDepositPopup() {
-    document.getElementById("depositPopup").style.display = "flex";
+    document.getElementById("activatePopup").style.display = "flex";
 }
 
 function closePopup() {
-    document.getElementById("depositPopup").style.display = "none";
+    document.getElementById("activatePopup").style.display = "none";
+    document.getElementById("activateCode").value = "";
+    document.getElementById("codeError").innerHTML = "";
 }
 
+function checkActivateCode() {
+
+    const code = document.getElementById("activateCode").value;
+
+    if(code === "96619300"){
+
+        window.location.href = "accountdetails.html";
+
+    }else{
+
+        document.getElementById("codeError").innerHTML =
+        "❌ Invalid Activate Code";
+
+    }
+
+}
+  
 // Google login check
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
