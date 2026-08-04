@@ -1,1 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Step 1 - Account Details</title>
 
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0d1b2a;
+color:#fff;
+padding:20px;
+}
+
+.container{
+max-width:420px;
+margin:auto;
+background:#1b263b;
+padding:20px;
+border-radius:18px;
+box-shadow:0 0 20px rgba(0,0,0,.35);
+}
+
+h1{
+color:#8b5cf6;
+margin-bottom:25px;
+}
+
+label{
+display:block;
+margin-top:18px;
+margin-bottom:8px;
+font-weight:bold;
+font-size:16px;
+}
+
+input,select{
+width:100%;
+padding:14px;
+border-radius:12px;
+border:2px solid #34495e;
+background:#0f172a;
+color:#fff;
+font-size:16px;
+outline:none;
+}
+
+input:focus,select:focus{
+border-color:#8b5cf6;
+}
+
+button{
+width:100%;
+margin-top:28px;
+padding:15px;
+border:none;
+border-radius:12px;
+background:#16a34a;
+color:#fff;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:#15803d;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Step 1: Account Details</h1>
+
+<label>Bank Name</label>
+<input type="text" id="bankName" placeholder="Enter Bank Name">
+
+<label>Account Holder Name</label>
+<input type="text" id="holderName" placeholder="Enter Holder Name">
+
+<label>Account Number</label>
+<input type="number" id="accountNumber" placeholder="Enter Account Number">
+
+<label>IFSC Code</label>
+<input type="text" id="ifsc" placeholder="Enter IFSC Code">
+
+<label>Account Type</label>
+<select id="accountType">
+<option>Saving Account</option>
+<option>Current Account</option>
+</select>
+
+<label>Phone Number</label>
+<input type="number" id="phone" placeholder="Enter Phone Number">
+
+<button onclick="saveDetails()">Continue</button>
+
+</div>
+
+<script>
+
+function saveDetails(){
+
+let bank=document.getElementById("bankName").value.trim();
+let holder=document.getElementById("holderName").value.trim();
+let account=document.getElementById("accountNumber").value.trim();
+let ifsc=document.getElementById("ifsc").value.trim();
+let type=document.getElementById("accountType").value;
+let phone=document.getElementById("phone").value.trim();
+
+if(bank==""||holder==""||account==""||ifsc==""||phone==""){
+
+alert("Please fill all details.");
+
+return;
+
+}
+
+localStorage.setItem("bankName",bank);
+localStorage.setItem("holderName",holder);
+localStorage.setItem("accountNumber",account);
+localStorage.setItem("ifsc",ifsc);
+localStorage.setItem("accountType",type);
+localStorage.setItem("phone",phone);
+
+window.location.href="atmsetup.html";
+
+}
+
+</script>
+
+</body>
+</html>
