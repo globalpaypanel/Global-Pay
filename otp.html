@@ -3,98 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verify Mobile Number</title>
+<title>Verify Mobile</title>
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-background:#0b0b0b;
-color:#fff;
-display:flex;
-justify-content:center;
-align-items:center;
-min-height:100vh;
-padding:20px;
-}
-
-.container{
-width:100%;
-max-width:420px;
-}
-
-h1{
-font-size:42px;
-font-weight:bold;
-margin-bottom:12px;
-}
-
-.desc{
-font-size:19px;
-color:#bdbdbd;
-line-height:1.5;
-margin-bottom:40px;
-}
-
-.number{
-font-size:30px;
-font-weight:bold;
-margin-bottom:25px;
-}
-
-.otp-box{
-display:flex;
-justify-content:space-between;
-margin-bottom:30px;
-}
-
-.otp-box input{
-width:58px;
-height:72px;
-background:#121212;
-border:2px solid #3a3a3a;
-border-radius:12px;
-color:#fff;
-font-size:32px;
-text-align:center;
-outline:none;
-}
-
-.otp-box input:focus{
-border-color:#8b5cf6;
-}
-
-.auto{
-color:#9ca3af;
-font-size:18px;
-margin-bottom:35px;
-}
-
-.bottom{
-position:fixed;
-left:0;
-right:0;
-bottom:35px;
-text-align:center;
-}
-
-.bottom a{
-color:#9d6bff;
-font-size:20px;
-text-decoration:none;
-font-weight:bold;
-}
-</style>
+<link rel="stylesheet" href="otp.css">
 
 </head>
+
 <body>
 
-<div class="container">
+<div class="main">
 
 <h1>Verify your mobile number</h1>
 
@@ -102,69 +19,52 @@ font-weight:bold;
 This verifies your identity and helps you securely log in.
 </p>
 
-<div class="number" id="mobileNumber">
-OTP sent to +91 **********
+<div class="phone" id="phoneNumber">
++91
 </div>
 
-<div class="otp-box">
-<input maxlength="1" id="o1">
-<input maxlength="1" id="o2">
-<input maxlength="1" id="o3">
-<input maxlength="1" id="o4">
-<input maxlength="1" id="o5">
-<input maxlength="1" id="o6">
-</div>
+<div class="otpArea">
 
-<div class="auto">
-Auto-reading OTP...
-</div>
+<input id="d1" maxlength="1" autocomplete="one-time-code">
+<input id="d2" maxlength="1">
+<input id="d3" maxlength="1">
+<input id="d4" maxlength="1">
+<input id="d5" maxlength="1">
+<input id="d6" maxlength="1">
 
 </div>
 
-<div class="bottom">
-<a href="#">Unable to receive OTP?</a>
+<div class="timer">
+
+<span id="countDown">
+Auto-reading OTP 00:60
+</span>
+
 </div>
 
-<script>
+<div id="recaptcha-container"></div>
 
-// Phone number show
-let phone=localStorage.getItem("phone");
+<button id="verifyBtn">
 
-if(phone){
-document.getElementById("mobileNumber").innerHTML=
-"OTP sent to +91 "+phone;
-}
+Verify OTP
 
-// Auto move
-const inputs=document.querySelectorAll(".otp-box input");
+</button>
 
-inputs.forEach((input,index)=>{
+<div class="resend">
 
-input.addEventListener("input",()=>{
+Unable to receive OTP?
 
-if(input.value.length==1 && index<inputs.length-1){
-inputs[index+1].focus();
-}
+<a href="#" id="resendBtn">
 
-let otp="";
+Resend OTP
 
-inputs.forEach(i=>otp+=i.value);
+</a>
 
-if(otp.length==6){
+</div>
 
-setTimeout(()=>{
+</div>
 
-window.location.href="runningaccount.html";
-
-},400);
-
-}
-
-});
-
-});
-
-</script>
+<script type="module" src="otp.js"></script>
 
 </body>
 </html>
