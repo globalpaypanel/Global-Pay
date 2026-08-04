@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>OTP Verification</title>
 
+<style>
+body{
+margin:0;
+background:#0d1b2a;
+font-family:Arial,sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+width:90%;
+max-width:380px;
+background:#1b263b;
+padding:25px;
+border-radius:18px;
+text-align:center;
+color:#fff;
+box-shadow:0 10px 35px rgba(0,0,0,.45);
+}
+
+h2{
+margin-bottom:10px;
+}
+
+p{
+color:#ccc;
+font-size:15px;
+line-height:24px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin-top:20px;
+font-size:24px;
+text-align:center;
+border-radius:12px;
+border:none;
+outline:none;
+letter-spacing:8px;
+}
+
+button{
+width:100%;
+margin-top:20px;
+padding:14px;
+border:none;
+border-radius:12px;
+background:#16a34a;
+color:#fff;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
+
+#recaptcha-container{
+margin-top:15px;
+}
+
+#timer{
+margin-top:15px;
+color:#00ff99;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>OTP Verification</h2>
+
+<p id="phoneText"></p>
+
+<input
+id="otp"
+type="text"
+maxlength="6"
+autocomplete="one-time-code"
+placeholder="------">
+
+<div id="recaptcha-container"></div>
+
+<button id="verifyBtn">
+Verify OTP
+</button>
+
+<div id="timer">
+Resend OTP in 60 sec
+</div>
+
+</div>
+
+<script type="module">
+
+// Firebase code yahan next step me aayega
+
+</script>
+
+</body>
+</html>
