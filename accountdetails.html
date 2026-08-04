@@ -119,9 +119,9 @@ let phone=document.getElementById("phone").value.trim();
 
 if(bank==""||holder==""||account==""||ifsc==""||phone==""){
 
-alert("Please fill all details.");
-
+document.getElementById("fillPopup").style.display = "flex";
 return;
+
 
 }
 
