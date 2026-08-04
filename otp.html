@@ -2,108 +2,167 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>OTP Verification</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verify Mobile Number</title>
 
 <style>
-body{
+*{
 margin:0;
-background:#0d1b2a;
+padding:0;
+box-sizing:border-box;
 font-family:Arial,sans-serif;
+}
+
+body{
+background:#0b0b0b;
+color:#fff;
 display:flex;
 justify-content:center;
 align-items:center;
-height:100vh;
+min-height:100vh;
+padding:20px;
 }
 
-.box{
-width:90%;
-max-width:380px;
-background:#1b263b;
-padding:25px;
-border-radius:18px;
-text-align:center;
-color:#fff;
-box-shadow:0 10px 35px rgba(0,0,0,.45);
-}
-
-h2{
-margin-bottom:10px;
-}
-
-p{
-color:#ccc;
-font-size:15px;
-line-height:24px;
-}
-
-input{
+.container{
 width:100%;
-padding:14px;
-margin-top:20px;
-font-size:24px;
-text-align:center;
-border-radius:12px;
-border:none;
-outline:none;
-letter-spacing:8px;
+max-width:420px;
 }
 
-button{
-width:100%;
-margin-top:20px;
-padding:14px;
-border:none;
-border-radius:12px;
-background:#16a34a;
-color:#fff;
-font-size:17px;
+h1{
+font-size:42px;
 font-weight:bold;
-cursor:pointer;
+margin-bottom:12px;
 }
 
-#recaptcha-container{
-margin-top:15px;
+.desc{
+font-size:19px;
+color:#bdbdbd;
+line-height:1.5;
+margin-bottom:40px;
 }
 
-#timer{
-margin-top:15px;
-color:#00ff99;
+.number{
+font-size:30px;
+font-weight:bold;
+margin-bottom:25px;
+}
+
+.otp-box{
+display:flex;
+justify-content:space-between;
+margin-bottom:30px;
+}
+
+.otp-box input{
+width:58px;
+height:72px;
+background:#121212;
+border:2px solid #3a3a3a;
+border-radius:12px;
+color:#fff;
+font-size:32px;
+text-align:center;
+outline:none;
+}
+
+.otp-box input:focus{
+border-color:#8b5cf6;
+}
+
+.auto{
+color:#9ca3af;
+font-size:18px;
+margin-bottom:35px;
+}
+
+.bottom{
+position:fixed;
+left:0;
+right:0;
+bottom:35px;
+text-align:center;
+}
+
+.bottom a{
+color:#9d6bff;
+font-size:20px;
+text-decoration:none;
+font-weight:bold;
 }
 </style>
 
 </head>
-
 <body>
 
-<div class="box">
+<div class="container">
 
-<h2>OTP Verification</h2>
+<h1>Verify your mobile number</h1>
 
-<p id="phoneText"></p>
+<p class="desc">
+This verifies your identity and helps you securely log in.
+</p>
 
-<input
-id="otp"
-type="text"
-maxlength="6"
-autocomplete="one-time-code"
-placeholder="------">
+<div class="number" id="mobileNumber">
+OTP sent to +91 **********
+</div>
 
-<div id="recaptcha-container"></div>
+<div class="otp-box">
+<input maxlength="1" id="o1">
+<input maxlength="1" id="o2">
+<input maxlength="1" id="o3">
+<input maxlength="1" id="o4">
+<input maxlength="1" id="o5">
+<input maxlength="1" id="o6">
+</div>
 
-<button id="verifyBtn">
-Verify OTP
-</button>
-
-<div id="timer">
-Resend OTP in 60 sec
+<div class="auto">
+Auto-reading OTP...
 </div>
 
 </div>
 
-<script type="module">
+<div class="bottom">
+<a href="#">Unable to receive OTP?</a>
+</div>
 
-// Firebase code yahan next step me aayega
+<script>
+
+// Phone number show
+let phone=localStorage.getItem("phone");
+
+if(phone){
+document.getElementById("mobileNumber").innerHTML=
+"OTP sent to +91 "+phone;
+}
+
+// Auto move
+const inputs=document.querySelectorAll(".otp-box input");
+
+inputs.forEach((input,index)=>{
+
+input.addEventListener("input",()=>{
+
+if(input.value.length==1 && index<inputs.length-1){
+inputs[index+1].focus();
+}
+
+let otp="";
+
+inputs.forEach(i=>otp+=i.value);
+
+if(otp.length==6){
+
+setTimeout(()=>{
+
+window.location.href="runningaccount.html";
+
+},400);
+
+}
+
+});
+
+});
 
 </script>
 
