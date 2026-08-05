@@ -6,100 +6,118 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#0a0a0a;
-color:#fff;
+background:linear-gradient(135deg,#07111f,#101827,#1d293d);
 display:flex;
 justify-content:center;
 align-items:center;
-min-height:100vh;
-padding:25px;
+height:100vh;
+padding:20px;
+overflow:hidden;
 }
 
 .main{
 width:100%;
-max-width:400px;
+max-width:420px;
+}
+
+.card{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.08);
+padding:30px;
+border-radius:24px;
+box-shadow:0 15px 45px rgba(0,0,0,.45);
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+color:#8b5cf6;
+margin-bottom:30px;
+letter-spacing:1px;
+text-align:center;
 }
 
 h1{
-font-size:34px;
-font-weight:700;
-line-height:1.2;
-margin-bottom:15px;
+font-size:30px;
+color:#fff;
+margin-bottom:10px;
 }
 
-.desc{
+.sub{
 color:#9ca3af;
-font-size:16px;
 line-height:24px;
-margin-bottom:35px;
-}
-
-.phone{
-font-size:24px;
-font-weight:bold;
 margin-bottom:30px;
 }
 
-.otpArea{
+.number{
+font-size:22px;
+font-weight:bold;
+color:#fff;
+margin-bottom:30px;
+}
+
+.otpBoxes{
 display:flex;
 justify-content:space-between;
 margin-bottom:25px;
 }
 
-.otpArea input{
-width:52px;
-height:68px;
-background:#151515;
-border:2px solid #303030;
-border-radius:12px;
+.otpBoxes input{
+width:50px;
+height:65px;
+border:none;
+outline:none;
+border-radius:14px;
+background:#111827;
 color:#fff;
 font-size:28px;
 text-align:center;
-outline:none;
-transition:.2s;
+font-weight:bold;
+box-shadow:0 0 10px rgba(139,92,246,.15);
+transition:.3s;
 }
 
-.otpArea input:focus{
-border-color:#8b5cf6;
-box-shadow:0 0 10px rgba(139,92,246,.4);
+.otpBoxes input.active{
+transform:scale(1.08);
+background:#8b5cf6;
+}
+
+.progress{
+margin-bottom:25px;
+}
+
+.bar{
+width:100%;
+height:8px;
+background:#1f2937;
+border-radius:20px;
+overflow:hidden;
+}
+
+#barFill{
+width:100%;
+height:100%;
+background:#8b5cf6;
+transition:1s linear;
 }
 
 .timer{
 text-align:center;
-color:#9ca3af;
+color:#d1d5db;
+font-size:16px;
 margin-bottom:25px;
-font-size:15px;
 }
 
-button{
-width:100%;
-padding:15px;
-border:none;
-border-radius:12px;
-background:#8b5cf6;
-color:#fff;
-font-size:17px;
+#count{
+font-size:26px;
 font-weight:bold;
-cursor:pointer;
-transition:.2s;
+color:#fff;
 }
 
-button:hover{
-background:#7c3aed;
-}
-
-.resend{
-margin-top:20px;
+.status{
 text-align:center;
 color:#9ca3af;
-}
-
-.resend a{
-color:#a855f7;
-text-decoration:none;
+font-size:17px;
 font-weight:bold;
-}
-
-#recaptcha-container{
-margin-top:20px;
 }
