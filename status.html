@@ -169,7 +169,7 @@ Services
     <div class="arrow">›</div>
 </div>
 
-<div class="card" onclick="location.href='accountwork.html'">
+<div class="card" onclick="showAccountPopup()">
     <div class="title">🏦 Account Work</div>
     <div class="arrow">›</div>
 </div>
@@ -234,6 +234,56 @@ function closePopup(){
 document.getElementById("popup").style.display="none";
 }
   </script>
+
+<!-- ===== Account Work Premium Popup ===== -->
+<div id="accountPopup" class="accountOverlay">
+
+<div class="cinematicBg">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+<div class="accountBox">
+
+<div class="lockRing">
+🔐
+</div>
+
+<h2>Account Work Security</h2>
+
+<p>
+Enter your Activation Code
+</p>
+
+<input
+type="password"
+id="accountCode"
+placeholder="Activation Code">
+
+<div id="accountError"></div>
+
+<div class="popupBtns">
+
+<button class="premiumBtn"
+onclick="checkAccountCode()">
+⚡ Activate
+</button>
+
+<button class="cancelBtn"
+onclick="closeAccountPopup()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</div>
+<!-- ===== End Popup ===== -->
+  
 </body>
   </html>
 </body>
