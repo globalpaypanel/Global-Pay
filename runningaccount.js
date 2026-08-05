@@ -74,8 +74,7 @@ const counter = setInterval(() => {
         clearInterval(counter);
     }
 
-    document.getElementById("balance").innerHTML =
-        value.toFixed(2);
+document.getElementById("balance").innerHTML = "8.31"; 
 
     value += 0.25;
 
