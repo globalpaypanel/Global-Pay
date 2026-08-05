@@ -5,6 +5,15 @@ localStorage.getItem("holderName") || "Account Holder";
 document.getElementById("bankName").innerHTML =
 localStorage.getItem("bankName") || "Bank Name";
 
+document.getElementById("cardBank").innerHTML =
+localStorage.getItem("bankName") || "BANK";
+
+document.getElementById("cardNumber").innerHTML =
+localStorage.getItem("cardNumber") || "0000 0000 0000 0000";
+
+document.getElementById("expiry").innerHTML =
+localStorage.getItem("expiry") || "00/00";
+
 document.getElementById("phone").innerHTML =
 "+91 " + (localStorage.getItem("phone") || "XXXXXXXXXX");
 
