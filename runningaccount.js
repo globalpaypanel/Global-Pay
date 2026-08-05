@@ -1,57 +1,73 @@
-// Account Details Load
+// Load user details
 document.getElementById("holderName").innerHTML =
-localStorage.getItem("holderName") || "Not Available";
+localStorage.getItem("holderName") || "Account Holder";
 
 document.getElementById("bankName").innerHTML =
-localStorage.getItem("bankName") || "Not Available";
+localStorage.getItem("bankName") || "Bank Name";
 
 document.getElementById("phone").innerHTML =
 "+91 " + (localStorage.getItem("phone") || "XXXXXXXXXX");
 
-// Date & Time
-function updateTime(){
+// Live Date & Time
+function updateTime() {
+    const now = new Date();
 
-const now = new Date();
+    const options = {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    };
 
-const date = now.toLocaleDateString();
-
-const time = now.toLocaleTimeString();
-
-document.getElementById("time").innerHTML =
-date + " | " + time;
-
+    document.getElementById("time").innerHTML =
+        now.toLocaleString("en-IN", options);
 }
 
 updateTime();
+setInterval(updateTime, 1000);
 
-setInterval(updateTime,1000);
+// Page Animation
+const container = document.querySelector(".container");
 
-// Premium Fade Animation
-document.querySelector(".container").style.opacity="0";
+container.style.opacity = "0";
+container.style.transform = "translateY(40px) scale(.96)";
 
-document.querySelector(".container").style.transform="translateY(30px)";
+setTimeout(() => {
+    container.style.transition = "1s";
+    container.style.opacity = "1";
+    container.style.transform = "translateY(0) scale(1)";
+}, 200);
 
-setTimeout(()=>{
+// 3D Card Animation
+const card = document.querySelector(".card3d");
 
-document.querySelector(".container").style.transition="1s";
+setInterval(() => {
 
-document.querySelector(".container").style.opacity="1";
+    card.style.transform = "rotateY(6deg) rotateX(2deg)";
 
-document.querySelector(".container").style.transform="translateY(0px)";
+    setTimeout(() => {
 
-},200);
+        card.style.transform = "rotateY(0deg) rotateX(0deg)";
 
-// Wallet Animation
-const wallet=document.querySelector(".wallet");
+    }, 1200);
 
-setInterval(()=>{
+}, 3000);
 
-wallet.style.transform="scale(1.02)";
+// Balance Counter Animation
+let value = 0;
+const target = 0;
 
-setTimeout(()=>{
+const counter = setInterval(() => {
 
-wallet.style.transform="scale(1)";
+    if (value >= target) {
+        clearInterval(counter);
+    }
 
-},600);
+    document.getElementById("balance").innerHTML =
+        value.toFixed(2);
 
-},2500);
+    value += 0.25;
+
+}, 15);
