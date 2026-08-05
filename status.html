@@ -501,44 +501,44 @@ document.getElementById("popup").style.display="none";
 }
   </script>
 
-<!-- ===== Account Work Premium Popup ===== -->
 <div id="accountPopup" class="accountOverlay">
 
-<div class="cinematicBg">
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-</div>
+<div class="cinematicLayer"></div>
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
+<div class="particle p5"></div>
 
 <div class="accountBox">
 
-<div class="lockRing">
+<div class="securityRing">
+
+<div class="securityCore">
 🔐
 </div>
 
-<h2>Account Work Security</h2>
+</div>
 
-<p>
-Enter your Activation Code
-</p>
+<h2>Global Pay Security</h2>
+
+<p>Activation Required</p>
 
 <input
 type="password"
 id="accountCode"
-placeholder="Activation Code">
+placeholder="Enter Activation Code">
 
 <div id="accountError"></div>
 
-<div class="popupBtns">
-
-<button class="premiumBtn"
+<button class="premiumActivate"
 onclick="checkAccountCode()">
-⚡ Activate
+⚡ VERIFY & CONTINUE
 </button>
 
-<button class="cancelBtn"
+<button
+class="premiumCancel"
 onclick="closeAccountPopup()">
 Cancel
 </button>
@@ -546,9 +546,6 @@ Cancel
 </div>
 
 </div>
-
-</div>
-<!-- ===== End Popup ===== -->
 
 <script>
 
