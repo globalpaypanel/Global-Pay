@@ -892,4 +892,46 @@ transform:scale(1);
 opacity:1;
 }
 
+
+.serviceLogo{
+width:58px;
+height:58px;
+border-radius:16px;
+background:#fff;
+padding:8px;
+margin-right:18px;
+box-shadow:0 0 20px rgba(255,255,255,.35);
+transition:.4s;
 }
+
+}
+
+.service-premium:hover .serviceLogo{
+transform:rotate(8deg) scale(1.12);
+}
+
+.service-premium{
+position:relative;
+overflow:hidden;
+}
+
+.service-premium::after{
+content:"";
+position:absolute;
+top:-120%;
+left:-120%;
+width:250%;
+height:250%;
+background:radial-gradient(circle,rgba(255,255,255,.18),transparent 65%);
+animation:cinematicLight 6s linear infinite;
+}
+
+@keyframes cinematicLight{
+0%{
+transform:translate(-35%,-35%) rotate(0deg);
+}
+100%{
+transform:translate(35%,35%) rotate(360deg);
+}
+}
+
