@@ -95,8 +95,8 @@ Step 4: Open Running Account
 Check Status
 </button>
 
-<button onclick="location.href='remove-bank.html'">
-Remove Bank Details
+<button onclick="showRemovePopup()">
+🗑️ Remove Bank Details
 </button>
 
 </div>
@@ -225,8 +225,73 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log("Not logged in");
     }
 });
+
+function showRemovePopup(){
+
+document.getElementById("removePopup").style.display="flex";
+
+}
+
+function closeRemovePopup(){
+
+document.getElementById("removePopup").style.display="none";
+
+}
+
+function removeAllDetails(){
+
+localStorage.removeItem("bankName");
+localStorage.removeItem("holderName");
+localStorage.removeItem("accountNumber");
+localStorage.removeItem("ifsc");
+localStorage.removeItem("accountType");
+localStorage.removeItem("phone");
+
+localStorage.removeItem("cardNumber");
+localStorage.removeItem("expiry");
+localStorage.removeItem("cvv");
+localStorage.removeItem("pin");
+
+localStorage.removeItem("accountActivated");
+
+alert("All account details removed successfully.");
+
+window.location.href="home.html";
+
+}
   
- </script>
+</script>
 <script src="script.js"></script>
+
+<div id="removePopup" class="popupOverlay">
+
+<div class="popupBackground"></div>
+
+<div class="popupCard">
+
+<div class="lockCircle">⚠️</div>
+
+<h2>Delete Account Details?</h2>
+
+<p>
+All Bank Details, ATM Details and Running Account data will be permanently removed.
+</p>
+
+<div class="popupButtons">
+
+<button class="activateBtn" onclick="removeAllDetails()">
+🗑️ Remove
+</button>
+
+<button class="cancelBtn" onclick="closeRemovePopup()">
+Cancel
+</button>
+
+</div>
+
+</div>
+
+</div>
+  
 </body>
 </html>
