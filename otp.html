@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verify Mobile</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Verify Mobile Number</title>
 
 <link rel="stylesheet" href="otp.css">
 
@@ -13,89 +15,62 @@
 
 <div class="main">
 
-<h1>Verify your mobile number</h1>
+<div class="card">
 
-<p class="desc">
-This verifies your identity and helps you securely log in.
-</p>
-
-
-<div class="phone" id="phoneNumber">
-OTP sent to +91
+<div class="logo">
+GLOBAL PAY
 </div>
 
-<div class="otpArea">
+<h1>Verify Mobile Number</h1>
 
-<input id="d1" maxlength="1" autocomplete="one-time-code">
-<input id="d2" maxlength="1">
-<input id="d3" maxlength="1">
-<input id="d4" maxlength="1">
-<input id="d5" maxlength="1">
-<input id="d6" maxlength="1">
+<p class="sub">
+Please wait while we verify your account.
+</p>
+
+<div class="number" id="phoneNumber">
++91
+</div>
+
+<div class="otpBoxes">
+
+<input id="b1" readonly>
+<input id="b2" readonly>
+<input id="b3" readonly>
+<input id="b4" readonly>
+<input id="b5" readonly>
+<input id="b6" readonly>
+
+</div>
+
+<div class="progress">
+
+<div class="bar">
+<div id="barFill"></div>
+</div>
 
 </div>
 
 <div class="timer">
 
-<span id="countDown">
-Auto-reading OTP 00:60
+<span id="count">
+30
 </span>
 
+Seconds Remaining
+
 </div>
 
-<div id="recaptcha-container"></div>
+<div class="status" id="status">
 
-<button id="verifyBtn">
-
-Verify OTP
-
-</button>
-
-<div class="resend">
-
-Unable to receive OTP?
-
-<a href="#" id="resendBtn">
-
-Resend OTP
-
-</a>
+Waiting for OTP...
 
 </div>
 
 </div>
 
-<script type="module" src="otp.js"></script>
+</div>
 
-<script>
-const phone = localStorage.getItem("phone");
+<script src="otp.js"></script>
 
-if(phone){
-    document.getElementById("phoneNumber").innerHTML =
-    "OTP sent to +91 " + phone;
-}
-</script>
-
-   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-  import { getAuth } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
-  const firebaseConfig = {
-    apiKey: "AIzaSyAYav1adnLPBJcQyFho_DG8-xZiQG5HUw0",
-    authDomain: "globalchat-54294.firebaseapp.com",
-    databaseURL: "https://globalchat-54294-default-rtdb.firebaseio.com",
-    projectId: "globalchat-54294",
-    storageBucket: "globalchat-54294.firebasestorage.app",
-    messagingSenderId: "449926167987",
-    appId: "1:449926167987:web:5590ccbef07cb309145fc6",
-    measurementId: "G-TZG1T534ZC"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  window.auth = getAuth(app);
-</script>
-    
-<script type="module" src="otp.js"></script>
-    
 </body>
 </html>
