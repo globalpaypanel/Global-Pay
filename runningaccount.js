@@ -66,7 +66,7 @@ setInterval(() => {
 
 // Balance Counter Animation
 let value = 0;
-const target = 0;
+const target = 8.31;
 
 const counter = setInterval(() => {
 
