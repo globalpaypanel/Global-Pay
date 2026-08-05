@@ -254,7 +254,13 @@ localStorage.removeItem("pin");
 
 localStorage.removeItem("accountActivated");
 
-alert("All account details removed successfully.");
+document.getElementById("successPopup").style.display = "flex";
+
+setTimeout(() => {
+
+window.location.href = "home.html";
+
+}, 2500);
 
 window.location.href="home.html";
 
@@ -288,6 +294,37 @@ Cancel
 </button>
 
 </div>
+
+</div>
+
+</div>
+
+<div id="successPopup" class="popupOverlay" style="display:none;">
+
+<div class="popupCard">
+
+<div style="
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+background:#16a34a;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:46px;
+box-shadow:0 0 35px #16a34a;
+animation:popSuccess .6s ease;">
+✅
+</div>
+
+<h2 style="margin-top:20px;color:#fff;">
+Removed Successfully
+</h2>
+
+<p style="color:#d1d5db;margin-top:10px;">
+All bank details, ATM details and account data have been removed successfully.
+</p>
 
 </div>
 
