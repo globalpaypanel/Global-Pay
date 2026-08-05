@@ -175,13 +175,14 @@ style="width:100%;padding:12px;background:#777;color:#fff;border:none;border-rad
 
 <script>
 
-function showDepositPopup(page) {
-    
 let nextPage = "";
   
-    document.getElementById("activatePopup").style.display = "flex";
+function showDepositPopup(page) {
+  
+nextPage = page;
+  
+document.getElementById("activatePopup").style.display = "flex";
 
-}
 }
 
 function closePopup() {
@@ -217,7 +218,8 @@ firebase.auth().onAuthStateChanged(function(user) {
         console.log("Not logged in");
     }
 });
-                      </script>
+  
+ </script>
 <script src="script.js"></script>
 </body>
 </html>
