@@ -1,47 +1,50 @@
 const fill = document.getElementById("fill");
 const status = document.getElementById("status");
 const title = document.getElementById("title");
-const sub = document.getElementById("sub");
-
-let progress = 0;
+const subtitle = document.getElementById("subtitle");
 
 const messages = [
-"Initializing secure connection...",
-"Encrypting account details...",
-"Validating account information...",
-"Connecting to secure server...",
-"Creating running account...",
-"Verification completed successfully..."
+"Establishing Secure Connection...",
+"Encrypting Session...",
+"Verifying Identity...",
+"Connecting Server...",
+"Preparing Running Account...",
+"Verification Complete ✔"
 ];
 
-let msg = 0;
+let progress = 0;
+let step = 0;
 
 const loading = setInterval(() => {
 
-progress += 1;
+progress++;
 
 fill.style.width = progress + "%";
 
-if(progress % 16 === 0 && msg < messages.length){
-status.innerHTML = messages[msg];
-msg++;
+if(progress % 18 === 0 && step < messages.length){
+status.innerHTML = messages[step];
+step++;
 }
 
 if(progress >= 100){
 
 clearInterval(loading);
 
-title.innerHTML = "✔ Verification Successful";
+title.style.transform = "scale(1.08)";
+title.style.transition = "0.5s";
 
-sub.innerHTML = "Your running account is ready.";
+subtitle.innerHTML = "Welcome to Global Pay";
 
-status.innerHTML = "Redirecting...";
+status.innerHTML = "Opening Running Account...";
 
-setTimeout(()=>{
+document.body.style.transition = "1.5s";
+document.body.style.background = "#000";
+
+setTimeout(() => {
 
 window.location.href = "runningaccount.html";
 
-},2500);
+},3000);
 
 }
 
