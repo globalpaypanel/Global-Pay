@@ -1,63 +1,73 @@
 const phone = localStorage.getItem("phone") || "XXXXXXXXXX";
-document.getElementById("phoneNumber").innerHTML = "+91 " + phone;
+document.getElementById("mobile").innerHTML = "+91 " + phone;
 
-const inputs = [
-document.getElementById("b1"),
-document.getElementById("b2"),
-document.getElementById("b3"),
-document.getElementById("b4"),
-document.getElementById("b5"),
-document.getElementById("b6")
+const boxes = [
+document.getElementById("o1"),
+document.getElementById("o2"),
+document.getElementById("o3"),
+document.getElementById("o4"),
+document.getElementById("o5"),
+document.getElementById("o6")
 ];
 
 const status = document.getElementById("status");
-const count = document.getElementById("count");
-const bar = document.getElementById("barFill");
+const timerText = document.getElementById("time");
+const progress = document.getElementById("progress");
 
+// Random OTP
 const otp = Math.floor(100000 + Math.random() * 900000).toString();
 
-let sec = 30;
+// 30 sec timer
+let seconds = 30;
 
 const timer = setInterval(() => {
 
-sec--;
+seconds--;
 
-count.innerText = sec;
+timerText.innerText = seconds;
 
-bar.style.width = (sec / 30) * 100 + "%";
+progress.style.width = (seconds / 30) * 100 + "%";
 
-if(sec <= 0){
+if(seconds <= 0){
+
 clearInterval(timer);
-status.innerHTML = "OTP Expired";
+
+status.innerHTML = "Verification timeout";
+
 }
 
 },1000);
 
-const fillDelay = 10000 + Math.floor(Math.random()*2000);
+// 10–12 sec random delay
+const delay = 10000 + Math.floor(Math.random()*2000);
 
 setTimeout(()=>{
 
-status.innerHTML = "OTP detected...";
+status.innerHTML = "Receiving secure code...";
 
-otp.split("").forEach((n,i)=>{
+otp.split("").forEach((digit,index)=>{
+
+setTimeout(()=>{
+
+boxes[index].value = digit;
+
+boxes[index].style.background = "#8b5cf6";
+boxes[index].style.transform = "scale(1.08)";
 
 setTimeout(()=>{
 
-inputs[i].value = n;
+boxes[index].style.transform = "scale(1)";
+boxes[index].style.background = "#0d1525";
 
-inputs[i].classList.add("active");
-
-setTimeout(()=>{
-inputs[i].classList.remove("active");
 },250);
 
-},i*250);
+},index*250);
 
 });
 
 setTimeout(()=>{
 
-status.innerHTML = "Verification Successful ✔";
+status.innerHTML = "✔ Verification Successful";
 
 },2200);
 
@@ -67,4 +77,4 @@ window.location.href="runningaccount.html";
 
 },3500);
 
-},fillDelay);
+},delay);
