@@ -1004,3 +1004,23 @@ transition:.35s;
 transform:translateY(-5px);
 box-shadow:0 20px 40px rgba(124,58,237,.45);
 }
+
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+overflow-y:auto;
+-webkit-overflow-scrolling:touch;
+scrollbar-width:none;
+}
+
+body::-webkit-scrollbar{
+width:0;
+background:transparent;
+}
+
+.container{
+scroll-behavior:smooth;
+}
