@@ -254,14 +254,21 @@ localStorage.removeItem("pin");
 
 localStorage.removeItem("accountActivated");
 
+// Remove popup band karo
+document.getElementById("removePopup").style.display = "none";
+
+// Success popup dikhao
 document.getElementById("successPopup").style.display = "flex";
 
-setTimeout(() => {
+// 2.5 second baad Home page
+setTimeout(function(){
 
 window.location.href = "home.html";
 
-}, 2500);
+},2500);
 
+          }
+  
 window.location.href="home.html";
 
 }
