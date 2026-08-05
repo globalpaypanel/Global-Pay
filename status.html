@@ -406,6 +406,71 @@ color:#fff;
 }
 
 
+<script>
+
+function showAccountPopup(){
+
+document.getElementById("accountPopup").style.display="flex";
+
+document.getElementById("accountCode").value="";
+
+document.getElementById("accountError").innerHTML="";
+
+}
+
+function closeAccountPopup(){
+
+document.getElementById("accountPopup").style.display="none";
+
+}
+
+function checkAccountCode(){
+
+let code=document.getElementById("accountCode").value;
+
+if(code==="96619300"){
+
+document.getElementById("accountError").style.color="#00ff88";
+
+document.getElementById("accountError").innerHTML="✅ Access Granted";
+
+setTimeout(function(){
+
+window.location.href="accountwork.html";
+
+},900);
+
+}else{
+
+document.getElementById("accountError").style.color="#ff4d4d";
+
+document.getElementById("accountError").innerHTML="❌ Invalid Activation Code";
+
+document.querySelector(".accountBox").animate(
+
+[
+{transform:"translateX(0px)"},
+{transform:"translateX(-12px)"},
+{transform:"translateX(12px)"},
+{transform:"translateX(-12px)"},
+{transform:"translateX(12px)"},
+{transform:"translateX(0px)"}
+],
+
+{
+
+duration:500
+
+}
+
+);
+
+}
+
+}
+
+</script>
+
 </style>
 
 </head>
