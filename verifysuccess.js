@@ -37,6 +37,8 @@ subtitle.innerHTML = "Welcome to Global Pay";
 
 status.innerHTML = "Opening Running Account...";
 
+document.getElementById("successSound").play();
+
 document.body.style.transition = "1.5s";
 document.body.style.background = "#000";
 
