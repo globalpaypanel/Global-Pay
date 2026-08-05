@@ -83,11 +83,11 @@ Follow the sequential steps below to complete account setup.
 
 </div>
 
-<button onclick="showDepositPopup()" style="background:#1565C0;color:#fff;border:none;">
+<button onclick="showDepositPopup('accountdetails.html')" style="background:#1565C0;color:#fff;border:none;">
 Step 1: Setup Account Details
 </button>
 
-<button onclick="showDepositPopup()" style="background:#1565C0;color:#fff;border:none;">
+<button onclick="showDepositPopup('runningaccount.html')" style="background:#1565C0;color:#fff;border:none;">
 Step 4: Open Running Account
 </button>
 
@@ -175,8 +175,13 @@ style="width:100%;padding:12px;background:#777;color:#fff;border:none;border-rad
 
 <script>
 
-function showDepositPopup() {
+function showDepositPopup(page) {
+    
+let nextPage = "";
+  
     document.getElementById("activatePopup").style.display = "flex";
+
+}
 }
 
 function closePopup() {
@@ -191,7 +196,7 @@ function checkActivateCode() {
 
     if(code === "96619300"){
 
-        window.location.href = "accountdetails.html";
+        window.location.href = nextPage;
 
     }else{
 
@@ -201,6 +206,8 @@ function checkActivateCode() {
     }
 
 }
+
+  
   
 // Google login check
 firebase.auth().onAuthStateChanged(function(user) {
