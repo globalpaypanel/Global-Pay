@@ -73,7 +73,7 @@ status.innerHTML = "✔ Verification Successful";
 
 setTimeout(()=>{
 
-window.location.href="runningaccount.html";
+window.location.href = "verifysuccess.html";
 
 },3500);
 
