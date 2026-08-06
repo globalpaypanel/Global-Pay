@@ -333,3 +333,86 @@ return "XXXX XXXX "+
 Math.floor(1000+Math.random()*9000);
 
                                    }
+
+
+// ==============================
+// CREDIT ENTRY
+// ==============================
+
+function createCredit(){
+
+if(totalCredit>=500000){
+stopEngine();
+return;
+}
+
+let amount=randomItem(amounts);
+
+let person=randomItem(extraNames);
+
+let bank=randomItem(extraBanks);
+
+let last4=Math.floor(1000+Math.random()*9000);
+
+let ifsc=generateIFSC();
+
+let now=new Date();
+
+let date=now.toLocaleDateString("en-IN");
+
+let time=now.toLocaleTimeString("en-IN");
+
+gamingFund+=amount;
+
+commission+=amount*0.05;
+
+totalCredit+=amount;
+
+document.getElementById("gamingFund").innerHTML=
+formatMoney(gamingFund);
+
+document.getElementById("commission").innerHTML=
+formatMoney(Math.floor(commission));
+
+transactionList.insertAdjacentHTML("afterbegin",`
+
+<div class="transactionCard creditCard">
+
+<div class="leftInfo">
+
+<h3>🟢 CREDIT</h3>
+
+<p>${person}</p>
+
+<p>${bank}</p>
+
+<p>${randomAccount()}</p>
+
+<p>${ifsc}</p>
+
+</div>
+
+<div class="rightInfo">
+
+<div class="amountCredit">
++ ${formatMoney(amount)}
+</div>
+
+<div class="timeText">
+${date}<br>${time}
+</div>
+
+</div>
+
+</div>
+
+`);
+
+setTimeout(function(){
+
+createDebit(amount);
+
+},1500);
+
+                                   }
+                                   
