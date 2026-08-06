@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Services</title>
+<title>Global Pay - Services</title>
 
 <style>
 
@@ -14,11 +14,16 @@ box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-background:linear-gradient(135deg,#081120,#0f172a,#081120);
-background-size:300% 300%;
-animation:bgMove 12s ease infinite;
+background:linear-gradient(135deg,#050816,#081120,#0f172a,#050816);
+background-size:400% 400%;
+animation:bgMove 12s linear infinite;
 color:#fff;
+overflow-x:hidden;
 }
 
 @keyframes bgMove{
@@ -28,571 +33,145 @@ color:#fff;
 }
 
 .header{
-background:linear-gradient(135deg,#0b2b55,#10213d,#1b3560);
+
+position:sticky;
+top:0;
+
+background:rgba(8,17,32,.85);
+
+backdrop-filter:blur(18px);
+
 padding:20px;
+
 text-align:center;
+
 font-size:24px;
+
 font-weight:bold;
+
 letter-spacing:1px;
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
 box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+z-index:100;
+
 }
 
 .container{
-padding:20px;
+
+padding:22px;
+
 }
 
 .card{
+
 position:relative;
+
 display:flex;
+
 justify-content:space-between;
+
 align-items:center;
-padding:18px 22px;
+
+padding:20px;
+
 margin-bottom:18px;
-border-radius:22px;
+
+border-radius:24px;
+
 cursor:pointer;
+
 overflow:hidden;
 
 background:linear-gradient(135deg,#132544,#1b3560,#10213d);
+
 background-size:250% 250%;
+
 animation:cardGradient 7s ease infinite;
 
 border:1px solid rgba(255,255,255,.08);
 
 box-shadow:
-0 12px 30px rgba(0,0,0,.35),
-0 0 25px rgba(59,130,246,.18);
+0 15px 35px rgba(0,0,0,.35),
+0 0 25px rgba(37,99,235,.18);
 
 transition:.35s;
-}
 
-.card::before{
-content:"";
-position:absolute;
-top:0;
-left:-120%;
-width:45%;
-height:100%;
-background:rgba(255,255,255,.18);
-transform:skewX(-25deg);
-animation:shineMove 3s linear infinite;
 }
 
 .card:hover{
+
 transform:translateY(-6px) scale(1.02);
+
 box-shadow:
 0 20px 45px rgba(0,0,0,.45),
 0 0 40px rgba(59,130,246,.35);
+
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:-120%;
+
+width:45%;
+
+height:100%;
+
+background:rgba(255,255,255,.18);
+
+transform:skewX(-25deg);
+
+animation:shineMove 3s linear infinite;
+
 }
 
 .title{
+
 font-size:19px;
-font-weight:700;
+
+font-weight:bold;
+
 color:#fff;
+
 }
 
 .arrow{
-font-size:30px;
-font-weight:bold;
+
+font-size:28px;
+
 color:#FFD700;
+
 animation:arrowMove 1.2s infinite;
+
 }
 
 @keyframes arrowMove{
+
 0%,100%{transform:translateX(0);}
 50%{transform:translateX(8px);}
+
 }
 
 @keyframes shineMove{
+
 100%{
 left:170%;
 }
+
 }
 
 @keyframes cardGradient{
+
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
-}
-
-.back-btn{
-width:90%;
-max-width:360px;
-display:block;
-margin:25px auto;
-padding:16px;
-font-size:18px;
-font-weight:bold;
-border:none;
-border-radius:18px;
-cursor:pointer;
-color:#fff;
-
-background:linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4);
-background-size:250% 250%;
-animation:cardGradient 6s ease infinite;
-
-box-shadow:0 12px 30px rgba(37,99,235,.35);
-transition:.35s;
-}
-
-.back-btn:hover{
-transform:translateY(-5px);
-box-shadow:0 20px 40px rgba(124,58,237,.45);
-}
-
-
-/* ===== Premium Account Popup ===== */
-
-.accountOverlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:none;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-z-index:99999;
-background:rgba(0,0,0,.65);
-backdrop-filter:blur(10px);
-}
-
-.cinematicBg{
-position:absolute;
-width:100%;
-height:100%;
-overflow:hidden;
-}
-
-.cinematicBg span{
-position:absolute;
-width:350px;
-height:350px;
-border-radius:50%;
-filter:blur(80px);
-animation:floatGlow 12s linear infinite;
-}
-
-.cinematicBg span:nth-child(1){
-background:#00bfff;
-top:-120px;
-left:-100px;
-}
-
-.cinematicBg span:nth-child(2){
-background:#7c3aed;
-bottom:-100px;
-right:-120px;
-animation-delay:2s;
-}
-
-.cinematicBg span:nth-child(3){
-background:#00ffd5;
-top:40%;
-left:45%;
-animation-delay:4s;
-}
-
-.cinematicBg span:nth-child(4){
-background:#2563eb;
-bottom:15%;
-left:20%;
-animation-delay:6s;
-}
-
-.cinematicBg span:nth-child(5){
-background:#8b5cf6;
-top:10%;
-right:20%;
-animation-delay:8s;
-}
-
-@keyframes floatGlow{
-
-0%{
-transform:translateY(0) scale(1);
-}
-
-50%{
-transform:translateY(-80px) scale(1.3);
-}
-
-100%{
-transform:translateY(0) scale(1);
-}
 
 }
-
-.accountBox{
-
-position:relative;
-width:92%;
-max-width:380px;
-
-padding:30px;
-
-border-radius:28px;
-
-background:rgba(15,25,50,.35);
-
-backdrop-filter:blur(25px);
-
-border:1px solid rgba(255,255,255,.15);
-
-box-shadow:
-0 0 60px rgba(37,99,235,.45),
-0 0 120px rgba(124,58,237,.25);
-
-text-align:center;
-
-animation:popupZoom .5s ease;
-
-}
-
-@keyframes popupZoom{
-
-0%{
-transform:scale(.6);
-opacity:0;
-}
-
-100%{
-transform:scale(1);
-opacity:1;
-}
-
-}
-
-.lockRing{
-
-width:95px;
-height:95px;
-
-margin:auto;
-
-border-radius:50%;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:42px;
-
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-
-box-shadow:0 0 40px #2563eb;
-
-animation:ringGlow 2s infinite;
-
-}
-
-@keyframes ringGlow{
-
-0%,100%{
-transform:scale(1);
-}
-
-50%{
-transform:scale(1.08);
-box-shadow:0 0 70px #7c3aed;
-}
-
-}
-
-.accountBox h2{
-
-margin-top:18px;
-font-size:28px;
-
-}
-
-.accountBox p{
-
-margin:12px 0 20px;
-color:#ddd;
-
-}
-
-.accountBox input{
-
-width:100%;
-
-padding:15px;
-
-border:none;
-
-border-radius:15px;
-
-font-size:18px;
-
-background:rgba(255,255,255,.08);
-
-color:#fff;
-
-outline:none;
-
-}
-
-.accountBox input::placeholder{
-
-color:#bbb;
-
-}
-
-#accountError{
-
-height:24px;
-
-margin-top:10px;
-
-color:#ff4d4d;
-
-font-weight:bold;
-
-}
-
-.popupBtns{
-
-display:flex;
-gap:12px;
-margin-top:20px;
-
-}
-
-.premiumBtn,
-
-/* ===== Premium Account Popup ===== */
-
-.accountOverlay{
-...
-}
-
-.cinematicBg{
-...
-}
-
-.accountBox{
-...
-}
-
-.lockRing{
-...
-}
-
-.premiumBtn{
-...
-}
-
-.cancelBtn{
-...
-  }
-
-</style>
-
-</head>
-
-<body>
-
-<div class="header">
-Services
-</div>
-
-<div class="container">
-
-<div class="card" onclick="showPopup()">
-<div class="title">🧪 Account Testing</div>
-<div class="arrow">›</div>
-</div>
-
-<div class="card" onclick="location.href='fund.html'">
-<div class="title">💸 Fund Change</div>
-<div class="arrow">›</div>
-</div>
-  
-
-<div class="card" onclick="location.href='upiwork.html'">
-    <div class="title">📲 UPI Work</div>
-    <div class="arrow">›</div>
-</div>
-
-<div class="card" onclick="showAccountPopup()">
-    <div class="title">🏦 Account Work</div>
-    <div class="arrow">›</div>
-</div>
-
-<div class="card" onclick="location.href='usdtwork.html'">
-    <div class="title">🟡 USDT Work</div>
-    <div class="arrow">›</div>
-</div>
-  
-
-<div class="card" onclick="showPopup()">
-<div class="title">📄 Statement</div>
-<div class="arrow">›</div>
-</div>
-
-<div class="card" onclick="location.href='checkstatus.html'">
-<div class="title">📊 Check Status</div>
-<div class="arrow">›</div>
-</div>
-
-<div class="card" onclick="location.href='share.html'">
-<div class="title">🔗 Share Link</div>
-<div class="arrow">›</div>
-</div>
-
-</div>
-</div>
-
-<button onclick="history.back()" class="back-btn">
-⬅ Back
-</button>
-
-
-<div id="popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:9999;">
-
-<div style="background:#fff;width:320px;padding:20px;border-radius:15px;text-align:center;">
-
-<h2 style="color:red;">Activation Required</h2>
-
-<p style="color:#333;">
-Active karne ke liye account activate karein.
-</p>
-
-<button onclick="location.href='deposit.html'" style="width:100%;padding:12px;background:#16a34a;color:#fff;border:none;border-radius:8px;font-size:18px;font-weight:bold;">
-Active
-  </button>
-
-<button onclick="closePopup()" style="width:100%;padding:12px;background:#777;color:#fff;border:none;border-radius:8px;font-size:18px;margin-top:10px;">
-Close
-</button>
-
-</div>
-
-</div>
-
-<script>
-function showPopup(){
-document.getElementById("popup").style.display="flex";
-}
-
-function closePopup(){
-document.getElementById("popup").style.display="none";
-}
-  </script>
-
-<div id="accountPopup" class="accountOverlay">
-
-<div class="cinematicLayer"></div>
-
-<div class="particle p1"></div>
-<div class="particle p2"></div>
-<div class="particle p3"></div>
-<div class="particle p4"></div>
-<div class="particle p5"></div>
-
-<div class="accountBox">
-
-<div class="securityRing">
-
-<div class="securityCore">
-🔐
-</div>
-
-</div>
-
-<h2>Global Pay Security</h2>
-
-<p>Activation Required</p>
-
-<input
-type="password"
-id="accountCode"
-placeholder="Enter Activation Code">
-
-<div id="accountError"></div>
-
-<button class="premiumActivate"
-onclick="checkAccountCode()">
-⚡ VERIFY & CONTINUE
-</button>
-
-<button
-class="premiumCancel"
-onclick="closeAccountPopup()">
-Cancel
-</button>
-
-</div>
-
-</div>
-
-<script>
-
-function showAccountPopup(){
-
-document.getElementById("accountPopup").style.display="flex";
-
-document.getElementById("accountCode").value="";
-
-document.getElementById("accountError").innerHTML="";
-
-}
-
-function closeAccountPopup(){
-
-document.getElementById("accountPopup").style.display="none";
-
-}
-
-function checkAccountCode(){
-
-let code=document.getElementById("accountCode").value;
-
-if(code==="96619300"){
-
-document.getElementById("accountError").style.color="#00ff88";
-
-document.getElementById("accountError").innerHTML="✅ Access Granted";
-
-setTimeout(function(){
-
-window.location.href="accountwork.html";
-
-},900);
-
-}else{
-
-document.getElementById("accountError").style.color="#ff4d4d";
-
-document.getElementById("accountError").innerHTML="❌ Invalid Activation Code";
-
-document.querySelector(".accountBox").animate(
-
-[
-{transform:"translateX(0px)"},
-{transform:"translateX(-12px)"},
-{transform:"translateX(12px)"},
-{transform:"translateX(-12px)"},
-{transform:"translateX(12px)"},
-{transform:"translateX(0px)"}
-],
-
-{
-
-duration:500
-
-}
-
-);
-
-}
-
-}
-
-</script>
-
-  
-</body>
-  </html>
