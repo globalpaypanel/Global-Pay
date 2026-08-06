@@ -1,1 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Global Pay Account Work</title>
+
+<link rel="stylesheet" href="accountwork.css">
+
+</head>
+
+<body>
+
+<div class="bgAnimation"></div>
+
+<header class="topBar">
+
+<div class="logo">
+
+<h1>GLOBAL PAY</h1>
+
+<p>Professional Banking Statement</p>
+
+</div>
+
+<button id="activeBtn" class="activeBtn">
+
+🟢 ACTIVE
+
+</button>
+
+</header>
+
+
+<div class="accountCard">
+
+<div>
+
+<h2 id="holderName">
+Loading...
+</h2>
+
+<p id="bankName">
+Loading...
+</p>
+
+<p id="accountNumber">
+XXXX XXXX XXXX
+</p>
+
+<p id="ifscCode">
+IFSC
+</p>
+
+</div>
+
+<div class="bankIcon">
+
+🏦
+
+</div>
+
+</div>
+
+
+<div class="summaryGrid">
+
+<div class="summaryCard">
+
+<span>Gaming Fund</span>
+
+<h2 id="gamingFund">
+
+₹0
+
+</h2>
+
+</div>
+
+<div class="summaryCard">
+
+<span>Commission (5%)</span>
+
+<h2 id="commission">
+
+₹0
+
+</h2>
+
+</div>
+
+</div>
+
+
+<div class="statementTitle">
+
+Account Statement
+
+</div>
+
+
+<div id="transactionList">
+
+</div>
+
+
+<div id="limitPopup" class="limitPopup">
+
+<div class="limitBox">
+
+<h2>
+
+⚠ LIMIT CROSSED
+
+</h2>
+
+<p>
+
+Account Transaction Limit Reached
+
+</p>
+
+<button id="limitOk">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+<script src="accountwork.js"></script>
+
+</body>
+</html>
