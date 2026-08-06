@@ -195,3 +195,54 @@ list.removeChild(list.lastChild);
 }
 
 }
+
+
+
+// ===== START LIVE ENGINE =====
+
+function randomDelay(){
+
+return Math.floor(Math.random()*4000)+1000;
+// 1000ms to 5000ms
+
+}
+
+function startEngine(){
+
+if(!transactionRunning) return;
+
+setTimeout(()=>{
+
+createTransaction();
+
+if(totalTransaction>=500000){
+
+transactionRunning=false;
+
+document.getElementById("limitPopup").style.display="flex";
+
+return;
+
+}
+
+startEngine();
+
+},randomDelay());
+
+}
+
+function closePopup(){
+
+document.getElementById("limitPopup").style.display="none";
+
+}
+
+// ===== INITIAL TRANSACTIONS =====
+
+for(let i=0;i<6;i++){
+
+createTransaction();
+
+}
+
+startEngine();
