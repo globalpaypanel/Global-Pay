@@ -1,42 +1,16 @@
-// ===== BANK DETAILS =====
+// ==============================
+// GLOBAL PAY ENGINE
+// ==============================
 
-const bankName = localStorage.getItem("bankName") || "Not Linked";
-const holderName = localStorage.getItem("holderName") || "Not Linked";
-const accountNumber = localStorage.getItem("accountNumber") || "";
-const ifsc = localStorage.getItem("ifsc") || "Not Linked";
-
-document.getElementById("bankName").innerHTML = bankName;
-document.getElementById("holderName").innerHTML = holderName;
-document.getElementById("ifsc").innerHTML = ifsc;
-
-if(accountNumber.length>=4){
-
-document.getElementById("accountNo").innerHTML =
-"XXXX XXXX " + accountNumber.slice(-4);
-
-}else{
-
-document.getElementById("accountNo").innerHTML =
-"XXXX XXXX 0000";
-
-}
-
-
-// ===== VARIABLES =====
+let engineRunning = false;
 
 let gamingFund = 0;
-
 let commission = 0;
+let totalCredit = 0;
 
-let totalTransaction = 0;
-
-let transactionRunning = true;
-
-
-// Fixed Amount List
+const commissionRate = 0.05;
 
 const amounts = [
-
 500,
 999,
 1000,
@@ -46,203 +20,242 @@ const amounts = [
 3000,
 4000,
 5000
-
 ];
 
-
-// Random Indian Names
-
+// Credit Name List
 const names = [
-
 "Rahul Kumar",
 "Amit Singh",
 "Rohit Sharma",
-"Vikas Gupta",
+"Ankit Kumar",
+"Vikas Yadav",
+"Sachin Gupta",
+"Pooja Kumari",
+"Neha Sharma",
+"Priya Singh",
+"Riya Kumari",
+"Kajal Devi",
+"Sneha Verma",
 "Deepak Kumar",
-"Ajay Singh",
-"Abhishek Raj",
-"Pawan Kumar",
+"Ajay Kumar",
+"Abhishek Singh",
+"Manish Kumar",
+"Sonu Kumar",
+"Arjun Singh",
 "Rakesh Yadav",
-"Ankit Verma",
-"Neeraj Singh",
-"Saurabh Kumar",
-"Shivam Raj",
-"Vivek Gupta",
-"Mohit Kumar"
-
+"Nisha Kumari"
 ];
 
-
-// Banks
-
+// Bank List
 const banks = [
-
-"State Bank of India",
-"Punjab National Bank",
-"ICICI Bank",
-"HDFC Bank",
-"Axis Bank",
-"Bank of Baroda"
-
+{
+name:"State Bank of India",
+ifsc:"SBIN0004582"
+},
+{
+name:"HDFC Bank",
+ifsc:"HDFC0002123"
+},
+{
+name:"ICICI Bank",
+ifsc:"ICIC0004422"
+},
+{
+name:"Axis Bank",
+ifsc:"UTIB0008877"
+},
+{
+name:"Punjab National Bank",
+ifsc:"PUNB003245"
+},
+{
+name:"Bank of Baroda",
+ifsc:"BARB0INDIA"
+},
+{
+name:"Canara Bank",
+ifsc:"CNRB0004455"
+},
+{
+name:"Union Bank",
+ifsc:"UBIN055221"
+},
+{
+name:"Indian Bank",
+ifsc:"IDIB0007744"
+},
+{
+name:"IDFC FIRST Bank",
+ifsc:"IDFB008811"
+}
 ];
 
+function randomItem(arr){
+return arr[Math.floor(Math.random()*arr.length)];
+}
 
-// ===== CREATE TRANSACTION =====
+function randomLast4(){
+return Math.floor(
+1000 + Math.random()*9000
+);
+}
 
-function createTransaction(){
+function formatMoney(x){
+return "₹"+x.toLocaleString("en-IN");
+  }
 
-if(!transactionRunning) return;
 
-const amount = amounts[Math.floor(Math.random()*amounts.length)];
+// ==============================
+// START ENGINE
+// ==============================
 
-const isCredit = Math.random()>0.45;
+const activeBtn = document.getElementById("activeBtn");
+const transactionList = document.getElementById("transactionList");
 
-const person = names[Math.floor(Math.random()*names.length)];
+activeBtn.onclick = function(){
 
-const bank = banks[Math.floor(Math.random()*banks.length)];
+if(engineRunning) return;
 
-const now = new Date();
+engineRunning = true;
 
-const time = now.toLocaleString("en-IN");
+activeBtn.innerHTML = "🟢 RUNNING";
+activeBtn.disabled = true;
 
-const last4 =
-accountNumber.length>=4
-? accountNumber.slice(-4)
-: "0000";
+startTransactions();
 
-const card=document.createElement("div");
+};
 
-card.className="transactionCard";
+function startTransactions(){
 
-if(isCredit){
-
-gamingFund += amount;
-
-commission += Math.floor(amount*0.05);
-
-totalTransaction += amount;
-
-card.innerHTML=`
-<div style="color:#00ff88;font-size:22px;font-weight:bold;">
-+ ₹${amount.toLocaleString("en-IN")}
-</div>
-
-<div style="margin-top:8px;">
-👤 ${person}
-</div>
-
-<div>
-🏦 ${bank}
-</div>
-
-<div>
-💳 XXXX ${last4}
-</div>
-
-<div>
-🕒 ${time}
-</div>
-
-`;
-
-}else{
-
-gamingFund -= amount;
-
-if(gamingFund<0) gamingFund=0;
-
-totalTransaction += amount;
-
-card.innerHTML=`
-<div style="color:#ff4d4d;font-size:22px;font-weight:bold;">
-- ₹${amount.toLocaleString("en-IN")}
-</div>
-
-<div style="margin-top:8px;">
-👤 ${person}
-</div>
-
-<div>
-🏦 ${bank}
-</div>
-
-<div>
-💳 XXXX ${last4}
-</div>
-
-<div>
-🕒 ${time}
-</div>
-
-`;
+createCredit();
 
 }
 
-document.getElementById("gamingFund").innerHTML=
-"₹"+gamingFund.toLocaleString("en-IN");
+function createCredit(){
 
-document.getElementById("commission").innerHTML=
-"₹"+commission.toLocaleString("en-IN");
+if(totalCredit>=500000){
 
-const list=document.getElementById("transactionList");
-
-list.prepend(card);
-
-if(list.children.length>25){
-
-list.removeChild(list.lastChild);
-
-}
-
-}
-
-
-
-// ===== START LIVE ENGINE =====
-
-function randomDelay(){
-
-return Math.floor(Math.random()*4000)+1000;
-// 1000ms to 5000ms
-
-}
-
-function startEngine(){
-
-if(!transactionRunning) return;
-
-setTimeout(()=>{
-
-createTransaction();
-
-if(totalTransaction>=500000){
-
-transactionRunning=false;
-
-document.getElementById("limitPopup").style.display="flex";
+stopEngine();
 
 return;
 
 }
 
-startEngine();
+let amount = randomItem(amounts);
 
-},randomDelay());
+let person = randomItem(names);
+
+let bank = randomItem(banks);
+
+let last4 = randomLast4();
+
+let now = new Date();
+
+let date = now.toLocaleDateString("en-IN");
+
+let time = now.toLocaleTimeString("en-IN");
+
+gamingFund += amount;
+
+commission += Math.floor(amount*commissionRate);
+
+totalCredit += amount;
+
+document.getElementById("gamingFund").innerHTML =
+formatMoney(gamingFund);
+
+document.getElementById("commission").innerHTML =
+formatMoney(commission);
+
+transactionList.insertAdjacentHTML("afterbegin",`
+
+<div class="transactionCard creditCard">
+
+<div class="leftInfo">
+
+<h3>🟢 CREDIT</h3
+
+
+// ==============================
+// FIXED DEBIT
+// ==============================
+
+function createDebit(amount){
+
+let now = new Date();
+
+let date = now.toLocaleDateString("en-IN");
+let time = now.toLocaleTimeString("en-IN");
+
+transactionList.insertAdjacentHTML("afterbegin",`
+
+<div class="transactionCard debitCard">
+
+<div class="leftInfo">
+
+<h3>🔴 DEBIT</h3>
+
+<p>BALAJI SUPER MARKET</p>
+
+<p>ICICI Bank</p>
+
+<p>XXXX3462</p>
+
+<p>ICIC0004400</p>
+
+</div>
+
+<div class="rightInfo">
+
+<div class="amountDebit">
+- ${formatMoney(amount)}
+</div>
+
+<div class="timeText">
+${date}<br>${time}
+</div>
+
+</div>
+
+</div>
+
+`);
+
+if(transactionList.children.length > 50){
+transactionList.removeChild(transactionList.lastChild);
+}
+
+if(totalCredit >= 500000){
+
+stopEngine();
+
+return;
 
 }
 
-function closePopup(){
+let delay = Math.floor(Math.random()*4000)+1000;
 
-document.getElementById("limitPopup").style.display="none";
-
-}
-
-// ===== INITIAL TRANSACTIONS =====
-
-for(let i=0;i<6;i++){
-
-createTransaction();
+setTimeout(createCredit, delay);
 
 }
 
-startEngine();
+// ==============================
+// LIMIT SYSTEM
+// ==============================
+
+function stopEngine(){
+
+engineRunning = false;
+
+document.getElementById("limitPopup").style.display = "flex";
+
+activeBtn.innerHTML = "🔴 LIMIT";
+activeBtn.disabled = true;
+
+}
+
+document.getElementById("limitOk").onclick = function(){
+
+document.getElementById("limitPopup").style.display = "none";
+
+};
