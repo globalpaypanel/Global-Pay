@@ -1,85 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Account Work</title>
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Global Pay Account Work</title>
 
 <link rel="stylesheet" href="accountwork.css">
 
 </head>
+
 <body>
 
-<header class="header">
+<div class="bgAnimation"></div>
 
-<div class="logoArea">
+<header class="topBar">
+
+<div class="logo">
+
 <h1>GLOBAL PAY</h1>
-<p>Professional Banking Dashboard</p>
+
+<p>Professional Banking Statement</p>
+
 </div>
 
 <button id="activeBtn" class="activeBtn">
+
 🟢 ACTIVE
+
 </button>
 
 </header>
 
 
-<div class="bankCard">
+<div class="accountCard">
 
-<div class="bankLeft">
+<div>
 
-<h2 id="holderName">Loading...</h2>
+<h2 id="holderName">
+Loading...
+</h2>
 
-<p id="bankName">Loading Bank...</p>
+<p id="bankName">
+Loading...
+</p>
 
-<p id="accountNumber">XXXX XXXX XXXX</p>
+<p id="accountNumber">
+XXXX XXXX XXXX
+</p>
 
-<p id="ifscCode">IFSC</p>
-
-</div>
-
-<div class="bankRight">
-
-<div class="chip"></div>
-
-<div class="bankLogo">🏦</div>
-
-</div>
+<p id="ifscCode">
+IFSC
+</p>
 
 </div>
 
+<div class="bankIcon">
 
-<div class="summary">
+🏦
 
-<div class="card">
+</div>
+
+</div>
+
+
+<div class="summaryGrid">
+
+<div class="summaryCard">
 
 <span>Gaming Fund</span>
 
-<h2 id="gamingFund">₹0</h2>
+<h2 id="gamingFund">
+
+₹0
+
+</h2>
 
 </div>
 
-<div class="card">
+<div class="summaryCard">
 
 <span>Commission (5%)</span>
 
-<h2 id="commission">₹0</h2>
+<h2 id="commission">
+
+₹0
+
+</h2>
 
 </div>
 
 </div>
 
+<!-- ===== ACCOUNT STATUS ===== -->
 
-<div class="transactionHeader">
+<div class="statusPanel">
 
-<h2>Live Transactions</h2>
+<div class="statusCard">
+
+<div class="statusIcon">🛡️</div>
+
+<div class="statusText">
+
+<h3>Account Status</h3>
+
+<p id="accountStatus">ACTIVE</p>
+
+</div>
+
+</div>
+
+<div class="statusCard">
+
+<div class="statusIcon">💳</div>
+
+<div class="statusText">
+
+<h3>Account Type</h3>
+
+<p id="accountTypeShow">Saving Account</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===== LIVE INFO ===== -->
+
+<div class="livePanel">
+
+<div class="liveBox">
+
+<span class="liveDot"></span>
+
+LIVE TRANSACTION ENGINE
+
+</div>
+
+<div class="liveBox">
+
+Today's Statement
+
+</div>
+
+</div>
+
+<!-- ===== TOTAL INFO ===== -->
+
+<div class="totalPanel">
+
+<div class="totalCard">
+
+<p>Total Credit</p>
+
+<h3 id="totalCredit">
+₹0
+</h3>
+
+</div>
+
+<div class="totalCard">
+
+<p>Total Debit</p>
+
+<h3 id="totalDebit">
+₹0
+</h3>
+
+</div>
+
+<div class="totalCard">
+
+<p>Today's Transaction</p>
+
+<h3 id="todayCount">
+0
+</h3>
+
+</div>
+
+                 </div>
+  
+<div class="statementTitle">
+
+
+Account Statement
 
 </div>
 
 
 <div id="transactionList">
 
-<!-- JS yaha transaction add karega -->
+</div>
+
+<!-- ===== Statement Toolbar ===== -->
+
+<div class="statementToolbar">
+
+<div class="toolbarLeft">
+
+<h3>Live Statement</h3>
+
+<p>Realtime Credit & Debit History</p>
+
+</div>
+
+<div class="toolbarRight">
+
+<div class="refreshIcon">
+🔄
+</div>
+
+</div>
+
+</div>
+
+<!-- ===== Search ===== -->
+
+<div class="searchBox">
+
+<input
+type="text"
+placeholder="Search Transaction (Demo)"
+readonly>
+
+</div>
+
+<!-- ===== Filter ===== -->
+
+<div class="filterRow">
+
+<button class="filterBtn activeFilter">
+
+ALL
+
+</button>
+
+<button class="filterBtn">
+
+CREDIT
+
+</button>
+
+<button class="filterBtn">
+
+DEBIT
+
+</button>
+
+</div>
+
+<!-- ===== Running Balance ===== -->
+
+<div class="runningBalanceCard">
+
+<div>
+
+<p>Running Balance</p>
+
+<h2 id="runningBalance">
+
+₹0
+
+</h2>
+
+</div>
+
+<div class="balanceIcon">
+
+💰
+
+</div>
+
+</div>
+
+<!-- ===== Transaction Container ===== -->
+
+<div id="transactionContainer">
+
+
+</div>
+
+<!-- ===== Loading Layer ===== -->
+
+<div id="loadingLayer" class="loadingLayer">
+
+<div class="loaderCircle"></div>
+
+<p>
+
+Preparing Secure Banking...
+
+</p>
 
 </div>
 
@@ -88,20 +303,93 @@
 
 <div class="limitBox">
 
-<h2>⚠ ACCOUNT LIMIT CROSSED</h2>
+<h2>
+
+⚠ LIMIT CROSSED
+
+</h2>
 
 <p>
-Maximum Transaction Limit<br>
-₹5,00,000 Completed
+
+Account Transaction Limit Reached
+
 </p>
 
 <button id="limitOk">
+
 OK
+
 </button>
 
 </div>
 
 </div>
+
+  <!-- ===== FOOTER ===== -->
+
+<footer class="footer">
+
+<div class="footerBox">
+
+<h3>GLOBAL PAY</h3>
+
+<p>
+Professional Banking Statement System
+</p>
+
+</div>
+
+<div class="footerBox">
+
+<p>
+Version 2.0
+</p>
+
+<p>
+Secure Payment Dashboard
+</p>
+
+</div>
+
+</footer>
+
+<!-- ===== LIMIT POPUP ===== -->
+
+<div id="limitPopup" class="limitPopup">
+
+<div class="limitBox">
+
+<div class="limitIcon">
+⚠
+</div>
+
+<h2>
+Account Transaction Limit Crossed
+</h2>
+
+<p>
+Maximum Transaction Limit ₹5,00,000 Reached.
+</p>
+
+<button id="limitOk">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ===== HIDDEN DATA ===== -->
+
+<input type="hidden" id="engineStatus" value="OFF">
+
+<input type="hidden" id="todayCredit" value="0">
+
+<input type="hidden" id="todayDebit" value="0">
+
+<input type="hidden" id="todayCommission" value="0">
 
 <script src="accountwork.js"></script>
 
