@@ -81,6 +81,7 @@ name:"Union Bank",
 ifsc:"UBIN055221"
 },
 {
+
 name:"Indian Bank",
 ifsc:"IDIB0007744"
 },
@@ -259,3 +260,76 @@ document.getElementById("limitOk").onclick = function(){
 document.getElementById("limitPopup").style.display = "none";
 
 };
+
+
+
+// ===============================
+// 100+ RANDOM DATA ENGINE
+// ===============================
+
+const extraNames = [
+
+"Rahul Kumar","Rohit Sharma","Amit Singh","Ajay Kumar","Abhishek Raj",
+"Ankit Verma","Vikas Gupta","Sanjay Patel","Rakesh Yadav","Deepak Kumar",
+"Sonu Kumar","Karan Singh","Aakash Verma","Aman Raj","Pankaj Kumar",
+"Rajesh Singh","Mukesh Kumar","Ashok Patel","Vinod Sharma","Shivam Raj",
+"Priya Singh","Neha Kumari","Pooja Sharma","Rani Kumari","Anjali Verma",
+"Muskan Kumari","Sneha Gupta","Kajal Singh","Nisha Patel","Komal Raj",
+"Payal Kumari","Suman Devi","Sapna Kumari","Rekha Devi","Ritu Singh",
+"Anu Kumari","Aarti Verma","Khushi Raj","Sakshi Singh","Preeti Sharma"
+
+];
+
+const extraBanks = [
+
+"State Bank of India",
+"HDFC Bank",
+"ICICI Bank",
+"Axis Bank",
+"Punjab National Bank",
+"Bank of Baroda",
+"Canara Bank",
+"Indian Bank",
+"Union Bank",
+"IDFC FIRST Bank",
+"Kotak Mahindra Bank",
+"Yes Bank",
+"UCO Bank",
+"Central Bank of India",
+"Bank of India",
+"Federal Bank",
+"South Indian Bank",
+"RBL Bank",
+"AU Small Finance Bank",
+"IndusInd Bank"
+
+];
+
+function generateIFSC(){
+
+const code=[
+"SBIN",
+"HDFC",
+"ICIC",
+"UTIB",
+"PUNB",
+"BARB",
+"CNRB",
+"IDIB",
+"UBIN",
+"IDFB",
+"KKBK",
+"YESB"
+];
+
+return randomItem(code)+
+Math.floor(1000000+Math.random()*9000000);
+
+}
+
+function randomAccount(){
+
+return "XXXX XXXX "+
+Math.floor(1000+Math.random()*9000);
+
+                                   }
