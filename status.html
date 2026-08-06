@@ -301,3 +301,106 @@ cursor:pointer;
 </div>
 
 <div class="container">
+
+
+<div class="card" onclick="showPopup()">
+<div class="title">🧪 Account Testing</div>
+<div class="arrow">›</div>
+</div>
+
+<div class="card" onclick="location.href='fund.html'">
+<div class="title">💸 Fund Change</div>
+<div class="arrow">›</div>
+</div>
+
+<div class="card" onclick="location.href='upiwork.html'">
+<div class="title">📲 UPI Work</div>
+<div class="arrow">›</div>
+</div>
+
+<div class="card" onclick="showAccountPopup()">
+<div class="title">🏦 Account Work</div>
+<div class="arrow">›</div>
+</div>
+
+<div class="card" onclick="location.href='usdtwork.html'">
+<div class="title">🟡 USDT Work</div>
+<div class="arrow">›</div>
+</div>
+
+<div class="card" onclick="showPopup()">
+<div class="title">📄 Statement</div>
+<div class="arrow">›</div>
+</div>
+
+<div class="card" onclick="location.href='checkstatus.html'">
+<div class="title">📊 Check Status</div>
+<div class="arrow">›</div>
+</div>
+
+<div class="card" onclick="location.href='share.html'">
+<div class="title">🔗 Share Link</div>
+<div class="arrow">›</div>
+</div>
+
+<button onclick="history.back()" class="back-btn">
+⬅ Back
+</button>
+
+</div>
+
+<!-- Normal Popup -->
+
+<div id="popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:9999;">
+
+<div style="background:#fff;width:320px;padding:20px;border-radius:18px;text-align:center;">
+
+<h2 style="color:red;">Activation Required</h2>
+
+<p style="color:#333;">
+Active karne ke liye account activate karein.
+</p>
+
+<button onclick="location.href='deposit.html'" style="width:100%;padding:12px;background:#16a34a;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:bold;">
+Activate
+</button>
+
+<button onclick="closePopup()" style="width:100%;padding:12px;background:#777;color:#fff;border:none;border-radius:10px;font-size:18px;margin-top:10px;">
+Close
+</button>
+
+</div>
+
+</div>
+
+<!-- Premium Account Popup -->
+
+<div id="accountPopup" class="accountOverlay">
+
+<div class="accountBox">
+
+<h2>🔐 Global Pay Security</h2>
+
+<p>Enter Activation Code</p>
+
+<input
+type="password"
+id="accountCode"
+placeholder="Activation Code">
+
+<div id="accountError"></div>
+
+<button class="premiumActivate"
+onclick="checkAccountCode()">
+⚡ VERIFY & CONTINUE
+</button>
+
+<button
+class="premiumCancel"
+onclick="closeAccountPopup()">
+Cancel
+</button>
+
+</div>
+
+</div>
