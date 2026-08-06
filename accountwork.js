@@ -416,3 +416,112 @@ createDebit(amount);
 
                                    }
                                    
+
+
+  // ==============================
+// FIXED DEBIT ENGINE
+// ==============================
+
+function createDebit(amount){
+
+let now=new Date();
+
+let date=now.toLocaleDateString("en-IN");
+
+let time=now.toLocaleTimeString("en-IN");
+
+transactionList.insertAdjacentHTML("afterbegin",`
+
+<div class="transactionCard debitCard">
+
+<div class="leftInfo">
+
+<h3>🔴 DEBIT</h3>
+
+<p>BALAJI SUPER MARKET</p>
+
+<p>ICICI Bank</p>
+
+<p>XXXX3462</p>
+
+<p>ICIC0004400</p>
+
+</div>
+
+<div class="rightInfo">
+
+<div class="amountDebit">
+- ${formatMoney(amount)}
+</div>
+
+<div class="timeText">
+${date}<br>${time}
+</div>
+
+</div>
+
+</div>
+
+`);
+
+while(transactionList.children.length>40){
+
+transactionList.removeChild(transactionList.lastChild);
+
+}
+
+if(totalCredit>=500000){
+
+stopEngine();
+
+return;
+
+}
+
+let delay=Math.floor(Math.random()*4000)+1000;
+
+setTimeout(createCredit,delay);
+
+}
+
+
+// ==============================
+// ACTIVE BUTTON
+// ==============================
+
+activeBtn.onclick=function(){
+
+if(engineRunning)return;
+
+engineRunning=true;
+
+activeBtn.innerHTML="🟢 RUNNING";
+
+activeBtn.style.background="#00c853";
+
+createCredit();
+
+};
+
+
+// ==============================
+// LIMIT SYSTEM
+// ==============================
+
+function stopEngine(){
+
+engineRunning=false;
+
+document.getElementById("limitPopup").style.display="flex";
+
+activeBtn.innerHTML="🔴 LIMIT";
+
+activeBtn.disabled=true;
+
+}
+
+document.getElementById("limitOk").onclick=function(){
+
+document.getElementById("limitPopup").style.display="none";
+
+};                                 
