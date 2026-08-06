@@ -1,366 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Global Pay - Account Work</title>
 
-<style>
+<link rel="stylesheet" href="accountwork.css">
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-
-background:
-radial-gradient(circle at top,#1b4cff,#081120 35%,#050816 100%);
-
-color:#fff;
-
-overflow-x:hidden;
-
-min-height:100vh;
-
-}
-
-.header{
-
-padding:22px;
-
-text-align:center;
-
-font-size:26px;
-
-font-weight:bold;
-
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(18px);
-
-border-bottom:1px solid rgba(255,255,255,.08);
-
-}
-
-.container{
-
-width:95%;
-
-max-width:430px;
-
-margin:auto;
-
-padding:20px;
-
-}
-
-.activeCard{
-
-background:linear-gradient(135deg,#1d4ed8,#7c3aed);
-
-border-radius:25px;
-
-padding:25px;
-
-box-shadow:0 15px 45px rgba(37,99,235,.35);
-
-margin-bottom:20px;
-
-position:relative;
-
-overflow:hidden;
-
-}
-
-.activeCard::before{
-
-content:"";
-
-position:absolute;
-
-width:220px;
-
-height:220px;
-
-background:rgba(255,255,255,.08);
-
-border-radius:50%;
-
-top:-90px;
-
-right:-90px;
-
-}
-
-.status{
-
-display:inline-block;
-
-padding:8px 18px;
-
-border-radius:40px;
-
-background:#16a34a;
-
-font-weight:bold;
-
-margin-bottom:20px;
-
-}
-
-.bankItem{
-
-margin-top:14px;
-
-padding:14px;
-
-border-radius:16px;
-
-background:rgba(255,255,255,.08);
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-}
-
-.label{
-
-color:#cbd5e1;
-
-}
-
-.value{
-
-font-weight:bold;
-
-color:#fff;
-
-}
-
-.activeCard{
-animation:floatCard 4s ease-in-out infinite;
-}
-
-@keyframes floatCard{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-5px);}
-100%{transform:translateY(0px);}
-}
-
-#gamingFund{
-text-shadow:0 0 20px #00ff88;
-animation:balanceGlow 2s infinite;
-}
-
-@keyframes balanceGlow{
-0%,100%{
-text-shadow:0 0 15px #00ff88;
-}
-50%{
-text-shadow:0 0 35px #00ff88;
-}
-  }
-  
-</style>
 </head>
 
 <body>
 
-<div class="header">
-🏦 GLOBAL PAY
+<div id="particles"></div>
+
+<header class="topBar">
+
+<div class="logo">
+GLOBAL PAY
 </div>
 
-<div class="container">
-
-<div class="activeCard">
-
-<div class="status">
+<div class="statusBadge">
 🟢 ACCOUNT ACTIVE
 </div>
 
-<div class="bankItem">
-<span class="label">Bank</span>
-<span class="value" id="bankName">Loading...</span>
+</header>
+
+<div class="container">
+
+<div class="bankCard">
+
+<div class="bankHeader">
+
+<div class="bankIcon">
+🏦
 </div>
 
-<div class="bankItem">
-<span class="label">Holder</span>
-<span class="value" id="holderName">Loading...</span>
-</div>
+<div>
 
-<div class="bankItem">
-<span class="label">Account</span>
-<span class="value" id="accountNo">Loading...</span>
-</div>
+<h2 id="bankName">
+Loading...
+</h2>
 
-<div class="bankItem">
-<span class="label">IFSC</span>
-<span class="value" id="ifscCode">Loading...</span>
-</div>
+<p id="holderName">
+Loading...
+</p>
 
-</div>
-<!-- Gaming Fund -->
-
-<div class="activeCard">
-
-<h2 style="margin-bottom:18px;">🎮 Gaming Fund</h2>
-
-<div style="font-size:40px;font-weight:bold;color:#00ff88;" id="gamingFund">
-₹ 0
-</div>
-
-<div style="margin-top:10px;color:#cbd5e1;">
-Live Balance
 </div>
 
 </div>
 
-<!-- Commission -->
+<div class="bankInfo">
 
-<div class="activeCard">
+<div class="info">
 
-<h2 style="margin-bottom:18px;">💎 Commission</h2>
+<span>Account Number</span>
 
-<div style="font-size:34px;font-weight:bold;color:#FFD700;">
-5%
-</div>
-
-<div style="margin-top:10px;color:#cbd5e1;">
-Gaming Commission
-</div>
+<b id="accountNo">
+XXXX XXXX 0000
+</b>
 
 </div>
 
-<div class="activeCard">
+<div class="info">
 
-<h2 style="margin-bottom:18px;">📈 Recent Credits</h2>
+<span>IFSC Code</span>
 
-<div id="recentCredits"></div>
+<b id="ifsc">
+Loading...
+</b>
 
 </div>
-  
-<script>
 
-// Bank Details
+</div>
 
-const bankName=localStorage.getItem("bankName")||"Not Linked";
-const holderName=localStorage.getItem("holderName")||"Not Linked";
-const account=localStorage.getItem("accountNumber")||"";
-const ifsc=localStorage.getItem("ifsc")||"Not Linked";
+</div>
 
-document.getElementById("bankName").innerText=bankName;
-document.getElementById("holderName").innerText=holderName;
-document.getElementById("ifscCode").innerText=ifsc;
+<div class="gamingCard">
 
-if(account.length>=4){
+<h3>
+Gaming Fund
+</h3>
 
-document.getElementById("accountNo").innerText=
-"XXXX XXXX "+account.slice(-4);
+<h1 id="gamingFund">
+₹0
+</h1>
 
-}else{
+</div>
 
-document.getElementById("accountNo").innerText="Not Linked";
+<div class="commissionCard">
 
-}
+<h3>
+Gaming Commission (5%)
+</h3>
 
-// Gaming Fund Counter
+<h1 id="commission">
+₹0
+</h1>
 
-let balance=0;
+</div>
 
-let target=125840;
+<div class="transactionTitle">
 
-let timer=setInterval(()=>{
+Recent Transactions
 
-balance+=742;
+</div>
 
-if(balance>=target){
+<div id="transactionList">
 
-balance=target;
+</div>
 
-clearInterval(timer);
+</div>
 
-}
+<div id="limitPopup" class="popup">
 
-document.getElementById("gamingFund").innerHTML=
-"₹ "+balance.toLocaleString("en-IN");
+<div class="popupBox">
 
-},20);
+<h2>
+⚠ Transaction Limit Cross
+</h2>
 
+<p>
 
-const names=[
-"Rahul Kumar",
-"Amit Singh",
-"Rohit Sharma",
-"Sanjay Patel",
-"Vikas Gupta",
-"Ankit Verma",
-"Abhishek Raj",
-"Deepak Yadav",
-"Pawan Kumar",
-"Rakesh Singh"
-];
+Maximum transaction limit of
 
-function addTransaction(){
+<b>₹5,00,000</b>
 
-let amount=Math.floor(Math.random()*5000)+500;
+has been reached.
 
-let name=names[Math.floor(Math.random()*names.length)];
+</p>
 
-let now=new Date();
+<button onclick="closePopup()">
 
-let time=now.toLocaleString("en-IN");
+OK
 
-let box=document.createElement("div");
+</button>
 
-box.style.cssText=
-"background:rgba(255,255,255,.06);padding:15px;border-radius:15px;margin-bottom:12px;border-left:5px solid #00ff88;";
+</div>
 
-box.innerHTML=
-"<b style='color:#00ff88;'>+ ₹"+amount.toLocaleString("en-IN")+"</b><br>"+name+"<br><small>"+time+"</small>";
+</div>
 
-let list=document.getElementById("recentCredits");
+<script src="accountwork.js"></script>
 
-list.prepend(box);
-
-if(list.children.length>10){
-
-list.removeChild(list.lastChild);
-
-}
-
-}
-
-for(let i=0;i<5;i++){
-
-addTransaction();
-
-}
-
-setInterval(()=>{
-
-addTransaction();
-
-if(Math.random()>0.5){
-
-balance+=Math.floor(Math.random()*4000)+500;
-
-}else{
-
-balance-=Math.floor(Math.random()*2000)+200;
-
-}
-
-if(balance<0) balance=0;
-
-document.getElementById("gamingFund").innerHTML=
-"₹ "+balance.toLocaleString("en-IN");
-
-},7000);
-
-  </script>
+</body>
+</html>
