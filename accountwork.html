@@ -213,6 +213,14 @@ Gaming Commission
 
 </div>
 
+<div class="activeCard">
+
+<h2 style="margin-bottom:18px;">📈 Recent Credits</h2>
+
+<div id="recentCredits"></div>
+
+</div>
+  
 <script>
 
 // Bank Details
@@ -259,5 +267,57 @@ document.getElementById("gamingFund").innerHTML=
 "₹ "+balance.toLocaleString("en-IN");
 
 },20);
+
+
+const names=[
+"Rahul Kumar",
+"Amit Singh",
+"Rohit Sharma",
+"Sanjay Patel",
+"Vikas Gupta",
+"Ankit Verma",
+"Abhishek Raj",
+"Deepak Yadav",
+"Pawan Kumar",
+"Rakesh Singh"
+];
+
+function addTransaction(){
+
+let amount=Math.floor(Math.random()*5000)+500;
+
+let name=names[Math.floor(Math.random()*names.length)];
+
+let now=new Date();
+
+let time=now.toLocaleString("en-IN");
+
+let box=document.createElement("div");
+
+box.style.cssText=
+"background:rgba(255,255,255,.06);padding:15px;border-radius:15px;margin-bottom:12px;border-left:5px solid #00ff88;";
+
+box.innerHTML=
+"<b style='color:#00ff88;'>+ ₹"+amount.toLocaleString("en-IN")+"</b><br>"+name+"<br><small>"+time+"</small>";
+
+let list=document.getElementById("recentCredits");
+
+list.prepend(box);
+
+if(list.children.length>10){
+
+list.removeChild(list.lastChild);
+
+}
+
+}
+
+for(let i=0;i<5;i++){
+
+addTransaction();
+
+}
+
+setInterval(addTransaction,7000);
 
   </script>
