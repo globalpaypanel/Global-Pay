@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Global Pay - Account Work</title>
+<title>Global Pay Account Work</title>
 
 <link rel="stylesheet" href="accountwork.css">
 
@@ -15,15 +14,11 @@
 
 <body>
 
-<!-- Background Animation -->
-
 <div class="bgAnimation"></div>
 
-<!-- ================= HEADER ================= -->
+<header class="topBar">
 
-<header class="topHeader">
-
-<div class="logoBox">
+<div class="logo">
 
 <h1>GLOBAL PAY</h1>
 
@@ -39,41 +34,30 @@
 
 </header>
 
-<!-- ================= ACCOUNT CARD ================= -->
 
-<section class="accountCard">
+<div class="accountCard">
 
-<div class="accountLeft">
+<div>
 
 <h2 id="holderName">
-
 Loading...
-
 </h2>
 
 <p id="bankName">
-
-Loading Bank...
-
+Loading...
 </p>
 
 <p id="accountNumber">
-
 XXXX XXXX XXXX
-
 </p>
 
 <p id="ifscCode">
-
-IFSC CODE
-
+IFSC
 </p>
 
 </div>
 
-<div class="accountRight">
-
-<div class="bankLogo">
+<div class="bankIcon">
 
 🏦
 
@@ -81,15 +65,12 @@ IFSC CODE
 
 </div>
 
-</section>
 
-<!-- ================= SUMMARY ================= -->
-
-<section class="summaryGrid">
+<div class="summaryGrid">
 
 <div class="summaryCard">
 
-<p>Gaming Fund</p>
+<span>Gaming Fund</span>
 
 <h2 id="gamingFund">
 
@@ -101,7 +82,7 @@ IFSC CODE
 
 <div class="summaryCard">
 
-<p>Commission (5%)</p>
+<span>Commission (5%)</span>
 
 <h2 id="commission">
 
@@ -111,28 +92,48 @@ IFSC CODE
 
 </div>
 
-<div class="summaryCard">
+</div>
 
-<p>Total Credit</p>
 
-<h2 id="totalCredit">
+<div class="statementTitle">
 
-₹0
-
-</h2>
+Account Statement
 
 </div>
 
-<div class="summaryCard">
 
-<p>Total Debit</p>
-
-<h2 id="totalDebit">
-
-₹0
-
-</h2>
+<div id="transactionList">
 
 </div>
 
-</section>
+
+<div id="limitPopup" class="limitPopup">
+
+<div class="limitBox">
+
+<h2>
+
+⚠ LIMIT CROSSED
+
+</h2>
+
+<p>
+
+Account Transaction Limit Reached
+
+</p>
+
+<button id="limitOk">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+<script src="accountwork.js"></script>
+
+</body>
+                               </html>
