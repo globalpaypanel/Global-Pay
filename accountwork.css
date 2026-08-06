@@ -1,0 +1,186 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#050816;
+color:#fff;
+overflow-x:hidden;
+min-height:100vh;
+}
+
+#particles{
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at 20% 20%,rgba(0,183,255,.18),transparent 30%),
+radial-gradient(circle at 80% 10%,rgba(139,92,246,.20),transparent 30%),
+radial-gradient(circle at 50% 80%,rgba(0,255,170,.12),transparent 35%);
+animation:bgMove 12s linear infinite;
+z-index:-1;
+}
+
+@keyframes bgMove{
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+}
+
+.topBar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 20px;
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.logo{
+font-size:24px;
+font-weight:800;
+letter-spacing:1px;
+}
+
+.statusBadge{
+padding:8px 16px;
+border-radius:30px;
+background:#16a34a;
+font-weight:bold;
+box-shadow:0 0 20px rgba(22,163,74,.5);
+}
+
+.container{
+width:94%;
+max-width:430px;
+margin:25px auto;
+}
+
+.bankCard,
+.gamingCard,
+.commissionCard,
+.transactionCard{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:24px;
+padding:22px;
+margin-bottom:18px;
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.bankHeader{
+display:flex;
+align-items:center;
+gap:18px;
+margin-bottom:20px;
+}
+
+.bankIcon{
+width:65px;
+height:65px;
+border-radius:18px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:32px;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
+.bankInfo .info{
+display:flex;
+justify-content:space-between;
+margin-top:12px;
+font-size:15px;
+}
+
+.bankInfo span{
+color:#94a3b8;
+}
+
+.bankInfo b{
+color:#fff;
+}
+
+.gamingCard{
+text-align:center;
+}
+
+.gamingCard h1{
+font-size:42px;
+color:#00ff88;
+text-shadow:0 0 20px #00ff88;
+margin-top:10px;
+}
+
+.commissionCard{
+text-align:center;
+}
+
+.commissionCard h1{
+font-size:38px;
+color:#FFD700;
+text-shadow:0 0 20px #FFD700;
+margin-top:10px;
+}
+
+.transactionTitle{
+font-size:22px;
+font-weight:bold;
+margin:25px 0 15px;
+}
+
+#transactionList{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.popup{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(10px);
+justify-content:center;
+align-items:center;
+z-index:9999;
+}
+
+.popupBox{
+width:90%;
+max-width:350px;
+background:#111827;
+border-radius:22px;
+padding:28px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
+box-shadow:0 0 40px rgba(255,0,0,.25);
+}
+
+.popupBox h2{
+color:#ff4d4d;
+margin-bottom:15px;
+}
+
+.popupBox p{
+color:#ddd;
+margin-bottom:20px;
+line-height:1.6;
+}
+
+.popupBox button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:14px;
+font-size:17px;
+font-weight:bold;
+background:#2563eb;
+color:#fff;
+cursor:pointer;
+                }
