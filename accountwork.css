@@ -7,173 +7,260 @@ scroll-behavior:smooth;
 }
 
 body{
-background:#050816;
+background:#05070f;
 color:#fff;
 overflow-x:hidden;
-min-height:100vh;
+background-image:
+radial-gradient(circle at 20% 20%,rgba(37,99,235,.18),transparent 35%),
+radial-gradient(circle at 80% 10%,rgba(124,58,237,.18),transparent 35%),
+radial-gradient(circle at 50% 90%,rgba(0,255,200,.08),transparent 35%);
 }
 
-#particles{
-position:fixed;
-inset:0;
-background:
-radial-gradient(circle at 20% 20%,rgba(0,183,255,.18),transparent 30%),
-radial-gradient(circle at 80% 10%,rgba(139,92,246,.20),transparent 30%),
-radial-gradient(circle at 50% 80%,rgba(0,255,170,.12),transparent 35%);
-animation:bgMove 12s linear infinite;
-z-index:-1;
-}
-
-@keyframes bgMove{
-0%{transform:scale(1);}
-50%{transform:scale(1.08);}
-100%{transform:scale(1);}
-}
-
-.topBar{
+.header{
+position:sticky;
+top:0;
+z-index:999;
 display:flex;
 justify-content:space-between;
 align-items:center;
 padding:18px 20px;
-background:rgba(255,255,255,.05);
+background:rgba(10,15,30,.78);
 backdrop-filter:blur(18px);
 border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-.logo{
+.logoArea h1{
 font-size:24px;
 font-weight:800;
 letter-spacing:1px;
 }
 
-.statusBadge{
-padding:8px 16px;
+.logoArea p{
+font-size:12px;
+color:#8aa4d8;
+margin-top:3px;
+}
+
+.activeBtn{
+border:none;
+padding:10px 18px;
 border-radius:30px;
-background:#16a34a;
-font-weight:bold;
-box-shadow:0 0 20px rgba(22,163,74,.5);
+font-weight:700;
+color:#fff;
+cursor:pointer;
+background:linear-gradient(135deg,#00c853,#00e676);
+box-shadow:0 0 25px rgba(0,255,100,.45);
+animation:activeGlow 1.8s infinite;
+transition:.3s;
 }
 
-.container{
-width:94%;
-max-width:430px;
-margin:25px auto;
+@keyframes activeGlow{
+0%,100%{
+transform:scale(1);
+box-shadow:0 0 20px rgba(0,255,120,.45);
+}
+50%{
+transform:scale(1.06);
+box-shadow:0 0 40px rgba(0,255,120,.85);
+}
 }
 
-.bankCard,
-.gamingCard,
-.commissionCard,
-.transactionCard{
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(18px);
-border:1px solid rgba(255,255,255,.08);
-border-radius:24px;
+.bankCard{
+margin:20px;
 padding:22px;
-margin-bottom:18px;
-box-shadow:0 15px 35px rgba(0,0,0,.35);
-}
-
-.bankHeader{
-display:flex;
-align-items:center;
-gap:18px;
-margin-bottom:20px;
-}
-
-.bankIcon{
-width:65px;
-height:65px;
-border-radius:18px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:32px;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-}
-
-.bankInfo .info{
+border-radius:24px;
+background:linear-gradient(135deg,#162447,#1d3557,#0f172a);
+background-size:250% 250%;
+animation:cardMove 8s linear infinite;
+box-shadow:0 12px 35px rgba(0,0,0,.45);
 display:flex;
 justify-content:space-between;
-margin-top:12px;
-font-size:15px;
+align-items:center;
+overflow:hidden;
+position:relative;
 }
 
-.bankInfo span{
-color:#94a3b8;
+.bankCard::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:60%;
+height:100%;
+background:rgba(255,255,255,.10);
+transform:skewX(-25deg);
+animation:shine 4s linear infinite;
 }
 
-.bankInfo b{
-color:#fff;
+@keyframes shine{
+100%{
+left:170%;
+}
 }
 
-.gamingCard{
-text-align:center;
+@keyframes cardMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-.gamingCard h1{
-font-size:42px;
-color:#00ff88;
-text-shadow:0 0 20px #00ff88;
-margin-top:10px;
-}
-
-.commissionCard{
-text-align:center;
-}
-
-.commissionCard h1{
-font-size:38px;
-color:#FFD700;
-text-shadow:0 0 20px #FFD700;
-margin-top:10px;
-}
-
-.transactionTitle{
+.bankLeft h2{
 font-size:22px;
-font-weight:bold;
-margin:25px 0 15px;
+margin-bottom:10px;
 }
 
-#transactionList{
+.bankLeft p{
+font-size:14px;
+margin-top:6px;
+color:#d9e4ff;
+}
+
+.bankLogo{
+width:70px;
+height:70px;
+border-radius:50%;
 display:flex;
-flex-direction:column;
-gap:14px;
-}
-
-.popup{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.75);
-backdrop-filter:blur(10px);
 justify-content:center;
 align-items:center;
-z-index:9999;
+font-size:34px;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(10px);
 }
 
-.popupBox{
-width:90%;
-max-width:350px;
-background:#111827;
-border-radius:22px;
-padding:28px;
-text-align:center;
+.summary{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+padding:0 20px 20px;
+}
+
+.card{
+background:rgba(255,255,255,.06);
+backdrop-filter:blur(14px);
+border-radius:20px;
+padding:20px;
 border:1px solid rgba(255,255,255,.08);
-box-shadow:0 0 40px rgba(255,0,0,.25);
+box-shadow:0 8px 25px rgba(0,0,0,.35);
 }
 
-.popupBox h2{
-color:#ff4d4d;
+.card span{
+font-size:14px;
+color:#8aa4d8;
+}
+
+.card h2{
+margin-top:10px;
+font-size:28px;
+color:#00ff9d;
+}
+
+
+.transactionHeader{
+padding:0 20px;
 margin-bottom:15px;
 }
 
-.popupBox p{
-color:#ddd;
-margin-bottom:20px;
-line-height:1.6;
+.transactionHeader h2{
+font-size:22px;
+font-weight:700;
 }
 
-.popupBox button{
+#transactionList{
+padding:0 16px 30px;
+}
+
+.transactionCard{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+padding:14px;
+margin-bottom:12px;
+backdrop-filter:blur(15px);
+box-shadow:0 10px 20px rgba(0,0,0,.25);
+animation:fadeUp .4s ease;
+}
+
+.creditCard{
+border-left:6px solid #00ff88;
+}
+
+.debitCard{
+border-left:6px solid #ff3b3b;
+}
+
+.leftInfo h3{
+font-size:16px;
+margin-bottom:5px;
+}
+
+.leftInfo p{
+font-size:12px;
+color:#b8c7e6;
+line-height:18px;
+}
+
+.rightInfo{
+text-align:right;
+}
+
+.amountCredit{
+font-size:20px;
+font-weight:bold;
+color:#00ff88;
+}
+
+.amountDebit{
+font-size:20px;
+font-weight:bold;
+color:#ff3b3b;
+}
+
+.timeText{
+font-size:11px;
+margin-top:5px;
+color:#9ca3af;
+}
+
+.limitPopup{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+justify-content:center;
+align-items:center;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(12px);
+z-index:99999;
+}
+
+.limitBox{
+width:90%;
+max-width:360px;
+padding:28px;
+border-radius:24px;
+background:#101826;
+text-align:center;
+box-shadow:0 0 50px rgba(255,0,0,.35);
+animation:popupShow .4s ease;
+}
+
+.limitBox h2{
+color:#ff4d4d;
+margin-bottom:12px;
+}
+
+.limitBox p{
+color:#ddd;
+line-height:24px;
+margin-bottom:20px;
+}
+
+.limitBox button{
 width:100%;
 padding:14px;
 border:none;
@@ -183,26 +270,26 @@ font-weight:bold;
 background:#2563eb;
 color:#fff;
 cursor:pointer;
-                }
-
-.transactionCard{
-background:rgba(255,255,255,.05);
-border:1px solid rgba(255,255,255,.08);
-border-radius:18px;
-padding:16px;
-margin-bottom:14px;
-backdrop-filter:blur(12px);
-box-shadow:0 10px 20px rgba(0,0,0,.25);
-animation:fadeUp .5s ease;
 }
 
 @keyframes fadeUp{
 from{
 opacity:0;
-transform:translateY(20px);
+transform:translateY(25px);
 }
 to{
 opacity:1;
 transform:translateY(0);
 }
-  }
+}
+
+@keyframes popupShow{
+from{
+opacity:0;
+transform:scale(.7);
+}
+to{
+opacity:1;
+transform:scale(1);
+}
+}
