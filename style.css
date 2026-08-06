@@ -1024,3 +1024,26 @@ background:transparent;
 .container{
 scroll-behavior:smooth;
 }
+
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    scroll-behavior:smooth;
+}
+
+.container{
+    overflow-y:auto;
+    -webkit-overflow-scrolling:touch;
+    scroll-behavior:smooth;
+}
+
+/* Scrollbar hide */
+::-webkit-scrollbar{
+    width:0px;
+    background:transparent;
+}
