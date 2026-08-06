@@ -181,3 +181,83 @@ color:#fff;
 </div>
 
 </div>
+<!-- Gaming Fund -->
+
+<div class="activeCard">
+
+<h2 style="margin-bottom:18px;">🎮 Gaming Fund</h2>
+
+<div style="font-size:40px;font-weight:bold;color:#00ff88;" id="gamingFund">
+₹ 0
+</div>
+
+<div style="margin-top:10px;color:#cbd5e1;">
+Live Balance
+</div>
+
+</div>
+
+<!-- Commission -->
+
+<div class="activeCard">
+
+<h2 style="margin-bottom:18px;">💎 Commission</h2>
+
+<div style="font-size:34px;font-weight:bold;color:#FFD700;">
+5%
+</div>
+
+<div style="margin-top:10px;color:#cbd5e1;">
+Gaming Commission
+</div>
+
+</div>
+
+<script>
+
+// Bank Details
+
+const bankName=localStorage.getItem("bankName")||"Not Linked";
+const holderName=localStorage.getItem("holderName")||"Not Linked";
+const account=localStorage.getItem("accountNumber")||"";
+const ifsc=localStorage.getItem("ifsc")||"Not Linked";
+
+document.getElementById("bankName").innerText=bankName;
+document.getElementById("holderName").innerText=holderName;
+document.getElementById("ifscCode").innerText=ifsc;
+
+if(account.length>=4){
+
+document.getElementById("accountNo").innerText=
+"XXXX XXXX "+account.slice(-4);
+
+}else{
+
+document.getElementById("accountNo").innerText="Not Linked";
+
+}
+
+// Gaming Fund Counter
+
+let balance=0;
+
+let target=125840;
+
+let timer=setInterval(()=>{
+
+balance+=742;
+
+if(balance>=target){
+
+balance=target;
+
+clearInterval(timer);
+
+}
+
+document.getElementById("gamingFund").innerHTML=
+"₹ "+balance.toLocaleString("en-IN");
+
+},20);
+
+  </script>
