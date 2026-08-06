@@ -143,6 +143,30 @@ color:#fff;
 
 }
 
+.activeCard{
+animation:floatCard 4s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-5px);}
+100%{transform:translateY(0px);}
+}
+
+#gamingFund{
+text-shadow:0 0 20px #00ff88;
+animation:balanceGlow 2s infinite;
+}
+
+@keyframes balanceGlow{
+0%,100%{
+text-shadow:0 0 15px #00ff88;
+}
+50%{
+text-shadow:0 0 35px #00ff88;
+}
+  }
+  
 </style>
 </head>
 
@@ -318,6 +342,25 @@ addTransaction();
 
 }
 
-setInterval(addTransaction,7000);
+setInterval(()=>{
+
+addTransaction();
+
+if(Math.random()>0.5){
+
+balance+=Math.floor(Math.random()*4000)+500;
+
+}else{
+
+balance-=Math.floor(Math.random()*2000)+200;
+
+}
+
+if(balance<0) balance=0;
+
+document.getElementById("gamingFund").innerHTML=
+"₹ "+balance.toLocaleString("en-IN");
+
+},7000);
 
   </script>
