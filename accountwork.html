@@ -191,10 +191,111 @@ Account Statement
 
 </div>
 
+<!-- ===== Statement Toolbar ===== -->
+
+<div class="statementToolbar">
+
+<div class="toolbarLeft">
+
+<h3>Live Statement</h3>
+
+<p>Realtime Credit & Debit History</p>
+
+</div>
+
+<div class="toolbarRight">
+
+<div class="refreshIcon">
+🔄
+</div>
+
+</div>
+
+</div>
+
+<!-- ===== Search ===== -->
+
+<div class="searchBox">
+
+<input
+type="text"
+placeholder="Search Transaction (Demo)"
+readonly>
+
+</div>
+
+<!-- ===== Filter ===== -->
+
+<div class="filterRow">
+
+<button class="filterBtn activeFilter">
+
+ALL
+
+</button>
+
+<button class="filterBtn">
+
+CREDIT
+
+</button>
+
+<button class="filterBtn">
+
+DEBIT
+
+</button>
+
+</div>
+
+<!-- ===== Running Balance ===== -->
+
+<div class="runningBalanceCard">
+
+<div>
+
+<p>Running Balance</p>
+
+<h2 id="runningBalance">
+
+₹0
+
+</h2>
+
+</div>
+
+<div class="balanceIcon">
+
+💰
+
+</div>
+
+</div>
+
+<!-- ===== Transaction Container ===== -->
+
+<div id="transactionContainer">
 
 <div id="transactionList">
 
 </div>
+
+</div>
+
+<!-- ===== Loading Layer ===== -->
+
+<div id="loadingLayer" class="loadingLayer">
+
+<div class="loaderCircle"></div>
+
+<p>
+
+Preparing Secure Banking...
+
+</p>
+
+</div>
+
 
 
 <div id="limitPopup" class="limitPopup">
@@ -223,7 +324,73 @@ OK
 
 </div>
 
+  <!-- ===== FOOTER ===== -->
+
+<footer class="footer">
+
+<div class="footerBox">
+
+<h3>GLOBAL PAY</h3>
+
+<p>
+Professional Banking Statement System
+</p>
+
+</div>
+
+<div class="footerBox">
+
+<p>
+Version 2.0
+</p>
+
+<p>
+Secure Payment Dashboard
+</p>
+
+</div>
+
+</footer>
+
+<!-- ===== LIMIT POPUP ===== -->
+
+<div id="limitPopup" class="limitPopup">
+
+<div class="limitBox">
+
+<div class="limitIcon">
+⚠
+</div>
+
+<h2>
+Account Transaction Limit Crossed
+</h2>
+
+<p>
+Maximum Transaction Limit ₹5,00,000 Reached.
+</p>
+
+<button id="limitOk">
+
+OK
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ===== HIDDEN DATA ===== -->
+
+<input type="hidden" id="engineStatus" value="OFF">
+
+<input type="hidden" id="todayCredit" value="0">
+
+<input type="hidden" id="todayDebit" value="0">
+
+<input type="hidden" id="todayCommission" value="0">
+
 <script src="accountwork.js"></script>
 
 </body>
-                               </html>
+  </html>
