@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Pay - Account Work</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+background:
+radial-gradient(circle at top,#1b4cff,#081120 35%,#050816 100%);
+
+color:#fff;
+
+overflow-x:hidden;
+
+min-height:100vh;
+
+}
+
+.header{
+
+padding:22px;
+
+text-align:center;
+
+font-size:26px;
+
+font-weight:bold;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(18px);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.container{
+
+width:95%;
+
+max-width:430px;
+
+margin:auto;
+
+padding:20px;
+
+}
+
+.activeCard{
+
+background:linear-gradient(135deg,#1d4ed8,#7c3aed);
+
+border-radius:25px;
+
+padding:25px;
+
+box-shadow:0 15px 45px rgba(37,99,235,.35);
+
+margin-bottom:20px;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.activeCard::before{
+
+content:"";
+
+position:absolute;
+
+width:220px;
+
+height:220px;
+
+background:rgba(255,255,255,.08);
+
+border-radius:50%;
+
+top:-90px;
+
+right:-90px;
+
+}
+
+.status{
+
+display:inline-block;
+
+padding:8px 18px;
+
+border-radius:40px;
+
+background:#16a34a;
+
+font-weight:bold;
+
+margin-bottom:20px;
+
+}
+
+.bankItem{
+
+margin-top:14px;
+
+padding:14px;
+
+border-radius:16px;
+
+background:rgba(255,255,255,.08);
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.label{
+
+color:#cbd5e1;
+
+}
+
+.value{
+
+font-weight:bold;
+
+color:#fff;
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+🏦 GLOBAL PAY
+</div>
+
+<div class="container">
+
+<div class="activeCard">
+
+<div class="status">
+🟢 ACCOUNT ACTIVE
+</div>
+
+<div class="bankItem">
+<span class="label">Bank</span>
+<span class="value" id="bankName">Loading...</span>
+</div>
+
+<div class="bankItem">
+<span class="label">Holder</span>
+<span class="value" id="holderName">Loading...</span>
+</div>
+
+<div class="bankItem">
+<span class="label">Account</span>
+<span class="value" id="accountNo">Loading...</span>
+</div>
+
+<div class="bankItem">
+<span class="label">IFSC</span>
+<span class="value" id="ifscCode">Loading...</span>
+</div>
+
+</div>
