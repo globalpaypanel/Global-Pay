@@ -237,15 +237,6 @@ function checkActivateCode() {
 }
 
   
-  
-// Google login check
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        console.log("Logged in:", user.displayName);
-    } else {
-        console.log("Not logged in");
-    }
-});
 
 function showRemovePopup(){
 
