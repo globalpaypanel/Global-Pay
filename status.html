@@ -3,481 +3,117 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Pay - Services</title>
+<title>GLOBAL PAY SERVICES</title>
 
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:linear-gradient(135deg,#050816,#081120,#0f172a,#050816);
-background-size:400% 400%;
-animation:bgMove 12s linear infinite;
-color:#fff;
-overflow-x:hidden;
-}
-
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-.header{
-
-position:sticky;
-top:0;
-
-background:rgba(8,17,32,.85);
-
-backdrop-filter:blur(18px);
-
-padding:20px;
-
-text-align:center;
-
-font-size:24px;
-
-font-weight:bold;
-
-letter-spacing:1px;
-
-border-bottom:1px solid rgba(255,255,255,.08);
-
-box-shadow:0 10px 25px rgba(0,0,0,.35);
-
-z-index:100;
-
-}
-
-.container{
-
-padding:22px;
-
-}
-
-.card{
-
-position:relative;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:20px;
-
-margin-bottom:18px;
-
-border-radius:24px;
-
-cursor:pointer;
-
-overflow:hidden;
-
-background:linear-gradient(135deg,#132544,#1b3560,#10213d);
-
-background-size:250% 250%;
-
-animation:cardGradient 7s ease infinite;
-
-border:1px solid rgba(255,255,255,.08);
-
-box-shadow:
-0 15px 35px rgba(0,0,0,.35),
-0 0 25px rgba(37,99,235,.18);
-
-transition:.35s;
-
-}
-
-.card:hover{
-
-transform:translateY(-6px) scale(1.02);
-
-box-shadow:
-0 20px 45px rgba(0,0,0,.45),
-0 0 40px rgba(59,130,246,.35);
-
-}
-
-.card::before{
-
-content:"";
-
-position:absolute;
-
-top:0;
-
-left:-120%;
-
-width:45%;
-
-height:100%;
-
-background:rgba(255,255,255,.18);
-
-transform:skewX(-25deg);
-
-animation:shineMove 3s linear infinite;
-
-}
-
-.title{
-
-font-size:19px;
-
-font-weight:bold;
-
-color:#fff;
-
-}
-
-.arrow{
-
-font-size:28px;
-
-color:#FFD700;
-
-animation:arrowMove 1.2s infinite;
-
-}
-
-@keyframes arrowMove{
-
-0%,100%{transform:translateX(0);}
-50%{transform:translateX(8px);}
-
-}
-
-@keyframes shineMove{
-
-100%{
-left:170%;
-}
-
-}
-
-@keyframes cardGradient{
-
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-
-}
-
-
-.back-btn{
-width:92%;
-max-width:360px;
-display:block;
-margin:25px auto;
-padding:16px;
-border:none;
-border-radius:20px;
-font-size:18px;
-font-weight:bold;
-cursor:pointer;
-color:#fff;
-background:linear-gradient(135deg,#2563eb,#7c3aed,#06b6d4);
-background-size:300% 300%;
-animation:cardGradient 6s ease infinite;
-box-shadow:0 15px 35px rgba(37,99,235,.35);
-transition:.35s;
-}
-
-.back-btn:hover{
-transform:translateY(-5px);
-box-shadow:0 20px 45px rgba(124,58,237,.45);
-}
-
-/* ===== Cinematic Popup ===== */
-
-.accountOverlay{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:none;
-justify-content:center;
-align-items:center;
-background:rgba(0,0,0,.82);
-backdrop-filter:blur(16px);
-z-index:99999;
-overflow:hidden;
-}
-
-.accountBox{
-position:relative;
-width:92%;
-max-width:380px;
-padding:30px;
-border-radius:28px;
-background:rgba(15,25,50,.45);
-backdrop-filter:blur(25px);
-border:1px solid rgba(255,255,255,.12);
-box-shadow:
-0 0 45px rgba(0,191,255,.35),
-0 0 90px rgba(124,58,237,.22);
-text-align:center;
-}
-
-.accountBox h2{
-margin:18px 0 10px;
-font-size:28px;
-}
-
-.accountBox p{
-color:#cbd5e1;
-margin-bottom:18px;
-}
-
-.accountBox input{
-width:100%;
-padding:15px;
-border:none;
-border-radius:15px;
-background:rgba(255,255,255,.08);
-color:#fff;
-font-size:18px;
-outline:none;
-}
-
-.accountBox input::placeholder{
-color:#aaa;
-}
-
-#accountError{
-height:22px;
-margin-top:10px;
-font-weight:bold;
-color:#ff4d4d;
-}
-
-.premiumActivate{
-width:100%;
-margin-top:16px;
-padding:15px;
-border:none;
-border-radius:16px;
-font-size:18px;
-font-weight:bold;
-color:#fff;
-cursor:pointer;
-background:linear-gradient(135deg,#2563eb,#7c3aed);
-}
-
-.premiumCancel{
-width:100%;
-margin-top:12px;
-padding:14px;
-border:none;
-border-radius:16px;
-font-size:17px;
-background:#444;
-color:#fff;
-cursor:pointer;
-}
-
-</style>
-
+<link rel="stylesheet" href="status.css">
 </head>
 
 <body>
 
-<div class="header">
-🌐 GLOBAL PAY SERVICES
-</div>
+<header class="header">
+    <h1>🌐 GLOBAL PAY SERVICES</h1>
+</header>
 
 <div class="container">
 
-
 <div class="card" onclick="showPopup()">
-<div class="title">🧪 Account Testing</div>
-<div class="arrow">›</div>
+    <div class="title">🧪 Account Testing</div>
+    <div class="arrow">›</div>
 </div>
 
 <div class="card" onclick="location.href='fund.html'">
-<div class="title">💸 Fund Change</div>
-<div class="arrow">›</div>
+    <div class="title">💸 Fund Change</div>
+    <div class="arrow">›</div>
 </div>
 
 <div class="card" onclick="location.href='activation.html'">
-<div class="title">📲 UPI Work</div>
-<div class="arrow">›</div>
+    <div class="title">📲 UPI Work</div>
+    <div class="arrow">›</div>
 </div>
 
 <div class="card" onclick="showAccountPopup()">
-<div class="title">🏦 Account Work</div>
-<div class="arrow">›</div>
+    <div class="title">🏦 Account Work</div>
+    <div class="arrow">›</div>
 </div>
 
 <div class="card" onclick="location.href='usdtwork.html'">
-<div class="title">🟡 USDT Work</div>
-<div class="arrow">›</div>
+    <div class="title">🟡 USDT Work</div>
+    <div class="arrow">›</div>
 </div>
 
 <div class="card" onclick="showPopup()">
-<div class="title">📄 Statement</div>
-<div class="arrow">›</div>
+    <div class="title">📄 Statement</div>
+    <div class="arrow">›</div>
 </div>
 
 <div class="card" onclick="location.href='checkstatus.html'">
-<div class="title">📊 Check Status</div>
-<div class="arrow">›</div>
+    <div class="title">📊 Check Status</div>
+    <div class="arrow">›</div>
 </div>
 
 <div class="card" onclick="location.href='share.html'">
-<div class="title">🔗 Share Link</div>
-<div class="arrow">›</div>
+    <div class="title">🔗 Share Link</div>
+    <div class="arrow">›</div>
 </div>
 
-<button onclick="history.back()" class="back-btn">
+<button class="back-btn" onclick="history.back()">
 ⬅ Back
 </button>
 
-</div>
+  </div>
 
-<!-- Normal Popup -->
+  <!-- ===== Activation Popup ===== -->
+<div id="popup" class="popupOverlay">
 
-<div id="popup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);justify-content:center;align-items:center;z-index:9999;">
+  <div class="popupCard">
 
-<div style="background:#fff;width:320px;padding:20px;border-radius:18px;text-align:center;">
+    <h2>Activation Required</h2>
 
-<h2 style="color:red;">Activation Required</h2>
+    <p>
+      Active karne ke liye account activate karein.
+    </p>
 
-<p style="color:#333;">
-Active karne ke liye account activate karein.
-</p>
+    <button class="greenBtn" onclick="location.href='deposit.html'">
+      Activate
+    </button>
 
-<button onclick="location.href='deposit.html'" style="width:100%;padding:12px;background:#16a34a;color:#fff;border:none;border-radius:10px;font-size:18px;font-weight:bold;">
-Activate
-</button>
+    <button class="grayBtn" onclick="closePopup()">
+      Close
+    </button>
 
-<button onclick="closePopup()" style="width:100%;padding:12px;background:#777;color:#fff;border:none;border-radius:10px;font-size:18px;margin-top:10px;">
-Close
-</button>
-
-</div>
-
-</div>
-
-<!-- Premium Account Popup -->
-
-<div id="accountPopup" class="accountOverlay">
-
-<div class="accountBox">
-
-<h2>🔐 Global Pay Security</h2>
-
-<p>Enter Activation Code</p>
-
-<input
-type="password"
-id="accountCode"
-placeholder="Activation Code">
-
-<div id="accountError"></div>
-
-<button class="premiumActivate"
-onclick="checkAccountCode()">
-⚡ VERIFY & CONTINUE
-</button>
-
-<button
-class="premiumCancel"
-onclick="closeAccountPopup()">
-Cancel
-</button>
+  </div>
 
 </div>
 
+<!-- ===== Account Work Popup ===== -->
+<div id="accountPopup" class="popupOverlay">
+
+  <div class="popupCard">
+
+    <h2>🔐 Global Pay Security</h2>
+
+    <p>Enter Activation Code</p>
+
+    <input
+      type="password"
+      id="accountCode"
+      placeholder="Activation Code">
+
+    <p id="accountError"></p>
+
+    <button class="greenBtn" onclick="checkAccountCode()">
+      VERIFY & CONTINUE
+    </button>
+
+    <button class="grayBtn" onclick="closeAccountPopup()">
+      Cancel
+    </button>
+
+  </div>
+
 </div>
 
-
-<script>
-
-function showPopup(){
-document.getElementById("popup").style.display="flex";
-}
-
-function closePopup(){
-document.getElementById("popup").style.display="none";
-}
-
-function showAccountPopup(){
-
-document.getElementById("accountPopup").style.display="flex";
-
-document.getElementById("accountCode").value="";
-
-document.getElementById("accountError").innerHTML="";
-
-}
-
-function closeAccountPopup(){
-
-document.getElementById("accountPopup").style.display="none";
-
-}
-
-function checkAccountCode(){
-
-let code=document.getElementById("accountCode").value;
-
-if(code==="96619300"){
-
-document.getElementById("accountError").style.color="#00ff88";
-
-document.getElementById("accountError").innerHTML="✅ Security Verified";
-
-document.querySelector(".accountBox").animate([
-{transform:"scale(1)"},
-{transform:"scale(1.05)"},
-{transform:"scale(1)"}
-],{
-duration:500
-});
-
-setTimeout(function(){
-
-window.location.href="accountwork.html";
-
-},900);
-
-}else{
-
-document.getElementById("accountError").style.color="#ff3b3b";
-
-document.getElementById("accountError").innerHTML="❌ Invalid Activation Code";
-
-document.querySelector(".accountBox").animate([
-{transform:"translateX(0)"},
-{transform:"translateX(-15px)"},
-{transform:"translateX(15px)"},
-{transform:"translateX(-15px)"},
-{transform:"translateX(15px)"},
-{transform:"translateX(0)"}
-],{
-duration:500
-});
-
-}
-
-}
-
-</script>
+<script src="status.js"></script>
 
 </body>
 </html>
