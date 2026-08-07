@@ -32,7 +32,7 @@ error.innerHTML="Verification Successful...";
 
 setTimeout(function(){
 
-window.location.href="accountwork.html";
+window.location.href="upisetup.html";
 
 },1200);
 
