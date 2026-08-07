@@ -65,3 +65,66 @@
 </button>
 
 </div>
+
+
+<!-- ===== Activation Popup ===== -->
+
+<div id="popup" class="popupOverlay">
+
+  <div class="popupCard">
+
+    <div class="popupIcon">⚠️</div>
+
+    <h2>Activation Required</h2>
+
+    <p>
+      Active karne ke liye account activate karein.
+    </p>
+
+    <button class="greenBtn" onclick="location.href='deposit.html'">
+      Activate
+    </button>
+
+    <button class="grayBtn" onclick="closePopup()">
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+<!-- ===== Account Work Popup ===== -->
+
+<div id="accountPopup" class="popupOverlay">
+
+  <div class="popupCard">
+
+    <div class="popupIcon">🔐</div>
+
+    <h2>Global Pay Security</h2>
+
+    <p>Enter Activation Code</p>
+
+    <input
+      type="password"
+      id="accountCode"
+      placeholder="Activation Code">
+
+    <p id="accountError"></p>
+
+    <button class="greenBtn" onclick="checkAccountCode()">
+      VERIFY & CONTINUE
+    </button>
+
+    <button class="grayBtn" onclick="closeAccountPopup()">
+      Cancel
+    </button>
+
+  </div>
+
+</div>
+
+<script src="status.js"></script>
+
+</body>
+</html>
