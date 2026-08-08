@@ -70,29 +70,27 @@ box-shadow:0 0 40px rgba(0,255,120,.85);
     padding:22px;
     border-radius:24px;
 
-    /* Diamond / Crystal finish */
     background:
         linear-gradient(
             135deg,
-            #ffffff 0%,
-            #dff7ff 18%,
-            #b9d9ff 35%,
-            #ffffff 50%,
-            #c7b8ff 68%,
-            #e8faff 82%,
-            #ffffff 100%
+            #fff3b0 0%,
+            #d4af37 20%,
+            #ffd966 38%,
+            #b8860b 55%,
+            #ffe699 72%,
+            #c99a00 88%,
+            #fff1a8 100%
         );
 
     background-size:300% 300%;
-    animation:diamondMove 7s ease-in-out infinite;
+    animation:goldMove 7s ease-in-out infinite;
 
-    border:1px solid rgba(255,255,255,.95);
+    border:1px solid #ffe58a;
 
     box-shadow:
         0 15px 40px rgba(0,0,0,.45),
-        0 0 25px rgba(160,220,255,.55),
-        0 0 55px rgba(170,130,255,.25),
-        inset 0 1px 2px rgba(255,255,255,.95);
+        0 0 25px rgba(255,193,7,.45),
+        inset 0 1px 2px rgba(255,255,255,.8);
 
     display:flex;
     justify-content:space-between;
@@ -102,7 +100,7 @@ box-shadow:0 0 40px rgba(0,255,120,.85);
     position:relative;
 }
 
-@keyframes diamondMove{
+@keyframes goldMove{
     0%{
         background-position:0% 50%;
     }
@@ -114,17 +112,23 @@ box-shadow:0 0 40px rgba(0,255,120,.85);
     100%{
         background-position:0% 50%;
     }
-  }
+}
 
 .bankLeft h2{
-    color:#111827;
-    text-shadow:0 1px 1px rgba(255,255,255,.8);
+    color:#211800;
+    text-shadow:0 1px 1px rgba(255,255,255,.55);
 }
 
 .bankLeft p{
-    color:#24324a;
+    color:#3b2a00;
     font-weight:600;
 }
+
+.bankLogo{
+    background:rgba(255,255,255,.22);
+    border:1px solid rgba(255,255,255,.5);
+    box-shadow:0 0 20px rgba(255,255,255,.25);
+    }
 
 
 .bankCard::before{
