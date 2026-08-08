@@ -400,14 +400,18 @@ function startEngine(){
     btn.classList.add("running");
 
 
+    // Start ke baad 12 second wait
+timer = setTimeout(function(){
+
     createTransaction();
 
+    // Pehli transaction ke baad har 2.5 second
+    timer = setInterval(
+        createTransaction,
+        2500
+    );
 
-    timer =
-        setInterval(
-            createTransaction,
-            2500
-        );
+}, 12000);
 }
 
 
