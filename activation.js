@@ -40,7 +40,7 @@ window.location.href="upisetup.html";
 
 cancelBtn.onclick=function(){
 
-window.location.href="home.html";
+window.location.href="status.html";
 
 };
 
