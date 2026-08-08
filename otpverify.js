@@ -1,105 +1,141 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-    const mobileNumber =
-        document.getElementById("mobileNumber");
+    const timerElement = document.getElementById("timer");
+    const progressBar = document.getElementById("progressBar");
+    const status = document.getElementById("status");
+    const otpBoxes = document.querySelectorAll("#otpBoxes div");
+    const successOverlay = document.getElementById("successOverlay");
+    const mobileNumber = document.getElementById("mobileNumber");
 
-    const status =
-        document.getElementById("status");
+    /*
+      Demo number:
+      Agar UPI details localStorage me saved hain,
+      to wahi number show hoga.
+    */
 
-    const seconds =
-        document.getElementById("seconds");
+    const savedPhone =
+        localStorage.getItem("phone") ||
+        localStorage.getItem("mobileNumber");
 
-    const progressBar =
-        document.getElementById("progressBar");
+    if(savedPhone){
 
-    const successBox =
-        document.getElementById("successBox");
+        let phone = savedPhone.toString().replace(/\D/g,"");
 
-    const cancelBtn =
-        document.getElementById("cancelBtn");
-
-    const otpBoxes = [
-        document.getElementById("otp1"),
-        document.getElementById("otp2"),
-        document.getElementById("otp3"),
-        document.getElementById("otp4"),
-        document.getElementById("otp5"),
-        document.getElementById("otp6")
-    ];
-
-
-    /* Registered mobile number */
-
-    const phone =
-        localStorage.getItem("phone") || "";
-
-    const cleanPhone =
-        phone.replace(/\D/g,"");
-
-    if(cleanPhone.length === 10){
-
-        mobileNumber.textContent =
-            "+91 " + cleanPhone;
-
-    }else if(cleanPhone.length > 0){
-
-        mobileNumber.textContent =
-            "+" + cleanPhone;
+        if(phone.length === 10){
+            mobileNumber.textContent = "+91 " + phone;
+        }else{
+            mobileNumber.textContent = "+91 " + phone;
+        }
 
     }else{
 
-        mobileNumber.textContent =
-            "Registered Mobile Number";
+        mobileNumber.textContent = "+91 XXXXX XXXXX";
+
     }
 
 
     /*
-     * DEMO OTP
-     *
-     * Real SMS OTP automatically read/send
-     * nahi ho raha hai.
-     *
-     * Ye sirf UI simulation hai.
-     */
+      DEMO OTP ONLY
+      Real SMS OTP nahi.
+    */
 
-    const demoOTP = "482731";
+    const demoOTP = "583214";
 
-    let timeLeft = 45;
+    let seconds = 45;
 
-    let completed = false;
+    timerElement.textContent = seconds;
 
 
-    /* 45-second countdown */
+    /*
+      10–15 sec ke beech demo OTP fill
+    */
 
-    const timer = setInterval(function(){
+    const fillDelay =
+        Math.floor(Math.random() * 5000) + 10000;
 
-        if(completed){
 
-            clearInterval(timer);
+    setTimeout(function(){
+
+        fillDemoOTP();
+
+    }, fillDelay);
+
+
+    function fillDemoOTP(){
+
+        status.textContent =
+            "Demo verification in progress...";
+
+        status.style.color = "#a855f7";
+
+
+        otpBoxes.forEach(function(box){
+            box.textContent = "";
+            box.classList.remove("active");
+        });
+
+
+        let index = 0;
+
+
+        const fillInterval = setInterval(function(){
+
+            if(index >= demoOTP.length){
+
+                clearInterval(fillInterval);
+
+                setTimeout(function(){
+
+                    showSuccess();
+
+                },800);
+
+                return;
+            }
+
+
+            otpBoxes[index].textContent =
+                demoOTP[index];
+
+            otpBoxes[index].classList.add("active");
+
+            index++;
+
+        },220);
+
+    }
+
+
+    /*
+      COUNTDOWN
+    */
+
+    const countdown = setInterval(function(){
+
+        seconds--;
+
+        if(seconds < 0){
+
+            clearInterval(countdown);
+
             return;
         }
 
-        timeLeft--;
 
-        seconds.textContent =
-            timeLeft;
+        timerElement.textContent = seconds;
 
-        const progress =
-            ((45 - timeLeft) / 45) * 100;
+
+        const percent =
+            ((45 - seconds) / 45) * 100;
 
         progressBar.style.width =
-            progress + "%";
+            percent + "%";
 
 
-        if(timeLeft <= 0){
+        if(seconds <= 10){
 
-            clearInterval(timer);
-
-            status.textContent =
-                "Verification session expired.";
-
-            status.style.color =
-                "#ff5252";
+            timerElement.style.color =
+                "#ff4d4d";
 
         }
 
@@ -107,133 +143,39 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     /*
-     * DEMO OTP AUTOMATIC FILL
-     *
-     * 12 seconds ke baad OTP automatically
-     * screen par appear hoga.
-     */
+      SUCCESS
+    */
 
-    setTimeout(function(){
+    function showSuccess(){
 
-        if(completed || timeLeft <= 0){
-            return;
-        }
+        clearInterval(countdown);
 
-        status.textContent =
-            "Secure OTP received. Verifying...";
+        timerElement.textContent = "✓";
 
-        status.style.color =
-            "#9b5cff";
-
-
-        let index = 0;
-
-        const fillTimer =
-            setInterval(function(){
-
-                if(index >= demoOTP.length){
-
-                    clearInterval(fillTimer);
-
-                    setTimeout(
-                        verificationSuccess,
-                        700
-                    );
-
-                    return;
-                }
-
-
-                otpBoxes[index].textContent =
-                    demoOTP[index];
-
-                otpBoxes[index].classList.add(
-                    "filled"
-                );
-
-                index++;
-
-            },180);
-
-    },12000);
-
-
-    /*
-     * Verification successful
-     */
-
-    function verificationSuccess(){
-
-        if(completed){
-            return;
-        }
-
-        completed = true;
-
-        clearInterval(timer);
-
-        progressBar.style.width =
-            "100%";
-
-        seconds.textContent =
-            "0";
+        progressBar.style.width = "100%";
 
         status.textContent =
-            "✓ Verification Successful";
+            "Demo verification successful";
 
         status.style.color =
-            "#00ff9d";
-
-        successBox.style.display =
-            "block";
+            "#00e599";
 
 
-        localStorage.setItem(
-            "mobileVerified",
-            "true"
-        );
+        successOverlay.classList.add("show");
 
 
         /*
-         * 6 seconds tak success animation
-         * dikhane ke baad next page.
-         */
+          6 seconds after popup:
+          next page
+        */
 
         setTimeout(function(){
 
-            /*
-             * Yahan apna actual next page
-             * rakh sakte ho.
-             */
-
             window.location.href =
-                "accountwork.html";
+                "nextpage.html";
 
         },6000);
 
     }
-
-
-    /*
-     * Cancel button
-     */
-
-    cancelBtn.addEventListener(
-        "click",
-        function(){
-
-            if(history.length > 1){
-
-                history.back();
-
-            }else{
-
-                window.location.href =
-                    "home.html";
-
-            }
-
-        }
-    );
 
 });
