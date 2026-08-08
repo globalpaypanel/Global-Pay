@@ -231,9 +231,9 @@ function addTransaction(
 
             </div>
 
-            <div class="tx-status">
-                SIMULATED
-            </div>
+            <div class="date-time">
+    ${dateTime}
+</div>
 
         </div>
     `;
