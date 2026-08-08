@@ -510,11 +510,10 @@ document.getElementById(
     "click",
     function(){
 
-        history.back();
+        window.location.href = "status.html";
 
     }
 );
-
 
 /* Load */
 
