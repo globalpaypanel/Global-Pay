@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Pay - Mobile Verification</title>
+
+<title>Global Pay - Demo Verification</title>
+
 <link rel="stylesheet" href="otpverify.css">
 </head>
 
@@ -13,77 +15,91 @@
 <div class="ambient ambient2"></div>
 <div class="ambient ambient3"></div>
 
-<main class="page">
+<div class="verify-card">
 
-    <section class="verify-card">
+    <div class="brand">GLOBAL PAY</div>
 
-        <div class="brand">GLOBAL PAY</div>
+    <div class="security-icon">
+        🔐
+    </div>
 
-        <div class="security-icon">
-            🔐
+    <div class="demo-badge">
+        DEMO VERIFICATION
+    </div>
+
+    <h1>Verify Mobile Number</h1>
+
+    <p class="subtitle">
+        A verification code has been sent to your registered mobile number.
+    </p>
+
+    <div class="mobile-number" id="mobileNumber">
+        +91 XXXXX XXXXX
+    </div>
+
+    <div class="otp-boxes" id="otpBoxes">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="progress">
+        <div id="progressBar"></div>
+    </div>
+
+    <div class="timer">
+        <span id="timer">45</span>
+        <small>Seconds Remaining</small>
+    </div>
+
+    <div class="status" id="status">
+        Waiting for demo verification...
+    </div>
+
+    <div class="security-line">
+        <span>●</span> Secure demo interface
+    </div>
+
+</div>
+
+
+<!-- SUCCESS POPUP -->
+
+<div id="successOverlay" class="success-overlay">
+
+    <div class="success-card">
+
+        <div class="success-ring">
+            <div class="success-check">✓</div>
         </div>
 
-        <h1>Verify Mobile Number</h1>
+        <div class="success-label">
+            VERIFIED
+        </div>
 
-        <p class="subtitle">
-            A secure verification code has been sent to your
-            registered mobile number.
+        <h2>Verification Successful</h2>
+
+        <p>
+            Demo mobile verification completed successfully.
         </p>
 
-        <div id="mobileNumber" class="mobile-number">
-            Loading...
+        <div class="success-loader">
+            <div></div>
         </div>
 
-        <div class="otp-boxes">
-            <div class="otp-box" id="otp1"></div>
-            <div class="otp-box" id="otp2"></div>
-            <div class="otp-box" id="otp3"></div>
-            <div class="otp-box" id="otp4"></div>
-            <div class="otp-box" id="otp5"></div>
-            <div class="otp-box" id="otp6"></div>
-        </div>
+        <span class="redirect-text">
+            Preparing next page...
+        </span>
 
-        <div class="progress-track">
-            <div id="progressBar"></div>
-        </div>
+    </div>
 
-        <div class="timer">
-            <strong id="seconds">45</strong>
-            <span> Seconds Remaining</span>
-        </div>
+</div>
 
-        <div id="status" class="status">
-            Waiting for secure OTP...
-        </div>
-
-        <p class="warning">
-            Please don't close this page while verification
-            is in progress.
-        </p>
-
-        <div id="successBox" class="success-box">
-
-            <div class="success-ring">
-                <div class="success-check">✓</div>
-            </div>
-
-            <h2>Verification Successful</h2>
-
-            <p>
-                Mobile number verified successfully.
-            </p>
-
-        </div>
-
-        <button id="cancelBtn" class="cancel-btn">
-            CANCEL
-        </button>
-
-    </section>
-
-</main>
 
 <script src="otpverify.js"></script>
 
 </body>
-</html>
+            </html>
