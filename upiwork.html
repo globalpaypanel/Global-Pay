@@ -11,8 +11,8 @@
 
 <header class="header">
     <div>
-        <div class="brand">GLOBAL PAY</div>
-        <div class="subbrand">UPI TRANSACTION CENTER</div>
+        <div class="brand">🌐 GLOBAL PAY</div>
+        <div class="subtitle">UPI TRANSACTION CENTER</div>
     </div>
 
     <button id="backBtn">←</button>
@@ -20,83 +20,179 @@
 
 <main class="container">
 
-    <section class="balance-card">
+    <div class="simulationTag">
+        SIMULATION MODE
+    </div>
 
-        <div class="demo-tag">SIMULATION</div>
+    <!-- UPI DETAILS -->
 
-        <p>Transaction Pool</p>
+    <section class="upiProfile">
 
-        <h1>₹<span id="pool">100000</span></h1>
+        <div class="goldIcon">₹</div>
+
+        <div class="upiInfo">
+
+            <small>UPI ACCOUNT</small>
+
+            <h2 id="upiName">
+                Loading...
+            </h2>
+
+            <p id="upiId">
+                Loading...
+            </p>
+
+        </div>
+
+        <div class="verified">
+            ✓
+        </div>
+
+    </section>
+
+
+    <!-- TRANSACTION POOL -->
+
+    <section class="poolCard">
+
+        <div class="cardTitle">
+            <span>Credit Transaction Pool</span>
+            <span class="activeDot">● ACTIVE</span>
+        </div>
+
+        <h1 id="remaining">
+            ₹1,00,000
+        </h1>
 
         <div class="progress">
             <div id="progressBar"></div>
         </div>
 
-        <div class="stats">
+        <div class="poolStats">
+
             <div>
-                <span>Processed</span>
-                <b>₹<span id="processed">0</span></b>
+                <small>Credit</small>
+                <strong id="credit">
+                    ₹0
+                </strong>
             </div>
 
             <div>
-                <span>Remaining</span>
-                <b>₹<span id="remaining">100000</span></b>
+                <small>Commission</small>
+                <strong id="commission">
+                    ₹0.00
+                </strong>
             </div>
 
             <div>
-                <span>Transactions</span>
-                <b id="count">0</b>
+                <small>Transactions</small>
+                <strong id="count">
+                    0
+                </strong>
             </div>
+
         </div>
 
     </section>
 
 
-    <section class="control-card">
+    <!-- START -->
+
+    <section class="controlCard">
 
         <div>
-            <span class="label">Transaction Engine</span>
-            <strong id="engineStatus">STOPPED</strong>
+            <small>Transaction Engine</small>
+            <strong id="engineStatus">
+                STOPPED
+            </strong>
         </div>
 
-        <button id="engineBtn">
-            START
+        <button id="startButton">
+            ▶ START
         </button>
 
     </section>
 
 
-    <section class="merchant-card">
+    <!-- MERCHANT -->
 
-        <div class="merchant-icon">🏪</div>
+    <section class="merchantCard">
+
+        <div class="merchantIcon">
+            🏪
+        </div>
 
         <div>
-            <small>Merchant</small>
-            <h3>BALAJI SUPER MARKET</h3>
-            <p>balaji@icici</p>
+            <small>Debit Merchant</small>
+            <h3>
+                BALAJI SUPER MARKET
+            </h3>
+            <p>
+                balaji@icici
+            </p>
         </div>
 
     </section>
 
 
-    <section class="feed-card">
+    <!-- TRANSACTIONS -->
 
-        <div class="section-title">
-            <h2>Recent Transactions</h2>
+    <section class="feedCard">
+
+        <div class="feedHeader">
+            <h2>Transactions</h2>
             <span>LIVE FEED</span>
         </div>
 
         <div id="transactionList"></div>
 
-        <div id="empty" class="empty">
-            Start the engine to generate simulated transactions.
+        <div id="empty">
+            Press START to begin simulation.
         </div>
 
     </section>
 
 </main>
 
+
+<!-- LIMIT POPUP -->
+
+<div id="limitPopup" class="limitPopup">
+
+    <div class="limitBox">
+
+        <div class="limitIcon">
+            ⚠️
+        </div>
+
+        <h2>
+            LIMIT REACHED
+        </h2>
+
+        <p>
+            Credit transaction limit of
+            <b>₹1,00,000</b>
+            has been completed.
+        </p>
+
+        <div class="limitValue">
+            ₹1,00,000
+        </div>
+
+        <small>
+            SIMULATION TRANSACTION CENTER
+        </small>
+
+        <button id="closeLimit">
+            CLOSE
+        </button>
+
+    </div>
+
+</div>
+
+
 <script src="upiwork.js"></script>
 
 </body>
-      </html>
+            </html>
