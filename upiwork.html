@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Global Pay - UPI Work</title>
+<link rel="stylesheet" href="upiwork.css">
+</head>
+
+<body>
+
+<header class="header">
+    <div>
+        <div class="brand">GLOBAL PAY</div>
+        <div class="subbrand">UPI TRANSACTION CENTER</div>
+    </div>
+
+    <button id="backBtn">←</button>
+</header>
+
+<main class="container">
+
+    <section class="balance-card">
+
+        <div class="demo-tag">SIMULATION</div>
+
+        <p>Transaction Pool</p>
+
+        <h1>₹<span id="pool">100000</span></h1>
+
+        <div class="progress">
+            <div id="progressBar"></div>
+        </div>
+
+        <div class="stats">
+            <div>
+                <span>Processed</span>
+                <b>₹<span id="processed">0</span></b>
+            </div>
+
+            <div>
+                <span>Remaining</span>
+                <b>₹<span id="remaining">100000</span></b>
+            </div>
+
+            <div>
+                <span>Transactions</span>
+                <b id="count">0</b>
+            </div>
+        </div>
+
+    </section>
+
+
+    <section class="control-card">
+
+        <div>
+            <span class="label">Transaction Engine</span>
+            <strong id="engineStatus">STOPPED</strong>
+        </div>
+
+        <button id="engineBtn">
+            START
+        </button>
+
+    </section>
+
+
+    <section class="merchant-card">
+
+        <div class="merchant-icon">🏪</div>
+
+        <div>
+            <small>Merchant</small>
+            <h3>BALAJI SUPER MARKET</h3>
+            <p>balaji@icici</p>
+        </div>
+
+    </section>
+
+
+    <section class="feed-card">
+
+        <div class="section-title">
+            <h2>Recent Transactions</h2>
+            <span>LIVE FEED</span>
+        </div>
+
+        <div id="transactionList"></div>
+
+        <div id="empty" class="empty">
+            Start the engine to generate simulated transactions.
+        </div>
+
+    </section>
+
+</main>
+
+<script src="upiwork.js"></script>
+
+</body>
+      </html>
