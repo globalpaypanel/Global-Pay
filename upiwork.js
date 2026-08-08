@@ -1,172 +1,206 @@
-const MAX_POOL = 100000;
+const CREDIT_LIMIT = 100000;
+const COMMISSION_RATE = 0.035;
 
-let remaining = MAX_POOL;
-let processed = 0;
+let totalCredit = 0;
+let commission = 0;
 let transactionCount = 0;
-let engineRunning = false;
-let engineTimer = null;
+
+let lastCreditAmount = 0;
+let nextCredit = true;
+
+let running = false;
+let stoppedByLimit = false;
+let timer = null;
+
+const merchantName =
+    "BALAJI SUPER MARKET";
+
+const merchantUPI =
+    "balaji@icici";
+
+
+const names = [
+    "Vikas Singh","Ankit Kumar","Mohit Kumar",
+    "Naveen Kumar","Vishal Kumar","Kunal Singh",
+    "Manish Kumar","Rahul Kumar","Amit Singh",
+    "Rohit Kumar","Sandeep Kumar","Pankaj Singh",
+    "Deepak Kumar","Ravi Kumar","Akash Singh",
+    "Abhishek Kumar","Nikhil Kumar","Sumit Singh",
+    "Sachin Kumar","Raj Kumar","Arjun Singh",
+    "Rakesh Kumar","Gaurav Singh","Shubham Kumar",
+    "Prakash Singh","Ajay Kumar","Vivek Singh",
+    "Saurabh Kumar"
+];
+
 
 const amounts = [
     100,200,300,400,500,
     600,700,800,900,1000
 ];
 
-/*
-  100+ names
-*/
 
-const names = [
-"Rahul Kumar","Aman Singh","Rohit Kumar","Vikash Singh",
-"Ajay Kumar","Ravi Kumar","Ankit Singh","Arjun Kumar",
-"Deepak Kumar","Pankaj Singh","Sandeep Kumar","Manish Kumar",
-"Rakesh Singh","Abhishek Kumar","Nitin Kumar","Sumit Singh",
-"Vivek Kumar","Kunal Singh","Shubham Kumar","Aditya Singh",
-"Akash Kumar","Saurabh Singh","Gaurav Kumar","Mohit Singh",
-"Rajan Kumar","Sachin Singh","Prakash Kumar","Ritesh Singh",
-"Vishal Kumar","Harsh Singh","Naveen Kumar","Yash Singh",
-"Neeraj Kumar","Sanjay Singh","Rohit Singh","Anurag Kumar",
-"Mayank Singh","Varun Kumar","Ashish Singh","Karan Kumar",
-"Manoj Singh","Piyush Kumar","Rajat Singh","Tushar Kumar",
-"Abhinav Singh","Tarun Kumar","Vijay Singh","Dinesh Kumar",
-"Ramesh Singh","Mukesh Kumar","Sunil Singh","Rajesh Kumar",
-"Anil Singh","Santosh Kumar","Vinay Singh","Manish Singh",
-"Ravi Singh","Amit Kumar","Sahil Singh","Nikhil Kumar",
-"Pranav Singh","Dev Kumar","Aryan Singh","Rishabh Kumar",
-"Yuvraj Singh","Aakash Singh","Rohan Kumar","Varun Singh",
-"Rahul Singh","Aman Kumar","Vikas Singh","Rohit Sharma",
-"Raj Kumar","Amit Singh","Sumit Kumar","Kunal Kumar",
-"Shivam Singh","Abhishek Singh","Saurav Kumar","Vivek Singh",
-"Ankit Kumar","Arvind Singh","Kapil Kumar","Gaurav Singh",
-"Harshit Kumar","Manish Kumar","Nitesh Singh","Rajat Kumar",
-"Deepak Singh","Pankaj Kumar","Sandeep Singh","Rakesh Kumar",
-"Vishal Singh","Karan Singh","Sanjay Kumar","Mohit Kumar",
-"Akshay Singh","Naveen Singh","Sachin Kumar","Pradeep Singh",
-"Ravi Sharma","Aman Sharma","Rahul Sharma","Rohit Verma",
-"Ankit Verma","Vikas Kumar","Amit Verma","Shubham Singh",
-"Aditya Kumar","Arjun Singh","Akash Singh","Rishi Kumar",
-"Devendra Singh","Rajiv Kumar","Suresh Singh","Dilip Kumar"
+const upiNumbers = [
+    "972XXXXX08",
+    "827XXXXX42",
+    "983XXXXX17",
+    "912XXXXX65",
+    "998XXXXX31",
+    "963XXXXX24",
+    "887XXXXX76",
+    "901XXXXX19",
+    "934XXXXX53",
+    "976XXXXX87"
 ];
 
-const poolElement = document.getElementById("pool");
-const processedElement = document.getElementById("processed");
-const remainingElement = document.getElementById("remaining");
-const countElement = document.getElementById("count");
-const progressBar = document.getElementById("progressBar");
-const transactionList = document.getElementById("transactionList");
-const empty = document.getElementById("empty");
-const engineBtn = document.getElementById("engineBtn");
-const engineStatus = document.getElementById("engineStatus");
+
+const handles = [
+    "ybl",
+    "axl",
+    "oksbi",
+    "ibl",
+    "upi"
+];
 
 
-function randomItem(array){
-    return array[Math.floor(Math.random() * array.length)];
+function random(arr){
+
+    return arr[
+        Math.floor(
+            Math.random()*arr.length
+        )
+    ];
 }
 
 
-function randomUPI(name){
+function getUPI(){
 
-    const clean =
-        name
-        .toLowerCase()
-        .replace(/[^a-z]/g,"")
-        .slice(0,8);
-
-    const number =
-        Math.floor(1000 + Math.random() * 9000);
-
-    return clean + number + "@upi";
+    return random(upiNumbers)
+        + "@"
+        + random(handles);
 }
 
 
-function initials(name){
+function getInitials(name){
 
     return name
         .split(" ")
         .map(x => x[0])
         .join("")
-        .slice(0,2)
+        .substring(0,2)
         .toUpperCase();
-
 }
 
 
-function updateStats(){
+/* UPI details saved by setup page */
 
-    poolElement.textContent =
-        remaining.toLocaleString("en-IN");
+function loadUPIDetails(){
 
-    processedElement.textContent =
-        processed.toLocaleString("en-IN");
+    const name =
+        localStorage.getItem("upiName") ||
+        localStorage.getItem("holderName") ||
+        "UPI Account";
 
-    remainingElement.textContent =
-        remaining.toLocaleString("en-IN");
+    const upi =
+        localStorage.getItem("upiId") ||
+        localStorage.getItem("upi") ||
+        "UPI ID not added";
 
-    countElement.textContent =
-        transactionCount.toLocaleString("en-IN");
+    document.getElementById("upiName")
+        .textContent = name;
 
-    const percentage =
-        (processed / MAX_POOL) * 100;
-
-    progressBar.style.width =
-        percentage + "%";
-
+    document.getElementById("upiId")
+        .textContent = upi;
 }
 
 
-function createTransaction(){
+/* Dashboard */
 
-    if(!engineRunning) return;
+function updateDashboard(){
 
-    if(remaining <= 0){
+    document.getElementById("credit")
+        .textContent =
+        "₹" +
+        totalCredit.toLocaleString("en-IN");
 
-        stopEngine();
+    document.getElementById("commission")
+        .textContent =
+        "₹" +
+        commission.toLocaleString(
+            "en-IN",
+            {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
+            }
+        );
 
-        return;
-    }
+    document.getElementById("count")
+        .textContent =
+        transactionCount;
+
+    const remaining =
+        CREDIT_LIMIT-totalCredit;
+
+    document.getElementById("remaining")
+        .textContent =
+        "₹" +
+        Math.max(
+            0,
+            remaining
+        ).toLocaleString("en-IN");
+
+    const progress =
+        (totalCredit/CREDIT_LIMIT)*100;
+
+    document.getElementById("progressBar")
+        .style.width =
+        Math.min(
+            100,
+            progress
+        ) + "%";
+}
 
 
-    let amount = randomItem(amounts);
+/* Transaction */
 
+function addTransaction(
+    type,
+    name,
+    upi,
+    amount
+){
 
-    /*
-      Last transaction ko pool se
-      zyada nahi hone dena.
-    */
-
-    if(amount > remaining){
-        amount = remaining;
-    }
-
-
-    if(amount <= 0){
-
-        stopEngine();
-
-        return;
-    }
-
-
-    const name = randomItem(names);
-    const upi = randomUPI(name);
-
-
-    processed += amount;
-    remaining -= amount;
-    transactionCount++;
-
+    const list =
+        document.getElementById(
+            "transactionList"
+        );
 
     const row =
-    document.createElement("div");
+        document.createElement("div");
 
-    row.className = "transaction";
+    const creditType =
+        type === "credit";
 
+    row.className =
+        "transaction " + type;
 
     row.innerHTML = `
-        <div class="avatar">
-            ${initials(name)}
+
+        <div class="avatar ${
+            creditType
+            ? "creditAvatar"
+            : "debitAvatar"
+        }">
+
+            ${
+                creditType
+                ? getInitials(name)
+                : "BS"
+            }
+
         </div>
 
         <div class="tx-info">
+
             <div class="tx-name">
                 ${name}
             </div>
@@ -174,136 +208,310 @@ function createTransaction(){
             <div class="tx-upi">
                 ${upi}
             </div>
+
+            <div class="tx-type">
+                ${
+                    creditType
+                    ? "CREDIT"
+                    : "DEBIT"
+                }
+            </div>
+
         </div>
 
         <div class="tx-right">
+
             <div class="tx-amount">
-                +₹${amount.toLocaleString("en-IN")}
+
+                ${
+                    creditType
+                    ? "+"
+                    : "-"
+                }₹${amount.toLocaleString("en-IN")}
+
             </div>
 
             <div class="tx-status">
                 SIMULATED
             </div>
+
         </div>
     `;
 
+    list.prepend(row);
 
-    transactionList.prepend(row);
+    while(list.children.length > 30){
 
-
-    /*
-      Feed ko manageable rakho
-    */
-
-    while(transactionList.children.length > 30){
-
-        transactionList.removeChild(
-            transactionList.lastElementChild
+        list.removeChild(
+            list.lastElementChild
         );
-
     }
 
-
-    empty.style.display = "none";
-
-    updateStats();
-
-
-    if(remaining <= 0){
-
-        stopEngine();
-
-    }
-
+    document.getElementById("empty")
+        .style.display = "none";
 }
 
 
+/* One transaction */
+
+function createTransaction(){
+
+    if(stoppedByLimit){
+
+        stopEngine();
+
+        return;
+    }
+
+
+    /* CREDIT */
+
+    if(nextCredit){
+
+        let amount =
+            random(amounts);
+
+        const remaining =
+            CREDIT_LIMIT-totalCredit;
+
+        if(amount > remaining){
+
+            amount = remaining;
+        }
+
+        if(amount <= 0){
+
+            reachLimit();
+
+            return;
+        }
+
+
+        const name =
+            random(names);
+
+        const upi =
+            getUPI();
+
+
+        addTransaction(
+            "credit",
+            name,
+            upi,
+            amount
+        );
+
+
+        totalCredit += amount;
+
+        commission +=
+            amount*COMMISSION_RATE;
+
+        lastCreditAmount =
+            amount;
+
+        transactionCount++;
+
+        nextCredit = false;
+
+
+        updateDashboard();
+
+
+        if(
+            totalCredit >=
+            CREDIT_LIMIT
+        ){
+
+            reachLimit();
+        }
+
+    }
+
+
+    /* DEBIT */
+
+    else{
+
+        addTransaction(
+            "debit",
+            merchantName,
+            merchantUPI,
+            lastCreditAmount
+        );
+
+        /*
+          Debit transaction count
+          me limit ke liye add nahi hota.
+        */
+
+        transactionCount++;
+
+        nextCredit = true;
+
+        updateDashboard();
+    }
+}
+
+
+/* Start */
+
 function startEngine(){
 
-    if(engineRunning) return;
+    if(stoppedByLimit){
 
-    engineRunning = true;
+        showLimitPopup();
 
-    engineBtn.textContent = "STOP";
+        return;
+    }
 
-    engineStatus.textContent = "RUNNING";
+    if(running) return;
 
-    engineStatus.classList.add("running");
+    running = true;
 
+    document.getElementById(
+        "engineStatus"
+    ).textContent = "RUNNING";
 
-    /*
-      First transaction immediately
-    */
+    document.getElementById(
+        "engineStatus"
+    ).classList.add("running");
+
+    const btn =
+        document.getElementById(
+            "startButton"
+        );
+
+    btn.textContent = "● RUNNING";
+
+    btn.classList.add("running");
+
 
     createTransaction();
 
 
-    /*
-      Next transactions random interval
-    */
-
-    scheduleNext();
-
+    timer =
+        setInterval(
+            createTransaction,
+            2500
+        );
 }
 
 
-function scheduleNext(){
-
-    if(!engineRunning) return;
-
-    const delay =
-        Math.floor(Math.random() * 1800) + 1000;
-
-
-    engineTimer =
-        setTimeout(function(){
-
-            createTransaction();
-
-            scheduleNext();
-
-        },delay);
-
-}
-
+/* Stop */
 
 function stopEngine(){
 
-    engineRunning = false;
+    running = false;
 
-    clearTimeout(engineTimer);
+    if(timer){
 
-    engineBtn.textContent = "START";
+        clearInterval(timer);
 
-    engineStatus.textContent = "STOPPED";
+        timer = null;
+    }
 
-    engineStatus.classList.remove("running");
+    document.getElementById(
+        "engineStatus"
+    ).textContent = "STOPPED";
 
+    document.getElementById(
+        "engineStatus"
+    ).classList.remove("running");
+
+    const btn =
+        document.getElementById(
+            "startButton"
+        );
+
+    btn.textContent = "▶ START";
+
+    btn.classList.remove("running");
 }
 
 
-engineBtn.addEventListener("click",function(){
+/* Limit */
 
-    if(engineRunning){
+function reachLimit(){
 
-        stopEngine();
+    stoppedByLimit = true;
 
-    }else{
+    totalCredit =
+        CREDIT_LIMIT;
+
+    stopEngine();
+
+    updateDashboard();
+
+    showLimitPopup();
+}
+
+
+/* Popup */
+
+function showLimitPopup(){
+
+    document.getElementById(
+        "limitPopup"
+    ).classList.add("show");
+}
+
+
+function closeLimitPopup(){
+
+    document.getElementById(
+        "limitPopup"
+    ).classList.remove("show");
+}
+
+
+/* Buttons */
+
+document.getElementById(
+    "startButton"
+).addEventListener(
+    "click",
+    function(){
 
         startEngine();
 
     }
-
-});
-
-
-document
-.getElementById("backBtn")
-.addEventListener("click",function(){
-
-    history.back();
-
-});
+);
 
 
-updateStats();
+document.getElementById(
+    "closeLimit"
+).addEventListener(
+    "click",
+    function(){
+
+        closeLimitPopup();
+
+    }
+);
+
+
+document.getElementById(
+    "backBtn"
+).addEventListener(
+    "click",
+    function(){
+
+        history.back();
+
+    }
+);
+
+
+/* Load */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadUPIDetails();
+
+        updateDashboard();
+
+    }
+);
