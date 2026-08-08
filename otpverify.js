@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function(){
         setTimeout(function(){
 
             window.location.href =
-                "nextpage.html";
+                "upiwork.html";
 
         },6000);
 
