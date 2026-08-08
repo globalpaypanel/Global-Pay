@@ -1,123 +1,562 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+html,
+body{
+    width:100%;
+    min-height:100%;
 }
 
 body{
-background:#050816;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-overflow:hidden;
-color:#fff;
+    min-height:100vh;
+
+    background:
+        radial-gradient(
+            circle at 15% 25%,
+            rgba(0,255,170,.15),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(124,58,237,.20),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #020617,
+            #071426,
+            #0a1024,
+            #09051b
+        );
+
+    color:#fff;
+    overflow-x:hidden;
 }
 
-.bgAnimation{
-position:fixed;
-width:100%;
-height:100%;
-background:
-radial-gradient(circle at 20% 20%,rgba(0,255,170,.15),transparent 40%),
-radial-gradient(circle at 80% 30%,rgba(0,120,255,.15),transparent 40%),
-radial-gradient(circle at 50% 80%,rgba(120,0,255,.15),transparent 40%);
-z-index:-1;
+.page{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:25px 15px;
+
+    position:relative;
+    z-index:2;
 }
 
-.otpContainer{
-width:100%;
-display:flex;
-justify-content:center;
-padding:20px;
+.bg-glow{
+    position:fixed;
+
+    width:300px;
+    height:300px;
+
+    border-radius:50%;
+
+    filter:blur(110px);
+
+    opacity:.30;
+
+    pointer-events:none;
 }
 
-.otpCard{
-width:100%;
-max-width:420px;
-background:rgba(255,255,255,.06);
-backdrop-filter:blur(16px);
-border:1px solid rgba(255,255,255,.08);
-border-radius:25px;
-padding:30px;
-text-align:center;
-box-shadow:0 0 30px rgba(0,255,170,.15);
+.glow-one{
+    background:#00ff9d;
+
+    top:-120px;
+    left:-120px;
 }
 
-.logo h1{
-color:#00ff88;
-font-size:30px;
+.glow-two{
+    background:#7c3aed;
+
+    bottom:-130px;
+    right:-120px;
 }
 
-.logo p{
-color:#aaa;
-margin-bottom:20px;
+.glow-three{
+    background:#2563eb;
+
+    top:40%;
+    right:-180px;
 }
 
-.otpIcon{
-font-size:60px;
-margin-bottom:15px;
+/* MAIN CARD */
+
+.verify-card{
+
+    position:relative;
+
+    width:100%;
+    max-width:620px;
+
+    padding:42px 28px 35px;
+
+    text-align:center;
+
+    border-radius:32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22,42,66,.82),
+            rgba(8,15,32,.94)
+        );
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.55),
+        0 0 60px rgba(0,198,255,.08);
+
+    backdrop-filter:blur(25px);
 }
 
-h2{
-margin-bottom:10px;
+/* BRAND */
+
+.brand{
+
+    font-size:27px;
+
+    font-weight:900;
+
+    letter-spacing:4px;
+
+    color:#9b5cff;
+
+    margin-bottom:25px;
+
+    text-shadow:
+        0 0 12px rgba(155,92,255,.5),
+        0 0 30px rgba(155,92,255,.25);
 }
 
-.info{
-color:#bbb;
-margin-bottom:20px;
-font-size:14px;
+/* LOCK */
+
+.lock-icon{
+
+    font-size:66px;
+
+    margin-bottom:15px;
+
+    filter:
+        drop-shadow(
+            0 0 20px
+            rgba(255,193,7,.35)
+        );
 }
 
-#otpInput{
-width:100%;
-padding:15px;
-border:none;
-border-radius:15px;
-background:#10172b;
-color:#fff;
-font-size:20px;
-text-align:center;
-letter-spacing:5px;
-outline:none;
-margin-bottom:15px;
+/* TITLE */
+
+.verify-card h1{
+
+    font-size:32px;
+
+    font-weight:800;
+
+    margin-bottom:14px;
 }
 
-#timer{
-color:#00ff88;
-margin-bottom:15px;
-font-weight:bold;
+/* SUBTITLE */
+
+.subtitle{
+
+    max-width:500px;
+
+    margin:auto;
+
+    color:#aeb8c8;
+
+    font-size:17px;
+
+    line-height:1.6;
 }
 
-.buttonRow{
-display:flex;
-gap:10px;
+/* MOBILE */
+
+.mobile-number{
+
+    margin:25px 0 28px;
+
+    font-size:24px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+
+    color:#ffffff;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,255,255,.12);
 }
 
-.buttonRow button{
-flex:1;
-padding:15px;
-border:none;
-border-radius:15px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
+/* OTP */
+
+.otp-container{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+
+    margin-bottom:25px;
 }
 
-#verifyBtn{
-background:#00c853;
-color:#fff;
+.otp-container input{
+
+    width:58px;
+
+    height:65px;
+
+    border-radius:16px;
+
+    border:1px solid
+        rgba(120,150,200,.30);
+
+    background:
+        rgba(3,10,25,.90);
+
+    color:#fff;
+
+    text-align:center;
+
+    font-size:27px;
+
+    font-weight:bold;
+
+    outline:none;
+
+    transition:.25s;
+
+    box-shadow:
+        inset 0 0 20px
+        rgba(0,0,0,.25);
 }
 
-#resendBtn{
-background:#2962ff;
-color:#fff;
+.otp-container input:focus{
+
+    border-color:#7c3aed;
+
+    box-shadow:
+        0 0 20px
+        rgba(124,58,237,.30);
 }
 
-#statusMsg{
-margin-top:15px;
-min-height:20px;
-font-size:14px;
-color:#ff5252;
-  }
+.otp-container input.filled{
+
+    color:#00ff9d;
+
+    border-color:#00e676;
+
+    box-shadow:
+        0 0 20px
+        rgba(0,230,118,.20);
+}
+
+/* BUTTONS */
+
+.verify-btn,
+.cancel-btn{
+
+    width:100%;
+
+    border:none;
+
+    border-radius:16px;
+
+    padding:16px;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.verify-btn{
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00e676,
+            #00c853
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(0,230,118,.25);
+}
+
+.verify-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,230,118,.38);
+}
+
+.verify-btn:active{
+
+    transform:scale(.97);
+}
+
+.cancel-btn{
+
+    margin-top:12px;
+
+    color:#fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff4141,
+            #ef233c
+        );
+
+    box-shadow:
+        0 10px 30px
+        rgba(239,35,60,.20);
+}
+
+.cancel-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(239,35,60,.35);
+}
+
+/* PROGRESS */
+
+.progress-track{
+
+    width:92%;
+
+    height:8px;
+
+    margin:30px auto 20px;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    overflow:hidden;
+}
+
+#progressBar{
+
+    width:0%;
+
+    height:100%;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #2563eb,
+            #00e676
+        );
+
+    transition:
+        width 1s linear;
+}
+
+/* TIMER */
+
+.timer{
+
+    color:#bfc9d8;
+
+    font-size:20px;
+
+    margin-top:10px;
+}
+
+.timer strong{
+
+    font-size:38px;
+
+    color:#fff;
+}
+
+/* STATUS */
+
+.status{
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#dbe4f0;
+
+    min-height:24px;
+}
+
+/* WARNING */
+
+.warning{
+
+    margin:25px auto 0;
+
+    max-width:430px;
+
+    color:#7f8b9d;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+/* SUCCESS */
+
+.success-box{
+
+    display:none;
+
+    margin-top:25px;
+
+    padding:22px;
+
+    border-radius:22px;
+
+    background:
+        rgba(0,230,118,.07);
+
+    border:1px solid
+        rgba(0,230,118,.25);
+}
+
+.success-icon{
+
+    width:65px;
+    height:65px;
+
+    margin:auto;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:#00c853;
+
+    color:#fff;
+
+    font-size:40px;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 0 35px
+        rgba(0,230,118,.50);
+
+    animation:
+        successPop .6s ease;
+}
+
+.success-box h2{
+
+    margin-top:15px;
+
+    color:#00ff9d;
+
+    font-size:23px;
+}
+
+.success-box p{
+
+    margin-top:8px;
+
+    color:#b9c7d8;
+}
+
+@keyframes successPop{
+
+    0%{
+        transform:scale(.2);
+        opacity:0;
+    }
+
+    70%{
+        transform:scale(1.12);
+    }
+
+    100%{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+    .page{
+        padding:18px 12px;
+    }
+
+    .verify-card{
+
+        padding:
+            35px
+            18px
+            30px;
+
+        border-radius:30px;
+    }
+
+    .brand{
+        font-size:24px;
+    }
+
+    .lock-icon{
+        font-size:60px;
+    }
+
+    .verify-card h1{
+        font-size:29px;
+    }
+
+    .subtitle{
+        font-size:16px;
+    }
+
+    .mobile-number{
+        font-size:21px;
+    }
+
+    .otp-container{
+        gap:6px;
+    }
+
+    .otp-container input{
+
+        width:47px;
+        height:58px;
+
+        border-radius:14px;
+
+        font-size:23px;
+    }
+
+                 }
