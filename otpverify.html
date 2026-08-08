@@ -1,88 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GLOBAL PAY | OTP VERIFY</title>
+<title>Global Pay - Verify Mobile</title>
 
 <link rel="stylesheet" href="otpverify.css">
-
 </head>
 
 <body>
 
-<div class="bgAnimation"></div>
+<div class="bg-glow glow-one"></div>
+<div class="bg-glow glow-two"></div>
+<div class="bg-glow glow-three"></div>
 
-<div class="otpContainer">
+<main class="page">
 
-<div class="otpCard">
+    <section class="verify-card">
 
-<div class="logo">
+        <div class="brand">
+            GLOBAL PAY
+        </div>
 
-<h1>GLOBAL PAY</h1>
+        <div class="lock-icon">
+            🔐
+        </div>
 
-<p>Secure OTP Verification</p>
+        <h1>
+            Verify Mobile Number
+        </h1>
 
-</div>
+        <p class="subtitle">
+            A verification code has been sent to your
+            registered mobile number.
+        </p>
 
-<div class="otpIcon">
+        <div id="mobileNumber" class="mobile-number">
+            Loading...
+        </div>
 
-📲
+        <div class="otp-container">
 
-</div>
+            <input id="otp1" maxlength="1" inputmode="numeric">
+            <input id="otp2" maxlength="1" inputmode="numeric">
+            <input id="otp3" maxlength="1" inputmode="numeric">
+            <input id="otp4" maxlength="1" inputmode="numeric">
+            <input id="otp5" maxlength="1" inputmode="numeric">
+            <input id="otp6" maxlength="1" inputmode="numeric">
 
-<h2>
+        </div>
 
-VERIFY UPI
+        <button id="verifyBtn" class="verify-btn">
+            VERIFY
+        </button>
 
-</h2>
+        <button id="cancelBtn" class="cancel-btn">
+            CANCEL
+        </button>
 
-<p class="info">
+        <div class="progress-track">
+            <div id="progressBar"></div>
+        </div>
 
-OTP has been sent successfully to your registered mobile number.
+        <div class="timer">
+            <strong id="seconds">45</strong>
+            <span> Seconds Remaining</span>
+        </div>
 
-</p>
+        <div id="status" class="status">
+            Waiting for OTP...
+        </div>
 
-<input
-type="text"
-id="otpInput"
-maxlength="6"
-placeholder="Enter OTP">
+        <p class="warning">
+            Please don't close this page while verification
+            is in progress.
+        </p>
 
-<p id="timer">
+        <div id="successBox" class="success-box">
 
-Waiting for OTP...
+            <div class="success-icon">
+                ✓
+            </div>
 
-</p>
+            <h2>
+                Verification Successful
+            </h2>
 
-<div class="buttonRow">
+            <p>
+                Mobile number verified successfully.
+            </p>
 
-<button id="verifyBtn">
+        </div>
 
-VERIFY
+    </section>
 
-</button>
-
-<button id="resendBtn">
-
-RESEND OTP
-
-</button>
-
-</div>
-
-<p id="statusMsg"></p>
-
-</div>
-
-</div>
+</main>
 
 <script src="otpverify.js"></script>
 
 </body>
-
 </html>
