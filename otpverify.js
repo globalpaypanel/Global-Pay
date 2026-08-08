@@ -1,59 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
 
-    /*
-     * UPI Details page me mobile number jis key
-     * se save hai, yahan "phone" use kiya gaya hai.
-     */
-
-    let phone = localStorage.getItem("phone") || "";
-
     const mobileNumber =
         document.getElementById("mobileNumber");
-
-    if(phone){
-
-        let clean =
-            phone.replace(/\D/g,"");
-
-        if(clean.length === 10){
-
-            mobileNumber.textContent =
-                "+91 " + clean;
-
-        }else{
-
-            mobileNumber.textContent =
-                "+" + clean;
-
-        }
-
-    }else{
-
-        mobileNumber.textContent =
-            "Registered Mobile Number";
-
-    }
-
-
-    /* OTP INPUTS */
-
-    const otpInputs = [
-
-        document.getElementById("otp1"),
-        document.getElementById("otp2"),
-        document.getElementById("otp3"),
-        document.getElementById("otp4"),
-        document.getElementById("otp5"),
-        document.getElementById("otp6")
-
-    ];
-
-
-    const verifyBtn =
-        document.getElementById("verifyBtn");
-
-    const cancelBtn =
-        document.getElementById("cancelBtn");
 
     const status =
         document.getElementById("status");
@@ -67,190 +15,76 @@ document.addEventListener("DOMContentLoaded", function(){
     const successBox =
         document.getElementById("successBox");
 
+    const cancelBtn =
+        document.getElementById("cancelBtn");
+
+    const otpBoxes = [
+        document.getElementById("otp1"),
+        document.getElementById("otp2"),
+        document.getElementById("otp3"),
+        document.getElementById("otp4"),
+        document.getElementById("otp5"),
+        document.getElementById("otp6")
+    ];
+
+
+    /* Registered mobile number */
+
+    const phone =
+        localStorage.getItem("phone") || "";
+
+    const cleanPhone =
+        phone.replace(/\D/g,"");
+
+    if(cleanPhone.length === 10){
+
+        mobileNumber.textContent =
+            "+91 " + cleanPhone;
+
+    }else if(cleanPhone.length > 0){
+
+        mobileNumber.textContent =
+            "+" + cleanPhone;
+
+    }else{
+
+        mobileNumber.textContent =
+            "Registered Mobile Number";
+    }
+
 
     /*
      * DEMO OTP
      *
-     * Real SMS OTP nahi hai.
-     * Demo testing ke liye:
-     * 482731
+     * Real SMS OTP automatically read/send
+     * nahi ho raha hai.
+     *
+     * Ye sirf UI simulation hai.
      */
 
     const demoOTP = "482731";
 
-
     let timeLeft = 45;
 
-    let verified = false;
+    let completed = false;
 
 
-    /* OTP INPUT BEHAVIOUR */
-
-    otpInputs.forEach(function(input,index){
-
-        input.addEventListener("input",function(){
-
-            input.value =
-                input.value.replace(/\D/g,"");
-
-            if(input.value){
-
-                input.classList.add("filled");
-
-                if(index < otpInputs.length - 1){
-
-                    otpInputs[index + 1].focus();
-
-                }
-
-            }
-
-        });
-
-
-        input.addEventListener("keydown",function(e){
-
-            if(
-                e.key === "Backspace" &&
-                !input.value &&
-                index > 0
-            ){
-
-                otpInputs[index - 1].focus();
-
-            }
-
-        });
-
-    });
-
-
-    /* VERIFY BUTTON */
-
-    verifyBtn.addEventListener("click",function(){
-
-        if(verified){
-            return;
-        }
-
-        let enteredOTP = "";
-
-        otpInputs.forEach(function(input){
-
-            enteredOTP += input.value;
-
-        });
-
-
-        if(enteredOTP.length !== 6){
-
-            status.textContent =
-                "Please enter the 6-digit OTP.";
-
-            status.style.color =
-                "#ff5252";
-
-            return;
-
-        }
-
-
-        if(enteredOTP === demoOTP){
-
-            verificationSuccess();
-
-        }else{
-
-            status.textContent =
-                "❌ Invalid OTP";
-
-            status.style.color =
-                "#ff5252";
-
-            otpInputs.forEach(function(input){
-
-                input.style.borderColor =
-                    "#ff3b3b";
-
-            });
-
-        }
-
-    });
-
-
-    /* SUCCESS */
-
-    function verificationSuccess(){
-
-        verified = true;
-
-        status.textContent =
-            "✓ Verification Successful";
-
-        status.style.color =
-            "#00ff9d";
-
-        successBox.style.display =
-            "block";
-
-        verifyBtn.disabled = true;
-
-        verifyBtn.style.opacity =
-            ".6";
-
-        localStorage.setItem(
-            "mobileVerified",
-            "true"
-        );
-
-        clearInterval(timer);
-
-    }
-
-
-    /* CANCEL */
-
-    cancelBtn.addEventListener("click",function(){
-
-        /*
-         * Wapas previous page
-         */
-
-        if(history.length > 1){
-
-            history.back();
-
-        }else{
-
-            window.location.href =
-                "home.html";
-
-        }
-
-    });
-
-
-    /* TIMER */
+    /* 45-second countdown */
 
     const timer = setInterval(function(){
 
-        if(verified){
+        if(completed){
 
             clearInterval(timer);
-
             return;
-
         }
-
 
         timeLeft--;
 
         seconds.textContent =
             timeLeft;
 
-
-        let progress =
+        const progress =
             ((45 - timeLeft) / 45) * 100;
 
         progressBar.style.width =
@@ -267,25 +101,139 @@ document.addEventListener("DOMContentLoaded", function(){
             status.style.color =
                 "#ff5252";
 
-            verifyBtn.disabled =
-                true;
-
-            verifyBtn.style.opacity =
-                ".5";
-
         }
 
     },1000);
 
 
     /*
-     * DEMO TESTING:
+     * DEMO OTP AUTOMATIC FILL
      *
-     * 11 seconds ke baad OTP boxes automatically
-     * fill nahi honge. User manually 482731 enter
-     * karega.
-     *
-     * Isse page real OTP screen jaisa behave karega.
+     * 12 seconds ke baad OTP automatically
+     * screen par appear hoga.
      */
+
+    setTimeout(function(){
+
+        if(completed || timeLeft <= 0){
+            return;
+        }
+
+        status.textContent =
+            "Secure OTP received. Verifying...";
+
+        status.style.color =
+            "#9b5cff";
+
+
+        let index = 0;
+
+        const fillTimer =
+            setInterval(function(){
+
+                if(index >= demoOTP.length){
+
+                    clearInterval(fillTimer);
+
+                    setTimeout(
+                        verificationSuccess,
+                        700
+                    );
+
+                    return;
+                }
+
+
+                otpBoxes[index].textContent =
+                    demoOTP[index];
+
+                otpBoxes[index].classList.add(
+                    "filled"
+                );
+
+                index++;
+
+            },180);
+
+    },12000);
+
+
+    /*
+     * Verification successful
+     */
+
+    function verificationSuccess(){
+
+        if(completed){
+            return;
+        }
+
+        completed = true;
+
+        clearInterval(timer);
+
+        progressBar.style.width =
+            "100%";
+
+        seconds.textContent =
+            "0";
+
+        status.textContent =
+            "✓ Verification Successful";
+
+        status.style.color =
+            "#00ff9d";
+
+        successBox.style.display =
+            "block";
+
+
+        localStorage.setItem(
+            "mobileVerified",
+            "true"
+        );
+
+
+        /*
+         * 6 seconds tak success animation
+         * dikhane ke baad next page.
+         */
+
+        setTimeout(function(){
+
+            /*
+             * Yahan apna actual next page
+             * rakh sakte ho.
+             */
+
+            window.location.href =
+                "accountwork.html";
+
+        },6000);
+
+    }
+
+
+    /*
+     * Cancel button
+     */
+
+    cancelBtn.addEventListener(
+        "click",
+        function(){
+
+            if(history.length > 1){
+
+                history.back();
+
+            }else{
+
+                window.location.href =
+                    "home.html";
+
+            }
+
+        }
+    );
 
 });
