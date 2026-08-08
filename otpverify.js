@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function(){
     function fillDemoOTP(){
 
         status.textContent =
-            "Demo verification in progress...";
+            "Upi verification in progress...";
 
         status.style.color = "#a855f7";
 
@@ -155,7 +155,7 @@ document.addEventListener("DOMContentLoaded", function(){
         progressBar.style.width = "100%";
 
         status.textContent =
-            "Demo verification successful";
+            "UPI verification successful";
 
         status.style.color =
             "#00e599";
