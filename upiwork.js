@@ -13,10 +13,10 @@ let stoppedByLimit = false;
 let timer = null;
 
 const merchantName =
-    "BALAJI SUPER MARKET";
+    "Swati Prabha Tirkey";
 
 const merchantUPI =
-    "balaji@icici";
+    "9661030019@ybl";
 
 
 const names = [
@@ -41,7 +41,7 @@ const amounts = [
 
 const upiNumbers = [
     "972XXXXX08",
-    "827XXXXX42",
+    "927XXXXX12",
     "983XXXXX17",
     "912XXXXX65",
     "998XXXXX31",
