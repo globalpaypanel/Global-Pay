@@ -8,8 +8,8 @@ if (
     (user === "AJAY@MU2026" && pass === "993428") ||
     (user === "PARAS@7895" && pass === "993428")  ||
     (user === "PULKIT2002" && pass === "993428")  ||
-    (user === "Kamlesh@7878" && pass === "993428") ||
-    (user === "Ajay@4488" && pass === "480580")
+    (user === "ADI2001" && pass === "11283980") ||
+    (user === "Ajay" && pass === "123456")
 ) {
 
 msg.style.color="#00ff88";
