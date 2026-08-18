@@ -103,6 +103,94 @@ background:linear-gradient(90deg,#FFD700,#FF9800);
 color:#000;
 }
 
+
+ .balancePopup{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:99999;
+
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,0,0,.78);
+    backdrop-filter:blur(12px);
+}
+
+.balanceBox{
+    width:90%;
+    max-width:380px;
+    padding:30px 24px;
+    border-radius:24px;
+    text-align:center;
+    color:#fff;
+
+    background:linear-gradient(
+        145deg,
+        #1e2a46,
+        #091225
+    );
+
+    border:1px solid rgba(255,210,40,.35);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.7),
+        0 0 35px rgba(255,193,7,.15);
+
+    animation:popupShow .3s ease;
+}
+
+.infoIcon{
+    width:62px;
+    height:62px;
+    margin:0 auto 15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+    font-size:30px;
+
+    background:rgba(255,193,7,.12);
+    border:1px solid rgba(255,193,7,.35);
+    box-shadow:0 0 25px rgba(255,193,7,.2);
+}
+
+.balanceBox h2{
+    color:#ffd43b;
+    font-size:22px;
+    margin-bottom:14px;
+}
+
+.balanceBox p{
+    color:#d7deeb;
+    font-size:15px;
+    line-height:24px;
+    margin-bottom:20px;
+}
+
+.autoBack{
+    font-size:13px;
+    color:#8fa4c7;
+}
+
+.autoBack b{
+    color:#ffd43b;
+    font-size:16px;
+}
+
+@keyframes popupShow{
+    from{
+        opacity:0;
+        transform:scale(.8);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+ }
 </style>
 </head>
 
@@ -409,6 +497,24 @@ else if (currentUser === "Ajay@4488") {
     document.getElementById("balance").innerHTML = "₹482,980.00";
 }
 </script>
- 
+
+ <div id="balancePopup" class="balancePopup">
+    <div class="balanceBox">
+
+        <div class="infoIcon">⚠️</div>
+
+        <h2>Balance Verification Required</h2>
+
+        <p>
+            Please check your available balance before
+            proceeding with the withdrawal request.
+        </p>
+
+        <div class="autoBack">
+            Returning to previous page in <b><span id="countdown">5</span></b> seconds...
+        </div>
+
+    </div>
+ </div>
 </body>
 </html>
