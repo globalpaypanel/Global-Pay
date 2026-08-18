@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
             setTimeout(function(){
 
-                window.location.href = "usdtwork-activate.html";
+                window.location.href = "usdtwork.html";
 
             },800);
 
