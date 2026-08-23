@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 
-
+  
   <script>
 if (
     localStorage.getItem("globalPayRegistered") !== "true" &&
@@ -46,6 +46,10 @@ if (
 <input type="text" id="userid" placeholder="User ID">
 
 <input type="password" id="password" placeholder="Password">
+
+  <div class="register-link">
+    New user? <span onclick="location.href='register.html'">Register</span>
+  </div>
 
 <button class="btn" onclick="login()">
 🔑 LOGIN
