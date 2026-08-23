@@ -223,6 +223,46 @@ input::placeholder{
     font-weight:bold;
     cursor:pointer;
 }
+
+.mobileBox{
+    display:flex;
+    align-items:center;
+    width:100%;
+    border-radius:13px;
+    background:rgba(3,10,28,.88);
+    border:1px solid rgba(255,255,255,.08);
+    overflow:hidden;
+    transition:.25s;
+}
+
+.mobileBox:focus-within{
+    border-color:#00cfff;
+    box-shadow:
+        0 0 0 2px rgba(0,207,255,.08),
+        0 0 18px rgba(0,207,255,.12);
+}
+
+.countryCode{
+    padding-left:15px;
+    color:#00d9ff;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.mobileBox input{
+    border:none;
+    background:transparent;
+    box-shadow:none;
+    border-radius:0;
+    flex:1;
+}
+
+.mobileBox input:focus{
+    border:none;
+    box-shadow:none;
+        }
+
+    
 </style>
 </head>
 
@@ -249,11 +289,16 @@ input::placeholder{
     >
 
     <label>Mobile Number</label>
+    <div class="mobileBox">
+    <span class="countryCode">+91</span>
     <input
         id="mobile"
         type="tel"
-        maxlength="13"
-        placeholder="+91XXXXXXXXXX"
+        inputmode="numeric"
+        maxlength="10"
+        placeholder="Enter 10 digit mobile number"
+    >
+    </div>
     >
 
     <label>Email Address</label>
@@ -403,7 +448,11 @@ function registerUser(){
 
     /* Mobile validation: +91 + exactly 10 digits */
 
-    if(!/^\+91[6-9][0-9]{9}$/.test(mobile)){
+    if(!/^[6-9][0-9]{9}$/.test(mobile)){
+    error.innerHTML =
+    "❌ Invalid mobile number. Enter exactly 10 digits.";
+    return;
+}
 
         error.innerHTML=
         "❌ Invalid mobile number. Use +91 followed by 10 digits.";
@@ -494,9 +543,9 @@ function registerUser(){
     );
 
     localStorage.setItem(
-        "globalPayMobile",
-        mobile
-    );
+    "globalPayMobile",
+    "+91" + mobile
+);
 
     localStorage.setItem(
         "globalPayEmail",
