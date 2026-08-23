@@ -1,33 +1,44 @@
 function login() {
 
-let user = document.getElementById("userid").value.trim();
-let pass = document.getElementById("password").value.trim();
-let msg = document.getElementById("msg");
+    const user = document.getElementById("userid").value.trim();
+    const pass = document.getElementById("password").value;
+    const msg = document.getElementById("msg");
 
-if (
-    (user === "AJAY@MU2026" && pass === "993428") ||
-    (user === "PARAS@7895" && pass === "993428")  ||
-    (user === "PULKIT2002" && pass === "993428")  ||
-    (user === "ADI2001" && pass === "11283980") ||
-    (user === "Ajay" && pass === "123456")
-) {
+    // Registered User ID & Password
+    const registeredUser =
+        localStorage.getItem("globalPayUserId");
 
-msg.style.color="#00ff88";
-msg.innerHTML="✅ Login Successful...";
-    localStorage.setItem("userid", user);
+    const registeredPassword =
+        localStorage.getItem("globalPayPassword");
 
-setTimeout(function(){
-window.location.href = "splash.html";
-},1000);
 
-}else{
+    // Check login
+    if (
+        registeredUser &&
+        registeredPassword &&
+        user === registeredUser &&
+        pass === registeredPassword
+    ) {
 
-msg.style.color="#ff4d4d";
-msg.innerHTML="❌ Invalid User ID or Password";
+        msg.style.color = "#00ff88";
+        msg.innerHTML = "✅ Login Successful...";
 
+        // Save currently logged-in user
+        localStorage.setItem("userid", user);
+
+        // Open splash page
+        setTimeout(function () {
+            window.location.href = "splash.html";
+        }, 1000);
+
+    } else {
+
+        msg.style.color = "#ff4d4d";
+        msg.innerHTML =
+            "❌ Invalid User ID or Password";
+    }
 }
 
-}
 function toggleTheme() {
     document.body.classList.toggle("light-mode");
 
