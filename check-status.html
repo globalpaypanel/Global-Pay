@@ -2,60 +2,362 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Check Status Activation</title>
+<title>Activate Code - Global Pay</title>
 
-<link rel="stylesheet" href="check-status.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+
+    color:#fff;
+
+    background:
+        radial-gradient(circle at 20% 20%,rgba(255,193,7,.18),transparent 30%),
+        radial-gradient(circle at 80% 80%,rgba(255,120,0,.14),transparent 35%),
+        linear-gradient(135deg,#030712,#0b1224,#111827);
+}
+
+/* Cinematic background */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:-50%;
+    
+    background:
+        conic-gradient(
+            from 0deg,
+            transparent,
+            rgba(255,193,7,.10),
+            transparent,
+            rgba(255,255,255,.05),
+            transparent
+        );
+
+    animation:cinematic 12s linear infinite;
+}
+
+@keyframes cinematic{
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* Main card */
+
+.activateCard{
+    position:relative;
+    z-index:2;
+
+    width:90%;
+    max-width:410px;
+
+    padding:32px 25px;
+
+    text-align:center;
+
+    border-radius:28px;
+
+    background:rgba(255,255,255,.07);
+    backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,215,0,.25);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.65),
+        0 0 45px rgba(255,193,7,.12);
+
+    animation:cardIn .7s ease;
+}
+
+@keyframes cardIn{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.92);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.logo{
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff4a3,
+            #ffd700,
+            #ff9800,
+            #fff4a3
+        );
+
+    background-size:250%;
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    animation:goldText 3s linear infinite;
+}
+
+@keyframes goldText{
+    from{
+        background-position:0%;
+    }
+
+    to{
+        background-position:250%;
+    }
+}
+
+.subtitle{
+    margin-top:8px;
+    color:#aab6cc;
+    font-size:14px;
+}
+
+.icon{
+    width:78px;
+    height:78px;
+
+    margin:25px auto 20px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    font-size:35px;
+
+    background:rgba(255,193,7,.10);
+
+    border:1px solid rgba(255,215,0,.35);
+
+    box-shadow:
+        0 0 25px rgba(255,193,7,.18),
+        inset 0 0 20px rgba(255,193,7,.08);
+
+    animation:pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+        box-shadow:0 0 20px rgba(255,193,7,.15);
+    }
+
+    50%{
+        transform:scale(1.07);
+        box-shadow:0 0 40px rgba(255,193,7,.35);
+    }
+}
+
+h2{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.info{
+    color:#aebbd0;
+    font-size:14px;
+    line-height:22px;
+    margin-bottom:22px;
+}
+
+input{
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    outline:none;
+
+    background:rgba(0,0,0,.25);
+
+    color:#fff;
+
+    font-size:16px;
+
+    text-align:center;
+}
+
+input:focus{
+    border-color:#ffd700;
+
+    box-shadow:
+        0 0 20px rgba(255,215,0,.12);
+}
+
+.activateBtn{
+    width:100%;
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:800;
+
+    color:#171000;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff0a3,
+            #ffd700,
+            #ff9800
+        );
+
+    box-shadow:
+        0 8px 25px rgba(255,193,7,.22);
+
+    transition:.25s;
+}
+
+.activateBtn:active{
+    transform:scale(.97);
+}
+
+#error{
+    min-height:20px;
+    margin-top:12px;
+
+    color:#ff5c5c;
+    font-size:13px;
+}
+
+.secure{
+    margin-top:22px;
+    color:#71809b;
+    font-size:11px;
+}
+</style>
 </head>
 
 <body>
 
-<div class="bg"></div>
+<div class="activateCard">
 
-<div class="activation-card">
+    <div class="logo">
+        GLOBAL PAY
+    </div>
 
-    <div class="lock">🔒</div>
+    <div class="subtitle">
+        Secure Payment Pannel
+    </div>
 
-    <h1>
-        CHECK STATUS<br>
-        ACTIVATION
-    </h1>
+    <div class="icon">
+        🔐
+    </div>
 
-    <p class="subtitle">
-        Enter Activation Code
-    </p>
+    <h2>
+        Check Status
+    </h2>
+
+    <div class="info">
+        Enter your authorized activation code
+        to continue to the check status section.
+    </div>
 
     <input
         type="password"
-        id="activationCode"
-        placeholder="Activation Code"
+        id="activateCode"
+        placeholder="Enter Activate Code"
+        inputmode="numeric"
         autocomplete="off"
     >
 
-    <p id="message"></p>
+    <button
+        class="activateBtn"
+        onclick="activateDeposit()"
+    >
+        ✦ ACTIVATE CODE
+    </button>
 
-    <div class="buttons">
+    <div id="error"></div>
 
-        <button
-            type="button"
-            class="verify"
-            id="verifyBtn">
-            VERIFY
-        </button>
-
-        <button
-            type="button"
-            class="cancel"
-            id="cancelBtn">
-            CANCEL
-        </button>
-
+    <div class="secure">
+        🔒 Secure access • Global Pay
     </div>
 
 </div>
 
-<script src="check-status.js"></script>
+<script>
+
+function activateDeposit(){
+
+    const code =
+        document.getElementById("activateCode").value.trim();
+
+    const error =
+        document.getElementById("error");
+
+
+    if(code === "96619300"){
+
+        error.style.color = "#00e676";
+        error.innerText = "✓ Activation successful";
+
+        setTimeout(function(){
+
+            location.href = "checkstatusshow.html";
+
+        },500);
+
+    }
+
+    else{
+
+        error.style.color = "#ff5c5c";
+        error.innerText =
+            "Invalid activation code. Please try again.";
+
+    }
+
+}
+
+document
+.getElementById("activateCode")
+.addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+        activateDeposit();
+    }
+
+});
+
+</script>
 
 </body>
-</html>
+    </html>
