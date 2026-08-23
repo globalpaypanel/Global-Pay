@@ -365,12 +365,17 @@ input::placeholder{
 
     <div class="login-link">
     Already registered?
-    <span
-        style="color:#00d9ff;font-weight:bold;cursor:pointer;"
-        onclick="window.location.href='index.html';">
+    <span onclick="goToLogin()">
         LOGIN
     </span>
-    </div>
+</div>
+
+<script>
+function goToLogin(){
+    localStorage.setItem("allowLoginPage", "true");
+    location.href = "index.html";
+}
+</script>
 
 </div>
 
