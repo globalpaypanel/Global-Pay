@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Global Pay - Registration</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px 0;
+    color:#fff;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(74,70,255,.28),transparent 35%),
+        radial-gradient(circle at 80% 30%,rgba(0,210,255,.20),transparent 35%),
+        radial-gradient(circle at 50% 90%,rgba(190,0,255,.20),transparent 40%),
+        linear-gradient(135deg,#02040c,#071126,#030713);
+    background-size:200% 200%;
+    animation:cinematicBG 12s ease infinite;
+}
+
+@keyframes cinematicBG{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.register-box{
+    width:92%;
+    max-width:410px;
+    padding:30px 24px;
+    border-radius:28px;
+
+    background:rgba(16,25,48,.78);
+    border:1px solid rgba(255,255,255,.13);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.65),
+        0 0 45px rgba(0,174,255,.12);
+
+    animation:boxIn .7s ease;
+}
+
+@keyframes boxIn{
+    from{
+        opacity:0;
+        transform:translateY(35px) scale(.96);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.logo{
+    text-align:center;
+    font-size:38px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    background:linear-gradient(
+        90deg,
+        #5968ff,
+        #b83cff,
+        #00d9ff,
+        #5968ff
+    );
+
+    background-size:300% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+
+    animation:logoGlow 5s linear infinite;
+}
+
+@keyframes logoGlow{
+    0%{background-position:0%}
+    100%{background-position:300%}
+}
+
+.subtitle{
+    text-align:center;
+    margin-top:6px;
+    margin-bottom:25px;
+    color:#aebbd6;
+    font-size:15px;
+}
+
+.register-title{
+    text-align:center;
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+label{
+    display:block;
+    margin:14px 0 7px;
+    font-size:14px;
+    font-weight:bold;
+    color:#e7edff;
+}
+
+input{
+    width:100%;
+    padding:14px 15px;
+
+    border-radius:13px;
+    border:1px solid rgba(255,255,255,.08);
+    outline:none;
+
+    background:rgba(3,10,28,.88);
+    color:#fff;
+
+    font-size:16px;
+    transition:.25s;
+}
+
+input:focus{
+    border-color:#00cfff;
+    box-shadow:
+        0 0 0 2px rgba(0,207,255,.08),
+        0 0 18px rgba(0,207,255,.12);
+}
+
+input::placeholder{
+    color:#71809d;
+}
+
+.terms{
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    margin-top:18px;
+    color:#aebbd6;
+    font-size:13px;
+    line-height:19px;
+}
+
+.terms input{
+    width:17px;
+    height:17px;
+    margin-top:1px;
+    accent-color:#00d084;
+}
+
+.terms a{
+    color:#00d9ff;
+    text-decoration:none;
+}
+
+#createBtn{
+    width:100%;
+    margin-top:22px;
+    padding:16px;
+
+    border:0;
+    border-radius:15px;
+
+    color:#fff;
+    font-size:17px;
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6548ff,
+            #008cff,
+            #00cfff,
+            #00d084
+        );
+
+    background-size:250% auto;
+    animation:buttonGlow 5s linear infinite;
+
+    box-shadow:
+        0 10px 30px rgba(0,153,255,.22),
+        0 0 25px rgba(0,208,132,.10);
+
+    cursor:pointer;
+}
+
+#createBtn:active{
+    transform:scale(.98);
+}
+
+@keyframes buttonGlow{
+    0%{background-position:0%}
+    100%{background-position:250%}
+}
+
+#error{
+    min-height:22px;
+    margin-top:14px;
+    text-align:center;
+    color:#ff6262;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.login-link{
+    margin-top:18px;
+    text-align:center;
+    color:#8795b0;
+    font-size:14px;
+}
+
+.login-link span{
+    color:#00d9ff;
+    font-weight:bold;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="register-box">
+
+    <div class="logo">GLOBAL PAY</div>
+
+    <div class="subtitle">
+        Secure Payments Panel
+    </div>
+
+    <div class="register-title">
+        ✨ Create Your Account
+    </div>
+
+    <label>Full Name</label>
+    <input
+        id="fullName"
+        type="text"
+        maxlength="50"
+        placeholder="Enter full name"
+    >
+
+    <label>Mobile Number</label>
+    <input
+        id="mobile"
+        type="tel"
+        maxlength="13"
+        placeholder="+91XXXXXXXXXX"
+    >
+
+    <label>Email Address</label>
+    <input
+        id="email"
+        type="email"
+        maxlength="80"
+        placeholder="example@email.com"
+    >
+
+    <label>User ID</label>
+    <input
+        id="userId"
+        type="text"
+        minlength="6"
+        maxlength="15"
+        placeholder="6–15 characters"
+    >
+
+    <label>Create Password</label>
+    <input
+        id="password"
+        type="password"
+        minlength="6"
+        maxlength="20"
+        placeholder="6–20 characters"
+    >
+
+    <label>Confirm Password</label>
+    <input
+        id="confirmPassword"
+        type="password"
+        minlength="6"
+        maxlength="20"
+        placeholder="Confirm password"
+    >
+
+    <label>Promo Code</label>
+    <input
+        id="promoCode"
+        type="text"
+        maxlength="30"
+        placeholder="Enter promo code"
+    >
+
+    <div class="terms">
+        <input id="terms" type="checkbox">
+
+        <div>
+            I agree to the
+            <a href="#" onclick="return false;">
+                Terms & Conditions
+            </a>
+            and confirm that the information provided is correct.
+        </div>
+    </div>
+
+    <button id="createBtn" onclick="registerUser()">
+        ✨ CREATE ACCOUNT
+    </button>
+
+    <div id="error"></div>
+
+    <div class="login-link">
+        Already registered?
+        <span onclick="location.href='index.html'">
+            LOGIN
+        </span>
+    </div>
+
+</div>
+
+<script>
+
+/* -------------------------------------------------
+   If registration is already completed,
+   don't show registration page again.
+------------------------------------------------- */
+
+if(localStorage.getItem("globalPayRegistered") === "true"){
+    location.replace("index.html");
+}
+
+
+/* -------------------------------------------------
+   Registration
+------------------------------------------------- */
+
+function registerUser(){
+
+    const name =
+        document.getElementById("fullName").value.trim();
+
+    const mobile =
+        document.getElementById("mobile").value.trim();
+
+    const email =
+        document.getElementById("email").value.trim();
+
+    const userId =
+        document.getElementById("userId").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const confirmPassword =
+        document.getElementById("confirmPassword").value;
+
+    const promoCode =
+        document.getElementById("promoCode").value.trim();
+
+    const terms =
+        document.getElementById("terms").checked;
+
+    const error =
+        document.getElementById("error");
+
+
+    error.innerHTML="";
+
+
+    /* All fields required */
+
+    if(
+        !name ||
+        !mobile ||
+        !email ||
+        !userId ||
+        !password ||
+        !confirmPassword ||
+        !promoCode
+    ){
+
+        error.innerHTML="❌ Invalid: Please fill all details.";
+        return;
+    }
+
+
+    /* Name validation */
+
+    if(!/^[A-Za-z ]{2,50}$/.test(name)){
+
+        error.innerHTML="❌ Invalid full name.";
+        return;
+    }
+
+
+    /* Mobile validation: +91 + exactly 10 digits */
+
+    if(!/^\+91[6-9][0-9]{9}$/.test(mobile)){
+
+        error.innerHTML=
+        "❌ Invalid mobile number. Use +91 followed by 10 digits.";
+
+        return;
+    }
+
+
+    /* Email validation */
+
+    const emailPattern =
+        /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+    if(!emailPattern.test(email)){
+
+        error.innerHTML="❌ Invalid email address.";
+        return;
+    }
+
+
+    /* User ID: 6–15 characters */
+
+    if(userId.length < 6 || userId.length > 15){
+
+        error.innerHTML=
+        "❌ User ID must be 6–15 characters.";
+
+        return;
+    }
+
+
+    /* User ID allowed characters */
+
+    if(!/^[A-Za-z0-9._-]+$/.test(userId)){
+
+        error.innerHTML=
+        "❌ User ID contains invalid characters.";
+
+        return;
+    }
+
+
+    /* Password: 6–20 characters */
+
+    if(password.length < 6 || password.length > 20){
+
+        error.innerHTML=
+        "❌ Password must be 6–20 characters.";
+
+        return;
+    }
+
+
+    /* Confirm password */
+
+    if(password !== confirmPassword){
+
+        error.innerHTML=
+        "❌ Passwords do not match.";
+
+        return;
+    }
+
+
+    /* Terms */
+
+    if(!terms){
+
+        error.innerHTML=
+        "❌ Please accept the Terms & Conditions.";
+
+        return;
+    }
+
+
+    /* -------------------------------------------------
+       Save demo registration
+    ------------------------------------------------- */
+
+    localStorage.setItem(
+        "globalPayRegistered",
+        "true"
+    );
+
+    localStorage.setItem(
+        "globalPayName",
+        name
+    );
+
+    localStorage.setItem(
+        "globalPayMobile",
+        mobile
+    );
+
+    localStorage.setItem(
+        "globalPayEmail",
+        email
+    );
+
+    localStorage.setItem(
+        "globalPayUserId",
+        userId
+    );
+
+    localStorage.setItem(
+        "globalPayPassword",
+        password
+    );
+
+    localStorage.setItem(
+        "globalPayPromoCode",
+        promoCode
+    );
+
+
+    /* Success */
+
+    alert(
+        "✅ Registration Successful!\n\n" +
+        "Welcome to Global Pay."
+    );
+
+
+    /* Go to login */
+
+    location.replace("index.html");
+}
+
+</script>
+
+</body>
+      </html>
