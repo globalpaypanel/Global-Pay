@@ -380,18 +380,22 @@ function goToLogin(){
 </div>
 
 <script>
+const firebaseConfig = {
+    apiKey: "AIzaSyAYav1adnLPBJcQyFho_DG8-xZiQG5HUw0",
+    authDomain: "globalchat-54294.firebaseapp.com",
+    databaseURL: "https://globalchat-54294-default-rtdb.firebaseio.com",
+    projectId: "globalchat-54294",
+    storageBucket: "globalchat-54294.firebasestorage.app",
+    messagingSenderId: "449926167987",
+    appId: "1:449926167987:web:5590ccbef07cb309145fc6",
+    measurementId: "G-TZG1T534ZC"
+};
 
-/* -------------------------------------------------
-   If registration is already completed,
-   don't show registration page again.
-------------------------------------------------- */
+firebase.initializeApp(firebaseConfig);
 
+const auth = firebase.auth();
+const db = firebase.database();
 
-
-
-/* -------------------------------------------------
-   Registration
-------------------------------------------------- */
 
 function registerUser(){
 
@@ -422,11 +426,10 @@ function registerUser(){
     const error =
         document.getElementById("error");
 
+    error.innerHTML = "";
 
-    error.innerHTML="";
 
-
-    /* All fields required */
+    /* ALL DETAILS REQUIRED */
 
     if(
         !name ||
@@ -437,153 +440,162 @@ function registerUser(){
         !confirmPassword ||
         !promoCode
     ){
-
-        error.innerHTML="❌ Invalid: Please fill all details.";
+        error.innerHTML =
+        "❌ Invalid: Please fill all details.";
         return;
     }
 
 
-    /* Name validation */
+    /* NAME */
 
     if(!/^[A-Za-z ]{2,50}$/.test(name)){
-
-        error.innerHTML="❌ Invalid full name.";
+        error.innerHTML =
+        "❌ Invalid full name.";
         return;
     }
 
 
-    /* Mobile validation: +91 + exactly 10 digits */
+    /* MOBILE */
 
     if(!/^[6-9][0-9]{9}$/.test(mobile)){
-    error.innerHTML =
-    "❌ Invalid mobile number. Enter exactly 10 digits.";
-    return;
-}
-
-   
-
-
-    /* Email validation */
-
-    const emailPattern =
-        /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-    if(!emailPattern.test(email)){
-
-        error.innerHTML="❌ Invalid email address.";
+        error.innerHTML =
+        "❌ Invalid mobile number. Enter 10 digits.";
         return;
     }
 
 
-    /* User ID: 6–15 characters */
+    /* EMAIL */
+
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){
+        error.innerHTML =
+        "❌ Invalid email address.";
+        return;
+    }
+
+
+    /* USER ID */
 
     if(userId.length < 6 || userId.length > 15){
-
-        error.innerHTML=
+        error.innerHTML =
         "❌ User ID must be 6–15 characters.";
-
         return;
     }
-
-
-    /* User ID allowed characters */
 
     if(!/^[A-Za-z0-9._-]+$/.test(userId)){
-
-        error.innerHTML=
+        error.innerHTML =
         "❌ User ID contains invalid characters.";
-
         return;
     }
 
 
-    /* Password: 6–20 characters */
+    /* PASSWORD */
 
     if(password.length < 6 || password.length > 20){
-
-        error.innerHTML=
+        error.innerHTML =
         "❌ Password must be 6–20 characters.";
-
         return;
     }
 
 
-    /* Confirm password */
+    /* CONFIRM PASSWORD */
 
     if(password !== confirmPassword){
-
-        error.innerHTML=
+        error.innerHTML =
         "❌ Passwords do not match.";
-
         return;
     }
 
 
-    /* Terms */
+    /* TERMS */
 
     if(!terms){
-
-        error.innerHTML=
-        "❌ Please accept the Terms & Conditions.";
-
+        error.innerHTML =
+        "❌ Please accept Terms & Conditions.";
         return;
     }
 
 
-    /* -------------------------------------------------
-       Save demo registration
-    ------------------------------------------------- */
+    /*
+      User ID ko Firebase ke liye
+      unique internal email me convert kar rahe hain.
+      Password Firebase Authentication handle karega.
+    */
 
-    localStorage.setItem(
-        "globalPayRegistered",
-        "true"
-    );
+    const loginEmail =
+        userId.toLowerCase() + "@globalpaypanel.app";
 
-    localStorage.setItem(
-        "globalPayName",
-        name
-    );
 
-    localStorage.setItem(
-    "globalPayMobile",
-    "+91" + mobile
-);
+    /* CREATE FIREBASE ACCOUNT */
 
-    localStorage.setItem(
-        "globalPayEmail",
-        email
-    );
-
-    localStorage.setItem(
-        "globalPayUserId",
-        userId
-    );
-
-    localStorage.setItem(
-        "globalPayPassword",
+    auth.createUserWithEmailAndPassword(
+        loginEmail,
         password
-    );
+    )
 
-    localStorage.setItem(
-        "globalPayPromoCode",
-        promoCode
-    );
+    .then(function(result){
 
-
-    /* Success */
-
-    alert(
-        "✅ Registration Successful!\n\n" +
-        "Welcome to Global Pay."
-    );
+        const user = result.user;
 
 
-    /* Go to login */
+        /*
+          Profile details database me save
+        */
 
-    location.replace("index.html");
+        return db.ref("users/" + user.uid).set({
+
+            fullName: name,
+
+            mobile: "+91" + mobile,
+
+            email: email,
+
+            userId: userId,
+
+            promoCode: promoCode,
+
+            createdAt: Date.now()
+
+        });
+
+    })
+
+    .then(function(){
+
+        alert(
+            "✅ Registration Successful!\n\n" +
+            "Your account has been saved permanently."
+        );
+
+        location.replace("index.html");
+
+    })
+
+    .catch(function(error){
+
+        if(error.code ===
+            "auth/email-already-in-use"){
+
+            errorMessage =
+            "❌ This User ID is already registered.";
+
+        }else if(error.code ===
+            "auth/weak-password"){
+
+            errorMessage =
+            "❌ Password is too weak.";
+
+        }else{
+
+            errorMessage =
+            "❌ Registration failed: " +
+            error.message;
+        }
+
+        document.getElementById("error").innerHTML =
+            errorMessage;
+    });
 }
-
-</script>
+    </script>
 
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
