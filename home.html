@@ -1,350 +1,577 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Pay - Home</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Global Pay - Home</title>
+
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="cinematic-bg">
+<div class="page">
 
-<div class="light light1"></div>
+    <!-- ================= HEADER ================= -->
 
-<div class="light light2"></div>
+    <header class="header">
 
-<div class="light light3"></div>
+        <button class="menu-btn" onclick="openMenu()">
+            ☰
+        </button>
 
-  </div>
+        <div class="brand">
+            <div class="brand-logo">G</div>
 
-<header class="top-header">
-<h1 class="logo">🌐 GLOBAL PAY</h1>
-  
-  <a href="profile.html" class="profile-btn">
-    <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png">
-  </a>
+            <div>
+                <div class="brand-name">
+                    GLOBAL <span>PAY</span>
+                </div>
 
-<div class="top-buttons">
-<button onclick="toggleTheme()">🌙</button>
-<button onclick="location.href='deposit1.html'">💳 Deposit</button>
-<button onclick="location.href='withdraw.html'">💸 Withdraw</button>
+                <div class="brand-subtitle">
+                    Secure Payments
+                </div>
+            </div>
+        </div>
+
+        <div class="header-actions">
+
+            <button class="icon-btn" onclick="toggleTheme()">
+                ☾
+            </button>
+
+            <button class="profile-btn" onclick="goTo('profile.html')">
+                <span>♙</span>
+                <i></i>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+
+        <!-- ================= BALANCE CARD ================= -->
+
+        <section class="balance-card">
+
+            <div class="balance-content">
+
+                <div class="balance-title">
+                    Total Balance
+                    <button onclick="toggleBalance()">◉</button>
+                </div>
+
+                <div class="balance-amount" id="balanceAmount">
+                    ₹0.00
+                </div>
+
+                <div class="account-status">
+                    <span></span>
+                    Account Status: Active
+                </div>
+
+            </div>
+
+
+            <div class="wallet-art">
+
+                <div class="card-back"></div>
+
+                <div class="wallet">
+                    <div class="wallet-lock">₹</div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <section class="stats-card">
+
+            <div class="stat">
+
+                <div class="stat-icon commission-icon">
+                    ↗
+                </div>
+
+                <div>
+                    <p>Commission Earned</p>
+                    <strong class="purple-text">₹0.00</strong>
+                </div>
+
+            </div>
+
+
+            <div class="stat-divider"></div>
+
+
+            <div class="stat">
+
+                <div class="stat-icon transaction-icon">
+                    ⇄
+                </div>
+
+                <div>
+                    <p>Total Transactions</p>
+                    <strong class="blue-text">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="section">
+
+            <div class="section-title">
+                Quick Actions
+            </div>
+
+            <div class="quick-actions">
+
+                <button
+                    class="action-card deposit"
+                    onclick="goTo('deposit1.html')">
+
+                    <div class="action-icon">
+                        💳
+                    </div>
+
+                    <div class="action-text">
+                        <strong>Deposit</strong>
+                        <span>Add Money</span>
+                    </div>
+
+                    <div class="arrow">
+                        ›
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="action-card withdraw"
+                    onclick="goTo('withdraw.html')">
+
+                    <div class="action-icon">
+                        💸
+                    </div>
+
+                    <div class="action-text">
+                        <strong>Withdraw</strong>
+                        <span>Get Payment</span>
+                    </div>
+
+                    <div class="arrow">
+                        ›
+                    </div>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ACCOUNT SETUP ================= -->
+
+        <section class="setup-section">
+
+            <div class="setup-heading">
+
+                <div>
+                    <h2>Account Setup</h2>
+                </div>
+
+                <span>
+                    Complete all steps to unlock full access
+                </span>
+
+            </div>
+
+
+            <div class="steps-container">
+
+
+                <div class="step active">
+
+                    <div class="step-circle">
+                        <b>1</b>
+                        <span>♙</span>
+                    </div>
+
+                    <p>
+                        Account<br>
+                        Details
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step active">
+
+                    <div class="step-circle cyan">
+                        <b>2</b>
+                        <span>▣</span>
+                    </div>
+
+                    <p>
+                        ATM<br>
+                        Setup
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step active">
+
+                    <div class="step-circle blue">
+                        <b>3</b>
+                        <span>✓</span>
+                    </div>
+
+                    <p>
+                        Verify
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step">
+
+                    <div class="step-circle disabled">
+                        <b>4</b>
+                        <span>♜</span>
+                    </div>
+
+                    <p>
+                        Running<br>
+                        Account
+                    </p>
+
+                </div>
+
+
+                <div class="step-line"></div>
+
+
+                <div class="step">
+
+                    <div class="step-circle disabled">
+                        <b>5</b>
+                        <span>▣</span>
+                    </div>
+
+                    <p>
+                        Withdraw
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="setup-buttons">
+
+                <button
+                    class="setup-btn primary"
+                    onclick="goTo('accountdetails.html')">
+
+                    Step 1: Setup Account Details
+
+                </button>
+
+
+                <button
+                    class="setup-btn secondary"
+                    onclick="goTo('runningaccount.html')">
+
+                    Step 4: Open Running Account
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= MENU CARDS ================= -->
+
+        <section class="menu-grid">
+
+
+            <button onclick="goTo('status.html')">
+
+                <div class="menu-icon green">
+                    ✓
+                </div>
+
+                <strong>Check Status</strong>
+
+                <span>Account Status</span>
+
+            </button>
+
+
+            <button onclick="showRemovePopup()">
+
+                <div class="menu-icon red">
+                    ♜
+                </div>
+
+                <strong>Remove Bank</strong>
+
+                <span>Remove Details</span>
+
+            </button>
+
+
+            <button onclick="goTo('profile.html')">
+
+                <div class="menu-icon yellow">
+                    ▤
+                </div>
+
+                <strong>My Details</strong>
+
+                <span>View Profile</span>
+
+            </button>
+
+
+            <button onclick="showSupport()">
+
+                <div class="menu-icon blue">
+                    ♧
+                </div>
+
+                <strong>Support</strong>
+
+                <span>Help Center</span>
+
+            </button>
+
+        </section>
+
+
+
+        <!-- ================= BOTTOM CARDS ================= -->
+
+        <section class="bottom-grid">
+
+
+            <!-- NOTICE -->
+
+            <div class="notice-card">
+
+                <div class="notice-header">
+
+                    <div class="notice-title">
+
+                        <div class="notice-bell">
+                            ♧
+                        </div>
+
+                        <h2>Notice</h2>
+
+                    </div>
+
+                    <button>
+                        View All
+                    </button>
+
+                </div>
+
+
+                <div class="notice-content">
+
+                    <p>
+                        • Scheduled maintenance on
+                    </p>
+
+                    <strong>
+                        22 Aug 2026 (9:00 AM - 11:00 PM)
+                    </strong>
+
+                    <p>
+                        Platform will be temporarily unavailable.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- HELPLINE -->
+
+            <div class="helpline-card">
+
+                <h2>
+                    24/7 Helpline
+                </h2>
+
+                <p>
+                    We are always here
+                </p>
+
+
+                <div class="support-buttons">
+
+                    <button onclick="callSupport()">
+
+                        <span>☎</span>
+
+                        <small>Call</small>
+
+                    </button>
+
+
+                    <button onclick="whatsappSupport()">
+
+                        <span>◉</span>
+
+                        <small>WhatsApp</small>
+
+                    </button>
+
+
+                    <button onclick="emailSupport()">
+
+                        <span>✉</span>
+
+                        <small>Email</small>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= BOTTOM NAV ================= -->
+
+    <nav class="bottom-nav">
+
+        <button class="nav-item active" onclick="goTo('home.html')">
+
+            <span>⌂</span>
+            <small>Home</small>
+
+        </button>
+
+
+        <button class="nav-item" onclick="goTo('deposit1.html')">
+
+            <span>⇩</span>
+            <small>Deposit</small>
+
+        </button>
+
+
+        <button class="nav-item" onclick="goTo('withdraw.html')">
+
+            <span>⇧</span>
+            <small>Withdraw</small>
+
+        </button>
+
+
+        <button class="nav-item" onclick="goTo('transactions.html')">
+
+            <span>☷</span>
+            <small>Transactions</small>
+
+        </button>
+
+
+        <button class="nav-item" onclick="goTo('profile.html')">
+
+            <span>♙</span>
+            <small>Profile</small>
+
+        </button>
+
+    </nav>
+
+
 </div>
-</header>
 
-<div class="container">
 
-<div class="particles">
 
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
-<span></span>
+<!-- ================= REMOVE POPUP ================= -->
 
-</div>
+<div id="removePopup" class="popup">
 
-<div class="card">
-<h3>Total Balance</h3>
-<h2>₹0.00</h2>
-</div>
+    <div class="popup-box">
 
-<div class="card">
-<h3>Commission Earned</h3>
-<h2>₹0.00</h2>
-</div>
+        <div class="warning-icon">
+            !
+        </div>
 
-<div class="card">
-<h3>Total Transactions</h3>
-<h2>0</h2>
-</div>
+        <h2>
+            Remove Bank Details?
+        </h2>
 
-<div class="setup-box">
-<h2>Account Setup</h2>
+        <p>
+            Are you sure you want to remove your saved bank details?
+        </p>
 
-<p class="setup-text">
-Follow the sequential steps below to complete account setup.
-</p>
+        <div class="popup-buttons">
 
-<div class="steps">
+            <button
+                class="cancel"
+                onclick="closeRemovePopup()">
 
-<div class="step active">
-<div class="circle">1</div>
-<p>Account Details</p>
-</div>
+                Cancel
 
-<div class="arrow">↓</div>
+            </button>
 
-<div class="step">
-<div class="circle">2</div>
-<p>ATM Setup</p>
-</div>
+            <button
+                class="remove"
+                onclick="removeBankDetails()">
 
-<div class="arrow">↓</div>
+                Remove
 
-<div class="step">
-<div class="circle">3</div>
-<p>Verify</p>
-</div>
+            </button>
 
-<div class="arrow">↓</div>
+        </div>
 
-<div class="step">
-<div class="circle">4</div>
-<p>Running Account</p>
-</div>
-
-<div class="arrow">↓</div>
-
-<div class="step">
-<div class="circle">5</div>
-<p>Withdraw</p>
-</div>
+    </div>
 
 </div>
 
-<button onclick="showDepositPopup('accountdetails.html')" style="background:#1565C0;color:#fff;border:none;">
-Step 1: Setup Account Details
-</button>
 
-<button onclick="showDepositPopup('runningaccount.html')" style="background:#1565C0;color:#fff;border:none;">
-Step 4: Open Running Account
-</button>
 
-<button onclick="location.href='status.html'">
-Check Status
-</button>
-
-<button onclick="showRemovePopup()">
-🗑️ Remove Bank Details
-</button>
-
-</div>
-
-<div class="notice">
-
-<h2>Notice</h2>
-
-<p>
-Platform Maintenance Notice
-  
-Global Pay Platform Maintenance
-  
-Please be informed that the Global Pay platform will undergo a scheduled system update on 22 August 2026.
-During this maintenance period, the platform will remain temporarily unavailable from 9:00 AM to 11:00 PM.
-  
-All services are expected to resume after the maintenance is completed. We appreciate your patience and cooperation.
-</p>
-
-</div>
-
-<div class="helpline">
-
-<h2>Helpline</h2>
-
-<button onclick="location.href='tel:9031194209'">
-Call Support
-</button>
-
-<button onclick="location.href='https://wa.me/918294497070'">
-WhatsApp Support
-</button>
-
-<button onclick="location.href='mailto:globalpaypannel40cr@gmail.com'">
-Email Support
-</button>
-
-</div>
-
-</div>
-
-<div id="activatePopup" class="popupOverlay">
-
-<div class="popupBackground"></div>
-
-<div class="popupCard">
-
-<div class="popupGlow"></div>
-
-<div class="lockCircle">
-🔐
-</div>
-
-<h2>Activate Running Account</h2>
-
-<p>
-Enter your activation code to continue
-</p>
-
-<input
-type="password"
-id="activateCode"
-placeholder="Activation Code">
-
-<p id="codeError"></p>
-
-<div class="popupButtons">
-
-<button class="activateBtn"
-onclick="checkActivateCode()">
-Activate
-</button>
-
-<button class="cancelBtn"
-onclick="closePopup()">
-Cancel
-</button>
-
-</div>
-
-</div>
-
-  </div>
-
-<script>
-
-let nextPage = "";
-  
-function showDepositPopup(page) {
-  
-nextPage = page;
-  
-document.getElementById("activatePopup").style.display = "flex";
-
-}
-
-function closePopup() {
-    document.getElementById("activatePopup").style.display = "none";
-    document.getElementById("activateCode").value = "";
-    document.getElementById("codeError").innerHTML = "";
-}
-
-function checkActivateCode() {
-
-    const code = document.getElementById("activateCode").value;
-
-    if(code === "96619300"){
-
-        window.location.href = nextPage;
-
-    }else{
-
-        document.getElementById("codeError").innerHTML =
-        "❌ Invalid Activate Code";
-
-    }
-
-}
-
-  
-
-function showRemovePopup(){
-
-document.getElementById("removePopup").style.display="flex";
-
-}
-
-function closeRemovePopup(){
-
-document.getElementById("removePopup").style.display="none";
-
-}
-
-function removeAllDetails(){
-
-localStorage.removeItem("bankName");
-localStorage.removeItem("holderName");
-localStorage.removeItem("accountNumber");
-localStorage.removeItem("ifsc");
-localStorage.removeItem("accountType");
-localStorage.removeItem("phone");
-
-localStorage.removeItem("cardNumber");
-localStorage.removeItem("expiry");
-localStorage.removeItem("cvv");
-localStorage.removeItem("pin");
-
-localStorage.removeItem("accountActivated");
-
-// Remove popup band karo
-document.getElementById("removePopup").style.display = "none";
-
-// Success popup dikhao
-document.getElementById("successPopup").style.display = "flex";
-
-// 2.5 second baad Home page
-setTimeout(function(){
-
-window.location.href = "home.html";
-
-},2500);
-
-}
-  
-</script>
 <script src="script.js"></script>
 
-<div id="removePopup" class="popupOverlay">
-
-<div class="popupBackground"></div>
-
-<div class="popupCard">
-
-<div class="lockCircle">⚠️</div>
-
-<h2>Delete Account Details?</h2>
-
-<p>
-All Bank Details, ATM Details and Running Account data will be permanently removed.
-</p>
-
-<div class="popupButtons">
-
-<button class="activateBtn" onclick="removeAllDetails()">
-🗑️ Remove
-</button>
-
-<button class="cancelBtn" onclick="closeRemovePopup()">
-Cancel
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<div id="successPopup" class="popupOverlay" style="display:none;">
-
-<div class="popupCard">
-
-<div style="
-width:90px;
-height:90px;
-margin:auto;
-border-radius:50%;
-background:#16a34a;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:46px;
-box-shadow:0 0 35px #16a34a;
-animation:popSuccess .6s ease;">
-✅
-</div>
-
-<h2 style="margin-top:20px;color:#fff;">
-Removed Successfully
-</h2>
-
-<p style="color:#d1d5db;margin-top:10px;">
-All bank details, ATM details and account data have been removed successfully.
-</p>
-
-</div>
-
-</div>
-  
 </body>
-</html>
+                  </html>
