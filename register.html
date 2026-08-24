@@ -531,44 +531,34 @@ function registerUser(){
     }
 
 
-    /* -------------------------------------------------
-       Save demo registration
-    ------------------------------------------------- */
+/* Save registered user */
 
-    localStorage.setItem(
-        "globalPayRegistered",
-        "true"
-    );
+const userData = {
+    fullName: name,
+    mobile: mobile,
+    email: email,
+    userId: userId
+};
 
-    localStorage.setItem(
-        "globalPayName",
-        name
-    );
-
-    localStorage.setItem(
-    "globalPayMobile",
-    "+91" + mobile
+localStorage.setItem(
+    "globalPayUser_" + userId,
+    JSON.stringify(userData)
 );
 
-    localStorage.setItem(
-        "globalPayEmail",
-        email
-    );
+localStorage.setItem(
+    "userid",
+    userId
+);
 
-    localStorage.setItem(
-        "globalPayUserId",
-        userId
-    );
+localStorage.setItem(
+    "globalPayRegistered",
+    "true"
+);
 
-    localStorage.setItem(
-        "globalPayPassword",
-        password
-    );
-
-    localStorage.setItem(
-        "globalPayPromoCode",
-        promoCode
-    );
+localStorage.setItem(
+    "allowLoginPage",
+    "true"
+);
 
 
     /* Success */
