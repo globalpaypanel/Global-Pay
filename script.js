@@ -1,143 +1,131 @@
-/* ================= PAGE NAVIGATION ================= */
+function login() {
 
-function goTo(page) {
-    window.location.href = page;
-}
+    const user =
+        document.getElementById("userid").value.trim();
 
+    const pass =
+        document.getElementById("password").value;
 
-/* ================= THEME ================= */
+    const msg =
+        document.getElementById("msg");
 
-function toggleTheme() {
+    // Registered user ka saved data
+    const savedData =
+        localStorage.getItem("globalPayUser_" + user);
 
-    document.body.classList.toggle("light-mode");
+    if (!savedData) {
 
-    const isLight =
-        document.body.classList.contains("light-mode");
+        msg.style.color = "#ff4d4d";
+        msg.innerHTML =
+            "❌ Invalid User ID or Password";
+
+        return;
+    }
+
+    const userData = JSON.parse(savedData);
+
+    // Password check
+    if (pass !== userData.password) {
+
+        msg.style.color = "#ff4d4d";
+        msg.innerHTML =
+            "❌ Invalid User ID or Password";
+
+        return;
+    }
+
+    // Login successful
+    msg.style.color = "#00ff88";
+    msg.innerHTML =
+        "✅ Login Successful...";
+
+    // Current logged-in user save
+    localStorage.setItem(
+        "userid",
+        userData.userId
+    );
 
     localStorage.setItem(
-        "globalPayTheme",
-        isLight ? "light" : "dark"
+        "allowLoginPage",
+        "true"
     );
+
+    setTimeout(function () {
+
+        window.location.href = "splash.html";
+
+    }, 1000);
 }
 
+function toggleTheme() {
+    document.body.classList.toggle("light-mode");
 
-/* Load saved theme */
+    const btn = document.querySelector(".top-buttons button");
 
-window.addEventListener("DOMContentLoaded", function () {
-
-    const savedTheme =
-        localStorage.getItem("globalPayTheme");
-
-    if (savedTheme === "light") {
-        document.body.classList.add("light-mode");
+    if (document.body.classList.contains("light-mode")) {
+        btn.innerHTML = "☀️";
+    } else {
+        btn.innerHTML = "🌙";
     }
+}
+// Google Login
+function googleLogin() {
+  firebase.auth().signInWithPopup(provider)
+    .then((result) => {
+      window.location.href = "home.html";
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
 
+// Logout
+function logout() {
+  firebase.auth().signOut().then(() => {
+    window.location.href = "index.html";
+  });
+            }
+function toggleMenu(){
+    let menu = document.getElementById("popupMenu");
+
+    if(menu.style.display=="block"){
+        menu.style.display="none";
+    }else{
+        menu.style.display="block";
+    }
+}
+
+window.addEventListener("click", function(event){
+    if(!event.target.matches(".menu-btn")){
+        let menu = document.getElementById("popupMenu");
+        if(menu){
+            menu.style.display="none";
+        }
+    }
 });
 
+function savePhoto(){
 
-/* ================= BALANCE HIDE ================= */
+const file=document.getElementById("photo").files[0];
 
-let balanceVisible = true;
-
-function toggleBalance() {
-
-    const balance =
-        document.getElementById("balanceAmount");
-
-    if (balanceVisible) {
-
-        balance.textContent = "₹ •••••";
-
-        balanceVisible = false;
-
-    } else {
-
-        balance.textContent = "₹0.00";
-
-        balanceVisible = true;
-
-    }
+if(!file){
+alert("Please Select Photo");
+return;
 }
 
+const reader=new FileReader();
 
-/* ================= SIDE MENU ================= */
+reader.onload=function(e){
 
-function openMenu() {
+const currentUser = localStorage.getItem("userid");
+localStorage.setItem("profilePhoto_" + currentUser, e.target.result);
 
-    alert("Menu will open here.");
-}
+alert("Photo Saved Successfully");
 
-
-/* ================= REMOVE BANK ================= */
-
-function showRemovePopup() {
-
-    document
-        .getElementById("removePopup")
-        .classList.add("show");
+window.location.href="profile.html";
 
 }
 
+reader.readAsDataURL(file);
 
-function closeRemovePopup() {
-
-    document
-        .getElementById("removePopup")
-        .classList.remove("show");
-
-}
-
-
-function removeBankDetails() {
-
-    /*
-       Yahan apne actual localStorage
-       keys add kar sakte ho.
-    */
-
-    localStorage.removeItem("bankName");
-    localStorage.removeItem("holderName");
-    localStorage.removeItem("accountNumber");
-    localStorage.removeItem("ifsc");
-    localStorage.removeItem("accountType");
-
-    closeRemovePopup();
-
-    alert("Bank details removed successfully.");
-
-}
-
-
-/* ================= SUPPORT ================= */
-
-function callSupport() {
-
-    window.location.href =
-        "tel:9031194209";
-
-}
-
-
-function whatsappSupport() {
-
-    window.location.href =
-        "https://wa.me/918294497070";
-
-}
-
-
-function emailSupport() {
-
-    window.location.href =
-        "mailto:globalpaypannel40cr@gmail.com";
-
-}
-
-
-function showSupport() {
-
-    alert(
-        "For support, please use Call, WhatsApp or Email."
-    );
-
-}
+        }
