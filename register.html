@@ -465,14 +465,18 @@ function registerUser() {
     }
 
     // Complete user data
-    const userData = {
-        fullName: name,
-        mobile: "+91" + mobile,
-        email: email,
-        userId: userId,
-        password: password,
-        promoCode: promoCode
-    };
+    const registeredAt = new Date().toISOString();
+
+const userData = {
+    fullName: name,
+    mobile: "+91" + mobile,
+    email: email,
+    userId: userId,
+    password: password,
+    promoCode: promoCode,
+    registeredAt: registeredAt,
+    location: "India"
+};
 
     // Save user data by User ID
     localStorage.setItem(
