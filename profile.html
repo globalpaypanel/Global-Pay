@@ -57,62 +57,69 @@
 <script src="firebase-config.js"></script>
 <script src="script.js"></script>
 
-
 <script>
-firebase.auth().onAuthStateChanged(function(user) {
 
-    if (!user) {
-        location.href = "index.html";
-        return;
-    }
+const currentUser = localStorage.getItem("userid");
 
-    firebase.database()
-        .ref("users/" + user.uid)
-        .once("value")
-        .then(function(snapshot) {
+const userData = currentUser
+    ? JSON.parse(
+        localStorage.getItem("globalPayUser_" + currentUser) || "null"
+      )
+    : null;
 
-            const data = snapshot.val();
+if (userData) {
 
-            if (!data) {
-                document.getElementById("profileName").innerText = "User";
-                document.getElementById("profileUserId").innerText = "Inactive";
-                return;
-            }
+    document.getElementById("profileName").innerText =
+        userData.fullName || "User";
 
-            document.getElementById("profileName").innerText =
-                data.fullName || "User";
+    document.getElementById("profileUserId").innerText =
+        userData.userId || "Inactive";
 
-            document.getElementById("profileUserId").innerText =
-                data.userId || "Inactive";
+    document.getElementById("profileFullName").innerText =
+        userData.fullName || "Not Available";
 
-            document.getElementById("profileFullName").innerText =
-                data.fullName || "Not Available";
+    document.getElementById("profileMobile").innerText =
+        userData.mobile
+            ? "+91 " + userData.mobile
+            : "+91 XXXXXXXXXX";
 
-            document.getElementById("profileMobile").innerText =
-                data.mobile || "+91 XXXXXXXXXX";
+    document.getElementById("profileEmail").innerText =
+        userData.email || "Not Available";
 
-            document.getElementById("profileEmail").innerText =
-                data.email || "Not Available";
+} else {
 
-            document.getElementById("walletBalance").innerText =
-                "₹" + Number(data.walletBalance || 0).toFixed(2);
+    document.getElementById("profileName").innerText =
+        "Invalid User";
 
-            document.getElementById("totalIncome").innerText =
-                "₹" + Number(data.totalIncome || 0).toFixed(2);
-        })
-        .catch(function(error) {
+    document.getElementById("profileUserId").innerText =
+        "Inactive";
 
-            console.error(error);
+    document.getElementById("profileFullName").innerText =
+        "Invalid";
 
-            document.getElementById("profileName").innerText =
-                "Unable to load profile";
-        });
-});
+    document.getElementById("profileMobile").innerText =
+        "+91 XXXXXXXXXX";
 
+    document.getElementById("profileEmail").innerText =
+        "Not Available";
+}
+
+
+/* Wallet / Income */
+
+document.getElementById("walletBalance").innerText =
+    "₹0.00";
+
+document.getElementById("totalIncome").innerText =
+    "₹0.00";
+
+
+/* Profile Photo */
 
 function savePhoto() {
 
-    const file = document.getElementById("photo").files[0];
+    const file =
+        document.getElementById("photo").files[0];
 
     if (!file) return;
 
@@ -120,12 +127,11 @@ function savePhoto() {
 
     reader.onload = function(e) {
 
-        const user = firebase.auth().currentUser;
-
-        if (!user) return;
+        const currentUser =
+            localStorage.getItem("userid");
 
         localStorage.setItem(
-            "profilePhoto_" + user.uid,
+            "profilePhoto_" + currentUser,
             e.target.result
         );
 
@@ -137,18 +143,15 @@ function savePhoto() {
 }
 
 
-firebase.auth().onAuthStateChanged(function(user) {
+const photo =
+    localStorage.getItem(
+        "profilePhoto_" + currentUser
+    );
 
-    if (!user) return;
-
-    const photo =
-        localStorage.getItem("profilePhoto_" + user.uid);
-
-    if (photo) {
-        document.getElementById("profileImage").src = photo;
-    }
-});
+if (photo) {
+    document.getElementById("profileImage").src = photo;
+}
 
 </script>
-</body>
+
 </html>
