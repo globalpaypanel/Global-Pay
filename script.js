@@ -1,42 +1,60 @@
 function login() {
 
-    const user = document.getElementById("userid").value.trim();
-    const pass = document.getElementById("password").value;
-    const msg = document.getElementById("msg");
+    const user =
+        document.getElementById("userid").value.trim();
 
-    // Registered User ID & Password
-    const registeredUser =
-        localStorage.getItem("globalPayUserId");
+    const pass =
+        document.getElementById("password").value;
 
-    const registeredPassword =
-        localStorage.getItem("globalPayPassword");
+    const msg =
+        document.getElementById("msg");
 
+    // Registered user ka saved data
+    const savedData =
+        localStorage.getItem("globalPayUser_" + user);
 
-    // Check login
-    if (
-        registeredUser &&
-        registeredPassword &&
-        user === registeredUser &&
-        pass === registeredPassword
-    ) {
-
-        msg.style.color = "#00ff88";
-        msg.innerHTML = "✅ Login Successful...";
-
-        // Save currently logged-in user
-        localStorage.setItem("userid", user);
-
-        // Open splash page
-        setTimeout(function () {
-            window.location.href = "splash.html";
-        }, 1000);
-
-    } else {
+    if (!savedData) {
 
         msg.style.color = "#ff4d4d";
         msg.innerHTML =
             "❌ Invalid User ID or Password";
+
+        return;
     }
+
+    const userData = JSON.parse(savedData);
+
+    // Password check
+    if (pass !== userData.password) {
+
+        msg.style.color = "#ff4d4d";
+        msg.innerHTML =
+            "❌ Invalid User ID or Password";
+
+        return;
+    }
+
+    // Login successful
+    msg.style.color = "#00ff88";
+    msg.innerHTML =
+        "✅ Login Successful...";
+
+    // Current logged-in user save
+    localStorage.setItem(
+        "userid",
+        userData.userId
+    );
+
+    localStorage.setItem(
+        "allowLoginPage",
+        "true"
+    );
+
+    setTimeout(function () {
+
+        window.location.href = "splash.html";
+
+    }, 1000);
 }
 
 function toggleTheme() {
