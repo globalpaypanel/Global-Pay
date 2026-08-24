@@ -1,71 +1,371 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GLOBAL PAY</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GLOBAL PAY - Login</title>
+
+    <link rel="stylesheet" href="index.css">
 </head>
 
-  
-  <script>
+<script>
 if (
     localStorage.getItem("globalPayRegistered") !== "true" &&
     localStorage.getItem("allowLoginPage") !== "true"
 ) {
     location.replace("register.html");
-    }
+}
+</script>
 
-  </script>
 <body>
 
-<div class="topbar">
-⚠ LIVE ACTIVATION SYSTEM
+<div class="login-page">
+
+    <!-- Background glow -->
+    <div class="glow glow-one"></div>
+    <div class="glow glow-two"></div>
+    <div class="glow glow-three"></div>
+
+
+    <!-- Top warning -->
+    <div class="live-bar">
+        <span class="live-dot"></span>
+        LIVE ACTIVATION SYSTEM
+    </div>
+
+
+    <!-- Header -->
+    <header class="login-header">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                G
+            </div>
+
+            <div class="brand-text">
+
+                <h1>
+                    GLOBAL <span>PAY</span>
+                </h1>
+
+                <p>
+                    Secure Payments
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="admin-btn"
+            onclick="location.href='admin.html'">
+
+            🛡️
+            <span>PANEL ADMIN</span>
+
+        </button>
+
+    </header>
+
+
+
+    <!-- Main -->
+    <main class="login-main">
+
+
+        <!-- Left information -->
+        <section class="intro-section">
+
+            <div class="badge">
+                🔐 SECURE PAYMENT PLATFORM
+            </div>
+
+            <h2>
+                ACCOUNT
+                <span>FUNDS</span>
+            </h2>
+
+            <p class="intro-text">
+                Manage your payments, account funds
+                and commissions securely from one place.
+            </p>
+
+
+            <div class="features">
+
+                <div class="feature">
+
+                    <div class="feature-icon">
+                        ✓
+                    </div>
+
+                    <div>
+                        <strong>Secure Access</strong>
+                        <span>Protected account login</span>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon blue">
+                        ₹
+                    </div>
+
+                    <div>
+                        <strong>Account Funds</strong>
+                        <span>Manage your payment balance</span>
+                    </div>
+
+                </div>
+
+
+                <div class="feature">
+
+                    <div class="feature-icon purple">
+                        ↗
+                    </div>
+
+                    <div>
+                        <strong>Earn Commission</strong>
+                        <span>Track your earnings</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- Login card -->
+        <section class="login-card">
+
+
+            <div class="card-top">
+
+                <div class="lock-icon">
+                    🔐
+                </div>
+
+                <div>
+
+                    <h2>
+                        Welcome Back
+                    </h2>
+
+                    <p>
+                        Login to your Global Pay account
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <form onsubmit="event.preventDefault(); login();">
+
+
+                <label for="userid">
+                    User ID
+                </label>
+
+                <div class="input-box">
+
+                    <span>
+                        👤
+                    </span>
+
+                    <input
+                        type="text"
+                        id="userid"
+                        placeholder="Enter your User ID"
+                        autocomplete="username">
+
+                </div>
+
+
+
+                <label for="password">
+                    Password
+                </label>
+
+                <div class="input-box">
+
+                    <span>
+                        🔒
+                    </span>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password">
+
+                    <button
+                        type="button"
+                        class="eye-btn"
+                        onclick="togglePassword()">
+
+                        👁
+
+                    </button>
+
+                </div>
+
+
+
+                <div class="login-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                            id="remember">
+
+                        <span>
+                            Remember me
+                        </span>
+
+                    </label>
+
+                    <a href="#">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-btn">
+
+                    <span>🔑</span>
+                    LOGIN TO ACCOUNT
+
+                </button>
+
+
+                <p
+                    id="msg"
+                    class="message">
+                </p>
+
+
+            </form>
+
+
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+
+
+            <button
+                class="download-btn"
+                onclick="downloadApp()">
+
+                <span class="android-icon">
+                    📱
+                </span>
+
+                <span>
+                    <small>Get the app</small>
+                    DOWNLOAD ANDROID APP
+                </span>
+
+                <b>›</b>
+
+            </button>
+
+
+
+            <div class="register-box">
+
+                <span>
+                    New user?
+                </span>
+
+                <button
+                    onclick="location.href='register.html'">
+
+                    Create an Account
+
+                </button>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Footer -->
+
+    <footer class="login-footer">
+
+        <div>
+            🔒 Secure Connection
+        </div>
+
+        <div>
+            © 2026 GLOBAL PAY
+        </div>
+
+        <div>
+            Privacy • Terms
+        </div>
+
+    </footer>
+
 </div>
 
-<div class="container">
-
-<div class="top-right">
-<button class="admin-btn" onclick="location.href='admin.html'">
-🛡 PANEL ADMIN DETAILS
-</button>
-</div>
-
-<h1 class="logo">GLOBAL PAY</h1>
-<p class="subtitle">Secure Payments Panel</p>
-
-<div class="card">
-<h2>ACCOUNT FUNDS</h2>
-<p>Live Activation & Earn Commission</p>
-</div>
-
-<div class="login-box">
-
-<h2>LOGIN</h2>
-
-<input type="text" id="userid" placeholder="User ID">
-
-<input type="password" id="password" placeholder="Password">
-
-  <div class="register-link">
-    New user? <span onclick="location.href='register.html'">Register</span>
-  </div>
-
-<button class="btn" onclick="login()">
-🔑 LOGIN
-</button>
-
-<button class="btn" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1BGqup-OlaFTn7drbOYX5wGzQxwp2TfW8'">
-📱 DOWNLOAD ANDROID APP
-</button>
-
-<p id="msg"></p>
-
-</div>
-
-</div>
 
 <script src="script.js"></script>
 
+
+<script>
+
+function togglePassword() {
+
+    const password =
+        document.getElementById("password");
+
+    const button =
+        document.querySelector(".eye-btn");
+
+    if (password.type === "password") {
+
+        password.type = "text";
+        button.textContent = "🙈";
+
+    } else {
+
+        password.type = "password";
+        button.textContent = "👁";
+
+    }
+}
+
+
+function downloadApp() {
+
+    window.location.href =
+        "https://drive.google.com/uc?export=download&id=1BGqup-OlaFTn7drbOYX5wGzQxwp2TfW8";
+
+}
+
+</script>
+
 </body>
-</html>
+      </html>
