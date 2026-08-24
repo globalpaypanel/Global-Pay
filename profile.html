@@ -57,73 +57,98 @@
 <script src="firebase-config.js"></script>
 <script src="script.js"></script>
 
+
 <script>
+firebase.auth().onAuthStateChanged(function(user) {
 
-const currentUser = localStorage.getItem("userid");
+    if (!user) {
+        location.href = "index.html";
+        return;
+    }
 
-if (currentUser === "ADI2001") {
+    firebase.database()
+        .ref("users/" + user.uid)
+        .once("value")
+        .then(function(snapshot) {
 
-document.getElementById("profileName").innerText="Aditya";
-document.getElementById("profileUserId").innerText="ADI2001";
-document.getElementById("profileMobile").innerText="+91 9334136929";
-document.getElementById("profileFullName").innerText="Aditya singh";
-document.getElementById("profileEmail").innerText="healingthroughmusic99@gmail.com";
-document.getElementById("walletBalance").innerText="₹0.00";
-document.getElementById("totalIncome").innerText="₹0.00";
+            const data = snapshot.val();
 
+            if (!data) {
+                document.getElementById("profileName").innerText = "User";
+                document.getElementById("profileUserId").innerText = "Inactive";
+                return;
+            }
+
+            document.getElementById("profileName").innerText =
+                data.fullName || "User";
+
+            document.getElementById("profileUserId").innerText =
+                data.userId || "Inactive";
+
+            document.getElementById("profileFullName").innerText =
+                data.fullName || "Not Available";
+
+            document.getElementById("profileMobile").innerText =
+                data.mobile || "+91 XXXXXXXXXX";
+
+            document.getElementById("profileEmail").innerText =
+                data.email || "Not Available";
+
+            document.getElementById("walletBalance").innerText =
+                "₹" + Number(data.walletBalance || 0).toFixed(2);
+
+            document.getElementById("totalIncome").innerText =
+                "₹" + Number(data.totalIncome || 0).toFixed(2);
+        })
+        .catch(function(error) {
+
+            console.error(error);
+
+            document.getElementById("profileName").innerText =
+                "Unable to load profile";
+        });
+});
+
+
+function savePhoto() {
+
+    const file = document.getElementById("photo").files[0];
+
+    if (!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+
+        const user = firebase.auth().currentUser;
+
+        if (!user) return;
+
+        localStorage.setItem(
+            "profilePhoto_" + user.uid,
+            e.target.result
+        );
+
+        document.getElementById("profileImage").src =
+            e.target.result;
+    };
+
+    reader.readAsDataURL(file);
 }
 
-else if (currentUser === "Ajay@4488") {
 
-document.getElementById("profileName").innerText="Ajay Singh";
-document.getElementById("profileUserId").innerText="Ajay@4488";
-document.getElementById("profileMobile").innerText="+91 9572025885";
-document.getElementById("profileFullName").innerText="Ajay Singh";
-document.getElementById("profileEmail").innerText="ajaysingh40cr@gmail.com";
-document.getElementById("walletBalance").innerText="₹482,980.00";
-document.getElementById("totalIncome").innerText="₹1365,729.00";
+firebase.auth().onAuthStateChanged(function(user) {
 
-}
+    if (!user) return;
 
-else {
+    const photo =
+        localStorage.getItem("profilePhoto_" + user.uid);
 
-document.getElementById("profileName").innerText="Invalid User";
-document.getElementById("profileUserId").innerText="Inactive";
-document.getElementById("profileFullName").innerText="Invalid";
-document.getElementById("profileMobile").innerText="+91 XXXXXXXXXX";
-document.getElementById("profileEmail").innerText="Not Available";
-document.getElementById("walletBalance").innerText="₹0.00";
-document.getElementById("totalIncome").innerText="₹0.00";
+    if (photo) {
+        document.getElementById("profileImage").src = photo;
+    }
+});
 
-  }
-  
-  function savePhoto() {
-
-const file = document.getElementById("photo").files[0];
-
-if (!file) return;
-
-const reader = new FileReader();
-
-reader.onload = function(e) {
-
-const currentUser = localStorage.getItem("userid");
-
-localStorage.setItem("profilePhoto_" + currentUser, e.target.result);
-
-document.getElementById("profileImage").src = e.target.result;
-
-};
-
-reader.readAsDataURL(file);
-
-  }
-
-const photo = localStorage.getItem("profilePhoto_" + currentUser);
-
-if (photo) {
-    document.getElementById("profileImage").src = photo;
-}  
 </script>
 </body>
 </html>
