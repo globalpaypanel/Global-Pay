@@ -1,157 +1,1165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Profile - Global Pay</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GLOBAL PAY - My Profile</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+    background:
+    radial-gradient(circle at 50% 20%,#101d45 0%,#071127 42%,#030817 100%);
+    color:#fff;
+    min-height:100vh;
+    padding-bottom:100px;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+/* TOP HEADER */
+
+.top-header{
+    height:90px;
+    display:flex;
+    align-items:center;
+    padding:15px 3.5%;
+    border-bottom:1px solid #1b2a47;
+}
+
+.menu{
+    width:55px;
+    font-size:34px;
+    background:none;
+    border:0;
+    color:#dce7ff;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    flex:1;
+}
+
+.logo{
+    width:54px;
+    height:54px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:37px;
+    font-weight:800;
+    background:linear-gradient(135deg,#0dbaff,#3b45d8);
+    box-shadow:0 8px 25px #007bff55;
+}
+
+.logo-text h1{
+    font-size:27px;
+    letter-spacing:.5px;
+}
+
+.logo-text h1 span{
+    color:#099cff;
+}
+
+.logo-text p{
+    color:#aebbd3;
+    font-size:14px;
+    margin-top:2px;
+}
+
+.header-actions{
+    display:flex;
+    gap:15px;
+}
+
+.header-btn{
+    width:58px;
+    height:55px;
+    border-radius:15px;
+    border:1px solid #31415e;
+    background:#0c1730;
+    color:white;
+    font-size:28px;
+}
+
+.profile-mini{
+    position:relative;
+}
+
+.online{
+    width:13px;
+    height:13px;
+    background:#0ee39a;
+    border-radius:50%;
+    position:absolute;
+    right:3px;
+    bottom:2px;
+    border:2px solid #071127;
+}
+
+/* MAIN */
+
+.container{
+    width:93%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.page-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin:28px 0;
+}
+
+.back{
+    font-size:34px;
+    color:#168eff;
+    margin-right:15px;
+}
+
+.heading-left{
+    display:flex;
+    align-items:center;
+}
+
+.page-heading h2{
+    font-size:27px;
+}
+
+.page-heading p{
+    color:#9eacc5;
+    margin-top:5px;
+}
+
+.profile-id{
+    background:#101c35;
+    border:1px solid #243756;
+    border-radius:13px;
+    padding:14px 18px;
+    color:#b9c6dd;
+}
+
+.profile-id span{
+    color:white;
+}
+
+.layout{
+    display:grid;
+    grid-template-columns:330px 1fr;
+    gap:20px;
+}
+
+/* PROFILE CARD */
+
+.profile-card{
+    background:
+    linear-gradient(145deg,#101a42,#10182f 65%,#111632);
+    border:1px solid #1766bc;
+    border-radius:22px;
+    padding:28px 20px;
+}
+
+.avatar-area{
+    text-align:center;
+}
+
+.avatar{
+    width:125px;
+    height:125px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:65px;
+    background:linear-gradient(135deg,#168cff,#4a24c8);
+    border:1px solid #238dff;
+    box-shadow:0 0 35px #147bff45;
+}
+
+.camera{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:2px solid #263a63;
+    background:#0c1830;
+    color:white;
+    margin-top:-35px;
+    margin-left:85px;
+    position:relative;
+    z-index:2;
+    font-size:18px;
+}
+
+.profile-card h2{
+    text-align:center;
+    margin-top:18px;
+    font-size:28px;
+}
+
+.verified{
+    width:max-content;
+    margin:10px auto 20px;
+    padding:8px 16px;
+    border-radius:20px;
+    color:#00eca0;
+    background:#063f3a;
+    border:1px solid #087f67;
+    font-size:14px;
+}
+
+.info-list{
+    border-top:1px solid #2a3854;
+    padding-top:16px;
+}
+
+.info{
+    display:flex;
+    gap:13px;
+    margin:17px 0;
+}
+
+.info-icon{
+    width:25px;
+    color:#4b8eff;
+    font-size:20px;
+}
+
+.info small{
+    display:block;
+    color:#9caac2;
+    margin-bottom:5px;
+}
+
+.info p{
+    font-size:15px;
+}
+
+/* SECURITY */
+
+.security{
+    margin-top:20px;
+    background:linear-gradient(120deg,#062d31,#071e2b);
+    border:1px solid #08765f;
+    border-radius:16px;
+    padding:18px;
+}
+
+.security-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.security-title b{
+    color:#00eda0;
+    font-size:16px;
+}
+
+.security-title span{
+    font-size:35px;
+    color:#00d994;
+}
+
+.security p{
+    color:#9eb2c5;
+    margin-top:5px;
+    font-size:13px;
+}
+
+.logout{
+    width:100%;
+    height:45px;
+    margin-top:20px;
+    border-radius:10px;
+    background:#3b0e27;
+    border:1px solid #f03c61;
+    color:#ff4e6b;
+    font-weight:600;
+}
+
+/* RIGHT */
+
+.right-content{
+    min-width:0;
+}
+
+.summary{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
+
+.summary-card{
+    background:#101b32;
+    border:1px solid #243756;
+    border-radius:18px;
+    padding:22px 18px;
+    text-align:center;
+}
+
+.summary-icon{
+    width:58px;
+    height:58px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    background:#112c61;
+}
+
+.summary-card:nth-child(2) .summary-icon{
+    background:#073c36;
+}
+
+.summary-card:nth-child(3) .summary-icon{
+    background:#30205f;
+}
+
+.summary-card h3{
+    margin-top:15px;
+    font-size:16px;
+    font-weight:500;
+}
+
+.summary-card strong{
+    display:block;
+    font-size:24px;
+    margin-top:10px;
+    color:#168eff;
+}
+
+.summary-card:nth-child(2) strong{
+    color:#00e69b;
+}
+
+.summary-card:nth-child(3) strong{
+    color:#a56cff;
+}
+
+.details-card,
+.bank-card,
+.settings-card{
+    background:#0e192f;
+    border:1px solid #223453;
+    border-radius:18px;
+    margin-top:18px;
+    padding:20px;
+}
+
+.card-heading{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #24334d;
+    padding-bottom:15px;
+}
+
+.card-heading h3{
+    font-size:20px;
+}
+
+.edit-btn,
+.add-btn{
+    border:1px solid #1765c8;
+    background:#0b2c61;
+    color:#70adff;
+    border-radius:10px;
+    padding:9px 15px;
+}
+
+.details-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border-bottom:1px solid #202f48;
+    padding:14px 5px;
+}
+
+.details-row:last-child{
+    border-bottom:0;
+}
+
+.details-row span{
+    color:#a4b1c7;
+}
+
+.details-row strong{
+    font-weight:500;
+}
+
+/* BANK */
+
+.bank-item{
+    margin-top:15px;
+    background:#151f3b;
+    border:1px solid #30446c;
+    border-radius:14px;
+    padding:17px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.bank-logo{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:white;
+    color:#0570bd;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+}
+
+.bank-info{
+    flex:1;
+}
+
+.bank-info b{
+    font-size:16px;
+}
+
+.primary-tag{
+    color:#00e5a0;
+    background:#063c36;
+    padding:3px 8px;
+    border-radius:6px;
+    font-size:11px;
+    margin-left:5px;
+}
+
+.bank-info p{
+    color:#a6b3c8;
+    font-size:13px;
+    margin-top:6px;
+}
+
+.add-bank{
+    margin-top:15px;
+    height:50px;
+    width:100%;
+    border-radius:11px;
+    border:1px dashed #1679ed;
+    background:#091a36;
+    color:#3296ff;
+    font-size:15px;
+}
+
+/* BOTTOM SETTINGS */
+
+.bottom-section{
+    display:grid;
+    grid-template-columns:1fr 1.5fr;
+    gap:18px;
+    margin-top:18px;
+}
+
+.setting-box{
+    background:#0e192f;
+    border:1px solid #223453;
+    border-radius:18px;
+    padding:20px;
+}
+
+.setting-box h3{
+    border-bottom:1px solid #24334d;
+    padding-bottom:15px;
+}
+
+.setting{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:14px 0;
+    border-bottom:1px solid #1d2b43;
+}
+
+.setting:last-child{
+    border:0;
+}
+
+.setting-icon{
+    width:28px;
+    font-size:22px;
+}
+
+.setting-content{
+    flex:1;
+}
+
+.setting-content b{
+    display:block;
+    font-size:15px;
+}
+
+.setting-content small{
+    color:#99a8c0;
+}
+
+.arrow{
+    color:#8798b3;
+    font-size:25px;
+}
+
+.switch{
+    width:45px;
+    height:25px;
+    border-radius:20px;
+    background:#2675ed;
+    position:relative;
+}
+
+.switch:after{
+    content:"";
+    width:19px;
+    height:19px;
+    border-radius:50%;
+    background:white;
+    position:absolute;
+    right:3px;
+    top:3px;
+}
+
+/* NAV */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:82px;
+    background:#101a31f2;
+    backdrop-filter:blur(15px);
+    border-top:1px solid #1d2c47;
+    display:flex;
+    z-index:50;
+}
+
+.bottom-nav a{
+    width:20%;
+    text-decoration:none;
+    color:#9eabc2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+    font-size:13px;
+}
+
+.bottom-nav a span{
+    font-size:27px;
+}
+
+.bottom-nav a.active{
+    color:#168eff;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .top-header{
+        height:78px;
+    }
+
+    .logo{
+        width:45px;
+        height:45px;
+        font-size:30px;
+    }
+
+    .logo-text h1{
+        font-size:20px;
+    }
+
+    .logo-text p{
+        font-size:11px;
+    }
+
+    .header-btn{
+        width:47px;
+        height:45px;
+        font-size:23px;
+    }
+
+    .page-heading{
+        margin:20px 0;
+    }
+
+    .page-heading h2{
+        font-size:22px;
+    }
+
+    .page-heading p{
+        font-size:12px;
+    }
+
+    .profile-id{
+        display:none;
+    }
+
+    .layout{
+        grid-template-columns:1fr;
+    }
+
+    .profile-card{
+        padding:25px 18px;
+    }
+
+    .summary{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .summary-card{
+        padding:15px 5px;
+    }
+
+    .summary-icon{
+        width:45px;
+        height:45px;
+        font-size:21px;
+    }
+
+    .summary-card h3{
+        font-size:11px;
+    }
+
+    .summary-card strong{
+        font-size:17px;
+    }
+
+    .details-card,
+    .bank-card,
+    .settings-card{
+        padding:15px;
+    }
+
+    .details-row{
+        grid-template-columns:1fr;
+        gap:5px;
+    }
+
+    .details-row strong{
+        font-size:14px;
+    }
+
+    .bottom-section{
+        grid-template-columns:1fr;
+    }
+
+    .bottom-nav{
+        height:72px;
+    }
+
+    .bottom-nav a{
+        font-size:10px;
+    }
+
+    .bottom-nav a span{
+        font-size:22px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<div class="profile-page">
+<!-- HEADER -->
+<header class="top-header">
 
-<div class="profile-header">
-<a href="home.html" class="back-btn">←</a>
-<h2>My Profile</h2>
-</div>
+    <button class="menu">☰</button>
 
-<div class="profile-card">
+    <div class="logo-area">
+        <div class="logo">G</div>
 
-<div class="profile-photo">
-<img id="profileImage" src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png">
-</div>
-  <input type="file" id="photo" accept="image/*" style="display:none" onchange="savePhoto()">
+        <div class="logo-text">
+            <h1>GLOBAL <span>PAY</span></h1>
+            <p>Secure Payments</p>
+        </div>
+    </div>
 
-<button onclick="document.getElementById('photo').click()">
-📷 Change Photo
-</button>
+    <div class="header-actions">
+        <button class="header-btn" onclick="toggleTheme()">☾</button>
 
-<h2 id="profileName">User</h2>
+        <button class="header-btn profile-mini">
+            ♙
+            <i class="online"></i>
+        </button>
+    </div>
 
-<p>User ID : <span id="profileUserId">Inactive</span></p>
+</header>
 
-<div class="profile-info">
-<p>👤 Name : <span id="profileFullName">Invalid</span></p>
-<p>📱 Mobile : <span id="profileMobile"> XXXXXXXXXX</span></p>
-<p>📧 Email : <span id="profileEmail">Not Available</span></p>
-<p>💳 Wallet Balance : <span id="walletBalance">₹0.00</span></p>
-<p>💵 Total Income : <span id="totalIncome">₹0.00</span></p>
-</div>
 
-<button onclick="location.href='activate.html'">Edit Profile</button>
+<main class="container">
 
-<button onclick="location.href='activate.html?next=changepassword.html'">Change Password</button>
+    <!-- PAGE TITLE -->
 
-<button onclick="location.href='activate.html?next=bankdetails.html'">Bank / UPI Details</button>
+    <div class="page-heading">
 
-<button onclick="location.href='support.html'">Help & Support</button>
+        <div class="heading-left">
+            <span class="back" onclick="history.back()">‹</span>
 
-<button onclick="location.href='index.html'" class="logout-btn">Logout</button>
+            <div>
+                <h2>My Profile</h2>
+                <p>Manage your account & preferences</p>
+            </div>
+        </div>
 
-</div>
+        <div class="profile-id">
+            Profile ID:
+            <span>GP982734</span>
+            &nbsp; 📋
+        </div>
 
-</div>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="firebase-config.js"></script>
-<script src="script.js"></script>
+    </div>
+
+
+    <div class="layout">
+
+        <!-- LEFT PROFILE -->
+
+        <aside class="profile-card">
+
+            <div class="avatar-area">
+
+                <div class="avatar">
+                    ♙
+                </div>
+
+                <button class="camera">📷</button>
+
+                <h2>Ajay Singh <span style="color:#00e69b">✔</span></h2>
+
+                <div class="verified">
+                    ✓ Verified Account
+                </div>
+
+            </div>
+
+
+            <div class="info-list">
+
+                <div class="info">
+                    <div class="info-icon">◉</div>
+                    <div>
+                        <small>Account Status</small>
+                        <p style="color:#00e6a0">● Active</p>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <div class="info-icon">▣</div>
+                    <div>
+                        <small>Member Since</small>
+                        <p>22 Aug 2026</p>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <div class="info-icon">✉</div>
+                    <div>
+                        <small>Email</small>
+                        <p>ajaysingh@gmail.com</p>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <div class="info-icon">☎</div>
+                    <div>
+                        <small>Phone</small>
+                        <p>+91 93341 36929</p>
+                    </div>
+                </div>
+
+                <div class="info">
+                    <div class="info-icon">●</div>
+                    <div>
+                        <small>Location</small>
+                        <p>Dubai, United Arab Emirates</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="security">
+
+                <div class="security-title">
+                    <div>
+                        <b>Account Security</b>
+                        <p>Your account is secure</p>
+                    </div>
+
+                    <span>♢</span>
+                </div>
+
+                <div class="info">
+                    <div class="info-icon">▣</div>
+                    <div>
+                        <small>Last Login</small>
+                        <p>22 Aug 2026, 10:45 AM</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <button class="logout" onclick="logout()">
+                ⇥ &nbsp; Logout
+            </button>
+
+        </aside>
+
+
+        <!-- RIGHT CONTENT -->
+
+        <section class="right-content">
+
+            <!-- SUMMARY -->
+
+            <div class="summary">
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">▣</div>
+
+                    <h3>Total Balance</h3>
+
+                    <strong>₹0.00</strong>
+
+                    <div style="color:#4e9cff;margin-top:18px">
+                        View Details →
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">↗</div>
+
+                    <h3>Total Transactions</h3>
+
+                    <strong>0</strong>
+
+                    <div style="color:#00e6a0;margin-top:18px">
+                        View Details →
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-icon">₹</div>
+
+                    <h3>Total Commission</h3>
+
+                    <strong>₹0.00</strong>
+
+                    <div style="color:#a56cff;margin-top:18px">
+                        View Details →
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PERSONAL INFORMATION -->
+
+            <div class="details-card">
+
+                <div class="card-heading">
+
+                    <h3>♙ &nbsp; Personal Information</h3>
+
+                    <button class="edit-btn"
+                    onclick="editProfile()">
+                        ✎ Edit
+                    </button>
+
+                </div>
+
+
+                <div class="details-row">
+                    <span>Full Name</span>
+                    <strong>Ajay Singh</strong>
+                </div>
+
+                <div class="details-row">
+                    <span>User ID</span>
+                    <strong>ajaysingh40cr</strong>
+                </div>
+
+                <div class="details-row">
+                    <span>Email Address</span>
+                    <strong>ajaysingh@gmail.com</strong>
+                </div>
+
+                <div class="details-row">
+                    <span>Mobile Number</span>
+                    <strong>+91 93341 36929</strong>
+                </div>
+
+                <div class="details-row">
+                    <span>Date of Birth</span>
+                    <strong>28 Nov 2001</strong>
+                </div>
+
+                <div class="details-row">
+                    <span>Address</span>
+                    <strong>Dubai, United Arab Emirates</strong>
+                </div>
+
+            </div>
+
+
+            <!-- BANK -->
+
+            <div class="bank-card">
+
+                <div class="card-heading">
+
+                    <h3>🏦 &nbsp; Bank / Payment Methods</h3>
+
+                    <button class="add-btn">
+                        Add New
+                    </button>
+
+                </div>
+
+
+                <div class="bank-item">
+
+                    <div class="bank-logo">
+                        SBI
+                    </div>
+
+                    <div class="bank-info">
+
+                        <b>
+                            State Bank of India
+
+                            <span class="primary-tag">
+                                Primary
+                            </span>
+                        </b>
+
+                        <p>
+                            A/C No. 1234 5678 9012
+                        </p>
+
+                        <p>
+                            IFSC: SBIN0001234
+                        </p>
+
+                    </div>
+
+                    <span style="color:#8999b6">
+                        ⋮
+                    </span>
+
+                </div>
+
+
+                <button class="add-bank">
+                    ＋ Add New Bank / UPI / Wallet
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <!-- SETTINGS -->
+
+    <div class="bottom-section">
+
+        <div class="setting-box">
+
+            <h3>⚙ &nbsp; Preferences</h3>
+
+            <div class="setting">
+                <span class="setting-icon">☾</span>
+                <div class="setting-content">
+                    <b>Theme Mode</b>
+                    <small>Dark Mode</small>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="setting">
+                <span class="setting-icon">◎</span>
+                <div class="setting-content">
+                    <b>Language</b>
+                    <small>English</small>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="setting">
+                <span class="setting-icon">♟</span>
+                <div class="setting-content">
+                    <b>Notifications</b>
+                    <small>Enabled</small>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="setting">
+                <span class="setting-icon">♧</span>
+                <div class="setting-content">
+                    <b>Biometric Login</b>
+                    <small>Enabled</small>
+                </div>
+                <div class="switch"></div>
+            </div>
+
+        </div>
+
+
+        <div class="setting-box">
+
+            <h3>♢ &nbsp; Account Actions</h3>
+
+            <div class="setting">
+                <span class="setting-icon">♙</span>
+                <div class="setting-content">
+                    <b>Change Password</b>
+                    <small>Update your password</small>
+                </div>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="setting">
+                <span class="setting-icon">♢</span>
+                <div class="setting-content">
+                    <b>KYC Verification</b>
+                    <small>View your KYC status</small>
+                </div>
+
+                <span style="
+                color:#00e6a0;
+                background:#063c36;
+                padding:5px 12px;
+                border-radius:20px;
+                font-size:12px;">
+                    Verified
+                </span>
+
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="setting">
+                <span class="setting-icon" style="color:#ff405b">
+                    ▥
+                </span>
+
+                <div class="setting-content">
+                    <b>Delete Account</b>
+                    <small>Permanently delete your account</small>
+                </div>
+
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="setting">
+                <span class="setting-icon">⇩</span>
+
+                <div class="setting-content">
+                    <b>Download My Data</b>
+                    <small>Download your account data</small>
+                </div>
+
+                <span class="arrow">›</span>
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- BOTTOM NAVIGATION -->
+
+<nav class="bottom-nav">
+
+    <a href="home.html">
+        <span>⌂</span>
+        Home
+    </a>
+
+    <a href="deposit.html">
+        <span>⇩</span>
+        Deposit
+    </a>
+
+    <a href="withdraw.html">
+        <span>⇧</span>
+        Withdraw
+    </a>
+
+    <a href="transactions.html">
+        <span>☷</span>
+        Transactions
+    </a>
+
+    <a href="profile.html" class="active">
+        <span>♙</span>
+        Profile
+    </a>
+
+</nav>
+
 
 <script>
 
-const currentUser = localStorage.getItem("userid");
+function logout(){
 
-const userData = currentUser
-    ? JSON.parse(
-        localStorage.getItem("globalPayUser_" + currentUser) || "null"
-      )
-    : null;
+    if(confirm("Are you sure you want to logout?")){
+        window.location.href="index.html";
+    }
 
-if (userData) {
-
-    document.getElementById("profileName").innerText =
-        userData.fullName || "User";
-
-    document.getElementById("profileUserId").innerText =
-        userData.userId || "Inactive";
-
-    document.getElementById("profileFullName").innerText =
-        userData.fullName || "Not Available";
-
-    document.getElementById("profileMobile").innerText =
-        userData.mobile
-            ? " " + userData.mobile
-            : " XXXXXXXXXX";
-
-    document.getElementById("profileEmail").innerText =
-        userData.email || "Not Available";
-
-} else {
-
-    document.getElementById("profileName").innerText =
-        "Invalid User";
-
-    document.getElementById("profileUserId").innerText =
-        "Inactive";
-
-    document.getElementById("profileFullName").innerText =
-        "Invalid";
-
-    document.getElementById("profileMobile").innerText =
-        "+91 XXXXXXXXXX";
-
-    document.getElementById("profileEmail").innerText =
-        "Not Available";
 }
 
+function editProfile(){
 
-/* Wallet / Income */
+    alert("Profile editing page will open here.");
 
-document.getElementById("walletBalance").innerText =
-    "₹0.00";
-
-document.getElementById("totalIncome").innerText =
-    "₹0.00";
-
-
-/* Profile Photo */
-
-function savePhoto() {
-
-    const file =
-        document.getElementById("photo").files[0];
-
-    if (!file) return;
-
-    const reader = new FileReader();
-
-    reader.onload = function(e) {
-
-        const currentUser =
-            localStorage.getItem("userid");
-
-        localStorage.setItem(
-            "profilePhoto_" + currentUser,
-            e.target.result
-        );
-
-        document.getElementById("profileImage").src =
-            e.target.result;
-    };
-
-    reader.readAsDataURL(file);
 }
 
+function toggleTheme(){
 
-const photo =
-    localStorage.getItem(
-        "profilePhoto_" + currentUser
-    );
+    document.body.classList.toggle("light");
 
-if (photo) {
-    document.getElementById("profileImage").src = photo;
 }
 
 </script>
 
-</html>
+</body>
+  </html>
