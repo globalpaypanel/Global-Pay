@@ -394,187 +394,113 @@ function goToLogin(){
    Registration
 ------------------------------------------------- */
 
-function registerUser(){
+    <script>
+function registerUser() {
 
-    const name =
-        document.getElementById("fullName").value.trim();
+    const name = document.getElementById("fullName").value.trim();
+    const mobile = document.getElementById("mobile").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const userId = document.getElementById("userId").value.trim();
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const promoCode = document.getElementById("promoCode").value.trim();
+    const terms = document.getElementById("terms").checked;
+    const error = document.getElementById("error");
 
-    const mobile =
-        document.getElementById("mobile").value.trim();
+    error.innerHTML = "";
 
-    const email =
-        document.getElementById("email").value.trim();
+    // Required fields
+    if (!name || !mobile || !email || !userId ||
+        !password || !confirmPassword || !promoCode) {
 
-    const userId =
-        document.getElementById("userId").value.trim();
-
-    const password =
-        document.getElementById("password").value;
-
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
-
-    const promoCode =
-        document.getElementById("promoCode").value.trim();
-
-    const terms =
-        document.getElementById("terms").checked;
-
-    const error =
-        document.getElementById("error");
-
-
-    error.innerHTML="";
-
-
-    /* All fields required */
-
-    if(
-        !name ||
-        !mobile ||
-        !email ||
-        !userId ||
-        !password ||
-        !confirmPassword ||
-        !promoCode
-    ){
-
-        error.innerHTML="❌ Invalid: Please fill all details.";
+        error.innerHTML = "❌ Please fill all details.";
         return;
     }
 
-
-    /* Name validation */
-
-    if(!/^[A-Za-z ]{2,50}$/.test(name)){
-
-        error.innerHTML="❌ Invalid full name.";
+    // Name
+    if (!/^[A-Za-z ]{2,50}$/.test(name)) {
+        error.innerHTML = "❌ Invalid full name.";
         return;
     }
 
-
-    /* Mobile validation: +91 + exactly 10 digits */
-
-    if(!/^[6-9][0-9]{9}$/.test(mobile)){
-    error.innerHTML =
-    "❌ Invalid mobile number. Enter exactly 10 digits.";
-    return;
-}
-
-   
-
-
-    /* Email validation */
-
-    const emailPattern =
-        /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-    if(!emailPattern.test(email)){
-
-        error.innerHTML="❌ Invalid email address.";
+    // Mobile
+    if (!/^[6-9][0-9]{9}$/.test(mobile)) {
+        error.innerHTML = "❌ Invalid mobile number.";
         return;
     }
 
-
-    /* User ID: 6–15 characters */
-
-    if(userId.length < 6 || userId.length > 15){
-
-        error.innerHTML=
-        "❌ User ID must be 6–15 characters.";
-
+    // Email
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+        error.innerHTML = "❌ Invalid email address.";
         return;
     }
 
-
-    /* User ID allowed characters */
-
-    if(!/^[A-Za-z0-9._-]+$/.test(userId)){
-
-        error.innerHTML=
-        "❌ User ID contains invalid characters.";
-
+    // User ID
+    if (userId.length < 6 || userId.length > 15) {
+        error.innerHTML = "❌ User ID must be 6–15 characters.";
         return;
     }
 
-
-    /* Password: 6–20 characters */
-
-    if(password.length < 6 || password.length > 20){
-
-        error.innerHTML=
-        "❌ Password must be 6–20 characters.";
-
+    if (!/^[A-Za-z0-9._-]+$/.test(userId)) {
+        error.innerHTML = "❌ Invalid characters in User ID.";
         return;
     }
 
-
-    /* Confirm password */
-
-    if(password !== confirmPassword){
-
-        error.innerHTML=
-        "❌ Passwords do not match.";
-
+    // Password
+    if (password.length < 6 || password.length > 20) {
+        error.innerHTML = "❌ Password must be 6–20 characters.";
         return;
     }
 
-
-    /* Terms */
-
-    if(!terms){
-
-        error.innerHTML=
-        "❌ Please accept the Terms & Conditions.";
-
+    // Confirm password
+    if (password !== confirmPassword) {
+        error.innerHTML = "❌ Passwords do not match.";
         return;
     }
 
+    // Terms
+    if (!terms) {
+        error.innerHTML = "❌ Please accept Terms & Conditions.";
+        return;
+    }
 
-/* Save registered user */
+    // Complete user data
+    const userData = {
+        fullName: name,
+        mobile: "+91" + mobile,
+        email: email,
+        userId: userId,
+        password: password,
+        promoCode: promoCode
+    };
 
-const userData = {
-    fullName: name,
-    mobile: mobile,
-    email: email,
-    userId: userId
-    password: password
-};
-
-localStorage.setItem(
-    "globalPayUser_" + userId,
-    JSON.stringify(userData)
-);
-
-localStorage.setItem(
-    "userid",
-    userId
-);
-
-localStorage.setItem(
-    "globalPayRegistered",
-    "true"
-);
-
-localStorage.setItem(
-    "allowLoginPage",
-    "true"
-);
-
-
-    /* Success */
-
-    alert(
-        "✅ Registration Successful!\n\n" +
-        "Welcome to Global Pay."
+    // Save user data by User ID
+    localStorage.setItem(
+        "globalPayUser_" + userId,
+        JSON.stringify(userData)
     );
 
+    // Current user
+    localStorage.setItem("userid", userId);
 
-    /* Go to login */
+    // Registration status
+    localStorage.setItem("globalPayRegistered", "true");
+    localStorage.setItem("allowLoginPage", "true");
 
+    // Also save these for compatibility
+    localStorage.setItem("globalPayName", name);
+    localStorage.setItem("globalPayMobile", "+91" + mobile);
+    localStorage.setItem("globalPayEmail", email);
+    localStorage.setItem("globalPayUserId", userId);
+    localStorage.setItem("globalPayPassword", password);
+    localStorage.setItem("globalPayPromoCode", promoCode);
+
+    // Success
+    alert("✅ Registration Successful!\n\nWelcome to Global Pay.");
+
+    // Go to login
     location.replace("index.html");
 }
-
 </script>
 
 
