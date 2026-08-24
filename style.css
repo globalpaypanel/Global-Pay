@@ -1400,3 +1400,47 @@ button {
         font-size: 20px;
     }
   }
+
+body.light-mode {
+    background: #eef3fb;
+    color: #111827;
+}
+
+body.light-mode .stats-card,
+body.light-mode .setup-section,
+body.light-mode .menu-grid button,
+body.light-mode .notice-card,
+body.light-mode .helpline-card {
+    background: #ffffff;
+    border-color: #dce3ef;
+}
+
+body.light-mode .stat p,
+body.light-mode .section-title,
+body.light-mode .setup-heading h2,
+body.light-mode .menu-grid strong,
+body.light-mode .notice-title h2 {
+    color: #111827;
+}
+
+body.light-mode .menu-grid span,
+body.light-mode .setup-heading span,
+body.light-mode .notice-content {
+    color: #64748b;
+}
+
+body.light-mode .header {
+    background: transparent;
+}
+
+body.light-mode .icon-btn,
+body.light-mode .profile-btn {
+    background: #ffffff;
+    color: #172033;
+    border-color: #d8e0ed;
+}
+
+body.light-mode .bottom-nav {
+    background: rgba(255,255,255,.95);
+    border-color: #dce3ef;
+    }
