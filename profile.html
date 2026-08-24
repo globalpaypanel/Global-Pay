@@ -1139,25 +1139,112 @@ button{
 
 <script>
 
-function logout(){
+<script>
 
-    if(confirm("Are you sure you want to logout?")){
-        window.location.href="index.html";
+function loadProfile(){
+
+    const userId = localStorage.getItem("userid");
+
+    if(!userId){
+        window.location.href = "index.html";
+        return;
+    }
+
+    const savedData = localStorage.getItem(
+        "globalPayUser_" + userId
+    );
+
+    if(!savedData){
+        alert("User data not found.");
+        window.location.href = "index.html";
+        return;
+    }
+
+    const user = JSON.parse(savedData);
+
+    // Name
+    document.getElementById("profileName").textContent =
+        user.fullName || "User";
+
+    // User ID
+    document.getElementById("profileUserId").textContent =
+        user.userId || userId;
+
+    // Email
+    document.getElementById("profileEmail").textContent =
+        user.email || "-";
+
+    // Mobile
+    document.getElementById("profileMobile").textContent =
+        user.mobile || "-";
+
+    // Location
+    document.getElementById("profileLocation").textContent =
+        "India";
+
+    // Personal information
+    document.getElementById("detailName").textContent =
+        user.fullName || "-";
+
+    document.getElementById("detailUserId").textContent =
+        user.userId || userId;
+
+    document.getElementById("detailEmail").textContent =
+        user.email || "-";
+
+    document.getElementById("detailMobile").textContent =
+        user.mobile || "-";
+
+    // Member Since
+    if(user.registeredAt){
+
+        const date = new Date(user.registeredAt);
+
+        const formattedDate = date.toLocaleDateString(
+            "en-IN",
+            {
+                day:"2-digit",
+                month:"short",
+                year:"numeric"
+            }
+        );
+
+        document.getElementById("memberSince").textContent =
+            formattedDate;
+
+    }else{
+
+        document.getElementById("memberSince").textContent =
+            "Registration Date";
+
     }
 
 }
 
-function editProfile(){
 
-    alert("Profile editing page will open here.");
+// Logout
+function logout(){
+
+    if(confirm("Are you sure you want to logout?")){
+
+        localStorage.removeItem("userid");
+
+        window.location.href = "index.html";
+    }
 
 }
 
+
+// Theme
 function toggleTheme(){
 
     document.body.classList.toggle("light");
 
 }
+
+
+// Load profile automatically
+loadProfile();
 
 </script>
 
