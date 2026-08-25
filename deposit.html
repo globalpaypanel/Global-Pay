@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f6fa;
+            color: #222;
+        }
+
+        .header {
+            background: #ffffff;
+            padding: 18px 20px;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header h2 {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 480px;
+            margin: auto;
+            padding: 18px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+            margin-bottom: 18px;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .subtitle {
+            color: #777;
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+
+        .amount-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .amount-box span {
+            position: absolute;
+            left: 15px;
+            top: 14px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .amount-box input {
+            width: 100%;
+            height: 52px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            padding: 0 15px 0 38px;
+            font-size: 18px;
+            outline: none;
+        }
+
+        .amount-box input:focus {
+            border-color: #6c63ff;
+        }
+
+        .upi-box {
+            background: #f7f7ff;
+            border: 1px dashed #bbb;
+            border-radius: 12px;
+            padding: 13px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .upi-label {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .upi-id {
+            font-weight: 700;
+            font-size: 15px;
+            word-break: break-all;
+        }
+
+        .apps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .app-btn {
+            border: 1px solid #eee;
+            background: white;
+            border-radius: 14px;
+            padding: 14px 7px;
+            cursor: pointer;
+            text-align: center;
+            transition: 0.2s;
+        }
+
+        .app-btn:active {
+            transform: scale(.96);
+        }
+
+        .app-icon {
+            width: 48px;
+            height: 48px;
+            margin: auto;
+            border-radius: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .phonepe {
+            background: #5f259f;
+        }
+
+        .gpay {
+            background: #4285f4;
+        }
+
+        .paytm {
+            background: #00baf2;
+        }
+
+        .app-btn strong {
+            font-size: 13px;
+        }
+
+        .qr-section {
+            text-align: center;
+        }
+
+        #qrcode {
+            width: 220px;
+            height: 220px;
+            margin: 15px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #qrcode img,
+        #qrcode canvas {
+            max-width: 220px;
+            max-height: 220px;
+        }
+
+        .scan-text {
+            color: #777;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .pay-button {
+            width: 100%;
+            border: none;
+            background: #111827;
+            color: white;
+            height: 52px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            margin-top: 15px;
+            cursor: pointer;
+        }
+
+        .note {
+            margin-top: 15px;
+            background: #fff8e7;
+            border-radius: 12px;
+            padding: 12px;
+            color: #765b18;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h2>Deposit Money</h2>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="title">Enter Amount</div>
+            <div class="subtitle">
+                Enter the amount you want to deposit
+            </div>
+
+            <div class="amount-box">
+                <span>₹</span>
+                <input
+                    type="number"
+                    id="amount"
+                    placeholder="Enter amount"
+                    min="1"
+                    oninput="updateQR()"
+                >
+            </div>
+
+            <div class="upi-box">
+                <div class="upi-label">UPI ID</div>
+                <div class="upi-id">8271692042-2@ybl</div>
+            </div>
+
+            <div class="title">Pay Using</div>
+            <div class="subtitle">
+                Select your preferred UPI app
+            </div>
+
+            <div class="apps">
+
+                <button class="app-btn" onclick="payWith('phonepe')">
+                    <div class="app-icon phonepe">पे</div>
+                    <strong>PhonePe</strong>
+                </button>
+
+                <button class="app-btn" onclick="payWith('gpay')">
+                    <div class="app-icon gpay">G</div>
+                    <strong>Google Pay</strong>
+                </button>
+
+                <button class="app-btn" onclick="payWith('paytm')">
+                    <div class="app-icon paytm">P</div>
+                    <strong>Paytm</strong>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="card qr-section">
+
+            <div class="title">Scan & Pay</div>
+
+            <div class="subtitle">
+                Scan this QR code with any UPI app
+            </div>
+
+            <div id="qrcode"></div>
+
+            <div class="scan-text">
+                Amount enter karne ke baad QR automatically update hoga.
+            </div>
+
+            <button class="pay-button" onclick="payWith('upi')">
+                Continue with UPI
+            </button>
+
+            <div class="note">
+                Payment karne ke baad transaction successful hone par
+                payment confirmation zaroor check karein.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- QR Code Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <script>
+
+        const UPI_ID = "8271692042-2@ybl";
+        const PAYEE_NAME = "Shopzo";
+
+        function createUPILink() {
+
+            let amount = document.getElementById("amount").value;
+
+            let upi = "upi://pay" +
+                "?pa=" + encodeURIComponent(UPI_ID) +
+                "&pn=" + encodeURIComponent(PAYEE_NAME) +
+                "&cu=INR";
+
+            if (amount && Number(amount) > 0) {
+                upi += "&am=" + encodeURIComponent(amount);
+            }
+
+            return upi;
+        }
+
+
+        function updateQR() {
+
+            const qrBox = document.getElementById("qrcode");
+
+            qrBox.innerHTML = "";
+
+            new QRCode(qrBox, {
+                text: createUPILink(),
+                width: 220,
+                height: 220,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+
+        function payWith(app) {
+
+            let amount = document.getElementById("amount").value;
+
+            if (!amount || Number(amount) <= 0) {
+                alert("Please enter deposit amount first.");
+                document.getElementById("amount").focus();
+                return;
+            }
+
+            let upiLink = createUPILink();
+
+            let appLink = upiLink;
+
+            if (app === "phonepe") {
+                appLink =
+                    "phonepe://pay" +
+                    "?pa=" + encodeURIComponent(UPI_ID) +
+                    "&pn=" + encodeURIComponent(PAYEE_NAME) +
+                    "&am=" + encodeURIComponent(amount) +
+                    "&cu=INR";
+            }
+
+            else if (app === "gpay") {
+                appLink =
+                    "tez://upi/pay" +
+                    "?pa=" + encodeURIComponent(UPI_ID) +
+                    "&pn=" + encodeURIComponent(PAYEE_NAME) +
+                    "&am=" + encodeURIComponent(amount) +
+                    "&cu=INR";
+            }
+
+            else if (app === "paytm") {
+                appLink =
+                    "paytmmp://pay" +
+                    "?pa=" + encodeURIComponent(UPI_ID) +
+                    "&pn=" + encodeURIComponent(PAYEE_NAME) +
+                    "&am=" + encodeURIComponent(amount) +
+                    "&cu=INR";
+            }
+
+            window.location.href = appLink;
+
+            setTimeout(function () {
+                window.location.href = upiLink;
+            }, 1500);
+        }
+
+
+        // Initial QR
+        updateQR();
+
+    </script>
+
+</body>
+  </html>
