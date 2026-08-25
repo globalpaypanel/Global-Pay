@@ -1227,6 +1227,21 @@ function loadProfile() {
         user.name ||
         "-";
 
+    /* =========================
+   DATE OF BIRTH
+========================= */
+
+document.getElementById("detailDob").textContent =
+    user.dob || "-";
+
+
+/* =========================
+   ADDRESS
+========================= */
+
+document.getElementById("detailAddress").textContent =
+    user.address || "-";
+
 
     /* =========================
        LOCATION
