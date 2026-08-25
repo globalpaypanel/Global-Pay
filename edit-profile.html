@@ -1,0 +1,1519 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY - Edit Profile</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:
+    radial-gradient(
+        circle at 50% 10%,
+        #122650 0%,
+        #071329 45%,
+        #030817 100%
+    );
+
+    color:#fff;
+
+    padding:20px;
+
+}
+
+.page{
+
+    width:100%;
+    max-width:600px;
+
+    margin:auto;
+
+}
+
+header{
+
+    display:flex;
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+}
+
+header button{
+
+    width:45px;
+    height:45px;
+
+    border-radius:12px;
+
+    border:1px solid #29466f;
+
+    background:#0c1931;
+
+    color:#68aaff;
+
+    font-size:30px;
+
+    cursor:pointer;
+
+}
+
+header h1{
+
+    font-size:24px;
+
+}
+
+header p{
+
+    color:#91a1ba;
+
+    font-size:12px;
+
+    margin-top:4px;
+
+}
+
+
+/* CARD */
+
+.card{
+
+    background:
+    linear-gradient(
+        145deg,
+        #101d3a,
+        #0b152c
+    );
+
+    border:1px solid #243c61;
+
+    border-radius:22px;
+
+    padding:24px;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,.30);
+
+}
+
+.card h2{
+
+    font-size:20px;
+
+    margin-bottom:7px;
+
+}
+
+.subtitle{
+
+    color:#91a1ba;
+
+    font-size:12px;
+
+    margin-bottom:22px;
+
+}
+
+
+/* FORM */
+
+label{
+
+    display:block;
+
+    color:#aebbd0;
+
+    font-size:12px;
+
+    margin-bottom:7px;
+
+    margin-top:17px;
+
+}
+
+input,
+textarea{
+
+    width:100%;
+
+    border-radius:11px;
+
+    border:1px solid #2b4162;
+
+    outline:none;
+
+    background:#09152b;
+
+    color:#fff;
+
+    padding:0 14px;
+
+    font-size:14px;
+
+}
+
+input{
+
+    height:48px;
+
+}
+
+textarea{
+
+    min-height:100px;
+
+    padding-top:14px;
+
+    resize:vertical;
+
+}
+
+input::placeholder,
+textarea::placeholder{
+
+    color:#596a84;
+
+}
+
+input:focus,
+textarea:focus{
+
+    border-color:#168eff;
+
+    box-shadow:
+    0 0 0 2px #168eff15;
+
+}
+
+
+/* DOB */
+
+.dob-row{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 15px 1fr 15px 1.5fr;
+
+    align-items:center;
+
+    gap:7px;
+
+}
+
+.dob-row input{
+
+    text-align:center;
+
+    padding:0 8px;
+
+}
+
+.dob-separator{
+
+    color:#7e8ea8;
+
+    text-align:center;
+
+    font-size:18px;
+
+}
+
+.dob-hint{
+
+    color:#71829d;
+
+    font-size:10px;
+
+    margin-top:6px;
+
+}
+
+.dob-error{
+
+    display:none;
+
+    color:#ff536d;
+
+    font-size:12px;
+
+    margin-top:7px;
+
+}
+
+
+/* MESSAGE */
+
+.message{
+
+    min-height:18px;
+
+    margin-top:15px;
+
+    font-size:13px;
+
+}
+
+
+/* BUTTONS */
+
+.buttons{
+
+    display:grid;
+
+    grid-template-columns:1fr 1.4fr;
+
+    gap:12px;
+
+    margin-top:20px;
+
+}
+
+.buttons button{
+
+    height:50px;
+
+    border-radius:12px;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+.cancel{
+
+    background:#0b172d;
+
+    color:#9eabc0;
+
+    border:1px solid #2a3e5d;
+
+}
+
+.primary{
+
+    border:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        #168eff,
+        #2455df
+    );
+
+    color:#fff;
+
+    box-shadow:
+    0 10px 25px #168eff25;
+
+}
+
+.primary:active,
+.cancel:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* SUCCESS POPUP */
+
+.success-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.72);
+
+    backdrop-filter:blur(8px);
+
+    z-index:9999;
+
+}
+
+.success-overlay.show{
+
+    display:flex;
+
+}
+
+.success-popup{
+
+    width:100%;
+
+    max-width:370px;
+
+    text-align:center;
+
+    padding:30px 24px 24px;
+
+    border-radius:24px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #122143,
+        #081329
+    );
+
+    border:1px solid #28558b;
+
+    box-shadow:
+    0 25px 70px rgba(0,0,0,.75);
+
+    animation:
+    popupShow .25s ease;
+
+}
+
+@keyframes popupShow{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        scale(.85)
+        translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        scale(1)
+        translateY(0);
+
+    }
+
+}
+
+.success-icon{
+
+    width:70px;
+    height:70px;
+
+    margin:0 auto 17px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:30px;
+
+    color:#00e6a0;
+
+    background:#063c36;
+
+    border:1px solid #087f67;
+
+}
+
+.success-popup h2{
+
+    font-size:21px;
+
+    margin-bottom:8px;
+
+}
+
+.success-popup p{
+
+    color:#91a1ba;
+
+    font-size:13px;
+
+    line-height:1.6;
+
+}
+
+@media(max-width:500px){
+
+    body{
+
+        padding:15px;
+
+    }
+
+    .card{
+
+        padding:18px;
+
+    }
+
+    .dob-row{
+
+        grid-template-columns:
+        1fr 10px 1fr 10px 1.5fr;
+
+        gap:4px;
+
+    }
+
+    .dob-row input{
+
+        font-size:13px;
+
+    }
+
+    .buttons{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+<header>
+
+    <button onclick="history.back()">
+        ‹
+    </button>
+
+    <div>
+
+        <h1>Edit Profile</h1>
+
+        <p>Update your personal information</p>
+
+    </div>
+
+</header>
+
+
+<div class="card">
+
+
+    <h2>Personal Information</h2>
+
+    <p class="subtitle">
+        Update your account details below.
+    </p>
+
+
+    <!-- NAME -->
+
+    <label>
+        Full Name
+    </label>
+
+    <input
+        type="text"
+        id="fullName"
+        placeholder="Full Name">
+
+
+    <!-- USER ID -->
+
+    <label>
+        User ID
+    </label>
+
+    <input
+        type="text"
+        id="userId"
+        placeholder="User ID">
+
+
+    <!-- EMAIL -->
+
+    <label>
+        Email Address
+    </label>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Email Address">
+
+
+    <!-- MOBILE -->
+
+    <label>
+        Mobile Number
+    </label>
+
+    <input
+        type="tel"
+        id="mobile"
+        placeholder="Mobile Number">
+
+
+    <!-- DOB -->
+
+    <label>
+        Date of Birth
+    </label>
+
+    <div class="dob-row">
+
+        <input
+            type="text"
+            id="dobDay"
+            placeholder="DD"
+            maxlength="2"
+            inputmode="numeric">
+
+        <span class="dob-separator">
+            /
+        </span>
+
+        <input
+            type="text"
+            id="dobMonth"
+            placeholder="MM"
+            maxlength="2"
+            inputmode="numeric">
+
+        <span class="dob-separator">
+            /
+        </span>
+
+        <input
+            type="text"
+            id="dobYear"
+            placeholder="YYYY"
+            maxlength="4"
+            inputmode="numeric">
+
+    </div>
+
+    <div class="dob-hint">
+        Age must be between 16 and 60 years.
+    </div>
+
+    <div
+        id="dobError"
+        class="dob-error">
+    </div>
+
+
+    <!-- ADDRESS -->
+
+    <label>
+        Address
+    </label>
+
+    <textarea
+        id="address"
+        placeholder="Address"></textarea>
+
+
+    <div
+        id="saveMessage"
+        class="message">
+    </div>
+
+
+    <div class="buttons">
+
+        <button
+            class="cancel"
+            onclick="history.back()">
+
+            Cancel
+
+        </button>
+
+
+        <button
+            class="primary"
+            onclick="saveChanges()">
+
+            ✓ Save Changes
+
+        </button>
+
+    </div>
+
+
+</div>
+
+</div>
+
+
+<!-- SUCCESS POPUP -->
+
+<div
+    id="successOverlay"
+    class="success-overlay">
+
+    <div class="success-popup">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Profile Updated
+        </h2>
+
+        <p>
+            Your personal information has been
+            updated successfully.
+        </p>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   GLOBAL
+========================= */
+
+let oldUserId = "";
+
+
+/* =========================
+   LOAD PROFILE
+========================= */
+
+function loadProfile(){
+
+    const currentUser =
+        localStorage.getItem("userid");
+
+
+    if(!currentUser){
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    const savedData =
+        localStorage.getItem(
+            "globalPayUser_" + currentUser
+        );
+
+
+    if(!savedData){
+
+        alert("User data not found.");
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    let user;
+
+
+    try{
+
+        user =
+            JSON.parse(savedData);
+
+    }catch(error){
+
+        alert("Account data is corrupted.");
+
+        return;
+
+    }
+
+
+    oldUserId = currentUser;
+
+
+    /* NAME */
+
+    document.getElementById("fullName").value =
+        user.fullName ||
+        user.name ||
+        "";
+
+
+    /* USER ID */
+
+    document.getElementById("userId").value =
+        user.userId ||
+        currentUser;
+
+
+    /* EMAIL */
+
+    document.getElementById("email").value =
+        user.email ||
+        "";
+
+
+    /* MOBILE */
+
+    document.getElementById("mobile").value =
+        user.mobile ||
+        user.phone ||
+        user.phoneNumber ||
+        "";
+
+
+    /* DOB */
+
+    loadDOB(
+        user.dob ||
+        user.dateOfBirth ||
+        ""
+    );
+
+
+    /* ADDRESS */
+
+    document.getElementById("address").value =
+        user.address ||
+        "";
+
+}
+
+
+/* =========================
+   LOAD DOB
+========================= */
+
+function loadDOB(savedDob){
+
+    if(!savedDob){
+
+        return;
+
+    }
+
+
+    /*
+       Expected:
+       DD/MM/YYYY
+    */
+
+    const parts =
+        savedDob.split("/");
+
+
+    if(parts.length !== 3){
+
+        return;
+
+    }
+
+
+    document.getElementById("dobDay").value =
+        parts[0];
+
+
+    document.getElementById("dobMonth").value =
+        parts[1];
+
+
+    document.getElementById("dobYear").value =
+        parts[2];
+
+}
+
+
+/* =========================
+   ONLY NUMBERS
+========================= */
+
+function numbersOnly(input){
+
+    input.value =
+        input.value.replace(/\D/g,"");
+
+}
+
+
+/* =========================
+   DOB VALIDATION
+========================= */
+
+function validateDOB(){
+
+    const dayInput =
+        document.getElementById("dobDay");
+
+    const monthInput =
+        document.getElementById("dobMonth");
+
+    const yearInput =
+        document.getElementById("dobYear");
+
+    const error =
+        document.getElementById("dobError");
+
+
+    const day =
+        dayInput.value.trim();
+
+    const month =
+        monthInput.value.trim();
+
+    const year =
+        yearInput.value.trim();
+
+
+    error.style.display =
+        "none";
+
+    error.textContent =
+        "";
+
+
+    /* DAY */
+
+    if(
+        !/^\d{1,2}$/.test(day) ||
+        Number(day) < 1 ||
+        Number(day) > 30
+    ){
+
+        error.textContent =
+            "❌ Day must be between 01 and 30.";
+
+        error.style.display =
+            "block";
+
+        return false;
+
+    }
+
+
+    /* MONTH */
+
+    if(
+        !/^\d{1,2}$/.test(month) ||
+        Number(month) < 1 ||
+        Number(month) > 12
+    ){
+
+        error.textContent =
+            "❌ Month must be between 01 and 12.";
+
+        error.style.display =
+            "block";
+
+        return false;
+
+    }
+
+
+    /* YEAR */
+
+    if(!/^\d{4}$/.test(year)){
+
+        error.textContent =
+            "❌ Year must contain 4 digits.";
+
+        error.style.display =
+            "block";
+
+        return false;
+
+    }
+
+
+    const d =
+        Number(day);
+
+    const m =
+        Number(month);
+
+    const y =
+        Number(year);
+
+
+    /* REAL DATE CHECK */
+
+    const birthDate =
+        new Date(
+            y,
+            m - 1,
+            d
+        );
+
+
+    if(
+        birthDate.getFullYear() !== y ||
+        birthDate.getMonth() !== m - 1 ||
+        birthDate.getDate() !== d
+    ){
+
+        error.textContent =
+            "❌ Invalid date.";
+
+        error.style.display =
+            "block";
+
+        return false;
+
+    }
+
+
+    /* TODAY */
+
+    const today =
+        new Date();
+
+
+    if(birthDate > today){
+
+        error.textContent =
+            "❌ Future date is not allowed.";
+
+        error.style.display =
+            "block";
+
+        return false;
+
+    }
+
+
+    /* AGE */
+
+    let age =
+        today.getFullYear() -
+        y;
+
+
+    const birthdayPassed =
+        (
+            today.getMonth() >
+            birthDate.getMonth()
+        ) ||
+        (
+            today.getMonth() ===
+            birthDate.getMonth() &&
+            today.getDate() >=
+            birthDate.getDate()
+        );
+
+
+    if(!birthdayPassed){
+
+        age--;
+
+    }
+
+
+    /* MINIMUM AGE */
+
+    if(age < 16){
+
+        error.textContent =
+            "❌ Minimum age must be 16 years.";
+
+        error.style.display =
+            "block";
+
+        return false;
+
+    }
+
+
+    /* MAXIMUM AGE */
+
+    if(age > 60){
+
+        error.textContent =
+            "❌ Maximum age is 60 years.";
+
+        error.style.display =
+            "block";
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================
+   SAVE CHANGES
+========================= */
+
+function saveChanges(){
+
+
+    const message =
+        document.getElementById("saveMessage");
+
+
+    message.textContent =
+        "";
+
+
+    /* NAME */
+
+    const newName =
+        document.getElementById(
+            "fullName"
+        ).value.trim();
+
+
+    /* USER ID */
+
+    const newUserId =
+        document.getElementById(
+            "userId"
+        ).value.trim();
+
+
+    /* EMAIL */
+
+    const newEmail =
+        document.getElementById(
+            "email"
+        ).value.trim();
+
+
+    /* MOBILE */
+
+    const newMobile =
+        document.getElementById(
+            "mobile"
+        ).value.trim();
+
+
+    /* ADDRESS */
+
+    const newAddress =
+        document.getElementById(
+            "address"
+        ).value.trim();
+
+
+    /* REQUIRED */
+
+    if(
+        !newName ||
+        !newUserId ||
+        !newEmail ||
+        !newMobile
+    ){
+
+        message.style.color =
+            "#ff536d";
+
+        message.textContent =
+            "Please fill all required fields.";
+
+        return;
+
+    }
+
+
+    /* DOB */
+
+    if(!validateDOB()){
+
+        return;
+
+    }
+
+
+    const day =
+        document.getElementById(
+            "dobDay"
+        ).value
+        .trim()
+        .padStart(2,"0");
+
+
+    const month =
+        document.getElementById(
+            "dobMonth"
+        ).value
+        .trim()
+        .padStart(2,"0");
+
+
+    const year =
+        document.getElementById(
+            "dobYear"
+        ).value
+        .trim();
+
+
+    const newDob =
+        day +
+        "/" +
+        month +
+        "/" +
+        year;
+
+
+    /* OLD ACCOUNT */
+
+    const oldData =
+        localStorage.getItem(
+            "globalPayUser_" +
+            oldUserId
+        );
+
+
+    if(!oldData){
+
+        message.style.color =
+            "#ff536d";
+
+        message.textContent =
+            "Account data not found.";
+
+        return;
+
+    }
+
+
+    let user;
+
+
+    try{
+
+        user =
+            JSON.parse(oldData);
+
+    }catch(error){
+
+        message.style.color =
+            "#ff536d";
+
+        message.textContent =
+            "Account data is corrupted.";
+
+        return;
+
+    }
+
+
+    /* CHECK USER ID */
+
+    if(newUserId !== oldUserId){
+
+        const existingUser =
+            localStorage.getItem(
+                "globalPayUser_" +
+                newUserId
+            );
+
+
+        if(existingUser){
+
+            message.style.color =
+                "#ff536d";
+
+            message.textContent =
+                "❌ This User ID is already registered.";
+
+            return;
+
+        }
+
+    }
+
+
+    /* =========================
+       UPDATE USER
+    ========================= */
+
+    user.fullName =
+        newName;
+
+
+    user.userId =
+        newUserId;
+
+
+    user.email =
+        newEmail;
+
+
+    user.mobile =
+        newMobile;
+
+
+    user.dob =
+        newDob;
+
+
+    user.address =
+        newAddress;
+
+
+    /*
+       Keep old password
+       and all other account
+       information unchanged.
+    */
+
+
+    /* REMOVE OLD ID */
+
+    if(newUserId !== oldUserId){
+
+        localStorage.removeItem(
+            "globalPayUser_" +
+            oldUserId
+        );
+
+
+        /*
+           Keep profile photo
+           connected with new ID.
+        */
+
+        const oldPhoto =
+            localStorage.getItem(
+                "profilePhoto_" +
+                oldUserId
+            );
+
+
+        if(oldPhoto){
+
+            localStorage.setItem(
+                "profilePhoto_" +
+                newUserId,
+                oldPhoto
+            );
+
+
+            localStorage.removeItem(
+                "profilePhoto_" +
+                oldUserId
+            );
+
+        }
+
+    }
+
+
+    /* SAVE NEW DATA */
+
+    localStorage.setItem(
+
+        "globalPayUser_" +
+        newUserId,
+
+        JSON.stringify(user)
+
+    );
+
+
+    /* CURRENT LOGIN ID */
+
+    localStorage.setItem(
+        "userid",
+        newUserId
+    );
+
+
+    /* LOGIN PAGE ACCESS */
+
+    localStorage.setItem(
+        "allowLoginPage",
+        "true"
+    );
+
+
+    /* SUCCESS MESSAGE */
+
+    message.style.color =
+        "#00e6a0";
+
+    message.textContent =
+        "✓ Profile updated successfully.";
+
+
+    /* POPUP */
+
+    document
+    .getElementById(
+        "successOverlay"
+    )
+    .classList.add("show");
+
+
+    /* GO PROFILE */
+
+    setTimeout(function(){
+
+        window.location.href =
+            "profile.html";
+
+    },1500);
+
+}
+
+
+/* =========================
+   DOB INPUT CONTROL
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const day =
+            document.getElementById(
+                "dobDay"
+            );
+
+        const month =
+            document.getElementById(
+                "dobMonth"
+            );
+
+        const year =
+            document.getElementById(
+                "dobYear"
+            );
+
+
+        day.addEventListener(
+            "input",
+            function(){
+
+                numbersOnly(day);
+
+                if(
+                    Number(day.value) > 30
+                ){
+
+                    day.value = "";
+
+                    const error =
+                        document.getElementById(
+                            "dobError"
+                        );
+
+                    error.textContent =
+                        "❌ Day must be between 01 and 30.";
+
+                    error.style.display =
+                        "block";
+
+                }
+
+            }
+        );
+
+
+        month.addEventListener(
+            "input",
+            function(){
+
+                numbersOnly(month);
+
+                if(
+                    Number(month.value) > 12
+                ){
+
+                    month.value = "";
+
+                    const error =
+                        document.getElementById(
+                            "dobError"
+                        );
+
+                    error.textContent =
+                        "❌ Month must be between 01 and 12.";
+
+                    error.style.display =
+                        "block";
+
+                }
+
+            }
+        );
+
+
+        year.addEventListener(
+            "input",
+            function(){
+
+                numbersOnly(year);
+
+                if(
+                    year.value.length === 4
+                ){
+
+                    validateDOB();
+
+                }
+
+            }
+        );
+
+
+        loadProfile();
+
+    }
+);
+
+</script>
+
+</body>
+
+      </html>
