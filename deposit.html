@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Pay - Deposit</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:linear-gradient(135deg,#030817,#0b1730,#111b38);
+    color:white;
+    padding:20px;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+}
+
+.header{
+    text-align:center;
+    margin:15px 0 25px;
+}
+
+.header h1{
+    font-size:42px;
+    letter-spacing:3px;
+    background:linear-gradient(90deg,#00d9ff,#7c4dff,#00eaff);
+    -webkit-background-clip:text;
+    color:transparent;
+    text-shadow:0 0 25px rgba(0,200,255,.4);
+}
+
+.header p{
+    color:#b9c4dc;
+    margin-top:8px;
+    font-size:18px;
+}
+
+.card{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:24px;
+    padding:22px;
+    margin-bottom:20px;
+    box-shadow:0 0 25px rgba(0,180,255,.08);
+}
+
+.title{
+    font-size:22px;
+    font-weight:bold;
+    margin-bottom:18px;
+    color:#ffd400;
+}
+
+.amount{
+    background:#050b1d;
+    border:1px solid #26375c;
+    border-radius:16px;
+    padding:20px;
+    text-align:center;
+    font-size:34px;
+    font-weight:bold;
+    color:#00eaff;
+    margin-bottom:15px;
+}
+
+.limit{
+    text-align:center;
+    color:#aeb9d0;
+    margin-bottom:5px;
+}
+
+.limit span{
+    color:#00ff88;
+    font-weight:bold;
+}
+
+.methods{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.method{
+    background:#080f24;
+    border:1px solid #29385c;
+    border-radius:18px;
+    padding:18px 10px;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.method:hover,
+.method.active{
+    border-color:#00d9ff;
+    box-shadow:0 0 18px rgba(0,217,255,.25);
+    transform:translateY(-2px);
+}
+
+.logo{
+    height:50px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.method strong{
+    display:block;
+    font-size:17px;
+}
+
+.method small{
+    display:block;
+    color:#8996b2;
+    margin-top:6px;
+}
+
+.details{
+    display:none;
+    margin-top:20px;
+    animation:show .3s ease;
+}
+
+.details.show{
+    display:block;
+}
+
+@keyframes show{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.upi-box{
+    background:#050b1d;
+    border:1px solid #29385c;
+    border-radius:14px;
+    padding:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.upi{
+    color:#00eaff;
+    font-weight:bold;
+}
+
+.copy{
+    border:0;
+    background:#087ff5;
+    color:white;
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:bold;
+}
+
+.qr{
+    text-align:center;
+}
+
+.qr-box{
+    width:190px;
+    height:190px;
+    margin:15px auto;
+    background:white;
+    color:#111;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:12px;
+    font-weight:bold;
+}
+
+.demo{
+    color:#ffcc00;
+    text-align:center;
+    font-size:13px;
+    margin-top:12px;
+}
+
+.pay-btn{
+    width:100%;
+    border:0;
+    border-radius:15px;
+    padding:17px;
+    margin-top:18px;
+    font-size:19px;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(90deg,#7040ff,#087ff5,#00d9ff);
+    box-shadow:0 0 20px rgba(0,180,255,.25);
+}
+
+.back{
+    width:100%;
+    border:1px solid #34466e;
+    background:#101a34;
+    color:white;
+    padding:14px;
+    border-radius:14px;
+    margin-top:8px;
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>GLOBAL PAY</h1>
+        <p>Secure Deposit Gateway</p>
+    </div>
+
+    <div class="card">
+
+        <div class="title">💳 DEPOSIT AMOUNT</div>
+
+        <div class="amount">₹1,500</div>
+
+        <div class="limit">
+            Minimum: <span>₹100</span>
+            &nbsp; • &nbsp;
+            Maximum: <span>₹50,000</span>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="title">💰 CHOOSE PAYMENT METHOD</div>
+
+        <div class="methods">
+
+            <div class="method" onclick="selectMethod('phonepe',this)">
+                <div class="logo">🟣</div>
+                <strong>PhonePe</strong>
+                <small>PhonePe</small>
+            </div>
+
+            <div class="method" onclick="selectMethod('gpay',this)">
+                <div class="logo">🔵</div>
+                <strong>Google Pay</strong>
+                <small>GPay</small>
+            </div>
+
+            <div class="method" onclick="selectMethod('paytm',this)">
+                <div class="logo">🔷</div>
+                <strong>Paytm</strong>
+                <small>Paytm</small>
+            </div>
+
+            <div class="method" onclick="selectMethod('qr',this)">
+                <div class="logo">▦</div>
+                <strong>Scan QR</strong>
+                <small>QR Payment</small>
+            </div>
+
+        </div>
+
+
+        <!-- UPI DETAILS -->
+
+        <div id="upiDetails" class="details">
+
+            <div class="title">PAYMENT DETAILS</div>
+
+            <div class="upi-box">
+
+                <span class="upi" id="upiId">
+                    demo@upi
+                </span>
+
+                <button class="copy" onclick="copyUPI()">
+                    COPY
+                </button>
+
+            </div>
+
+            <div class="demo">
+                DEMO MODE — No real payment will be processed.
+            </div>
+
+            <button class="pay-btn" onclick="demoPayment()">
+                🔒 CONTINUE
+            </button>
+
+        </div>
+
+
+        <!-- QR DETAILS -->
+
+        <div id="qrDetails" class="details">
+
+            <div class="title">SCAN QR CODE</div>
+
+            <div class="qr">
+
+                <div class="qr-box">
+                    DEMO QR
+                </div>
+
+                <p style="color:#aeb9d0;">
+                    Scan QR to continue
+                </p>
+
+                <div class="demo">
+                    DEMO QR — Not a real payment QR
+                </div>
+
+            </div>
+
+            <button class="pay-btn" onclick="demoPayment()">
+                🔒 CONTINUE
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <button class="back" onclick="history.back()">
+        ← Back
+    </button>
+
+</div>
+
+
+<script>
+
+function selectMethod(method,element){
+
+    document.querySelectorAll(".method")
+        .forEach(x => x.classList.remove("active"));
+
+    element.classList.add("active");
+
+    document.getElementById("upiDetails")
+        .classList.remove("show");
+
+    document.getElementById("qrDetails")
+        .classList.remove("show");
+
+    if(
+        method === "phonepe" ||
+        method === "gpay" ||
+        method === "paytm"
+    ){
+
+        document.getElementById("upiDetails")
+            .classList.add("show");
+
+    }
+
+    if(method === "qr"){
+
+        document.getElementById("qrDetails")
+            .classList.add("show");
+
+    }
+}
+
+
+function copyUPI(){
+
+    const upi =
+        document.getElementById("upiId").innerText;
+
+    navigator.clipboard.writeText(upi)
+    .then(function(){
+
+        alert("Demo UPI ID copied");
+
+    });
+
+}
+
+
+function demoPayment(){
+
+    alert(
+        "Demo payment screen opened.\n\n" +
+        "No real payment has been processed."
+    );
+
+}
+
+</script>
+
+</body>
+</html>
