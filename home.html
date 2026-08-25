@@ -477,37 +477,50 @@
 
 
 
-<!-- BOTTOM NAVIGATION -->
+<!-- ================= BOTTOM NAV ================= -->
 
-<nav class="bottom-nav">
+    <nav class="bottom-nav">
 
-    <a href="home.html">
-        <span>⌂</span>
-        Home
-    </a>
+        <button class="nav-item active" onclick="goTo('home.html')">
 
-    <a href="deposit.html">
-        <span>⇩</span>
-        Deposit
-    </a>
+            <span>⌂</span>
+            <small>Home</small>
 
-    <a href="withdraw.html">
-        <span>⇧</span>
-        Withdraw
-    </a>
+        </button>
 
-    <a href="transactions.html">
-        <span>☷</span>
-        Transactions
-    </a>
 
-    <a href="profile.html" class="active">
-        <span>♙</span>
-        Profile
-    </a>
+        <button class="nav-item" onclick="goTo('deposit1.html')">
 
-</nav>
+            <span>⇩</span>
+            <small>Deposit</small>
 
+        </button>
+
+
+        <button class="nav-item" onclick="goTo('withdraw.html')">
+
+            <span>⇧</span>
+            <small>Withdraw</small>
+
+        </button>
+
+
+        <button class="nav-item" onclick="goTo('transactions.html')">
+
+            <span>☷</span>
+            <small>Transactions</small>
+
+        </button>
+
+
+        <button class="nav-item" onclick="goTo('profile.html')">
+
+            <span>♙</span>
+            <small>Profile</small>
+
+        </button>
+
+    </nav>
 
 </div>
 
