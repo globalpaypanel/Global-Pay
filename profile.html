@@ -865,11 +865,21 @@ button{
 
             <div class="avatar-area">
 
-                <div class="avatar">
-                    ♙
+                <div class="avatar" id="profileAvatar">
+    ♙
                 </div>
 
-                <button class="camera">📷</button>
+                <button class="camera" onclick="document.getElementById('profilePhotoInput').click()">
+    📷
+</button>
+
+<input
+    type="file"
+    id="profilePhotoInput"
+    accept="image/*"
+    style="display:none"
+    onchange="changeProfilePhoto(event)"
+>
 
                 <h2>
     <span id="profileName">User</span>
@@ -1657,6 +1667,55 @@ document.addEventListener("DOMContentLoaded", function() {
     loadProfile();
 
 });
+
+function changeProfilePhoto(event){
+
+    const file = event.target.files[0];
+
+    if(!file){
+        return;
+    }
+
+    const currentUser =
+        localStorage.getItem("userid");
+
+    if(!currentUser){
+        alert("Please login first.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+        localStorage.setItem(
+            "profilePhoto_" + currentUser,
+            e.target.result
+        );
+
+        showProfilePhoto(e.target.result);
+    };
+
+    reader.readAsDataURL(file);
+}
+
+
+function showProfilePhoto(photo){
+
+    const avatar =
+        document.getElementById("profileAvatar");
+
+    if(!avatar) return;
+
+    avatar.style.backgroundImage =
+        `url("${photo}")`;
+
+    avatar.style.backgroundSize = "cover";
+    avatar.style.backgroundPosition = "center";
+    avatar.style.backgroundRepeat = "no-repeat";
+
+    avatar.textContent = "";
+}
 
 </script>
 
