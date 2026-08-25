@@ -680,6 +680,114 @@ button{
         font-size:22px;
     }
 }
+
+
+    /* =========================
+   LOGOUT POPUP
+========================= */
+
+.logout-modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.70);
+    backdrop-filter:blur(7px);
+    -webkit-backdrop-filter:blur(7px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.logout-modal.show{
+    display:flex;
+}
+
+.logout-popup{
+    width:100%;
+    max-width:380px;
+    background:linear-gradient(145deg,#111d3a,#081329);
+    border:1px solid #28558f;
+    border-radius:24px;
+    padding:28px 24px 24px;
+    text-align:center;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.65),
+        0 0 35px rgba(22,142,255,.12);
+    animation:logoutPopup .22s ease-out;
+}
+
+@keyframes logoutPopup{
+    from{
+        opacity:0;
+        transform:scale(.88) translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.logout-icon{
+    width:65px;
+    height:65px;
+    margin:0 auto 17px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:31px;
+    color:#ff5572;
+    background:#3a1028;
+    border:1px solid #a52e50;
+    box-shadow:0 0 25px rgba(255,64,91,.18);
+}
+
+.logout-popup h2{
+    color:#fff;
+    font-size:23px;
+    margin-bottom:9px;
+}
+
+.logout-popup p{
+    color:#9eacc5;
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:25px;
+}
+
+.logout-actions{
+    display:flex;
+    gap:12px;
+}
+
+.logout-actions button{
+    flex:1;
+    height:48px;
+    border-radius:12px;
+    font-family:inherit;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.cancel-btn{
+    background:#101d36;
+    color:#aebbd1;
+    border:1px solid #304563;
+}
+
+.confirm-logout-btn{
+    background:linear-gradient(135deg,#e52e58,#b91f4c);
+    color:#fff;
+    border:1px solid #ff5275;
+    box-shadow:0 8px 20px rgba(229,46,88,.20);
+}
+
+.cancel-btn:active,
+.confirm-logout-btn:active{
+    transform:scale(.97);
+        }
 </style>
 </head>
 
