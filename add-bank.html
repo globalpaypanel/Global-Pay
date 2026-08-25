@@ -851,6 +851,7 @@ function showMessage(text, success){
 }
 
 
+
 /* =========================
    SAVE PAYMENT METHOD
 ========================= */
@@ -862,12 +863,10 @@ function savePaymentMethod(){
 
     if(!currentUser){
 
-        window.location.href =
-            "index.html";
-
+        window.location.href = "index.html";
         return;
-    }
 
+    }
 
     const method =
         document.querySelector(
@@ -878,48 +877,35 @@ function savePaymentMethod(){
     let paymentData = {
 
         userId: currentUser,
-
         method: method,
-
-        addedAt:
-            new Date().toISOString()
+        addedAt: new Date().toISOString()
 
     };
 
 
-    /* BANK */
+    /* =========================
+       BANK
+    ========================= */
 
     if(method === "bank"){
 
         const holder =
-            document.getElementById(
-                "accountHolder"
-            ).value.trim();
+            document.getElementById("accountHolder").value.trim();
 
         const bank =
-            document.getElementById(
-                "bankName"
-            ).value.trim();
+            document.getElementById("bankName").value.trim();
 
         const account =
-            document.getElementById(
-                "accountNumber"
-            ).value.trim();
+            document.getElementById("accountNumber").value.trim();
 
         const confirmAccount =
-            document.getElementById(
-                "confirmAccountNumber"
-            ).value.trim();
+            document.getElementById("confirmAccountNumber").value.trim();
 
         const ifsc =
-            document.getElementById(
-                "ifsc"
-            ).value.trim().toUpperCase();
+            document.getElementById("ifsc").value.trim().toUpperCase();
 
         const type =
-            document.getElementById(
-                "accountType"
-            ).value;
+            document.getElementById("accountType").value;
 
 
         if(
@@ -960,14 +946,14 @@ function savePaymentMethod(){
     }
 
 
-    /* UPI */
+    /* =========================
+       UPI
+    ========================= */
 
     if(method === "upi"){
 
         const upi =
-            document.getElementById(
-                "upiId"
-            ).value.trim();
+            document.getElementById("upiId").value.trim();
 
         if(!upi){
 
@@ -984,19 +970,17 @@ function savePaymentMethod(){
     }
 
 
-    /* WALLET */
+    /* =========================
+       WALLET
+    ========================= */
 
     if(method === "wallet"){
 
         const wallet =
-            document.getElementById(
-                "walletName"
-            ).value;
+            document.getElementById("walletName").value;
 
         const walletId =
-            document.getElementById(
-                "walletId"
-            ).value.trim();
+            document.getElementById("walletId").value.trim();
 
         if(!wallet || !walletId){
 
@@ -1014,7 +998,36 @@ function savePaymentMethod(){
     }
 
 
-    /* SAVE */
+    /* =========================
+       ACTIVATE CODE
+    ========================= */
+
+    const activateCode =
+        prompt("Enter Activate Code");
+
+
+    if(activateCode === null){
+
+        return;
+
+    }
+
+
+    if(activateCode.trim() !== "96619300"){
+
+        showMessage(
+            "❌ Invalid Activate Code.",
+            false
+        );
+
+        return;
+
+    }
+
+
+    /* =========================
+       SAVE
+    ========================= */
 
     localStorage.setItem(
         "globalPayPayment_" + currentUser,
@@ -1035,7 +1048,8 @@ function savePaymentMethod(){
 
     }, 1200);
 
-}
+    }
+    
 
 </script>
 
