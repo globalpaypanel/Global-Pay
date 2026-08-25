@@ -1,0 +1,947 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    background: #020a19;
+}
+
+body {
+    background:
+        radial-gradient(circle at 20% 15%, #071b39 0, transparent 28%),
+        radial-gradient(circle at 90% 30%, #071a35 0, transparent 25%),
+        #020a19;
+    color: #ffffff;
+    min-height: 100vh;
+    padding-bottom: 92px;
+}
+
+
+/* HEADER */
+
+.header {
+    height: 125px;
+    display: flex;
+    align-items: center;
+    padding: 20px 32px;
+    gap: 25px;
+}
+
+.menu {
+    width: 52px;
+    cursor: pointer;
+}
+
+.menu span {
+    display: block;
+    width: 42px;
+    height: 4px;
+    background: #e5ebf5;
+    margin: 7px 0;
+    border-radius: 5px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #087cff, #1b38e8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 37px;
+    font-weight: bold;
+    box-shadow: 0 0 25px #087cff55;
+}
+
+.brand-name {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.brand-name b {
+    color: #168bff;
+}
+
+.tagline {
+    color: #b3bdcf;
+    font-size: 17px;
+    margin-top: 4px;
+}
+
+.header-right {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.notification {
+    width: 70px;
+    height: 70px;
+    border: 1px solid #20395e;
+    border-radius: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background: #07162d;
+}
+
+.notification svg {
+    width: 35px;
+    fill: none;
+    stroke: white;
+    stroke-width: 1.5;
+}
+
+.notification span {
+    position: absolute;
+    top: -7px;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #216cff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+}
+
+.balance-box {
+    min-width: 310px;
+    height: 70px;
+    padding: 10px 18px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    background: linear-gradient(135deg, #075ce7, #171d75);
+    border: 1px solid #2779ff;
+}
+
+.wallet-icon {
+    font-size: 36px;
+    color: #d7e6ff;
+}
+
+.balance-box small {
+    display: block;
+    font-size: 16px;
+    color: #dbe5fa;
+}
+
+.balance-box strong {
+    font-size: 25px;
+}
+
+.down-arrow {
+    margin-left: auto;
+    font-size: 32px;
+    color: #78a9ff;
+}
+
+
+/* MAIN */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px 30px;
+}
+
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 25px;
+}
+
+.back-btn {
+    width: 75px;
+    height: 75px;
+    background: #07162e;
+    color: white;
+    border: 1px solid #1e385e;
+    border-radius: 19px;
+    font-size: 43px;
+    cursor: pointer;
+}
+
+.page-title h1 {
+    font-size: 31px;
+}
+
+.page-title p {
+    color: #aeb8ca;
+    font-size: 20px;
+    margin-top: 6px;
+}
+
+
+/* AMOUNT CARD */
+
+.amount-card {
+    min-height: 270px;
+    border-radius: 25px;
+    border: 1px solid #1688ff;
+    background:
+        radial-gradient(circle at 5% 50%, #008d7650, transparent 35%),
+        linear-gradient(110deg, #075a52, #073a78 50%, #172b9b);
+    padding: 38px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    box-shadow: inset 0 0 40px #006dff20;
+}
+
+.amount-label {
+    color: #d8e6ed;
+    font-size: 25px;
+}
+
+.amount {
+    font-size: 70px;
+    font-weight: 800;
+    margin: 13px 0 22px;
+}
+
+.fixed-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 20px;
+    border-radius: 30px;
+    border: 1px solid #00d49a;
+    background: #00c89218;
+    color: #47edba;
+    font-size: 17px;
+}
+
+.lock {
+    color: #32e5b0;
+}
+
+
+/* PAYMENT ART */
+
+.payment-art {
+    position: relative;
+    width: 390px;
+    height: 220px;
+}
+
+.screen {
+    position: absolute;
+    width: 230px;
+    height: 150px;
+    right: 40px;
+    top: 12px;
+    border: 9px solid #76b5ff;
+    border-radius: 17px;
+    background: linear-gradient(145deg, #1d5dd9, #102b77);
+    box-shadow: 0 8px 20px #001c50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen-rupee {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #fff;
+    color: #1455bd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.check {
+    position: absolute;
+    right: -18px;
+    bottom: -10px;
+    width: 48px;
+    height: 48px;
+    background: #20d797;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.shield {
+    position: absolute;
+    left: 45px;
+    bottom: 18px;
+    width: 90px;
+    height: 110px;
+    background: linear-gradient(150deg, #238aff, #0752bd);
+    clip-path: polygon(50% 0, 90% 18%, 84% 65%, 50% 100%, 16% 65%, 10% 18%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shield-lock {
+    background: white;
+    color: #1661c9;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+.coin {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(145deg,#ffc93d,#d98500);
+    border-radius: 50%;
+    border: 4px solid #e99a17;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.coin1 {
+    right: 15px;
+    bottom: 10px;
+}
+
+.coin2 {
+    right: 60px;
+    bottom: 3px;
+    width: 55px;
+    height: 55px;
+}
+
+.coin3 {
+    right: 0;
+    bottom: 35px;
+    width: 55px;
+    height: 55px;
+}
+
+
+/* COMMON CARD */
+
+.card {
+    background: linear-gradient(145deg,#06172d,#07152a);
+    border: 1px solid #17345b;
+    border-radius: 23px;
+    padding: 23px;
+    margin-top: 19px;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.blue-icon {
+    color: #2585ff;
+}
+
+
+/* PAYMENT METHODS */
+
+.payment-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 22px;
+}
+
+.payment-option {
+    min-height: 180px;
+    border-radius: 18px;
+    background: #08182f;
+    color: white;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.payment-option:hover {
+    transform: translateY(-3px);
+}
+
+.phonepe {
+    border: 1px solid #862ee2;
+}
+
+.googlepay {
+    border: 1px solid #16b993;
+}
+
+.paytm {
+    border: 1px solid #1681ef;
+}
+
+.app-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin: 10px auto 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 37px;
+    font-weight: bold;
+}
+
+.phonepe-circle {
+    background: linear-gradient(145deg,#7d22d4,#4d1591);
+}
+
+.gpay-logo {
+    width: 105px;
+    height: 65px;
+    margin: 12px auto 17px;
+    background: white;
+    border-radius: 35px;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 21px;
+}
+
+.gpay-logo span {
+    color: #4285f4;
+    font-size: 31px;
+    margin-right: 3px;
+}
+
+.paytm-logo {
+    width: 105px;
+    height: 65px;
+    margin: 12px auto 17px;
+    border-radius: 35px;
+    background: white;
+    color: #0758a8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.payment-option strong {
+    display: block;
+    font-size: 21px;
+}
+
+.payment-option small {
+    display: block;
+    margin-top: 7px;
+    color: #aeb8ca;
+    font-size: 15px;
+}
+
+
+/* SECURE MESSAGE */
+
+.secure-payment {
+    margin-top: 18px;
+    border: 1px solid #203b61;
+    background: #0a1b35;
+    border-radius: 17px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    color: #e0e7f1;
+    font-size: 17px;
+}
+
+.secure-symbol {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background: #1265e733;
+    color: #46a1ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.secure-payment p {
+    margin-top: 5px;
+    color: #bdc7d8;
+}
+
+.secure-payment b {
+    color: #20dda4;
+}
+
+
+/* QR */
+
+.qr-card h2 span {
+    color: #a5b0c1;
+    font-weight: normal;
+}
+
+.qr-layout {
+    display: grid;
+    grid-template-columns: 270px 1fr 190px;
+    gap: 35px;
+    align-items: center;
+}
+
+.qr-box {
+    background: white;
+    width: 255px;
+    height: 255px;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+#qrcode,
+#qrcode img {
+    width: 235px !important;
+    height: 235px !important;
+}
+
+.scan-text {
+    font-size: 20px;
+    color: #d4dbe7;
+    line-height: 1.5;
+}
+
+.scan-text b {
+    color: #00dfa3;
+}
+
+.qr-info label {
+    display: block;
+    color: #aab5c7;
+    margin-top: 25px;
+    margin-bottom: 8px;
+}
+
+.upi-box {
+    height: 55px;
+    background: #081a34;
+    border: 1px solid #28486e;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.upi-box span {
+    flex: 1;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.upi-box button {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.payment-features {
+    display: flex;
+    gap: 18px;
+    margin-top: 18px;
+    font-size: 17px;
+}
+
+.secure {
+    color: #20e7a7;
+}
+
+.fast {
+    color: #4ea7ff;
+}
+
+.time {
+    color: #c5ccd9;
+}
+
+
+/* PHONE ART */
+
+.phone-art {
+    height: 260px;
+    position: relative;
+}
+
+.phone {
+    width: 125px;
+    height: 225px;
+    background: #d4e6f5;
+    border: 8px solid #47739c;
+    border-radius: 25px;
+    transform: rotate(9deg);
+    position: absolute;
+    right: 25px;
+    top: 0;
+}
+
+.phone-screen {
+    position: absolute;
+    inset: 8px;
+    border-radius: 15px;
+    background: linear-gradient(180deg,#10284c,#0a1429);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.upi-symbol {
+    font-size: 23px;
+    color: #dce8f7;
+    font-weight: bold;
+}
+
+.success-circle {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #20d999;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+
+.plant {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.pot {
+    width: 55px;
+    height: 50px;
+    background: #b8c1c8;
+    clip-path: polygon(10% 0,90% 0,75% 100%,25% 100%);
+}
+
+.leaf {
+    position: absolute;
+    width: 45px;
+    height: 20px;
+    background: #22a35b;
+    border-radius: 100% 0;
+}
+
+.l1 {
+    top: -25px;
+    left: 5px;
+    transform: rotate(-35deg);
+}
+
+.l2 {
+    top: -30px;
+    left: 28px;
+    transform: rotate(25deg);
+}
+
+
+/* HOW IT WORKS */
+
+.works-card h2 {
+    color: #f3f6fc;
+}
+
+.settings-icon {
+    color: #6fa9ff;
+}
+
+.steps {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.step {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.step-number {
+    width: 52px;
+    height: 52px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: linear-gradient(145deg,#167cff,#284be2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.step strong {
+    display: block;
+    font-size: 17px;
+}
+
+.step small {
+    display: block;
+    color: #9ca9bd;
+    margin-top: 6px;
+}
+
+.step-arrow {
+    color: #8ea6ca;
+    font-size: 30px;
+}
+
+
+/* BOTTOM NAVIGATION */
+
+.bottom-nav {
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 88px;
+    background: #041127;
+    border-top: 1px solid #173354;
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+}
+
+.bottom-nav a {
+    color: #9ba7ba;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.nav-icon {
+    font-size: 29px;
+}
+
+.bottom-nav span {
+    font-size: 15px;
+}
+
+.bottom-nav .active {
+    color: #138cff;
+}
+
+
+/* MOBILE */
+
+@media(max-width:700px) {
+
+    .header {
+        height: 110px;
+        padding: 15px 16px;
+        gap: 13px;
+    }
+
+    .menu {
+        width: 38px;
+    }
+
+    .menu span {
+        width: 34px;
+        height: 3px;
+        margin: 6px 0;
+    }
+
+    .logo {
+        width: 55px;
+        height: 55px;
+        font-size: 32px;
+    }
+
+    .brand-name {
+        font-size: 22px;
+    }
+
+    .tagline {
+        font-size: 14px;
+    }
+
+    .notification {
+        display: flex;
+        width: 50px;
+        height: 50px;
+    }
+
+    .balance-box {
+        min-width: 50px;
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+        justify-content: center;
+    }
+
+    .balance-box > div:nth-child(2),
+    .down-arrow {
+        display: none;
+    }
+
+    .wallet-icon {
+        font-size: 30px;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .page-title {
+        gap: 15px;
+    }
+
+    .back-btn {
+        width: 70px;
+        height: 60px;
+    }
+
+    .page-title h1 {
+        font-size: 25px;
+    }
+
+    .page-title p {
+        font-size: 16px;
+    }
+
+    .amount-card {
+        padding: 25px 20px;
+        min-height: 230px;
+    }
+
+    .amount-label {
+        font-size: 17px;
+    }
+
+    .amount {
+        font-size: 48px;
+    }
+
+    .fixed-badge {
+        font-size: 11px;
+        padding: 10px 12px;
+    }
+
+    .payment-art {
+        transform: scale(.55);
+        margin-right: -80px;
+    }
+
+    .card {
+        padding: 18px;
+    }
+
+    .card h2 {
+        font-size: 21px;
+    }
+
+    .payment-grid {
+        gap: 8px;
+    }
+
+    .payment-option {
+        min-height: 155px;
+    }
+
+    .app-circle {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+    }
+
+    .gpay-logo,
+    .paytm-logo {
+        width: 80px;
+        height: 55px;
+        font-size: 16px;
+    }
+
+    .gpay-logo span {
+        font-size: 25px;
+    }
+
+    .payment-option strong {
+        font-size: 14px;
+    }
+
+    .payment-option small {
+        font-size: 10px;
+    }
+
+    .secure-payment {
+        font-size: 13px;
+    }
+
+    .qr-layout {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+    }
+
+    .qr-box {
+        margin: auto;
+    }
+
+    .phone-art {
+        display: none;
+    }
+
+    .scan-text {
+        font-size: 17px;
+    }
+
+    .payment-features {
+        font-size: 14px;
+        gap: 10px;
+    }
+
+    .steps {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .step-arrow {
+        display: none;
+    }
+
+    .bottom-nav {
+        height: 76px;
+    }
+
+    .nav-icon {
+        font-size: 24px;
+    }
+
+    .bottom-nav span {
+        font-size: 11px;
+    }
+}
