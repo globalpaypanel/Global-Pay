@@ -525,8 +525,11 @@ button{
     width:45px;
     height:25px;
     border-radius:20px;
-    background:#2675ed;
+    background:#263b59;
+    border:1px solid #405473;
     position:relative;
+    cursor:pointer;
+    transition:.25s;
 }
 
 .switch:after{
@@ -534,11 +537,22 @@ button{
     width:19px;
     height:19px;
     border-radius:50%;
-    background:white;
+    background:#a5b1c3;
     position:absolute;
-    right:3px;
-    top:3px;
+    left:3px;
+    top:2px;
+    transition:.25s;
 }
+
+.switch.on{
+    background:#2675ed;
+    border-color:#168eff;
+}
+
+.switch.on:after{
+    left:22px;
+    background:white;
+    }
 
 /* NAV */
 
