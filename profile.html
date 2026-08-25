@@ -1488,6 +1488,152 @@ function toggleTheme() {
 }
 
 
+    function toggleBiometric(){
+
+    const biometricSwitch =
+        document.getElementById("biometricSwitch");
+
+    const status =
+        document.getElementById("biometricStatus");
+
+    if(!biometricSwitch.classList.contains("on")){
+
+        biometricSwitch.classList.add("on");
+
+        status.textContent = "Enabled";
+
+        showBiometricPopup();
+
+    }else{
+
+        biometricSwitch.classList.remove("on");
+
+        status.textContent = "Disabled";
+
+    }
+}
+
+
+function showBiometricPopup(){
+
+    const overlay = document.createElement("div");
+
+    overlay.id = "biometricPopup";
+
+    overlay.style.cssText = `
+        position:fixed;
+        inset:0;
+        z-index:9999;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+        background:rgba(0,0,0,.76);
+        backdrop-filter:blur(9px);
+    `;
+
+    overlay.innerHTML = `
+
+        <div style="
+            width:100%;
+            max-width:370px;
+            padding:30px 24px 24px;
+            text-align:center;
+            border-radius:24px;
+            background:linear-gradient(145deg,#122143,#081329);
+            border:1px solid #28558b;
+            box-shadow:0 25px 70px rgba(0,0,0,.75);
+        ">
+
+            <div style="
+                width:70px;
+                height:70px;
+                margin:0 auto 18px;
+                border-radius:50%;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:30px;
+                background:#092e5d;
+                border:1px solid #168eff;
+                color:#55a7ff;
+            ">
+                ♧
+            </div>
+
+            <h2 style="
+                color:#fff;
+                margin-bottom:8px;
+            ">
+                Biometric Login
+            </h2>
+
+            <h3 style="
+                color:#168eff;
+                font-size:14px;
+                letter-spacing:1.5px;
+                margin-bottom:13px;
+            ">
+                COMING SOON
+            </h3>
+
+            <p style="
+                color:#91a1ba;
+                font-size:13px;
+                line-height:1.6;
+            ">
+                Biometric Login is currently
+                under development.
+                <br><br>
+                This feature will be available soon
+                in GLOBAL PAY.
+            </p>
+
+            <button
+                onclick="closeBiometricPopup()"
+                style="
+                    width:100%;
+                    height:48px;
+                    margin-top:22px;
+                    border:0;
+                    border-radius:12px;
+                    background:linear-gradient(135deg,#168eff,#2852df);
+                    color:#fff;
+                    font-weight:700;
+                    font-size:14px;
+                    cursor:pointer;
+                "
+            >
+                Okay, Got It
+            </button>
+
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+}
+
+
+function closeBiometricPopup(){
+
+    const popup =
+        document.getElementById("biometricPopup");
+
+    if(popup){
+        popup.remove();
+    }
+
+    const biometricSwitch =
+        document.getElementById("biometricSwitch");
+
+    const status =
+        document.getElementById("biometricStatus");
+
+    biometricSwitch.classList.remove("on");
+
+    status.textContent = "Disabled";
+    }
+
 /* =========================
    LOAD PROFILE
 ========================= */
