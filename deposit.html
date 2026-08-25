@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Pay - Deposit</title>
+    <link rel="stylesheet" href="deposit.css">
+</head>
+
+<body>
+
+<!-- TOP HEADER -->
+<header class="header">
+
+    <div class="menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="brand">
+        <div class="logo">G</div>
+
+        <div class="brand-text">
+            <div class="brand-name">
+                GLOBAL <b>PAY</b>
+            </div>
+            <div class="tagline">Secure Payments</div>
+        </div>
+    </div>
+
+    <div class="header-right">
+
+        <div class="notification">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/>
+                <path d="M10 21h4"/>
+            </svg>
+            <span>3</span>
+        </div>
+
+        <div class="balance-box">
+            <div class="wallet-icon">▱</div>
+
+            <div>
+                <small>Total Balance</small>
+                <strong>₹0.00</strong>
+            </div>
+
+            <div class="down-arrow">⌄</div>
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- PAGE TITLE -->
+    <div class="page-title">
+
+        <button class="back-btn" onclick="history.back()">
+            ←
+        </button>
+
+        <div>
+            <h1>Deposit Money</h1>
+            <p>Add money to your account</p>
+        </div>
+
+    </div>
+
+
+    <!-- AMOUNT CARD -->
+    <section class="amount-card">
+
+        <div class="amount-left">
+
+            <div class="amount-label">
+                Deposit Amount (Fixed)
+            </div>
+
+            <div class="amount">
+                ₹2,500
+            </div>
+
+            <div class="fixed-badge">
+                <span class="lock">♙</span>
+                Amount is fixed and cannot be changed
+            </div>
+
+        </div>
+
+
+        <!-- Decorative payment illustration -->
+        <div class="payment-art">
+
+            <div class="screen">
+                <div class="screen-rupee">₹</div>
+                <div class="check">✓</div>
+            </div>
+
+            <div class="shield">
+                <div class="shield-lock">▣</div>
+            </div>
+
+            <div class="coin coin1">₹</div>
+            <div class="coin coin2">₹</div>
+            <div class="coin coin3">₹</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PAYMENT METHOD -->
+    <section class="card payment-card">
+
+        <h2>
+            <span class="blue-icon">▤</span>
+            Choose Payment Method
+        </h2>
+
+        <div class="payment-grid">
+
+            <button class="payment-option phonepe"
+                    onclick="payWith('phonepe')">
+
+                <div class="app-circle phonepe-circle">
+                    पे
+                </div>
+
+                <strong>PhonePe</strong>
+                <small>Pay using PhonePe</small>
+
+            </button>
+
+
+            <button class="payment-option googlepay"
+                    onclick="payWith('gpay')">
+
+                <div class="gpay-logo">
+                    <span>G</span> Pay
+                </div>
+
+                <strong>Google Pay</strong>
+                <small>Pay using Google Pay</small>
+
+            </button>
+
+
+            <button class="payment-option paytm"
+                    onclick="payWith('paytm')">
+
+                <div class="paytm-logo">
+                    Paytm
+                </div>
+
+                <strong>Paytm</strong>
+                <small>Pay using Paytm</small>
+
+            </button>
+
+        </div>
+
+
+        <div class="secure-payment">
+
+            <div class="secure-symbol">↗</div>
+
+            <div>
+                <div>
+                    You will be redirected to secure payment
+                </div>
+
+                <p>
+                    Complete payment of
+                    <b>₹2,500</b> to add money
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QR -->
+    <section class="card qr-card">
+
+        <h2>
+            Scan & Pay
+            <span>(Any UPI App)</span>
+        </h2>
+
+        <div class="qr-layout">
+
+            <div class="qr-box">
+                <div id="qrcode"></div>
+            </div>
+
+
+            <div class="qr-info">
+
+                <p class="scan-text">
+                    Scan this QR code with<br>
+                    any UPI app to pay
+                    <b>₹2,500</b>
+                </p>
+
+                <label>UPI ID</label>
+
+                <div class="upi-box">
+
+                    <span id="upiId">
+                        8271692042-2@ybl
+                    </span>
+
+                    <button onclick="copyUPI()">
+                        ⧉
+                    </button>
+
+                </div>
+
+                <div class="payment-features">
+                    <span class="secure">♢ Secure</span>
+                    <span class="fast">ϟ Fast</span>
+                    <span class="time">◷ 24x7</span>
+                </div>
+
+            </div>
+
+
+            <div class="phone-art">
+
+                <div class="phone">
+                    <div class="phone-screen">
+                        <div class="upi-symbol">UPI</div>
+                        <div class="success-circle">✓</div>
+                    </div>
+                </div>
+
+                <div class="plant">
+                    <div class="leaf l1"></div>
+                    <div class="leaf l2"></div>
+                    <div class="pot"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+    <section class="card works-card">
+
+        <h2>
+            <span class="settings-icon">⚙</span>
+            How It Works
+        </h2>
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <div>
+                    <strong>Open any UPI app</strong>
+                    <small>PhonePe / GPay / Paytm</small>
+                </div>
+
+            </div>
+
+
+            <div class="step-arrow">→</div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <div>
+                    <strong>Pay ₹2,500</strong>
+                    <small>Using UPI ID or QR</small>
+                </div>
+
+            </div>
+
+
+            <div class="step-arrow">→</div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <div>
+                    <strong>Money will be added</strong>
+                    <small>To your account instantly</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- BOTTOM NAVIGATION -->
+<nav class="bottom-nav">
+
+    <a href="index.html">
+        <div class="nav-icon">⌂</div>
+        <span>Home</span>
+    </a>
+
+    <a href="deposit.html" class="active">
+        <div class="nav-icon">⇩</div>
+        <span>Deposit</span>
+    </a>
+
+    <a href="withdraw.html">
+        <div class="nav-icon">⇧</div>
+        <span>Withdraw</span>
+    </a>
+
+    <a href="transactions.html">
+        <div class="nav-icon">☷</div>
+        <span>Transactions</span>
+    </a>
+
+    <a href="profile.html">
+        <div class="nav-icon">♙</div>
+        <span>Profile</span>
+    </a>
+
+</nav>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="deposit.js"></script>
+
+</body>
+      </html>
