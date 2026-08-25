@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY - Language</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    radial-gradient(circle at 50% 10%,#122650 0%,#071329 45%,#030817 100%);
+    color:#fff;
+    padding-bottom:30px;
+}
+
+
+/* HEADER */
+
+.header{
+    height:78px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:12px 5%;
+    border-bottom:1px solid #1c3152;
+    background:#071329;
+}
+
+.back{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    border:1px solid #29466f;
+    background:#0c1931;
+    color:#68aaff;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.header h2{
+    font-size:20px;
+}
+
+.header p{
+    color:#8f9fb9;
+    font-size:11px;
+    margin-top:3px;
+}
+
+
+/* CONTAINER */
+
+.container{
+    width:92%;
+    max-width:650px;
+    margin:28px auto;
+}
+
+
+/* TITLE */
+
+.title{
+    margin-bottom:20px;
+}
+
+.title h1{
+    font-size:25px;
+}
+
+.title p{
+    color:#91a1ba;
+    font-size:13px;
+    margin-top:6px;
+}
+
+
+/* SEARCH */
+
+.search-box{
+    position:relative;
+    margin-bottom:18px;
+}
+
+.search-box input{
+    width:100%;
+    height:52px;
+    border-radius:14px;
+    border:1px solid #2b4162;
+    outline:none;
+    background:#0c1830;
+    color:#fff;
+    padding:0 16px 0 48px;
+    font-size:14px;
+}
+
+.search-box input::placeholder{
+    color:#71819b;
+}
+
+.search-box input:focus{
+    border-color:#168eff;
+    box-shadow:0 0 0 2px #168eff15;
+}
+
+.search-icon{
+    position:absolute;
+    left:17px;
+    top:15px;
+    font-size:20px;
+    color:#7091ba;
+}
+
+
+/* LANGUAGE CARD */
+
+.language-card{
+    background:#0e192f;
+    border:1px solid #243856;
+    border-radius:20px;
+    padding:8px 18px;
+}
+
+
+/* LANGUAGE ITEM */
+
+.language-item{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    min-height:68px;
+    border-bottom:1px solid #202f48;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.language-item:last-child{
+    border-bottom:0;
+}
+
+.language-item:hover{
+    background:#101f3a;
+}
+
+.language-icon{
+    width:42px;
+    height:42px;
+    border-radius:11px;
+    background:#102c5b;
+    border:1px solid #234d82;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#64aaff;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.language-info{
+    flex:1;
+}
+
+.language-info b{
+    display:block;
+    font-size:15px;
+}
+
+.language-info small{
+    display:block;
+    color:#8192ad;
+    font-size:11px;
+    margin-top:4px;
+}
+
+.language-arrow{
+    color:#71839e;
+    font-size:24px;
+}
+
+
+/* NO RESULT */
+
+.no-result{
+    display:none;
+    text-align:center;
+    padding:35px 10px;
+    color:#8394ae;
+    font-size:13px;
+}
+
+
+/* POPUP */
+
+.popup-overlay{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.76);
+    backdrop-filter:blur(9px);
+}
+
+.popup-overlay.show{
+    display:flex;
+}
+
+.popup{
+    width:100%;
+    max-width:370px;
+    padding:30px 24px 24px;
+    text-align:center;
+    border-radius:24px;
+    background:linear-gradient(145deg,#122143,#081329);
+    border:1px solid #28558b;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(22,142,255,.15);
+
+    animation:popupIn .25s ease;
+}
+
+@keyframes popupIn{
+
+    from{
+        opacity:0;
+        transform:scale(.85) translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+
+}
+
+.popup-icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    background:#092e5d;
+    border:1px solid #168eff;
+    color:#55a7ff;
+    box-shadow:0 0 30px rgba(22,142,255,.2);
+}
+
+.popup h2{
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.popup h3{
+    color:#168eff;
+    font-size:14px;
+    letter-spacing:1.5px;
+    margin-bottom:13px;
+}
+
+.popup p{
+    color:#91a1ba;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.popup-btn{
+    width:100%;
+    height:48px;
+    margin-top:22px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#168eff,#2852df);
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .container{
+        width:94%;
+        margin-top:22px;
+    }
+
+    .language-card{
+        padding:8px 14px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <button
+        class="back"
+        onclick="history.back()">
+
+        ‹
+
+    </button>
+
+    <div>
+
+        <h2>GLOBAL PAY</h2>
+
+        <p>Language Settings</p>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- TITLE -->
+
+    <div class="title">
+
+        <h1>Select Language</h1>
+
+        <p>
+            Choose your preferred language
+        </p>
+
+    </div>
+
+
+    <!-- SEARCH -->
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            ⌕
+        </span>
+
+        <input
+            type="text"
+            id="languageSearch"
+            placeholder="Search language..."
+            autocomplete="off">
+
+    </div>
+
+
+    <!-- LANGUAGE LIST -->
+
+    <div class="language-card" id="languageList">
+
+
+        <div class="language-item"
+             data-language="English"
+             onclick="showComingSoon('English')">
+
+            <div class="language-icon">
+                EN
+            </div>
+
+            <div class="language-info">
+
+                <b>English</b>
+
+                <small>
+                    English
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Hindi"
+             onclick="showComingSoon('Hindi')">
+
+            <div class="language-icon">
+                हि
+            </div>
+
+            <div class="language-info">
+
+                <b>Hindi</b>
+
+                <small>
+                    हिन्दी
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Bengali"
+             onclick="showComingSoon('Bengali')">
+
+            <div class="language-icon">
+                ব
+            </div>
+
+            <div class="language-info">
+
+                <b>Bengali</b>
+
+                <small>
+                    বাংলা
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Telugu"
+             onclick="showComingSoon('Telugu')">
+
+            <div class="language-icon">
+                తె
+            </div>
+
+            <div class="language-info">
+
+                <b>Telugu</b>
+
+                <small>
+                    తెలుగు
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Marathi"
+             onclick="showComingSoon('Marathi')">
+
+            <div class="language-icon">
+                म
+            </div>
+
+            <div class="language-info">
+
+                <b>Marathi</b>
+
+                <small>
+                    मराठी
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Tamil"
+             onclick="showComingSoon('Tamil')">
+
+            <div class="language-icon">
+                த
+            </div>
+
+            <div class="language-info">
+
+                <b>Tamil</b>
+
+                <small>
+                    தமிழ்
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Gujarati"
+             onclick="showComingSoon('Gujarati')">
+
+            <div class="language-icon">
+                ગ
+            </div>
+
+            <div class="language-info">
+
+                <b>Gujarati</b>
+
+                <small>
+                    ગુજરાતી
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Kannada"
+             onclick="showComingSoon('Kannada')">
+
+            <div class="language-icon">
+                ಕ
+            </div>
+
+            <div class="language-info">
+
+                <b>Kannada</b>
+
+                <small>
+                    ಕನ್ನಡ
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Malayalam"
+             onclick="showComingSoon('Malayalam')">
+
+            <div class="language-icon">
+                മ
+            </div>
+
+            <div class="language-info">
+
+                <b>Malayalam</b>
+
+                <small>
+                    മലയാളം
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Punjabi"
+             onclick="showComingSoon('Punjabi')">
+
+            <div class="language-icon">
+                ਪੰ
+            </div>
+
+            <div class="language-info">
+
+                <b>Punjabi</b>
+
+                <small>
+                    ਪੰਜਾਬੀ
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Urdu"
+             onclick="showComingSoon('Urdu')">
+
+            <div class="language-icon">
+                اردو
+            </div>
+
+            <div class="language-info">
+
+                <b>Urdu</b>
+
+                <small>
+                    اردو
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Odia"
+             onclick="showComingSoon('Odia')">
+
+            <div class="language-icon">
+                ଓ
+            </div>
+
+            <div class="language-info">
+
+                <b>Odia</b>
+
+                <small>
+                    ଓଡ଼ିଆ
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Assamese"
+             onclick="showComingSoon('Assamese')">
+
+            <div class="language-icon">
+                অ
+            </div>
+
+            <div class="language-info">
+
+                <b>Assamese</b>
+
+                <small>
+                    অসমীয়া
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="French"
+             onclick="showComingSoon('French')">
+
+            <div class="language-icon">
+                FR
+            </div>
+
+            <div class="language-info">
+
+                <b>French</b>
+
+                <small>
+                    Français
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="German"
+             onclick="showComingSoon('German')">
+
+            <div class="language-icon">
+                DE
+            </div>
+
+            <div class="language-info">
+
+                <b>German</b>
+
+                <small>
+                    Deutsch
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Spanish"
+             onclick="showComingSoon('Spanish')">
+
+            <div class="language-icon">
+                ES
+            </div>
+
+            <div class="language-info">
+
+                <b>Spanish</b>
+
+                <small>
+                    Español
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Arabic"
+             onclick="showComingSoon('Arabic')">
+
+            <div class="language-icon">
+                ع
+            </div>
+
+            <div class="language-info">
+
+                <b>Arabic</b>
+
+                <small>
+                    العربية
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Chinese"
+             onclick="showComingSoon('Chinese')">
+
+            <div class="language-icon">
+                中
+            </div>
+
+            <div class="language-info">
+
+                <b>Chinese</b>
+
+                <small>
+                    中文
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Japanese"
+             onclick="showComingSoon('Japanese')">
+
+            <div class="language-icon">
+                日
+            </div>
+
+            <div class="language-info">
+
+                <b>Japanese</b>
+
+                <small>
+                    日本語
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div class="language-item"
+             data-language="Portuguese"
+             onclick="showComingSoon('Portuguese')">
+
+            <div class="language-icon">
+                PT
+            </div>
+
+            <div class="language-info">
+
+                <b>Portuguese</b>
+
+                <small>
+                    Português
+                </small>
+
+            </div>
+
+            <span class="language-arrow">›</span>
+
+        </div>
+
+
+        <div
+            class="no-result"
+            id="noResult">
+
+            No language found
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- POPUP -->
+
+<div
+    class="popup-overlay"
+    id="popupOverlay">
+
+    <div class="popup">
+
+        <div class="popup-icon">
+            ◎
+        </div>
+
+        <h2 id="popupLanguage">
+            Language
+        </h2>
+
+        <h3>
+            COMING SOON
+        </h3>
+
+        <p>
+            This language option is currently
+            under development.
+            <br><br>
+            It will be available soon in
+            GLOBAL PAY.
+        </p>
+
+        <button
+            class="popup-btn"
+            onclick="closePopup()">
+
+            Okay, Got It
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   SEARCH LANGUAGE
+========================= */
+
+const searchInput =
+    document.getElementById("languageSearch");
+
+const languageItems =
+    document.querySelectorAll(".language-item");
+
+const noResult =
+    document.getElementById("noResult");
+
+
+searchInput.addEventListener("input", function(){
+
+    const search =
+        this.value.toLowerCase().trim();
+
+    let found = 0;
+
+
+    languageItems.forEach(function(item){
+
+        const language =
+            item.getAttribute("data-language")
+            .toLowerCase();
+
+        if(language.includes(search)){
+
+            item.style.display = "flex";
+
+            found++;
+
+        }else{
+
+            item.style.display = "none";
+
+        }
+
+    });
+
+
+    if(found === 0){
+
+        noResult.style.display = "block";
+
+    }else{
+
+        noResult.style.display = "none";
+
+    }
+
+});
+
+
+/* =========================
+   LANGUAGE POPUP
+========================= */
+
+function showComingSoon(language){
+
+    document.getElementById("popupLanguage")
+        .textContent = language;
+
+    document.getElementById("popupOverlay")
+        .classList.add("show");
+
+}
+
+
+/* =========================
+   CLOSE POPUP
+========================= */
+
+function closePopup(){
+
+    document.getElementById("popupOverlay")
+        .classList.remove("show");
+
+}
+
+
+/* Popup ke bahar tap karne par close */
+
+document.getElementById("popupOverlay")
+.addEventListener("click", function(event){
+
+    if(event.target === this){
+
+        closePopup();
+
+    }
+
+});
+
+</script>
+
+</body>
+      </html>
