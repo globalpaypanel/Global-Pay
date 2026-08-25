@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY - Notifications</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    radial-gradient(circle at 50% 10%,#122650 0%,#071329 45%,#030817 100%);
+    color:#fff;
+}
+
+
+/* HEADER */
+
+.header{
+    height:78px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:12px 5%;
+    border-bottom:1px solid #1c3152;
+    background:#071329;
+}
+
+.back{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    border:1px solid #29466f;
+    background:#0c1931;
+    color:#68aaff;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.header h2{
+    font-size:20px;
+}
+
+.header p{
+    color:#8f9fb9;
+    font-size:11px;
+    margin-top:3px;
+}
+
+
+/* MAIN */
+
+.container{
+    width:92%;
+    max-width:650px;
+    margin:28px auto;
+}
+
+.title{
+    margin-bottom:20px;
+}
+
+.title h1{
+    font-size:25px;
+}
+
+.title p{
+    color:#91a1ba;
+    font-size:13px;
+    margin-top:6px;
+}
+
+
+/* CARD */
+
+.card{
+    background:#0e192f;
+    border:1px solid #243856;
+    border-radius:20px;
+    padding:8px 18px;
+}
+
+
+/* NOTIFICATION OPTION */
+
+.notification-option{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:19px 5px;
+    border-bottom:1px solid #202f48;
+}
+
+.notification-option:last-child{
+    border-bottom:0;
+}
+
+.notification-icon{
+    width:48px;
+    height:48px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    background:#102c5b;
+    border:1px solid #234d82;
+}
+
+.notification-content{
+    flex:1;
+}
+
+.notification-content b{
+    display:block;
+    font-size:15px;
+}
+
+.notification-content small{
+    display:block;
+    color:#8d9db6;
+    margin-top:5px;
+    font-size:11px;
+}
+
+
+/* SWITCH */
+
+.switch{
+    width:51px;
+    height:29px;
+    border-radius:20px;
+    background:#263b59;
+    border:1px solid #405473;
+    position:relative;
+    cursor:pointer;
+    transition:.25s;
+    flex-shrink:0;
+}
+
+.switch:after{
+    content:"";
+    position:absolute;
+    width:22px;
+    height:22px;
+    top:2px;
+    left:3px;
+    border-radius:50%;
+    background:#a5b1c3;
+    transition:.25s;
+}
+
+.switch.on{
+    background:#167de8;
+    border-color:#168eff;
+    box-shadow:0 0 15px rgba(22,142,255,.25);
+}
+
+.switch.on:after{
+    left:24px;
+    background:#fff;
+}
+
+
+/* POPUP */
+
+.popup-overlay{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.76);
+    backdrop-filter:blur(9px);
+}
+
+.popup-overlay.show{
+    display:flex;
+}
+
+.popup{
+    width:100%;
+    max-width:370px;
+    padding:30px 24px 24px;
+    text-align:center;
+    border-radius:24px;
+    background:linear-gradient(145deg,#122143,#081329);
+    border:1px solid #28558b;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(22,142,255,.15);
+
+    animation:popupIn .25s ease;
+}
+
+@keyframes popupIn{
+
+    from{
+        opacity:0;
+        transform:scale(.85) translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+
+}
+
+.popup-icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    background:#092e5d;
+    border:1px solid #168eff;
+    color:#55a7ff;
+    box-shadow:0 0 30px rgba(22,142,255,.2);
+}
+
+.popup h2{
+    font-size:21px;
+    margin-bottom:8px;
+}
+
+.popup h3{
+    color:#168eff;
+    font-size:14px;
+    letter-spacing:1.5px;
+    margin-bottom:13px;
+}
+
+.popup p{
+    color:#91a1ba;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.popup-btn{
+    width:100%;
+    height:48px;
+    margin-top:22px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#168eff,#2852df);
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .container{
+        width:94%;
+        margin-top:22px;
+    }
+
+    .card{
+        padding:8px 14px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <button
+        class="back"
+        onclick="history.back()">
+
+        ‹
+
+    </button>
+
+    <div>
+
+        <h2>GLOBAL PAY</h2>
+
+        <p>Notification Settings</p>
+
+    </div>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+    <div class="title">
+
+        <h1>Notifications</h1>
+
+        <p>
+            Manage your notification preferences
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+
+        <!-- PUSH NOTIFICATIONS -->
+
+        <div class="notification-option">
+
+            <div class="notification-icon">
+                ♢
+            </div>
+
+            <div class="notification-content">
+
+                <b>Push Notifications</b>
+
+                <small>
+                    Receive important account alerts
+                </small>
+
+            </div>
+
+            <div
+                class="switch"
+                id="pushSwitch"
+                onclick="toggleNotification('Push Notifications')">
+            </div>
+
+        </div>
+
+
+        <!-- TRANSACTION ALERTS -->
+
+        <div class="notification-option">
+
+            <div class="notification-icon">
+                ₹
+            </div>
+
+            <div class="notification-content">
+
+                <b>Transaction Alerts</b>
+
+                <small>
+                    Get notified about transactions
+                </small>
+
+            </div>
+
+            <div
+                class="switch"
+                id="transactionSwitch"
+                onclick="toggleNotification('Transaction Alerts')">
+            </div>
+
+        </div>
+
+
+        <!-- SECURITY ALERTS -->
+
+        <div class="notification-option">
+
+            <div class="notification-icon">
+                ◆
+            </div>
+
+            <div class="notification-content">
+
+                <b>Security Alerts</b>
+
+                <small>
+                    Receive security related alerts
+                </small>
+
+            </div>
+
+            <div
+                class="switch"
+                id="securitySwitch"
+                onclick="toggleNotification('Security Alerts')">
+            </div>
+
+        </div>
+
+
+        <!-- PROMOTIONAL -->
+
+        <div class="notification-option">
+
+            <div class="notification-icon">
+                ✦
+            </div>
+
+            <div class="notification-content">
+
+                <b>Promotional Updates</b>
+
+                <small>
+                    Offers, updates and announcements
+                </small>
+
+            </div>
+
+            <div
+                class="switch"
+                id="promoSwitch"
+                onclick="toggleNotification('Promotional Updates')">
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- COMING SOON POPUP -->
+
+<div
+    class="popup-overlay"
+    id="popupOverlay">
+
+    <div class="popup">
+
+        <div class="popup-icon">
+            ♢
+        </div>
+
+        <h2 id="popupTitle">
+            Notifications
+        </h2>
+
+        <h3>
+            COMING SOON
+        </h3>
+
+        <p>
+            This notification feature is currently
+            under development.
+            <br><br>
+            It will be available soon in GLOBAL PAY.
+        </p>
+
+        <button
+            class="popup-btn"
+            onclick="closePopup()">
+
+            Okay, Got It
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   CURRENT SWITCH
+========================= */
+
+let currentSwitch = null;
+
+
+/* =========================
+   TOGGLE NOTIFICATION
+========================= */
+
+function toggleNotification(notificationName){
+
+    let switchId = "";
+
+
+    if(notificationName === "Push Notifications"){
+        switchId = "pushSwitch";
+    }
+
+    if(notificationName === "Transaction Alerts"){
+        switchId = "transactionSwitch";
+    }
+
+    if(notificationName === "Security Alerts"){
+        switchId = "securitySwitch";
+    }
+
+    if(notificationName === "Promotional Updates"){
+        switchId = "promoSwitch";
+    }
+
+
+    const switchButton =
+        document.getElementById(switchId);
+
+
+    /* ON */
+
+    if(!switchButton.classList.contains("on")){
+
+        switchButton.classList.add("on");
+
+        currentSwitch = switchButton;
+
+        document.getElementById("popupTitle")
+            .textContent = notificationName;
+
+        document.getElementById("popupOverlay")
+            .classList.add("show");
+
+        return;
+    }
+
+
+    /* OFF */
+
+    switchButton.classList.remove("on");
+
+}
+
+
+/* =========================
+   CLOSE POPUP
+========================= */
+
+function closePopup(){
+
+    document
+        .getElementById("popupOverlay")
+        .classList.remove("show");
+
+
+    if(currentSwitch){
+
+        currentSwitch.classList.remove("on");
+
+    }
+
+    currentSwitch = null;
+
+}
+
+
+/* Popup ke bahar tap */
+
+document
+    .getElementById("popupOverlay")
+    .addEventListener("click",function(event){
+
+        if(event.target === this){
+
+            closePopup();
+
+        }
+
+    });
+
+</script>
+
+</body>
+  </html>
