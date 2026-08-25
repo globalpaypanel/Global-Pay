@@ -1162,12 +1162,20 @@ button{
             </div>
 
             <div class="setting">
-                <span class="setting-icon">♧</span>
-                <div class="setting-content">
-                    <b>Biometric Login</b>
-                    <small>Enabled</small>
-                </div>
-                <div class="switch"></div>
+
+    <span class="setting-icon">♧</span>
+
+    <div class="setting-content">
+        <b>Biometric Login</b>
+        <small id="biometricStatus">Disabled</small>
+    </div>
+
+    <div
+        class="switch"
+        id="biometricSwitch"
+        onclick="toggleBiometric()">
+    </div>
+
             </div>
 
         </div>
