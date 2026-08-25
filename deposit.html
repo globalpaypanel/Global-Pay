@@ -331,56 +331,72 @@
             });
         }
 
+function payWith(app) {
 
-        function payWith(app) {
+    let amount = document.getElementById("amount").value;
 
-            let amount = document.getElementById("amount").value;
+    if (!amount || Number(amount) <= 0) {
+        alert("Please enter deposit amount first.");
+        document.getElementById("amount").focus();
+        return;
+    }
 
-            if (!amount || Number(amount) <= 0) {
-                alert("Please enter deposit amount first.");
-                document.getElementById("amount").focus();
-                return;
-            }
+    const upiId = "8271692042-2@ybl";
+    const name = "Shopzo";
 
-            let upiLink = createUPILink();
+    const params =
+        "pa=" + encodeURIComponent(upiId) +
+        "&pn=" + encodeURIComponent(name) +
+        "&am=" + encodeURIComponent(amount) +
+        "&cu=INR";
 
-            let appLink = upiLink;
+    // Standard UPI link
+    const upiLink = "upi://pay?" + params;
 
-            if (app === "phonepe") {
-                appLink =
-                    "phonepe://pay" +
-                    "?pa=" + encodeURIComponent(UPI_ID) +
-                    "&pn=" + encodeURIComponent(PAYEE_NAME) +
-                    "&am=" + encodeURIComponent(amount) +
-                    "&cu=INR";
-            }
+    let intentLink = "";
 
-            else if (app === "gpay") {
-                appLink =
-                    "tez://upi/pay" +
-                    "?pa=" + encodeURIComponent(UPI_ID) +
-                    "&pn=" + encodeURIComponent(PAYEE_NAME) +
-                    "&am=" + encodeURIComponent(amount) +
-                    "&cu=INR";
-            }
+    if (app === "phonepe") {
 
-            else if (app === "paytm") {
-                appLink =
-                    "paytmmp://pay" +
-                    "?pa=" + encodeURIComponent(UPI_ID) +
-                    "&pn=" + encodeURIComponent(PAYEE_NAME) +
-                    "&am=" + encodeURIComponent(amount) +
-                    "&cu=INR";
-            }
+        intentLink =
+            "intent://pay?" + params +
+            "#Intent;" +
+            "scheme=upi;" +
+            "package=com.phonepe.app;" +
+            "end";
 
-            window.location.href = appLink;
+    } else if (app === "gpay") {
 
-            setTimeout(function () {
-                window.location.href = upiLink;
-            }, 1500);
+        intentLink =
+            "intent://pay?" + params +
+            "#Intent;" +
+            "scheme=upi;" +
+            "package=com.google.android.apps.nbu.paisa.user;" +
+            "end";
+
+    } else if (app === "paytm") {
+
+        intentLink =
+            "intent://pay?" + params +
+            "#Intent;" +
+            "scheme=upi;" +
+            "package=net.one97.paytm;" +
+            "end";
+
+    } else {
+
+        // Generic UPI
+        intentLink = upiLink;
+    }
+
+    // Try selected UPI app
+    window.location.href = intentLink;
+
+    // Fallback to normal UPI chooser
+    setTimeout(function () {
+        window.location.href = upiLink;
+    }, 2000);
         }
-
-
+        
         // Initial QR
         updateQR();
 
