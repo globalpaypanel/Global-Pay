@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY - Edit Profile</title>
+
+<link rel="stylesheet" href="edit-profile.css">
+</head>
+
+<body>
+
+<div class="page">
+
+    <header>
+        <button onclick="history.back()">‹</button>
+
+        <div>
+            <h1>Edit Profile</h1>
+            <p>Update your personal information</p>
+        </div>
+    </header>
+
+
+    <!-- CODE VERIFICATION -->
+
+    <div id="verifyBox" class="card">
+
+        <div class="icon">🔐</div>
+
+        <h2>Verify Account</h2>
+
+        <p>
+            Enter your verification code to edit
+            your personal information.
+        </p>
+
+        <input
+            type="password"
+            id="verifyCode"
+            placeholder="Enter verification code">
+
+        <p id="verifyMessage"></p>
+
+        <button class="primary" onclick="verifyCode()">
+            Continue
+        </button>
+
+    </div>
+
+
+    <!-- EDIT FORM -->
+
+    <div id="editBox" class="card" style="display:none;">
+
+        <h2>Personal Information</h2>
+
+        <p class="subtitle">
+            Update your account details below.
+        </p>
+
+
+        <label>Full Name</label>
+
+        <input
+            type="text"
+            id="fullName"
+            placeholder="Full Name">
+
+
+        <label>User ID</label>
+
+        <input
+            type="text"
+            id="userId"
+            placeholder="User ID">
+
+
+        <label>Email Address</label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email Address">
+
+
+        <label>Mobile Number</label>
+
+        <input
+            type="tel"
+            id="mobile"
+            placeholder="Mobile Number">
+
+
+        <label>Date of Birth</label>
+
+        <input
+            type="text"
+            id="dob"
+            placeholder="Date of Birth">
+
+
+        <label>Address</label>
+
+        <textarea
+            id="address"
+            placeholder="Address"></textarea>
+
+
+        <p id="saveMessage"></p>
+
+
+        <div class="buttons">
+
+            <button
+                class="cancel"
+                onclick="history.back()">
+                Cancel
+            </button>
+
+            <button
+                class="primary"
+                onclick="saveChanges()">
+                ✓ Save Changes
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+let oldUserId = "";
+
+
+/* =========================
+   VERIFY CODE
+========================= */
+
+function verifyCode() {
+
+    const code =
+        document.getElementById("verifyCode").value.trim();
+
+    const message =
+        document.getElementById("verifyMessage");
+
+
+    /*
+       Yahan apna verification code rakho.
+       Example: 96619300
+    */
+
+    if (code !== "96619300") {
+
+        message.style.color = "#ff536d";
+
+        message.textContent =
+            "❌ Invalid verification code.";
+
+        return;
+    }
+
+
+    const currentUser =
+        localStorage.getItem("userid");
+
+
+    if (!currentUser) {
+
+        window.location.href = "index.html";
+
+        return;
+    }
+
+
+    const savedData =
+        localStorage.getItem(
+            "globalPayUser_" + currentUser
+        );
+
+
+    if (!savedData) {
+
+        message.style.color = "#ff536d";
+
+        message.textContent =
+            "User data not found.";
+
+        return;
+    }
+
+
+    const user =
+        JSON.parse(savedData);
+
+
+    oldUserId = currentUser;
+
+
+    /* Fill existing details */
+
+    document.getElementById("fullName").value =
+        user.fullName || user.name || "";
+
+    document.getElementById("userId").value =
+        user.userId || currentUser;
+
+    document.getElementById("email").value =
+        user.email || "";
+
+    document.getElementById("mobile").value =
+        user.mobile ||
+        user.phone ||
+        "";
+
+    document.getElementById("dob").value =
+        user.dob ||
+        user.dateOfBirth ||
+        "";
+
+    document.getElementById("address").value =
+        user.address || "";
+
+
+    document.getElementById("verifyBox").style.display =
+        "none";
+
+    document.getElementById("editBox").style.display =
+        "block";
+}
+
+
+/* =========================
+   SAVE CHANGES
+========================= */
+
+function saveChanges() {
+
+    const newName =
+        document.getElementById("fullName").value.trim();
+
+    const newUserId =
+        document.getElementById("userId").value.trim();
+
+    const newEmail =
+        document.getElementById("email").value.trim();
+
+    const newMobile =
+        document.getElementById("mobile").value.trim();
+
+    const newDob =
+        document.getElementById("dob").value.trim();
+
+    const newAddress =
+        document.getElementById("address").value.trim();
+
+    const message =
+        document.getElementById("saveMessage");
+
+
+    if (!newName ||
+        !newUserId ||
+        !newEmail ||
+        !newMobile) {
+
+        message.style.color = "#ff536d";
+
+        message.textContent =
+            "Please fill all required fields.";
+
+        return;
+    }
+
+
+    /* Get old account */
+
+    const oldData =
+        localStorage.getItem(
+            "globalPayUser_" + oldUserId
+        );
+
+
+    if (!oldData) {
+
+        message.style.color = "#ff536d";
+
+        message.textContent =
+            "Account data not found.";
+
+        return;
+    }
+
+
+    const user =
+        JSON.parse(oldData);
+
+
+    /*
+       Check if NEW User ID already exists
+    */
+
+    if (newUserId !== oldUserId) {
+
+        const existingUser =
+            localStorage.getItem(
+                "globalPayUser_" + newUserId
+            );
+
+
+        if (existingUser) {
+
+            message.style.color = "#ff536d";
+
+            message.textContent =
+                "❌ This User ID is already registered.";
+
+            return;
+        }
+    }
+
+
+    /* Update information */
+
+    user.fullName = newName;
+    user.userId = newUserId;
+    user.email = newEmail;
+    user.mobile = newMobile;
+    user.dob = newDob;
+    user.address = newAddress;
+
+
+    /*
+       Remove OLD ID data
+       if User ID changed
+    */
+
+    if (newUserId !== oldUserId) {
+
+        localStorage.removeItem(
+            "globalPayUser_" + oldUserId
+        );
+    }
+
+
+    /*
+       Save using NEW User ID
+    */
+
+    localStorage.setItem(
+        "globalPayUser_" + newUserId,
+        JSON.stringify(user)
+    );
+
+
+    /*
+       IMPORTANT:
+       Current login ID becomes NEW ID
+    */
+
+    localStorage.setItem(
+        "userid",
+        newUserId
+    );
+
+
+    localStorage.setItem(
+        "allowLoginPage",
+        "true"
+    );
+
+
+    message.style.color = "#00e6a0";
+
+    message.textContent =
+        "✓ Profile updated successfully.";
+
+
+    /*
+       Go back to profile
+    */
+
+    setTimeout(function() {
+
+        window.location.href =
+            "profile.html";
+
+    }, 1000);
+}
+
+</script>
+
+</body>
+  </html>
