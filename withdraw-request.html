@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Withdrawal Verification - Global Pay</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
+
+    color:#fff;
+
+    background:
+        radial-gradient(circle at 15% 20%,rgba(70,70,255,.30),transparent 35%),
+        radial-gradient(circle at 85% 25%,rgba(0,210,255,.22),transparent 35%),
+        radial-gradient(circle at 50% 90%,rgba(0,208,132,.16),transparent 40%),
+        linear-gradient(135deg,#02040c,#071126,#030713);
+
+    background-size:200% 200%;
+    animation:bgMove 12s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+.verify-box{
+    width:100%;
+    max-width:420px;
+
+    padding:30px 24px;
+
+    border-radius:28px;
+
+    background:rgba(15,25,48,.80);
+
+    border:1px solid rgba(255,255,255,.13);
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.65),
+        0 0 45px rgba(0,174,255,.12);
+
+    animation:boxIn .6s ease;
+}
+
+@keyframes boxIn{
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(.96);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.logo{
+    text-align:center;
+
+    font-size:32px;
+    font-weight:900;
+    letter-spacing:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #5968ff,
+            #b83cff,
+            #00d9ff,
+            #00d084,
+            #5968ff
+        );
+
+    background-size:300% auto;
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+
+    animation:logoMove 5s linear infinite;
+}
+
+@keyframes logoMove{
+    0%{background-position:0%}
+    100%{background-position:300%}
+}
+
+.subtitle{
+    text-align:center;
+
+    margin-top:7px;
+    margin-bottom:25px;
+
+    color:#9eacc8;
+    font-size:14px;
+}
+
+.icon{
+    width:68px;
+    height:68px;
+
+    margin:0 auto 15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,207,255,.20),
+            rgba(0,208,132,.18)
+        );
+
+    border:1px solid rgba(0,217,255,.25);
+
+    box-shadow:
+        0 0 30px rgba(0,207,255,.15);
+
+    font-size:32px;
+}
+
+.title{
+    text-align:center;
+
+    font-size:23px;
+    margin-bottom:8px;
+}
+
+.description{
+    text-align:center;
+
+    color:#9eacc8;
+
+    font-size:14px;
+    line-height:20px;
+
+    margin-bottom:24px;
+}
+
+label{
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#e7edff;
+
+    font-size:14px;
+    font-weight:bold;
+}
+
+input{
+    width:100%;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.10);
+
+    outline:none;
+
+    background:rgba(3,10,28,.90);
+
+    color:#fff;
+
+    font-size:17px;
+
+    letter-spacing:2px;
+
+    transition:.25s;
+}
+
+input::placeholder{
+    color:#687791;
+    letter-spacing:0;
+}
+
+input:focus{
+    border-color:#00cfff;
+
+    box-shadow:
+        0 0 0 2px rgba(0,207,255,.08),
+        0 0 20px rgba(0,207,255,.13);
+}
+
+input.invalid{
+    border-color:#ff4d5a;
+
+    box-shadow:
+        0 0 0 2px rgba(255,77,90,.08),
+        0 0 18px rgba(255,77,90,.15);
+}
+
+input.valid{
+    border-color:#00d084;
+
+    box-shadow:
+        0 0 0 2px rgba(0,208,132,.08),
+        0 0 18px rgba(0,208,132,.15);
+}
+
+#message{
+    min-height:22px;
+
+    margin-top:12px;
+
+    text-align:center;
+
+    font-size:14px;
+    font-weight:bold;
+}
+
+.verify-btn{
+    width:100%;
+
+    margin-top:18px;
+
+    padding:16px;
+
+    border:0;
+
+    border-radius:15px;
+
+    color:#fff;
+
+    font-size:16px;
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            #6548ff,
+            #008cff,
+            #00cfff,
+            #00d084
+        );
+
+    background-size:250% auto;
+
+    animation:buttonMove 5s linear infinite;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 30px rgba(0,153,255,.20);
+}
+
+@keyframes buttonMove{
+    0%{background-position:0%}
+    100%{background-position:250%}
+}
+
+.back-btn{
+    display:block;
+
+    margin-top:16px;
+
+    text-align:center;
+
+    color:#7f8da8;
+
+    font-size:14px;
+
+    text-decoration:none;
+}
+
+.back-btn:hover{
+    color:#00d9ff;
+}
+
+.security{
+    margin-top:20px;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    text-align:center;
+
+    color:#7f8da8;
+
+    font-size:12px;
+    line-height:18px;
+}
+
+.success{
+    display:none;
+
+    text-align:center;
+}
+
+.success-icon{
+    width:75px;
+    height:75px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:rgba(0,208,132,.14);
+
+    border:1px solid rgba(0,208,132,.35);
+
+    box-shadow:
+        0 0 35px rgba(0,208,132,.18);
+
+    color:#00d084;
+
+    font-size:38px;
+}
+
+.success h2{
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.success p{
+    color:#9eacc8;
+    font-size:14px;
+    line-height:21px;
+}
+
+.done-btn{
+    display:block;
+
+    margin-top:20px;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    background:rgba(0,217,255,.10);
+
+    border:1px solid rgba(0,217,255,.25);
+
+    color:#00d9ff;
+
+    font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="verify-box">
+
+    <div id="verification">
+
+        <div class="logo">
+            GLOBAL PAY
+        </div>
+
+        <div class="subtitle">
+            Secure Payments Panel
+        </div>
+
+        <div class="icon">
+            🔐
+        </div>
+
+        <h2 class="title">
+            Withdrawal Verification
+        </h2>
+
+        <p class="description">
+            Enter your active verification code to
+            continue with the withdrawal request.
+        </p>
+
+        <label for="activeCode">
+            Active Code
+        </label>
+
+        <input
+            id="activeCode"
+            type="password"
+            maxlength="20"
+            autocomplete="off"
+            placeholder="Enter active code"
+        >
+
+        <div id="message"></div>
+
+        <button
+            class="verify-btn"
+            onclick="verifyCode()"
+        >
+            🔐 VERIFY & CONTINUE
+        </button>
+
+        <a
+            href="withdraw.html"
+            class="back-btn"
+        >
+            ← Back to Withdrawal
+        </a>
+
+        <div class="security">
+            🛡️ Secure verification required before
+            processing your withdrawal request.
+        </div>
+
+    </div>
+
+
+    <div id="success" class="success">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Withdrawal Request Submitted
+        </h2>
+
+        <p>
+            Your active code has been verified successfully.
+            Your withdrawal request has been submitted for
+            processing.
+        </p>
+
+        <a
+            href="home.html"
+            class="done-btn"
+        >
+            CONTINUE TO HOME
+        </a>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/*
+   DEMO ACTIVE CODE
+
+   Yahan apna demo active code set karo.
+   Example: GP2026
+*/
+
+const ACTIVE_CODE = "96619300";
+
+
+function verifyCode(){
+
+    const input =
+        document.getElementById("activeCode");
+
+    const message =
+        document.getElementById("message");
+
+    const code =
+        input.value.trim();
+
+
+    input.classList.remove(
+        "invalid",
+        "valid"
+    );
+
+
+    message.innerHTML = "";
+
+
+    if(!code){
+
+        input.classList.add("invalid");
+
+        message.style.color =
+            "#ff4d5a";
+
+        message.innerHTML =
+            "❌ Invalid: Enter Active Code.";
+
+        return;
+    }
+
+
+    if(code !== ACTIVE_CODE){
+
+        input.classList.add("invalid");
+
+        message.style.color =
+            "#ff4d5a";
+
+        message.innerHTML =
+            "❌ Invalid Active Code.";
+
+        return;
+    }
+
+
+    /*
+       Correct code
+    */
+
+    input.classList.add("valid");
+
+    message.style.color =
+        "#00d084";
+
+    message.innerHTML =
+        "✓ Active Code Verified";
+
+
+    /*
+       Save verification status
+    */
+
+    localStorage.setItem(
+        "withdrawalVerified",
+        "true"
+    );
+
+
+    /*
+       Show success screen
+    */
+
+    setTimeout(function(){
+
+        document.getElementById(
+            "verification"
+        ).style.display = "none";
+
+        document.getElementById(
+            "success"
+        ).style.display = "block";
+
+    },700);
+}
+
+
+/*
+   Enter key se bhi verify hoga
+*/
+
+document.getElementById(
+    "activeCode"
+).addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+            verifyCode();
+        }
+
+    }
+);
+
+</script>
+
+</body>
+  </html>
