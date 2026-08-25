@@ -1707,10 +1707,13 @@ function changeProfilePhoto(event){
         );
 
         showProfilePhoto(e.target.result);
+
+        // Same photo ko dobara select karne ki permission
+        event.target.value = "";
     };
 
     reader.readAsDataURL(file);
-}
+    }
 
 
 function showProfilePhoto(photo){
