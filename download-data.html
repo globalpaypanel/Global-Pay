@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY - Download My Data</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    color:#fff;
+    background:
+    radial-gradient(circle at 50% 10%,#122650 0%,#071329 45%,#030817 100%);
+    padding-bottom:40px;
+}
+
+/* HEADER */
+
+.header{
+    height:78px;
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:12px 5%;
+    border-bottom:1px solid #1c3152;
+    background:rgba(7,17,39,.78);
+    backdrop-filter:blur(12px);
+}
+
+.back-btn{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    border:1px solid #29466f;
+    background:#0c1931;
+    color:#68aaff;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.logo{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    font-weight:800;
+    background:linear-gradient(135deg,#0dbaff,#3b45d8);
+    box-shadow:0 7px 22px #007bff55;
+}
+
+.logo-text h1{
+    font-size:19px;
+}
+
+.logo-text h1 span{
+    color:#099cff;
+}
+
+.logo-text p{
+    color:#8f9fb9;
+    font-size:10px;
+    margin-top:2px;
+}
+
+/* CONTAINER */
+
+.container{
+    width:92%;
+    max-width:650px;
+    margin:28px auto;
+}
+
+.heading{
+    margin-bottom:20px;
+}
+
+.heading h2{
+    font-size:25px;
+}
+
+.heading p{
+    color:#91a1ba;
+    font-size:13px;
+    margin-top:7px;
+}
+
+/* DATA CARD */
+
+.data-card{
+    background:linear-gradient(145deg,#101d3a,#0b152c);
+    border:1px solid #243c61;
+    border-radius:22px;
+    padding:20px;
+    box-shadow:0 18px 50px rgba(0,0,0,.25);
+}
+
+/* PHOTO */
+
+.photo-section{
+    text-align:center;
+    padding-bottom:20px;
+    border-bottom:1px solid #24334d;
+    margin-bottom:8px;
+}
+
+.profile-photo{
+    width:110px;
+    height:110px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:55px;
+    background:linear-gradient(135deg,#168cff,#4a24c8);
+    border:2px solid #238dff;
+    box-shadow:0 0 30px #147bff35;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+}
+
+.photo-section h3{
+    margin-top:13px;
+    font-size:17px;
+}
+
+.photo-section p{
+    color:#8f9fb8;
+    font-size:11px;
+    margin-top:5px;
+}
+
+/* DATA ROW */
+
+.data-row{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:16px 4px;
+    border-bottom:1px solid #202f48;
+}
+
+.data-row:last-child{
+    border-bottom:0;
+}
+
+.data-icon{
+    width:40px;
+    height:40px;
+    border-radius:11px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#0b2d5c;
+    border:1px solid #176acb;
+    color:#58a8ff;
+    font-size:18px;
+}
+
+.data-content{
+    flex:1;
+    min-width:0;
+}
+
+.data-content small{
+    display:block;
+    color:#8393ad;
+    font-size:11px;
+    margin-bottom:4px;
+}
+
+.data-content strong{
+    display:block;
+    color:#fff;
+    font-size:14px;
+    word-break:break-word;
+}
+
+/* SECURITY */
+
+.security{
+    display:flex;
+    gap:10px;
+    margin-top:17px;
+    padding:13px;
+    border-radius:12px;
+    background:#062b2d;
+    border:1px solid #087263;
+}
+
+.security-icon{
+    color:#00e6a0;
+    font-size:18px;
+}
+
+.security b{
+    color:#00e6a0;
+    font-size:12px;
+}
+
+.security p{
+    color:#91a9ad;
+    font-size:10px;
+    line-height:1.5;
+    margin-top:3px;
+}
+
+/* BUTTON */
+
+.download-btn{
+    width:100%;
+    height:53px;
+    margin-top:20px;
+    border:0;
+    border-radius:13px;
+    background:linear-gradient(135deg,#168eff,#2455df);
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 25px #168eff25;
+}
+
+.download-btn:active{
+    transform:scale(.98);
+}
+
+.cancel-btn{
+    width:100%;
+    height:48px;
+    margin-top:11px;
+    border-radius:12px;
+    border:1px solid #2a3e5d;
+    background:#0b172d;
+    color:#9eabc0;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* MESSAGE */
+
+.message{
+    display:none;
+    margin-top:14px;
+    padding:12px;
+    border-radius:10px;
+    text-align:center;
+    font-size:12px;
+    background:#06352f;
+    border:1px solid #08765f;
+    color:#00e6a0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <button class="back-btn" onclick="goBack()">‹</button>
+
+    <div class="logo">G</div>
+
+    <div class="logo-text">
+        <h1>GLOBAL <span>PAY</span></h1>
+        <p>Secure Payments</p>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="heading">
+
+        <h2>Download My Data</h2>
+
+        <p>
+            Review your saved account information
+            before downloading.
+        </p>
+
+    </div>
+
+
+    <div class="data-card">
+
+        <!-- PHOTO -->
+
+        <div class="photo-section">
+
+            <div
+                class="profile-photo"
+                id="profilePhoto">
+                ♙
+            </div>
+
+            <h3 id="photoName">
+                User
+            </h3>
+
+            <p>
+                Profile Photo
+            </p>
+
+        </div>
+
+
+        <!-- NAME -->
+
+        <div class="data-row">
+
+            <div class="data-icon">
+                ♙
+            </div>
+
+            <div class="data-content">
+
+                <small>Full Name</small>
+
+                <strong id="dataName">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- USER ID -->
+
+        <div class="data-row">
+
+            <div class="data-icon">
+                #
+            </div>
+
+            <div class="data-content">
+
+                <small>User ID</small>
+
+                <strong id="dataUserId">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="data-row">
+
+            <div class="data-icon">
+                ✉
+            </div>
+
+            <div class="data-content">
+
+                <small>Email</small>
+
+                <strong id="dataEmail">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div class="data-row">
+
+            <div class="data-icon">
+                ☎
+            </div>
+
+            <div class="data-content">
+
+                <small>Phone</small>
+
+                <strong id="dataPhone">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="data-row">
+
+            <div class="data-icon">
+                ◆
+            </div>
+
+            <div class="data-content">
+
+                <small>Password</small>
+
+                <strong id="dataPassword">
+                    ••••••••
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- DOB -->
+
+        <div class="data-row">
+
+            <div class="data-icon">
+                ◫
+            </div>
+
+            <div class="data-content">
+
+                <small>Date of Birth</small>
+
+                <strong id="dataDob">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADDRESS -->
+
+        <div class="data-row">
+
+            <div class="data-icon">
+                ⌖
+            </div>
+
+            <div class="data-content">
+
+                <small>Address</small>
+
+                <strong id="dataAddress">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOCATION -->
+
+        <div class="data-row">
+
+            <div class="data-icon">
+                ◉
+            </div>
+
+            <div class="data-content">
+
+                <small>Location</small>
+
+                <strong id="dataLocation">
+                    India
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- SECURITY -->
+
+        <div class="security">
+
+            <div class="security-icon">
+                ◆
+            </div>
+
+            <div>
+
+                <b>Your data is stored locally</b>
+
+                <p>
+                    This demo uses your browser's
+                    local storage for saved account data.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="message"
+            class="message">
+        </div>
+
+
+        <!-- DOWNLOAD -->
+
+        <button
+            class="download-btn"
+            onclick="downloadMyData()">
+
+            ⇩ &nbsp; Download My Data
+
+        </button>
+
+
+        <button
+            class="cancel-btn"
+            onclick="goBack()">
+
+            Cancel
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* =========================
+   GLOBAL DATA
+========================= */
+
+let currentUser = null;
+let savedPhoto = "";
+
+
+/* =========================
+   BACK
+========================= */
+
+function goBack(){
+
+    window.location.href = "profile.html";
+
+}
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+function loadData(){
+
+    const userId =
+        localStorage.getItem("userid");
+
+    if(!userId){
+
+        window.location.href = "index.html";
+        return;
+
+    }
+
+
+    const savedData =
+        localStorage.getItem(
+            "globalPayUser_" + userId
+        );
+
+
+    if(!savedData){
+
+        alert("User data not found.");
+
+        window.location.href =
+            "profile.html";
+
+        return;
+
+    }
+
+
+    try{
+
+        currentUser =
+            JSON.parse(savedData);
+
+    }catch(error){
+
+        alert("User data is corrupted.");
+        return;
+
+    }
+
+
+    /* NAME */
+
+    const name =
+        currentUser.fullName ||
+        currentUser.name ||
+        "User";
+
+
+    document.getElementById("dataName")
+        .textContent = name;
+
+    document.getElementById("photoName")
+        .textContent = name;
+
+
+    /* USER ID */
+
+    document.getElementById("dataUserId")
+        .textContent =
+        currentUser.userId || userId;
+
+
+    /* EMAIL */
+
+    document.getElementById("dataEmail")
+        .textContent =
+        currentUser.email || "-";
+
+
+    /* PHONE */
+
+    document.getElementById("dataPhone")
+        .textContent =
+        currentUser.mobile ||
+        currentUser.phone ||
+        currentUser.phoneNumber ||
+        "-";
+
+
+    /* PASSWORD */
+
+    document.getElementById("dataPassword")
+        .textContent =
+        currentUser.password
+        ? "••••••••"
+        : "-";
+
+
+    /* DOB */
+
+    document.getElementById("dataDob")
+        .textContent =
+        currentUser.dob || "-";
+
+
+    /* ADDRESS */
+
+    document.getElementById("dataAddress")
+        .textContent =
+        currentUser.address || "-";
+
+
+    /* LOCATION */
+
+    document.getElementById("dataLocation")
+        .textContent =
+        currentUser.location ||
+        currentUser.country ||
+        "India";
+
+
+    /* PHOTO */
+
+    savedPhoto =
+        localStorage.getItem(
+            "profilePhoto_" + userId
+        );
+
+
+    if(savedPhoto){
+
+        const photo =
+            document.getElementById("profilePhoto");
+
+        photo.style.backgroundImage =
+            `url("${savedPhoto}")`;
+
+        photo.textContent = "";
+
+    }
+
+}
+
+
+/* =========================
+   DOWNLOAD
+========================= */
+
+function downloadMyData(){
+
+    if(!currentUser){
+
+        alert("User data not available.");
+        return;
+
+    }
+
+
+    const userId =
+        localStorage.getItem("userid");
+
+
+    const name =
+        currentUser.fullName ||
+        currentUser.name ||
+        "User";
+
+
+    const email =
+        currentUser.email || "-";
+
+
+    const phone =
+        currentUser.mobile ||
+        currentUser.phone ||
+        currentUser.phoneNumber ||
+        "-";
+
+
+    const dob =
+        currentUser.dob || "-";
+
+
+    const address =
+        currentUser.address || "-";
+
+
+    const location =
+        currentUser.location ||
+        currentUser.country ||
+        "India";
+
+
+    const actualUserId =
+        currentUser.userId ||
+        userId;
+
+
+    /*
+       PHOTO HTML
+    */
+
+    let photoHTML = "";
+
+    if(savedPhoto){
+
+        photoHTML = `
+            <img
+                src="${savedPhoto}"
+                style="
+                    width:120px;
+                    height:120px;
+                    border-radius:50%;
+                    object-fit:cover;
+                    border:3px solid #168eff;
+                    margin-bottom:15px;
+                "
+            >
+        `;
+
+    }else{
+
+        photoHTML = `
+            <div style="
+                width:120px;
+                height:120px;
+                border-radius:50%;
+                background:#168eff;
+                color:white;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:55px;
+                margin:0 auto 15px;
+            ">
+                ♙
+            </div>
+        `;
+
+    }
+
+
+    /*
+       DOWNLOAD HTML
+    */
+
+    const html = `
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>GLOBAL PAY - My Data</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:30px 15px;
+    background:#071329;
+    color:white;
+    font-family:Arial,sans-serif;
+}
+
+.container{
+    max-width:600px;
+    margin:auto;
+}
+
+.card{
+    background:#101d3a;
+    border:1px solid #29466f;
+    border-radius:20px;
+    padding:25px;
+}
+
+h1{
+    text-align:center;
+    color:#168eff;
+}
+
+.photo{
+    text-align:center;
+    margin:20px 0;
+}
+
+.row{
+    padding:15px 5px;
+    border-bottom:1px solid #2a3b58;
+}
+
+.label{
+    color:#8fa0ba;
+    font-size:12px;
+    margin-bottom:5px;
+}
+
+.value{
+    font-size:15px;
+    word-break:break-word;
+}
+
+.footer{
+    text-align:center;
+    color:#71819c;
+    font-size:11px;
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>GLOBAL PAY</h1>
+
+<div class="photo">
+
+${photoHTML}
+
+<strong>${escapeHTML(name)}</strong>
+
+</div>
+
+
+<div class="row">
+<div class="label">Full Name</div>
+<div class="value">${escapeHTML(name)}</div>
+</div>
+
+
+<div class="row">
+<div class="label">User ID</div>
+<div class="value">${escapeHTML(actualUserId)}</div>
+</div>
+
+
+<div class="row">
+<div class="label">Email</div>
+<div class="value">${escapeHTML(email)}</div>
+</div>
+
+
+<div class="row">
+<div class="label">Phone</div>
+<div class="value">${escapeHTML(phone)}</div>
+</div>
+
+
+<div class="row">
+<div class="label">Password</div>
+<div class="value">••••••••</div>
+</div>
+
+
+<div class="row">
+<div class="label">Date of Birth</div>
+<div class="value">${escapeHTML(dob)}</div>
+</div>
+
+
+<div class="row">
+<div class="label">Address</div>
+<div class="value">${escapeHTML(address)}</div>
+</div>
+
+
+<div class="row">
+<div class="label">Location</div>
+<div class="value">${escapeHTML(location)}</div>
+</div>
+
+
+<div class="footer">
+
+GLOBAL PAY — Account Data
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+
+</html>
+
+`;
+
+
+    const blob =
+        new Blob(
+            [html],
+            {type:"text/html"}
+        );
+
+
+    const url =
+        URL.createObjectURL(blob);
+
+
+    const link =
+        document.createElement("a");
+
+
+    link.href = url;
+
+    link.download =
+        "GLOBAL-PAY-My-Data.html";
+
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+
+    setTimeout(function(){
+
+        URL.revokeObjectURL(url);
+
+    },1000);
+
+
+    const message =
+        document.getElementById("message");
+
+    message.style.display =
+        "block";
+
+    message.textContent =
+        "✓ Your data has been downloaded successfully.";
+
+}
+
+
+/* =========================
+   HTML SECURITY
+========================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadData
+);
+
+</script>
+
+</body>
+
+          </html>
