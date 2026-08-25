@@ -28,18 +28,38 @@ window.addEventListener("load", function () {
 
 function copyUPI() {
 
-    if (navigator.clipboard) {
+    navigator.clipboard.writeText(UPI_ID)
+        .then(function () {
 
-        navigator.clipboard.writeText(UPI_ID)
-            .then(function () {
-                alert("UPI ID copied");
-            });
+            showCopySuccess();
 
-    } else {
+        })
+        .catch(function () {
 
-        alert("UPI ID: " + UPI_ID);
+            // Fallback
+            const textarea = document.createElement("textarea");
+            textarea.value = UPI_ID;
 
-    }
+            document.body.appendChild(textarea);
+            textarea.select();
+
+            document.execCommand("copy");
+            textarea.remove();
+
+            showCopySuccess();
+        });
+}
+
+
+function showCopySuccess() {
+
+    const toast = document.getElementById("copyToast");
+
+    toast.classList.add("show");
+
+    setTimeout(function () {
+        toast.classList.remove("show");
+    }, 2500);
 }
 
 
