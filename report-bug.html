@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY - Report Bug</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    color:#fff;
+    background:
+    radial-gradient(circle at 50% 10%,#122653 0%,#07132b 45%,#030817 100%);
+    padding-bottom:30px;
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+/* HEADER */
+
+.header{
+    height:82px;
+    padding:0 5%;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    border-bottom:1px solid #203250;
+    background:rgba(5,13,29,.75);
+    backdrop-filter:blur(15px);
+    position:sticky;
+    top:0;
+    z-index:20;
+}
+
+.back-btn{
+    width:45px;
+    height:45px;
+    border-radius:13px;
+    border:1px solid #294364;
+    background:#0c1932;
+    color:#dce8ff;
+    font-size:30px;
+}
+
+.header-title{
+    flex:1;
+}
+
+.header-title h1{
+    font-size:20px;
+}
+
+.header-title p{
+    color:#899ab6;
+    font-size:11px;
+    margin-top:3px;
+}
+
+/* NOTIFICATION */
+
+.notification-btn{
+    position:relative;
+    width:47px;
+    height:47px;
+    border-radius:14px;
+    border:1px solid #294364;
+    background:#0c1932;
+    color:#fff;
+    font-size:23px;
+}
+
+.notification-icon{
+    position:relative;
+    width:19px;
+    height:21px;
+    margin:auto;
+    border:2px solid #8ebaff;
+    border-radius:10px 10px 5px 5px;
+}
+
+.notification-icon:before{
+    content:"";
+    position:absolute;
+    width:23px;
+    height:2px;
+    background:#8ebaff;
+    left:-4px;
+    bottom:-5px;
+}
+
+.notification-icon:after{
+    content:"";
+    position:absolute;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#8ebaff;
+    left:5px;
+    bottom:-9px;
+}
+
+.badge{
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    min-width:19px;
+    height:19px;
+    padding:0 5px;
+    border-radius:20px;
+    background:#ef3158;
+    border:2px solid #07132b;
+    color:white;
+    font-size:10px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* MAIN */
+
+.container{
+    width:92%;
+    max-width:760px;
+    margin:35px auto;
+}
+
+/* REPORT CARD */
+
+.report-card{
+    background:linear-gradient(145deg,#101e3d,#09152c);
+    border:1px solid #234b79;
+    border-radius:24px;
+    padding:28px;
+    box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+.report-icon{
+    width:65px;
+    height:65px;
+    margin-bottom:18px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #287fdb;
+    background:#0b2b55;
+}
+
+.report-icon-symbol{
+    width:27px;
+    height:27px;
+    border:2px solid #4ea4ff;
+    border-radius:5px;
+    position:relative;
+}
+
+.report-icon-symbol:before{
+    content:"";
+    position:absolute;
+    width:13px;
+    height:2px;
+    background:#4ea4ff;
+    left:5px;
+    top:7px;
+}
+
+.report-icon-symbol:after{
+    content:"";
+    position:absolute;
+    width:13px;
+    height:2px;
+    background:#4ea4ff;
+    left:5px;
+    top:14px;
+}
+
+.report-card h2{
+    font-size:25px;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    color:#94a5c0;
+    font-size:13px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+/* FORM */
+
+label{
+    display:block;
+    color:#cbd8ec;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:9px;
+}
+
+textarea{
+    width:100%;
+    min-height:190px;
+    resize:vertical;
+    border-radius:15px;
+    border:1px solid #2a4568;
+    background:#071329;
+    color:#fff;
+    padding:16px;
+    outline:none;
+    font-size:14px;
+    line-height:1.6;
+}
+
+textarea::placeholder{
+    color:#657895;
+}
+
+textarea:focus{
+    border-color:#168eff;
+    box-shadow:0 0 0 3px rgba(22,142,255,.10);
+}
+
+.counter{
+    text-align:right;
+    color:#71839f;
+    font-size:11px;
+    margin-top:7px;
+}
+
+.submit-btn{
+    width:100%;
+    height:52px;
+    margin-top:20px;
+    border:0;
+    border-radius:13px;
+    color:white;
+    font-size:15px;
+    font-weight:700;
+    background:linear-gradient(135deg,#168eff,#3150df);
+    box-shadow:0 10px 25px rgba(22,142,255,.18);
+}
+
+.submit-btn:active{
+    transform:scale(.98);
+}
+
+.form-message{
+    min-height:20px;
+    margin-top:12px;
+    text-align:center;
+    font-size:13px;
+}
+
+/* INFO */
+
+.info-card{
+    margin-top:18px;
+    padding:19px;
+    border-radius:18px;
+    background:#0c1830;
+    border:1px solid #203756;
+}
+
+.info-card h3{
+    font-size:15px;
+    margin-bottom:8px;
+}
+
+.info-card p{
+    color:#8fa1bd;
+    font-size:12px;
+    line-height:1.6;
+}
+
+/* NOTIFICATION PANEL */
+
+.notification-panel{
+    position:fixed;
+    top:72px;
+    right:4%;
+    width:360px;
+    max-width:92%;
+    max-height:75vh;
+    overflow-y:auto;
+    background:linear-gradient(145deg,#111f3c,#071329);
+    border:1px solid #2c507c;
+    border-radius:20px;
+    box-shadow:0 25px 70px rgba(0,0,0,.65);
+    z-index:100;
+    display:none;
+}
+
+.notification-panel.show{
+    display:block;
+}
+
+.notification-header{
+    padding:18px;
+    border-bottom:1px solid #253b5a;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.notification-header h3{
+    font-size:16px;
+}
+
+.close-notification{
+    width:30px;
+    height:30px;
+    border-radius:8px;
+    border:1px solid #304563;
+    background:#101d36;
+    color:#a9bad3;
+}
+
+.notification-list{
+    padding:10px;
+}
+
+.notification-empty{
+    padding:30px 15px;
+    text-align:center;
+    color:#71839e;
+    font-size:13px;
+}
+
+.notification-item{
+    padding:15px;
+    margin-bottom:9px;
+    border-radius:14px;
+    background:#0d1b35;
+    border:1px solid #213a5d;
+}
+
+.notification-item:last-child{
+    margin-bottom:0;
+}
+
+.notification-item-title{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:8px;
+}
+
+.notification-dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:#168eff;
+}
+
+.notification-item-title strong{
+    font-size:13px;
+}
+
+.notification-item p{
+    color:#a5b5ca;
+    font-size:12px;
+    line-height:1.6;
+    word-break:break-word;
+}
+
+.notification-time{
+    color:#687c99;
+    font-size:10px;
+    margin-top:8px;
+}
+
+.reply-status{
+    color:#00d99a;
+    font-size:11px;
+    margin-top:7px;
+}
+
+/* POPUP */
+
+.popup-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(9px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:9999;
+}
+
+.popup-overlay.show{
+    display:flex;
+}
+
+.popup{
+    width:100%;
+    max-width:380px;
+    padding:30px 24px 24px;
+    text-align:center;
+    border-radius:24px;
+    background:linear-gradient(145deg,#122343,#081329);
+    border:1px solid #2a659e;
+    box-shadow:0 25px 70px rgba(0,0,0,.75);
+    animation:popupIn .25s ease;
+}
+
+@keyframes popupIn{
+    from{
+        opacity:0;
+        transform:scale(.85) translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+}
+
+.success-symbol{
+    width:70px;
+    height:70px;
+    margin:0 auto 17px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:1px solid #08a978;
+    background:#063d35;
+    color:#00e6a0;
+    font-size:35px;
+}
+
+.popup h2{
+    font-size:22px;
+    margin-bottom:10px;
+}
+
+.popup p{
+    color:#98a9c1;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.popup button{
+    width:100%;
+    height:48px;
+    margin-top:22px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#168eff,#3150df);
+    color:white;
+    font-weight:700;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .header{
+        padding:0 4%;
+    }
+
+    .container{
+        width:94%;
+        margin:25px auto;
+    }
+
+    .report-card{
+        padding:22px 18px;
+    }
+
+    .notification-panel{
+        right:4%;
+        left:4%;
+        width:auto;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <button
+        class="back-btn"
+        onclick="history.back()">
+        ‹
+    </button>
+
+    <div class="header-title">
+        <h1>Report Bug</h1>
+        <p>Report an issue to our support team</p>
+    </div>
+
+    <button
+        class="notification-btn"
+        onclick="toggleNotifications()">
+
+        <div class="notification-icon"></div>
+
+        <span
+            id="notificationBadge"
+            class="badge">
+            0
+        </span>
+
+    </button>
+
+</header>
+
+
+<!-- NOTIFICATION PANEL -->
+
+<div
+    id="notificationPanel"
+    class="notification-panel">
+
+    <div class="notification-header">
+
+        <h3>Notifications</h3>
+
+        <button
+            class="close-notification"
+            onclick="toggleNotifications()">
+            ×
+        </button>
+
+    </div>
+
+    <div
+        id="notificationList"
+        class="notification-list">
+    </div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+    <section class="report-card">
+
+        <div class="report-icon">
+            <div class="report-icon-symbol"></div>
+        </div>
+
+        <h2>Report an Issue</h2>
+
+        <p class="subtitle">
+            Tell us about the problem you are facing.
+            Our support team will review your report
+            and respond as soon as possible.
+        </p>
+
+
+        <label for="bugReport">
+            Describe the issue
+        </label>
+
+        <textarea
+            id="bugReport"
+            maxlength="1000"
+            placeholder="Please describe the problem clearly. For example: The deposit page is not opening when I tap the Deposit button."></textarea>
+
+        <div
+            id="charCounter"
+            class="counter">
+            0 / 1000
+        </div>
+
+
+        <button
+            class="submit-btn"
+            onclick="submitReport()">
+
+            Submit Report
+
+        </button>
+
+        <div
+            id="formMessage"
+            class="form-message">
+        </div>
+
+    </section>
+
+
+    <section class="info-card">
+
+        <h3>Support Response</h3>
+
+        <p>
+            Every valid report is reviewed by our team.
+            You will receive a response within 24 hours
+            after submitting your report.
+        </p>
+
+    </section>
+
+</main>
+
+
+<!-- SUCCESS POPUP -->
+
+<div
+    id="successPopup"
+    class="popup-overlay">
+
+    <div class="popup">
+
+        <div class="success-symbol">
+            ✓
+        </div>
+
+        <h2>Report Submitted</h2>
+
+        <p>
+            Your report has been received successfully.
+            Our team will review the issue and reply
+            within 24 hours.
+        </p>
+
+        <button onclick="closeSuccessPopup()">
+            Okay, Got It
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   STORAGE KEY
+========================= */
+
+const REPORT_KEY = "globalPayBugReports";
+
+
+/* =========================
+   LOAD REPORTS
+========================= */
+
+function getReports(){
+
+    try{
+
+        const saved =
+            localStorage.getItem(REPORT_KEY);
+
+        if(!saved){
+            return [];
+        }
+
+        const reports =
+            JSON.parse(saved);
+
+        return Array.isArray(reports)
+            ? reports
+            : [];
+
+    }catch(error){
+
+        return [];
+    }
+}
+
+
+/* =========================
+   SAVE REPORTS
+========================= */
+
+function saveReports(reports){
+
+    localStorage.setItem(
+        REPORT_KEY,
+        JSON.stringify(reports)
+    );
+}
+
+
+/* =========================
+   TEXT VALIDATION
+========================= */
+
+function isValidReport(text){
+
+    const clean =
+        text.trim();
+
+    /*
+       Minimum 20 characters.
+       This prevents short/random text.
+    */
+
+    if(clean.length < 20){
+        return false;
+    }
+
+
+    /*
+       At least 5 alphabetic characters
+       should be present.
+    */
+
+    const letters =
+        clean.match(/[a-zA-Z]/g);
+
+
+    if(!letters || letters.length < 5){
+        return false;
+    }
+
+
+    /*
+       Prevent reports made only from
+       repeated/same characters.
+    */
+
+    const compact =
+        clean
+        .toLowerCase()
+        .replace(/\s/g,"");
+
+
+    if(/^([a-z0-9])\1+$/.test(compact)){
+        return false;
+    }
+
+
+    return true;
+}
+
+
+/* =========================
+   SUBMIT REPORT
+========================= */
+
+function submitReport(){
+
+    const textarea =
+        document.getElementById("bugReport");
+
+    const message =
+        document.getElementById("formMessage");
+
+    const text =
+        textarea.value.trim();
+
+
+    if(!isValidReport(text)){
+
+        message.style.color =
+            "#ff536d";
+
+        message.textContent =
+            "Please enter a valid and clear report about the issue.";
+
+        textarea.focus();
+
+        return;
+    }
+
+
+    const reports =
+        getReports();
+
+
+    const newReport = {
+
+        id:
+            Date.now(),
+
+        message:
+            text,
+
+        submittedAt:
+            new Date().toISOString(),
+
+        status:
+            "Our team will reply within 24 hours."
+
+    };
+
+
+    reports.push(newReport);
+
+
+    saveReports(reports);
+
+
+    textarea.value = "";
+
+    updateCounter();
+
+    message.textContent = "";
+
+
+    updateNotificationCount();
+
+    renderNotifications();
+
+
+    showSuccessPopup();
+}
+
+
+/* =========================
+   POPUP
+========================= */
+
+function showSuccessPopup(){
+
+    document
+        .getElementById("successPopup")
+        .classList.add("show");
+}
+
+
+function closeSuccessPopup(){
+
+    document
+        .getElementById("successPopup")
+        .classList.remove("show");
+}
+
+
+/* =========================
+   NOTIFICATION COUNT
+========================= */
+
+function updateNotificationCount(){
+
+    const reports =
+        getReports();
+
+    document
+        .getElementById("notificationBadge")
+        .textContent =
+        reports.length;
+}
+
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+
+function toggleNotifications(){
+
+    const panel =
+        document.getElementById(
+            "notificationPanel"
+        );
+
+    panel.classList.toggle("show");
+
+    if(panel.classList.contains("show")){
+
+        renderNotifications();
+    }
+}
+
+
+/* =========================
+   RENDER NOTIFICATIONS
+========================= */
+
+function renderNotifications(){
+
+    const list =
+        document.getElementById(
+            "notificationList"
+        );
+
+    const reports =
+        getReports();
+
+
+    if(reports.length === 0){
+
+        list.innerHTML = `
+            <div class="notification-empty">
+                No notifications yet.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    list.innerHTML = "";
+
+
+    /*
+       Latest report first
+    */
+
+    reports
+        .slice()
+        .reverse()
+        .forEach(function(report){
+
+            const date =
+                new Date(
+                    report.submittedAt
+                );
+
+
+            const formattedDate =
+                date.toLocaleString(
+                    "en-IN",
+                    {
+                        day:"2-digit",
+                        month:"short",
+                        year:"numeric",
+                        hour:"2-digit",
+                        minute:"2-digit"
+                    }
+                );
+
+
+            const item =
+                document.createElement("div");
+
+            item.className =
+                "notification-item";
+
+
+            item.innerHTML = `
+
+                <div class="notification-item-title">
+
+                    <span class="notification-dot"></span>
+
+                    <strong>
+                        Bug Report Received
+                    </strong>
+
+                </div>
+
+                <p>
+                    ${escapeHtml(report.message)}
+                </p>
+
+                <div class="reply-status">
+                    ${escapeHtml(report.status)}
+                </div>
+
+                <div class="notification-time">
+                    Submitted: ${formattedDate}
+                </div>
+
+            `;
+
+
+            list.appendChild(item);
+
+        });
+}
+
+
+/* =========================
+   SECURITY
+   ========================= */
+
+function escapeHtml(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text;
+
+    return div.innerHTML;
+}
+
+
+/* =========================
+   CHARACTER COUNTER
+========================= */
+
+function updateCounter(){
+
+    const textarea =
+        document.getElementById(
+            "bugReport"
+        );
+
+    const counter =
+        document.getElementById(
+            "charCounter"
+        );
+
+    counter.textContent =
+        textarea.value.length +
+        " / 1000";
+}
+
+
+document
+    .getElementById("bugReport")
+    .addEventListener(
+        "input",
+        updateCounter
+    );
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateNotificationCount();
+
+        renderNotifications();
+
+        updateCounter();
+
+    }
+);
+
+</script>
+
+</body>
+  </html>
