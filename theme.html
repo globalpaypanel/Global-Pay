@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY - Theme</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    radial-gradient(circle at 50% 10%,#122650 0%,#071329 45%,#030817 100%);
+    color:#fff;
+}
+
+/* HEADER */
+
+.header{
+    height:78px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:12px 5%;
+    border-bottom:1px solid #1c3152;
+    background:#071329;
+}
+
+.back{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    border:1px solid #29466f;
+    background:#0c1931;
+    color:#68aaff;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.header h2{
+    font-size:20px;
+}
+
+.header p{
+    color:#8f9fb9;
+    font-size:11px;
+    margin-top:3px;
+}
+
+
+/* CONTAINER */
+
+.container{
+    width:92%;
+    max-width:650px;
+    margin:28px auto;
+}
+
+.title{
+    margin-bottom:20px;
+}
+
+.title h1{
+    font-size:25px;
+}
+
+.title p{
+    color:#91a1ba;
+    font-size:13px;
+    margin-top:6px;
+}
+
+
+/* CARD */
+
+.card{
+    background:#0e192f;
+    border:1px solid #243856;
+    border-radius:20px;
+    padding:8px 18px;
+}
+
+
+/* OPTION */
+
+.theme-option{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:18px 5px;
+    border-bottom:1px solid #202f48;
+    cursor:pointer;
+}
+
+.theme-option:last-child{
+    border-bottom:0;
+}
+
+.theme-icon{
+    width:48px;
+    height:48px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:23px;
+    background:#102c5b;
+}
+
+.theme-content{
+    flex:1;
+}
+
+.theme-content b{
+    display:block;
+    font-size:15px;
+}
+
+.theme-content small{
+    display:block;
+    color:#8d9db6;
+    margin-top:4px;
+}
+
+
+/* RADIO */
+
+.radio{
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    border:2px solid #526582;
+    position:relative;
+}
+
+.theme-option.active .radio{
+    border-color:#168eff;
+}
+
+.theme-option.active .radio:after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#168eff;
+    top:4px;
+    left:4px;
+}
+
+
+/* SWITCH */
+
+.switch{
+    width:48px;
+    height:27px;
+    border-radius:20px;
+    background:#263b59;
+    border:1px solid #3c5271;
+    position:relative;
+    cursor:pointer;
+    transition:.25s;
+}
+
+.switch:after{
+    content:"";
+    position:absolute;
+    width:21px;
+    height:21px;
+    top:2px;
+    left:3px;
+    border-radius:50%;
+    background:#a5b1c3;
+    transition:.25s;
+}
+
+.switch.on{
+    background:#167de8;
+    border-color:#168eff;
+}
+
+.switch.on:after{
+    left:22px;
+    background:#fff;
+}
+
+
+/* =========================
+   COMING SOON POPUP
+========================= */
+
+.popup-overlay{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(9px);
+}
+
+.popup-overlay.show{
+    display:flex;
+}
+
+.popup{
+    width:100%;
+    max-width:360px;
+    padding:30px 24px 24px;
+    text-align:center;
+    border-radius:24px;
+    background:
+        linear-gradient(145deg,#122143,#081329);
+    border:1px solid #28558b;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.75),
+        0 0 35px rgba(22,142,255,.15);
+
+    animation:popupIn .25s ease;
+}
+
+@keyframes popupIn{
+
+    from{
+        opacity:0;
+        transform:scale(.85) translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1) translateY(0);
+    }
+
+}
+
+.popup-icon{
+    width:70px;
+    height:70px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:32px;
+    background:#092e5d;
+    border:1px solid #168eff;
+    box-shadow:0 0 30px rgba(22,142,255,.2);
+}
+
+.popup h2{
+    font-size:23px;
+    margin-bottom:8px;
+}
+
+.popup h3{
+    color:#168eff;
+    font-size:15px;
+    margin-bottom:12px;
+}
+
+.popup p{
+    color:#91a1ba;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.popup-btn{
+    width:100%;
+    height:48px;
+    margin-top:22px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#168eff,#2852df);
+    color:#fff;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+}
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .container{
+        width:94%;
+    }
+
+    .card{
+        padding:8px 15px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <button
+        class="back"
+        onclick="history.back()">
+
+        ‹
+
+    </button>
+
+    <div>
+
+        <h2>GLOBAL PAY</h2>
+
+        <p>Theme Settings</p>
+
+    </div>
+
+</header>
+
+
+<!-- MAIN -->
+
+<main class="container">
+
+    <div class="title">
+
+        <h1>Theme Mode</h1>
+
+        <p>
+            Choose your preferred appearance
+        </p>
+
+    </div>
+
+
+    <div class="card">
+
+
+        <!-- DARK -->
+
+        <div
+            class="theme-option active"
+            id="darkOption"
+            onclick="selectTheme('dark')">
+
+            <div class="theme-icon">
+                ☾
+            </div>
+
+            <div class="theme-content">
+
+                <b>Dark Mode</b>
+
+                <small>
+                    Comfortable dark interface
+                </small>
+
+            </div>
+
+            <div class="radio"></div>
+
+        </div>
+
+
+        <!-- LIGHT -->
+
+        <div
+            class="theme-option"
+            id="lightOption"
+            onclick="selectTheme('light')">
+
+            <div class="theme-icon">
+                ☀
+            </div>
+
+            <div class="theme-content">
+
+                <b>Light Mode</b>
+
+                <small>
+                    Bright and clean interface
+                </small>
+
+            </div>
+
+            <div class="radio"></div>
+
+        </div>
+
+
+        <!-- SYSTEM -->
+
+        <div class="theme-option">
+
+            <div class="theme-icon">
+                ⚙
+            </div>
+
+            <div class="theme-content">
+
+                <b>System Default</b>
+
+                <small>
+                    Follow device appearance
+                </small>
+
+            </div>
+
+            <div
+                class="switch"
+                id="systemSwitch"
+                onclick="toggleSystem(event)">
+            </div>
+
+        </div>
+
+
+    </div>
+
+</main>
+
+
+<!-- COMING SOON POPUP -->
+
+<div
+    class="popup-overlay"
+    id="comingSoonPopup">
+
+    <div class="popup">
+
+        <div class="popup-icon">
+            ⚙
+        </div>
+
+        <h2>System Default</h2>
+
+        <h3>COMING SOON</h3>
+
+        <p>
+            System Default theme is currently
+            under development.
+            <br><br>
+            This feature will be available soon.
+        </p>
+
+        <button
+            class="popup-btn"
+            onclick="closeComingSoon()">
+
+            Okay, Got It
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* =========================
+   THEME SELECT
+========================= */
+
+function selectTheme(theme){
+
+    if(theme === "dark"){
+
+        document
+            .getElementById("darkOption")
+            .classList.add("active");
+
+        document
+            .getElementById("lightOption")
+            .classList.remove("active");
+
+        localStorage.setItem(
+            "globalPayTheme",
+            "dark"
+        );
+
+    }
+
+
+    if(theme === "light"){
+
+        document
+            .getElementById("lightOption")
+            .classList.add("active");
+
+        document
+            .getElementById("darkOption")
+            .classList.remove("active");
+
+        localStorage.setItem(
+            "globalPayTheme",
+            "light"
+        );
+
+    }
+
+}
+
+
+/* =========================
+   SYSTEM SWITCH
+========================= */
+
+function toggleSystem(event){
+
+    event.stopPropagation();
+
+    const switchBtn =
+        document.getElementById("systemSwitch");
+
+    switchBtn.classList.add("on");
+
+    document
+        .getElementById("comingSoonPopup")
+        .classList.add("show");
+
+}
+
+
+/* =========================
+   CLOSE POPUP
+========================= */
+
+function closeComingSoon(){
+
+    document
+        .getElementById("comingSoonPopup")
+        .classList.remove("show");
+
+    document
+        .getElementById("systemSwitch")
+        .classList.remove("on");
+
+}
+
+
+/* =========================
+   LOAD SAVED THEME
+========================= */
+
+window.addEventListener("DOMContentLoaded",function(){
+
+    const saved =
+        localStorage.getItem("globalPayTheme") || "dark";
+
+    if(saved === "light"){
+
+        document
+            .getElementById("lightOption")
+            .classList.add("active");
+
+        document
+            .getElementById("darkOption")
+            .classList.remove("active");
+
+    }else{
+
+        document
+            .getElementById("darkOption")
+            .classList.add("active");
+
+        document
+            .getElementById("lightOption")
+            .classList.remove("active");
+
+    }
+
+});
+
+</script>
+
+</body>
+              </html>
