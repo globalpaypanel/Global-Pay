@@ -3,412 +3,754 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Withdraw - Global Pay</title>
-
-<link rel="stylesheet" href="style.css">
+<title>Global Pay - Withdraw</title>
 
 <style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:#081120;
-color:#fff;
+    min-height:100vh;
+    color:#fff;
+    background:
+        radial-gradient(circle at 80% 10%,#182b68 0%,transparent 30%),
+        linear-gradient(145deg,#030816,#071329,#020713);
+    padding-bottom:90px;
 }
 
+/* HEADER */
 .header{
-background:#0d1b34;
-padding:18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-box-shadow:0 2px 10px rgba(0,0,0,.4);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 18px;
 }
 
-.header h2{
-margin:0;
-font-size:24px;
+.back-btn{
+    width:55px;
+    height:55px;
+    border-radius:15px;
+    border:1px solid #29405f;
+    background:rgba(255,255,255,.04);
+    color:white;
+    font-size:32px;
 }
 
-.container{
-padding:15px;
-max-width:500px;
-margin:auto;
+.title-area{
+    flex:1;
+    margin-left:18px;
 }
 
-.card{
-background:#16233d;
-border-radius:16px;
-padding:18px;
-margin-bottom:15px;
-box-shadow:0 5px 15px rgba(0,0,0,.35);
+.title-area h1{
+    font-size:30px;
+}
+
+.title-area p{
+    color:#aebbd4;
+    margin-top:5px;
+    font-size:15px;
+}
+
+.secure{
+    color:#fff;
+    font-size:14px;
+    text-align:center;
+}
+
+.secure span{
+    display:block;
+    color:#00e89a;
+    font-size:28px;
+}
+
+/* BALANCE */
+.balance-card{
+    margin:5px 18px 30px;
+    padding:25px;
+    border-radius:22px;
+    background:linear-gradient(
+        110deg,
+        rgba(0,119,255,.12),
+        rgba(120,50,255,.15)
+    );
+    border:1px solid rgba(0,170,255,.55);
+    box-shadow:0 0 25px rgba(0,120,255,.12);
+}
+
+.balance-title{
+    color:#b7c6df;
+    font-size:18px;
 }
 
 .balance{
-font-size:34px;
-font-weight:bold;
-color: #00ff66;
-margin:10px 0;
+    font-size:46px;
+    font-weight:bold;
+    margin:10px 0 15px;
 }
 
-label{
-display:block;
-margin-top:15px;
-margin-bottom:6px;
-font-weight:bold;
+.status{
+    color:#00e89a;
+    border:1px solid rgba(0,255,160,.35);
+    background:rgba(0,255,160,.06);
+    padding:7px 13px;
+    border-radius:20px;
+    display:inline-block;
 }
 
-input,select{
-width:100%;
-padding:14px;
-border:none;
-border-radius:10px;
-background:#0d1730;
-color:#fff;
-font-size:16px;
-box-sizing:border-box;
+/* SECTIONS */
+.section{
+    margin:0 18px 28px;
 }
 
-.info{
-font-size:14px;
-color:#FFD700;
-margin-top:8px;
+.section-title{
+    font-size:21px;
+    margin-bottom:15px;
 }
 
-.quick{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-margin-top:15px;
+.method-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
 }
 
-.quick button{
-padding:12px;
-border:none;
-border-radius:10px;
-background:#204070;
-color:#fff;
-font-weight:bold;
+.method{
+    min-height:150px;
+    padding:15px 8px;
+    border-radius:18px;
+    border:1px solid #263957;
+    background:rgba(255,255,255,.035);
+    text-align:center;
+    cursor:pointer;
+    transition:.25s;
 }
 
-.submit{
-width:100%;
-margin-top:20px;
-padding:16px;
-border:none;
-border-radius:12px;
-font-size:18px;
-font-weight:bold;
-background:linear-gradient(90deg,#FFD700,#FF9800);
-color:#000;
+.method:hover{
+    transform:translateY(-3px);
 }
 
+.method.active{
+    border:2px solid #6960ff;
+    box-shadow:0 0 18px rgba(100,70,255,.35);
+}
+
+.method-icon{
+    width:58px;
+    height:58px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    background:rgba(100,50,255,.18);
+}
+
+.method h3{
+    margin-top:12px;
+    font-size:16px;
+}
+
+.method p{
+    color:#aebbd4;
+    font-size:12px;
+    margin-top:7px;
+    line-height:1.4;
+}
+
+/* INPUT */
+.input-box{
+    width:100%;
+    height:65px;
+    display:flex;
+    align-items:center;
+    background:rgba(255,255,255,.035);
+    border:1px solid #243654;
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.currency{
+    font-size:28px;
+    padding-left:20px;
+}
+
+.input-box input,
+.input-box select{
+    flex:1;
+    height:100%;
+    border:0;
+    outline:0;
+    color:#fff;
+    background:transparent;
+    padding:0 15px;
+    font-size:17px;
+}
+
+.input-box select option{
+    background:#081329;
+}
+
+.max-btn{
+    margin-right:12px;
+    padding:10px 16px;
+    border-radius:10px;
+    border:1px solid #743cff;
+    background:rgba(120,50,255,.1);
+    color:#a66cff;
+    font-weight:bold;
+}
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    color:#91a0ba;
+    margin-top:12px;
+    font-size:14px;
+}
+
+.available{
+    color:#ffc400;
+}
+
+.limit{
+    color:#00e89a;
+}
+
+/* DETAILS */
+.details{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.details input{
+    width:100%;
+    height:60px;
+    border-radius:15px;
+    border:1px solid #263957;
+    outline:none;
+    background:rgba(255,255,255,.035);
+    color:#fff;
+    padding:0 18px;
+    font-size:16px;
+}
+
+.details input::placeholder{
+    color:#7787a5;
+}
+
+/* SECURITY INFO */
+.security-card{
+    margin:0 18px 25px;
+    padding:20px;
+    display:flex;
+    gap:10px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+    border:1px solid #1d3150;
+}
+
+.security-item{
+    flex:1;
+    padding:5px;
+}
+
+.security-item:not(:last-child){
+    border-right:1px solid #263957;
+}
+
+.security-item h4{
+    color:#008cff;
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.security-item:nth-child(2) h4{
+    color:#00e89a;
+}
+
+.security-item:nth-child(3) h4{
+    color:#a66cff;
+}
+
+.security-item p{
+    color:#aab8d0;
+    font-size:12px;
+    line-height:1.5;
+}
+
+/* SUBMIT */
+.submit-btn{
+    margin:0 18px;
+    width:calc(100% - 36px);
+    height:65px;
+    border:0;
+    border-radius:18px;
+    color:#fff;
+    font-size:18px;
+    font-weight:bold;
+    background:linear-gradient(90deg,#7134ff,#087cff);
+    box-shadow:0 0 25px rgba(80,70,255,.3);
+    cursor:pointer;
+}
+
+.submit-btn:active{
+    transform:scale(.98);
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:75px;
+    background:rgba(7,17,35,.96);
+    border-top:1px solid #1d3150;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    z-index:10;
+}
+
+.nav-item{
+    text-align:center;
+    color:#8292ad;
+    font-size:11px;
+}
+
+.nav-item span{
+    display:block;
+    font-size:24px;
+    margin-bottom:3px;
+}
+
+.nav-item.active{
+    color:#159cff;
+}
+
+/* MOBILE */
+@media(max-width:500px){
+
+    .title-area h1{
+        font-size:27px;
+    }
+
+    .secure{
+        font-size:11px;
+    }
+
+    .method-container{
+        gap:7px;
+    }
+
+    .method{
+        min-height:145px;
+        padding:12px 5px;
+    }
+
+    .balance{
+        font-size:40px;
+    }
+
+    .security-card{
+        padding:15px 8px;
+    }
+
+    .security-item h4{
+        font-size:12px;
+    }
+
+    .security-item p{
+        font-size:10px;
+    }
+}
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
-<div onclick="history.back()" style="cursor:pointer;font-size:24px;">←</div>
-<h2>💸 Withdraw</h2>
-<div onclick="location.href='message.html'" style="cursor:pointer;">🔔</div>
-</div>
 
-<div class="container">
+    <button class="back-btn" onclick="goBack()">‹</button>
 
-<div class="card">
+    <div class="title-area">
+        <h1>Withdraw</h1>
+        <p>Send money to your preferred option</p>
+    </div>
 
-<h3>Available Balance</h3>
-
-<div class="balance" id="balance">₹0.00</div>
-
-<div class="info" style="color:red; font-weight:bold;">
-Minimum Withdraw : ₹1,000
-</div>
+    <div class="secure">
+        <span>🛡️</span>
+        Secure<br>Transaction
+    </div>
 
 </div>
 
-<div class="card">
 
-<label>Withdraw Amount</label>
+<!-- BALANCE -->
+<div class="balance-card">
 
-<input type="number" id="amount" placeholder="Enter Amount">
+    <div class="balance-title">
+        Available Balance
+    </div>
 
-<div class="quick">
+    <div class="balance">
+        ₹<span id="balance">0.00</span>
+    </div>
 
-<button onclick="amount.value=5000">₹5,000</button>
-
-<button onclick="amount.value=10000">₹10,000</button>
-
-<button onclick="amount.value=20000">₹20,000</button>
-
-<button onclick="amount.value=0">All Balance</button>
-
-</div>
-<label>Payment Method</label>
-
-<select id="paymentMethod" onchange="changeMethod()">
-
-<option value="bank">🏦 Bank Transfer</option>
-
-<option value="upi">📱 UPI</option>
-
-<option value="binance">🪙 Binance (USDT)</option>
-
-</select>
-
-<!-- Bank -->
-
-<div id="bankSection">
-
-<label>Account Holder Name</label>
-<input type="text" id="holderName" maxlength="30">
-
-<label>Bank Name</label>
-<input type="text" id="bankName" maxlength="30">
-
-<label>Account Number</label>
-<input type="number" id="accountNumber" maxlength="18" oninput="this.value=this.value.slice(0,18)">
-
-<label>Confirm Account Number</label>
-<input type="number" id="confirmAccount" maxlength="18" oninput="this.value=this.value.slice(0,18)">
-
-<label>IFSC Code</label>
-<input type="text" id="ifsc" maxlength="11">
+    <div>
+        Account Status
+        <span class="status">● Active</span>
+    </div>
 
 </div>
 
-<!-- UPI -->
 
-<div id="upiSection" style="display:none;">
+<!-- METHOD -->
+<div class="section">
 
-<label>UPI ID</label>
-<input type="text" id="upiId" placeholder="example@upi" maxlength="50">
- 
+    <div class="section-title">
+        1. Select Withdrawal Method
+    </div>
+
+    <div class="method-container">
+
+        <div class="method active"
+             onclick="selectMethod(this,'Bank')">
+
+            <div class="method-icon">🏦</div>
+
+            <h3>Bank Transfer</h3>
+
+            <p>
+                Transfer to bank
+                account
+            </p>
+
+        </div>
+
+
+        <div class="method"
+             onclick="selectMethod(this,'UPI')">
+
+            <div class="method-icon">💳</div>
+
+            <h3>UPI Transfer</h3>
+
+            <p>
+                Instant transfer to
+                UPI ID
+            </p>
+
+        </div>
+
+
+        <div class="method"
+             onclick="selectMethod(this,'Binance')">
+
+            <div class="method-icon">🟡</div>
+
+            <h3>Binance</h3>
+
+            <p>
+                Transfer to Binance
+                account
+            </p>
+
+        </div>
+
+    </div>
+
 </div>
 
-<!-- Binance -->
 
-<div id="binanceSection" style="display:none;">
+<!-- AMOUNT -->
+<div class="section">
 
-<label>Network</label>
+    <div class="section-title">
+        2. Enter Amount
+    </div>
 
-<select id="network">
+    <div class="input-box">
 
-<option>TRC20</option>
+        <div class="currency">₹</div>
 
-<option>BEP20</option>
+        <input
+            type="number"
+            id="amount"
+            placeholder="Enter amount"
+            min="100"
+        >
 
-<option>ERC20</option>
+        <span style="color:#91a0ba;">
+            Min. ₹100
+        </span>
 
-</select>
+        <button class="max-btn"
+                onclick="setMax()">
+            Max
+        </button>
 
-<label>Binance UID</label>
-<input type="text" id="binanceUid" maxlength="20">
+    </div>
 
-<label>USDT Wallet Address</label>
-<input type="text" id="wallet" maxlength="42">
+    <div class="info-row">
 
-<p><b>Exchange Rate:</b> 1 USDT = ₹87</p>
+        <span>
+            ⓘ Available:
+            <b class="available">
+                ₹<span id="available">0.00</span>
+            </b>
+        </span>
 
-<p><b>You Receive:</b>
-<span id="usdtAmount">0 USDT</span></p>
+        <span>
+            Daily Limit:
+            <b class="limit">₹50,000</b>
+        </span>
 
- </div>
+    </div>
 
-<div class="card">
+</div>
 
-<h3>📋 Withdrawal Summary</h3>
 
-<p>Requested Amount: <b id="showAmount">₹0</b></p>
+<!-- DETAILS -->
+<div class="section">
 
-<p>Processing Fee: <b>₹0</b></p>
+    <div class="section-title">
+        3. Enter Details
+    </div>
 
-<p>You Will Receive: <b id="finalAmount">₹0</b></p>
+    <div class="details">
 
-<p>Processing Time: <b>30-1 Hours</b></p>
+        <input
+            type="text"
+            id="accountDetails"
+            placeholder="Enter Bank Account / UPI ID / Binance ID"
+        >
 
-<button class="submit" onclick="location.href='withdraw-success.html'">
-💸 Submit Withdrawal
+        <input
+            type="text"
+            id="accountName"
+            placeholder="Account Holder Name"
+        >
+
+    </div>
+
+</div>
+
+
+<!-- SECURITY -->
+<div class="security-card">
+
+    <div class="security-item">
+
+        <h4>🛡️ Secure & Safe</h4>
+
+        <p>
+            Your transactions
+            are protected
+        </p>
+
+    </div>
+
+    <div class="security-item">
+
+        <h4>⚡ Instant Processing</h4>
+
+        <p>
+            Fast & reliable
+            withdrawals
+        </p>
+
+    </div>
+
+    <div class="security-item">
+
+        <h4>🎧 24/7 Support</h4>
+
+        <p>
+            We are always
+            here to help
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- SUBMIT -->
+<button class="submit-btn"
+        onclick="submitWithdrawal()">
+
+    ✈️ Submit Withdrawal Request
+
 </button>
 
-</div>
 
-<div class="card">
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
 
-<h3>📜 Recent Withdrawals</h3>
-
-<p style="text-align:center;color:#bbb;font-size:18px;">No History</p>
-
-</div>
-
-<div class="card">
-
-<h3>ℹ️ Withdrawal Rules</h3>
-
-<p>✅ Minimum Withdraw: ₹1,000</p>
-<p>✅ Maximum Withdraw: ₹10,00,000</p>
-<p>✅ One request at a time</p>
-<p>✅ KYC verification required</p>
-<p>✅ Processing Time: 30–1 Hours</p>
-
+    <div class="nav-item"
+         onclick="location.href='home.html'">
+        <span>⌂</span>
+        Home
     </div>
+
+    <div class="nav-item"
+         onclick="location.href='deposit.html'">
+        <span>⇩</span>
+        Deposit
     </div>
+
+    <div class="nav-item active">
+        <span>⇧</span>
+        Withdraw
+    </div>
+
+    <div class="nav-item">
+        <span>☷</span>
+        Transactions
+    </div>
+
+    <div class="nav-item"
+         onclick="location.href='profile.html'">
+        <span>♙</span>
+        Profile
+    </div>
+
+</div>
 
 
 <script>
-const amountInput = document.getElementById("amount");
-const showAmount = document.getElementById("showAmount");
-const finalAmount = document.getElementById("finalAmount");
 
-const paymentMethod = document.getElementById("paymentMethod");
+let selectedMethod = "Bank";
 
-const bankSection = document.getElementById("bankSection");
-const upiSection = document.getElementById("upiSection");
-const binanceSection = document.getElementById("binanceSection");
 
-const usdtAmount = document.getElementById("usdtAmount");
+// Current user balance
+function loadBalance(){
 
-function changeMethod(){
+    const userId =
+        localStorage.getItem("userid");
 
-bankSection.style.display="none";
-upiSection.style.display="none";
-binanceSection.style.display="none";
+    if(!userId) return;
 
-if(paymentMethod.value=="bank"){
-bankSection.style.display="block";
-}
+    const saved =
+        localStorage.getItem(
+            "globalPayUser_" + userId
+        );
 
-if(paymentMethod.value=="upi"){
-upiSection.style.display="block";
-}
+    if(saved){
 
-if(paymentMethod.value=="binance"){
-binanceSection.style.display="block";
-}
+        const user =
+            JSON.parse(saved);
 
-}
+        const balance =
+            Number(user.balance || 0);
 
-changeMethod();
+        document.getElementById("balance")
+            .innerText = balance.toFixed(2);
 
-amountInput.addEventListener("input",function(){
+        document.getElementById("available")
+            .innerText = balance.toFixed(2);
 
-let amount=Number(this.value)||0;
-
-showAmount.innerHTML="₹"+amount.toLocaleString();
-
-finalAmount.innerHTML="₹"+amount.toLocaleString();
-
-let usdt=(amount/87).toFixed(2);
-
-usdtAmount.innerHTML=usdt+" USDT";
-
-});
-paymentMethod.addEventListener("change", changeMethod);
-function submitWithdraw() {
-document.getElementById("regPopup").style.display = "block";
-return;
-let amount = Number(amountInput.value);
-
-if (!amount) {
-    alert("Please enter withdrawal amount.");
-    return;
-}
-
-if (amount < 1,000) {
-    alert("❌ Minimum withdrawal amount is ₹1,000.");
-    return;
-}
-
-if (amount > 10,00,000) {
-    alert("❌ Maximum withdrawal amount is ₹10,00,000.");
-    return;
-}
-
-if (paymentMethod.value == "bank") {
-
-    if (
-        document.getElementById("holderName").value.trim() == "" ||
-        document.getElementById("bankName").value.trim() == "" ||
-        document.getElementById("accountNumber").value.trim() == "" ||
-        document.getElementById("confirmAccount").value.trim() == "" ||
-        document.getElementById("ifsc").value.trim() == ""
-    ) {
-        alert("❌ Fill all bank details.");
-        return;
-    }
-
-    if (
-        document.getElementById("accountNumber").value !=
-        document.getElementById("confirmAccount").value
-    ) {
-        alert("❌ Account numbers do not match.");
-        return;
     }
 }
 
-if (paymentMethod.value == "upi") {
 
-    let upi = document.getElementById("upiId").value.trim();
+// Select method
+function selectMethod(element, method){
 
-    if (upi == "" || !upi.includes("@")) {
-        alert("❌ Enter a valid UPI ID.");
+    document
+        .querySelectorAll(".method")
+        .forEach(item =>
+            item.classList.remove("active")
+        );
+
+    element.classList.add("active");
+
+    selectedMethod = method;
+}
+
+
+// Max amount
+function setMax(){
+
+    const balance =
+        Number(
+            document.getElementById("balance")
+                .innerText
+        );
+
+    document.getElementById("amount")
+        .value = balance;
+}
+
+
+// Submit
+function submitWithdrawal(){
+
+    const amount =
+        Number(
+            document.getElementById("amount").value
+        );
+
+    const details =
+        document.getElementById(
+            "accountDetails"
+        ).value.trim();
+
+    const name =
+        document.getElementById(
+            "accountName"
+        ).value.trim();
+
+    if(amount < 100){
+
+        alert("Minimum withdrawal amount is ₹100.");
         return;
     }
- }
-alert(
-"✅ Withdrawal Request Submitted!\n\n"+
-"Amount: ₹"+amount.toLocaleString()+
-"\nMethod: "+paymentMethod.options[paymentMethod.selectedIndex].text+
-"\nStatus: Pending"+
-"\nProcessing Time: 30-1 Hours"
-);
 
-amountInput.value="";
-showAmount.innerHTML="₹0";
-finalAmount.innerHTML="₹0";
-usdtAmount.innerHTML="0 USDT";
+    if(!details){
 
-document.getElementById("holderName").value="";
-document.getElementById("bankName").value="";
-document.getElementById("accountNumber").value="";
-document.getElementById("confirmAccount").value="";
-document.getElementById("ifsc").value="";
-document.getElementById("upiId").value="";
-document.getElementById("binanceUid").value="";
-document.getElementById("wallet").value="";
- }
- changeMethod();
+        alert(
+            "Please enter your " +
+            selectedMethod +
+            " details."
+        );
+
+        return;
+    }
+
+    if(!name){
+
+        alert("Please enter account holder name.");
+        return;
+    }
+
+    alert(
+        "Withdrawal request submitted successfully."
+        + "\n\nMethod: " + selectedMethod
+        + "\nAmount: ₹" + amount.toFixed(2)
+    );
+
+}
+
+
+// Back
+function goBack(){
+
+    window.location.href = "home.html";
+
+}
+
+
+loadBalance();
+
 </script>
-<div id="regPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:9999;">
-  <div style="background:#fff;width:90%;max-width:350px;margin:120px auto;padding:20px;border-radius:12px;text-align:center;">
-    <h2 style="color:#e53935;">Registration Fee Required</h2>
-    <p>To continue, please deposit <b style="color:green;">₹2000</b>.</p>
 
-    <button onclick="location.href='deposit.html'"
-      style="width:100%;padding:12px;background:#1db954;color:#fff;border:none;border-radius:8px;font-size:18px;">
-      Deposit Now
-    </button>
-
-    <br><br>
-
-    <button onclick="document.getElementById('regPopup').style.display='none'"
-      style="width:100%;padding:12px;background:#777;color:#fff;border:none;border-radius:8px;font-size:18px;">
-      Close
-    </button>
-  </div>
-</div>
-
-<script>
-const currentUser = localStorage.getItem("userid");
-
-if (currentUser === "Kamlesh@7878") {
-    document.getElementById("balance").innerHTML = "₹0.00";
-}
-else if (currentUser === "Ajay@4488") {
-    document.getElementById("balance").innerHTML = "₹482,980.00";
-}
-</script>
- 
 </body>
- </html>
+         </html>
