@@ -13,6 +13,8 @@
 
 <div class="page">
 
+    <!-- HEADER -->
+
     <header>
         <button onclick="history.back()">‹</button>
 
@@ -23,36 +25,9 @@
     </header>
 
 
-    <!-- CODE VERIFICATION -->
-
-    <div id="verifyBox" class="card">
-
-        <div class="icon">🔐</div>
-
-        <h2>Verify Account</h2>
-
-        <p>
-            Enter your verification code to edit
-            your personal information.
-        </p>
-
-        <input
-            type="password"
-            id="verifyCode"
-            placeholder="Enter verification code">
-
-        <p id="verifyMessage"></p>
-
-        <button class="primary" onclick="verifyCode()">
-            Continue
-        </button>
-
-    </div>
-
-
     <!-- EDIT FORM -->
 
-    <div id="editBox" class="card" style="display:none;">
+    <div id="editBox" class="card">
 
         <h2>Personal Information</h2>
 
@@ -138,33 +113,10 @@ let oldUserId = "";
 
 
 /* =========================
-   VERIFY CODE
+   LOAD PROFILE DATA
 ========================= */
 
-function verifyCode() {
-
-    const code =
-        document.getElementById("verifyCode").value.trim();
-
-    const message =
-        document.getElementById("verifyMessage");
-
-
-    /*
-       Yahan apna verification code rakho.
-       Example: 96619300
-    */
-
-    if (code !== "96619300") {
-
-        message.style.color = "#ff536d";
-
-        message.textContent =
-            "❌ Invalid verification code.";
-
-        return;
-    }
-
+function loadProfileData() {
 
     const currentUser =
         localStorage.getItem("userid");
@@ -172,10 +124,14 @@ function verifyCode() {
 
     if (!currentUser) {
 
-        window.location.href = "index.html";
+        window.location.href =
+            "index.html";
 
         return;
     }
+
+
+    oldUserId = currentUser;
 
 
     const savedData =
@@ -186,52 +142,63 @@ function verifyCode() {
 
     if (!savedData) {
 
-        message.style.color = "#ff536d";
-
-        message.textContent =
-            "User data not found.";
+        alert("Account data not found.");
 
         return;
     }
 
 
-    const user =
-        JSON.parse(savedData);
+    let user;
+
+    try {
+
+        user = JSON.parse(savedData);
+
+    } catch (error) {
+
+        alert("Account data is corrupted.");
+
+        return;
+    }
 
 
-    oldUserId = currentUser;
-
-
-    /* Fill existing details */
+    /* =========================
+       FILL EXISTING DETAILS
+    ========================= */
 
     document.getElementById("fullName").value =
-        user.fullName || user.name || "";
+        user.fullName ||
+        user.name ||
+        "";
+
 
     document.getElementById("userId").value =
-        user.userId || currentUser;
+        user.userId ||
+        currentUser;
+
 
     document.getElementById("email").value =
-        user.email || "";
+        user.email ||
+        "";
+
 
     document.getElementById("mobile").value =
         user.mobile ||
         user.phone ||
+        user.phoneNumber ||
         "";
+
 
     document.getElementById("dob").value =
         user.dob ||
         user.dateOfBirth ||
         "";
 
+
     document.getElementById("address").value =
-        user.address || "";
+        user.address ||
+        "";
 
-
-    document.getElementById("verifyBox").style.display =
-        "none";
-
-    document.getElementById("editBox").style.display =
-        "block";
 }
 
 
@@ -242,33 +209,52 @@ function verifyCode() {
 function saveChanges() {
 
     const newName =
-        document.getElementById("fullName").value.trim();
+        document.getElementById("fullName")
+        .value.trim();
+
 
     const newUserId =
-        document.getElementById("userId").value.trim();
+        document.getElementById("userId")
+        .value.trim();
+
 
     const newEmail =
-        document.getElementById("email").value.trim();
+        document.getElementById("email")
+        .value.trim();
+
 
     const newMobile =
-        document.getElementById("mobile").value.trim();
+        document.getElementById("mobile")
+        .value.trim();
+
 
     const newDob =
-        document.getElementById("dob").value.trim();
+        document.getElementById("dob")
+        .value.trim();
+
 
     const newAddress =
-        document.getElementById("address").value.trim();
+        document.getElementById("address")
+        .value.trim();
+
 
     const message =
         document.getElementById("saveMessage");
 
 
-    if (!newName ||
+    /* =========================
+       REQUIRED FIELDS
+    ========================= */
+
+    if (
+        !newName ||
         !newUserId ||
         !newEmail ||
-        !newMobile) {
+        !newMobile
+    ) {
 
-        message.style.color = "#ff536d";
+        message.style.color =
+            "#ff536d";
 
         message.textContent =
             "Please fill all required fields.";
@@ -277,7 +263,9 @@ function saveChanges() {
     }
 
 
-    /* Get old account */
+    /* =========================
+       GET OLD ACCOUNT
+    ========================= */
 
     const oldData =
         localStorage.getItem(
@@ -287,7 +275,8 @@ function saveChanges() {
 
     if (!oldData) {
 
-        message.style.color = "#ff536d";
+        message.style.color =
+            "#ff536d";
 
         message.textContent =
             "Account data not found.";
@@ -296,13 +285,27 @@ function saveChanges() {
     }
 
 
-    const user =
-        JSON.parse(oldData);
+    let user;
+
+    try {
+
+        user = JSON.parse(oldData);
+
+    } catch (error) {
+
+        message.style.color =
+            "#ff536d";
+
+        message.textContent =
+            "Account data is corrupted.";
+
+        return;
+    }
 
 
-    /*
-       Check if NEW User ID already exists
-    */
+    /* =========================
+       CHECK NEW USER ID
+    ========================= */
 
     if (newUserId !== oldUserId) {
 
@@ -314,53 +317,95 @@ function saveChanges() {
 
         if (existingUser) {
 
-            message.style.color = "#ff536d";
+            message.style.color =
+                "#ff536d";
 
             message.textContent =
                 "❌ This User ID is already registered.";
 
             return;
         }
+
     }
 
 
-    /* Update information */
+    /* =========================
+       UPDATE INFORMATION
+    ========================= */
 
-    user.fullName = newName;
-    user.userId = newUserId;
-    user.email = newEmail;
-    user.mobile = newMobile;
-    user.dob = newDob;
-    user.address = newAddress;
+    user.fullName =
+        newName;
+
+    user.userId =
+        newUserId;
+
+    user.email =
+        newEmail;
+
+    user.mobile =
+        newMobile;
+
+    user.dob =
+        newDob;
+
+    user.address =
+        newAddress;
 
 
-    /*
-       Remove OLD ID data
-       if User ID changed
-    */
+    /* =========================
+       SAVE EDIT HISTORY
+       Previous details remain saved
+    ========================= */
+
+    if (!user.editHistory) {
+
+        user.editHistory = [];
+
+    }
+
+
+    user.editHistory.push({
+
+        fullName: newName,
+        userId: newUserId,
+        email: newEmail,
+        mobile: newMobile,
+        dob: newDob,
+        address: newAddress,
+        editedAt: new Date().toISOString()
+
+    });
+
+
+    /* =========================
+       REMOVE OLD USER ID
+    ========================= */
 
     if (newUserId !== oldUserId) {
 
         localStorage.removeItem(
             "globalPayUser_" + oldUserId
         );
+
     }
 
 
-    /*
-       Save using NEW User ID
-    */
+    /* =========================
+       SAVE NEW USER DATA
+    ========================= */
 
     localStorage.setItem(
+
         "globalPayUser_" + newUserId,
+
         JSON.stringify(user)
+
     );
 
 
-    /*
-       IMPORTANT:
-       Current login ID becomes NEW ID
-    */
+    /* =========================
+       UPDATE CURRENT LOGIN ID
+    ========================= */
 
     localStorage.setItem(
         "userid",
@@ -374,15 +419,20 @@ function saveChanges() {
     );
 
 
-    message.style.color = "#00e6a0";
+    /* =========================
+       SUCCESS MESSAGE
+    ========================= */
+
+    message.style.color =
+        "#00e6a0";
 
     message.textContent =
         "✓ Profile updated successfully.";
 
 
-    /*
-       Go back to profile
-    */
+    /* =========================
+       GO TO PROFILE
+    ========================= */
 
     setTimeout(function() {
 
@@ -390,9 +440,24 @@ function saveChanges() {
             "profile.html";
 
     }, 1000);
+
 }
+
+
+/* =========================
+   PAGE LOAD
+========================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadProfileData();
+
+    }
+);
 
 </script>
 
 </body>
-  </html>
+</html>
