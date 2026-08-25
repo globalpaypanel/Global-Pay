@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Pay - Deposit</title>
+    <link rel="stylesheet" href="deposit.css">
+</head>
+
+<body>
+
+<header class="top-header">
+
+    <div class="menu">☰</div>
+
+    <div class="brand">
+        <div class="logo">G</div>
+        <div>
+            <div class="brand-name">GLOBAL <span>PAY</span></div>
+            <div class="tagline">Secure Payments</div>
+        </div>
+    </div>
+
+    <div class="notification">
+        ♧
+        <b>3</b>
+    </div>
+
+    <div class="balance-mini">
+        <span>▣</span>
+        <div>
+            <small>Total Balance</small>
+            <strong>₹0.00</strong>
+        </div>
+        <i>⌄</i>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="page-title">
+        <button class="back">‹</button>
+
+        <div>
+            <h1>Deposit Money</h1>
+            <p>Add money to your account</p>
+        </div>
+    </div>
+
+
+    <!-- FIXED AMOUNT -->
+
+    <section class="amount-card">
+
+        <div class="amount-content">
+
+            <span class="amount-label">
+                Deposit Amount (Fixed)
+            </span>
+
+            <div class="amount">
+                ₹2,500
+            </div>
+
+            <div class="fixed-message">
+                🔒 Amount is fixed and cannot be changed
+            </div>
+
+        </div>
+
+        <div class="deposit-art">
+            <div class="monitor">
+                <span>₹</span>
+                <small>✓</small>
+            </div>
+
+            <div class="shield">🔒</div>
+
+            <div class="coins">
+                ₹ ₹ ₹
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- PAYMENT METHODS -->
+
+    <section class="payment-card">
+
+        <h2>
+            <span class="section-icon">▣</span>
+            Choose Payment Method
+        </h2>
+
+        <div class="payment-methods">
+
+            <button class="payment-btn phonepe"
+                    onclick="payWith('phonepe')">
+
+                <div class="app-logo phonepe-logo">पे</div>
+
+                <strong>PhonePe</strong>
+
+                <small>Pay using PhonePe</small>
+
+            </button>
+
+
+            <button class="payment-btn gpay"
+                    onclick="payWith('gpay')">
+
+                <div class="app-logo gpay-logo">
+                    <span>G</span> Pay
+                </div>
+
+                <strong>Google Pay</strong>
+
+                <small>Pay using Google Pay</small>
+
+            </button>
+
+
+            <button class="payment-btn paytm"
+                    onclick="payWith('paytm')">
+
+                <div class="app-logo paytm-logo">
+                    Paytm
+                </div>
+
+                <strong>Paytm</strong>
+
+                <small>Pay using Paytm</small>
+
+            </button>
+
+        </div>
+
+
+        <div class="secure-message">
+
+            <div class="secure-icon">✓</div>
+
+            <div>
+                <strong>You will be redirected to secure payment</strong>
+                <p>
+                    Complete payment of
+                    <b>₹2,500</b> to add money
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- QR SECTION -->
+
+    <section class="qr-card">
+
+        <h2>Scan & Pay <span>(Any UPI App)</span></h2>
+
+        <div class="qr-content">
+
+            <div class="qr-wrapper">
+                <div id="qrcode"></div>
+            </div>
+
+
+            <div class="upi-details">
+
+                <p class="qr-text">
+                    Scan this QR code with<br>
+                    any UPI app to pay
+                    <b>₹2,500</b>
+                </p>
+
+                <label>UPI ID</label>
+
+                <div class="upi-box">
+
+                    <span id="upiText">
+                        8271692042-2@ybl
+                    </span>
+
+                    <button onclick="copyUPI()">
+                        ⧉
+                    </button>
+
+                </div>
+
+                <div class="features">
+                    <span>✓ Secure</span>
+                    <span>⚡ Fast</span>
+                    <span>◷ 24x7</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- HOW IT WORKS -->
+
+    <section class="works-card">
+
+        <h2>
+            ⚙️ How It Works
+        </h2>
+
+        <div class="steps">
+
+            <div class="step">
+
+                <div class="step-number">1</div>
+
+                <div>
+                    <strong>Open any UPI app</strong>
+                    <small>
+                        PhonePe / GPay / Paytm
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="arrow">→</div>
+
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <div>
+                    <strong>Pay ₹2,500</strong>
+                    <small>
+                        Using UPI ID or QR
+                    </small>
+                </div>
+
+            </div>
+
+
+            <div class="arrow">→</div>
+
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <div>
+                    <strong>Money will be added</strong>
+                    <small>
+                        To your account instantly
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- BOTTOM NAVIGATION -->
+
+<nav class="bottom-nav">
+
+    <a href="index.html">
+        <span>⌂</span>
+        <small>Home</small>
+    </a>
+
+    <a class="active" href="deposit.html">
+        <span>⇩</span>
+        <small>Deposit</small>
+    </a>
+
+    <a href="withdraw.html">
+        <span>⇧</span>
+        <small>Withdraw</small>
+    </a>
+
+    <a href="transactions.html">
+        <span>☷</span>
+        <small>Transactions</small>
+    </a>
+
+    <a href="profile.html">
+        <span>♙</span>
+        <small>Profile</small>
+    </a>
+
+</nav>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="deposit.js"></script>
+
+</body>
+  </html>
