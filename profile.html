@@ -1285,6 +1285,33 @@ document.getElementById("detailAddress").textContent =
 }
 
 
+    /* =========================
+   LAST LOGIN
+========================= */
+
+const lastLogin =
+    localStorage.getItem("lastLogin_" + userId);
+
+if (lastLogin) {
+
+    const loginDate = new Date(lastLogin);
+
+    document.getElementById("lastLogin").textContent =
+        loginDate.toLocaleString("en-IN", {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true
+        });
+
+} else {
+
+    document.getElementById("lastLogin").textContent = "-";
+    }
+
+
 /* =========================
    LOGOUT
 ========================= */
