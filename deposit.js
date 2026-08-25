@@ -12,16 +12,7 @@ const upiLink =
 
 /* CREATE QR */
 
-window.addEventListener("load", function () {
 
-    new QRCode(document.getElementById("qrcode"), {
-        text: upiLink,
-        width: 235,
-        height: 235,
-        correctLevel: QRCode.CorrectLevel.H
-    });
-
-});
 
 
 /* COPY UPI ID */
