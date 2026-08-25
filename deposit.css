@@ -1020,3 +1020,23 @@ body {
     border-radius: 8px;
     display: block;
 }
+
+
+.wallet-icon{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,#1769ff,#1239c8);
+    border:1px solid #4387ff;
+    box-shadow:0 5px 18px rgba(20,90,255,.30);
+}
+
+.wallet-symbol{
+    color:#fff;
+    font-size:28px;
+    font-weight:700;
+    line-height:1;
+}
