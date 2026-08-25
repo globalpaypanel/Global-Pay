@@ -945,3 +945,70 @@ body {
         font-size: 11px;
     }
 }
+
+
+/* COPY SUCCESS POPUP */
+
+.copy-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 105px;
+    transform: translateX(-50%) translateY(20px);
+    width: calc(100% - 40px);
+    max-width: 390px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    padding: 14px 17px;
+
+    background: rgba(8, 25, 48, 0.97);
+    border: 1px solid #20dca6;
+    border-radius: 15px;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,.45);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .3s ease;
+    z-index: 9999;
+}
+
+.copy-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-check {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #19d89e;
+    color: #06172b;
+
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.copy-toast strong {
+    display: block;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.copy-toast span {
+    display: block;
+    color: #9fb0c8;
+    font-size: 12px;
+    margin-top: 3px;
+    }
