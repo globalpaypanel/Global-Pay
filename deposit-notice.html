@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Pay - Notices</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#020b1c;
+    color:#fff;
+    min-height:100vh;
+}
+
+.page{
+    max-width:720px;
+    margin:auto;
+    min-height:100vh;
+    background:linear-gradient(180deg,#031127,#06152c);
+}
+
+/* Header */
+.header{
+    height:92px;
+    padding:18px 22px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+    border-bottom:1px solid #17355c;
+    background:rgba(3,15,35,.96);
+}
+
+.back-btn{
+    width:52px;
+    height:52px;
+    border-radius:15px;
+    border:1px solid #1d4777;
+    background:#071a35;
+    color:#fff;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.logo{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(145deg,#0878ff,#1649db);
+    font-size:30px;
+    font-weight:bold;
+    box-shadow:0 0 22px rgba(20,105,255,.35);
+}
+
+.title-area h1{
+    font-size:24px;
+    line-height:1.1;
+}
+
+.title-area p{
+    color:#91a5c2;
+    font-size:13px;
+    margin-top:4px;
+}
+
+/* Content */
+.content{
+    padding:25px 20px 35px;
+}
+
+.page-heading{
+    margin-bottom:20px;
+}
+
+.page-heading h2{
+    font-size:28px;
+}
+
+.page-heading p{
+    color:#91a5c2;
+    margin-top:7px;
+}
+
+/* Notice Card */
+.notice-card{
+    position:relative;
+    padding:21px 18px 20px;
+    margin-bottom:16px;
+    border-radius:20px;
+    background:linear-gradient(145deg,#091d38,#07152b);
+    border:1px solid #1b416d;
+    box-shadow:0 8px 25px rgba(0,0,0,.22);
+    overflow:hidden;
+}
+
+.notice-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#2587ff;
+}
+
+.notice-top{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin-bottom:12px;
+}
+
+.notice-icon{
+    width:48px;
+    height:48px;
+    flex-shrink:0;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#0b2a52;
+    border:1px solid #24578e;
+    font-size:23px;
+}
+
+.notice-card h3{
+    font-size:18px;
+}
+
+.notice-number{
+    color:#5da7ff;
+    font-size:12px;
+    margin-bottom:3px;
+    text-transform:uppercase;
+    letter-spacing:.6px;
+}
+
+.notice-card p{
+    color:#c3d0e2;
+    font-size:14px;
+    line-height:1.65;
+}
+
+.highlight{
+    color:#27dda5;
+    font-weight:bold;
+}
+
+.footer-note{
+    text-align:center;
+    color:#7187a5;
+    font-size:12px;
+    padding:5px 0 25px;
+}
+
+@media(max-width:390px){
+
+    .header{
+        padding:15px;
+    }
+
+    .content{
+        padding:20px 15px 30px;
+    }
+
+    .page-heading h2{
+        font-size:25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+    <header class="header">
+
+        <button
+            class="back-btn"
+            onclick="goBack()"
+            aria-label="Go back">
+            ‹
+        </button>
+
+        <div class="logo">
+            G
+        </div>
+
+        <div class="title-area">
+            <h1>
+                GLOBAL
+                <span style="color:#2389ff;">PAY</span>
+            </h1>
+
+            <p>Secure Payments</p>
+        </div>
+
+    </header>
+
+
+    <!-- CONTENT -->
+    <main class="content">
+
+        <div class="page-heading">
+
+            <h2>Notifications</h2>
+
+            <p>
+                Important information for your account
+            </p>
+
+        </div>
+
+
+        <!-- NOTICE 1 -->
+
+        <section class="notice-card">
+
+            <div class="notice-top">
+
+                <div class="notice-icon">
+                    ?
+                </div>
+
+                <div>
+
+                    <div class="notice-number">
+                        Notice 01
+                    </div>
+
+                    <h3>
+                        Customer Support
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <p>
+
+                Kisi bhi issue, problem ya assistance ke liye
+
+                <span class="highlight">
+                    Customer Support
+                </span>
+
+                se contact karein.
+                Hamari support team aapki madad karegi.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- NOTICE 2 -->
+
+        <section class="notice-card">
+
+            <div class="notice-top">
+
+                <div class="notice-icon">
+                    ₹
+                </div>
+
+                <div>
+
+                    <div class="notice-number">
+                        Notice 02
+                    </div>
+
+                    <h3>
+                        Deposit Required
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <p>
+
+                Account activate karne ke liye
+
+                <span class="highlight">
+                    ₹2,500 ka deposit
+                </span>
+
+                complete karein.
+
+                Deposit complete hone ke baad
+                payment details verify ki jayengi.
+
+            </p>
+
+        </section>
+
+
+
+        <!-- NOTICE 3 -->
+
+        <section class="notice-card">
+
+            <div class="notice-top">
+
+                <div class="notice-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <div class="notice-number">
+                        Notice 03
+                    </div>
+
+                    <h3>
+                        Activate Code
+                    </h3>
+
+                </div>
+
+            </div>
+
+            <p>
+
+                <span class="highlight">
+                    ₹2,500 ka deposit successfully
+                    complete aur verify hone ke baad
+                    Activate Code provide kiya jayega.
+                </span>
+
+                Activate Code milne ke baad
+                aap account activation process
+                complete kar sakte hain.
+
+            </p>
+
+        </section>
+
+
+        <div class="footer-note">
+            Global Pay • Secure Payments
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function goBack(){
+
+    if(window.history.length > 1){
+
+        window.history.back();
+
+    }else{
+
+        window.location.href = "deposit.html";
+
+    }
+
+}
+
+</script>
+
+</body>
+  </html>
