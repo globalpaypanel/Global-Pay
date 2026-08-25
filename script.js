@@ -45,9 +45,27 @@ function login() {
         userData.userId
     );
 
-    // Last successful login date & time save
+    // Previous successful login save
+const loginKey =
+    "globalPayCurrentLogin_" + userData.userId;
+
+const lastLoginKey =
+    "globalPayLastLogin_" + userData.userId;
+
+// Pehle ka login = Last Login
+const previousLogin =
+    localStorage.getItem(loginKey);
+
+if (previousLogin) {
+    localStorage.setItem(
+        lastLoginKey,
+        previousLogin
+    );
+}
+
+// Ab current login ko save karo
 localStorage.setItem(
-    "lastLogin_" + userData.userId,
+    loginKey,
     new Date().toISOString()
 );
 
