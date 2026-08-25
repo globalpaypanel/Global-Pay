@@ -45,6 +45,12 @@ function login() {
         userData.userId
     );
 
+    // Last successful login date & time save
+localStorage.setItem(
+    "lastLogin_" + userData.userId,
+    new Date().toISOString()
+);
+
     localStorage.setItem(
         "allowLoginPage",
         "true"
