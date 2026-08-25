@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY - Add Payment Method</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+    radial-gradient(circle at 50% 10%,#122650 0%,#071329 45%,#030817 100%);
+    color:#fff;
+    padding-bottom:40px;
+}
+
+/* HEADER */
+
+.top-header{
+    height:78px;
+    display:flex;
+    align-items:center;
+    padding:12px 5%;
+    border-bottom:1px solid #1c3152;
+    background:rgba(7,17,39,.75);
+    backdrop-filter:blur(12px);
+}
+
+.back-btn{
+    width:44px;
+    height:44px;
+    border-radius:12px;
+    border:1px solid #29466f;
+    background:#0c1931;
+    color:#68aaff;
+    font-size:30px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-left:14px;
+}
+
+.logo{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:27px;
+    font-weight:800;
+    background:linear-gradient(135deg,#0dbaff,#3b45d8);
+    box-shadow:0 7px 22px #007bff55;
+}
+
+.logo-text h1{
+    font-size:19px;
+    letter-spacing:.5px;
+}
+
+.logo-text h1 span{
+    color:#099cff;
+}
+
+.logo-text p{
+    color:#8f9fb9;
+    font-size:10px;
+    margin-top:2px;
+}
+
+/* CONTAINER */
+
+.container{
+    width:92%;
+    max-width:650px;
+    margin:28px auto;
+}
+
+/* TITLE */
+
+.page-title{
+    margin-bottom:22px;
+}
+
+.page-title h2{
+    font-size:25px;
+}
+
+.page-title p{
+    color:#91a1ba;
+    font-size:13px;
+    margin-top:7px;
+}
+
+/* PAYMENT TYPE */
+
+.method-card{
+    background:linear-gradient(145deg,#101d3a,#0b152c);
+    border:1px solid #243c61;
+    border-radius:20px;
+    padding:20px;
+    margin-bottom:18px;
+}
+
+.method-card h3{
+    font-size:17px;
+    margin-bottom:16px;
+}
+
+.method-options{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.method-option{
+    position:relative;
+}
+
+.method-option input{
+    position:absolute;
+    opacity:0;
+}
+
+.method-option label{
+    min-height:86px;
+    border:1px solid #2a4165;
+    border-radius:14px;
+    background:#0c1830;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    color:#9daac0;
+    cursor:pointer;
+    font-size:12px;
+    transition:.2s;
+}
+
+.method-icon{
+    font-size:24px;
+}
+
+.method-option input:checked + label{
+    border-color:#168eff;
+    background:#092b57;
+    color:#fff;
+    box-shadow:0 0 18px #168eff22;
+}
+
+/* FORM */
+
+.form-card{
+    background:#0e192f;
+    border:1px solid #243856;
+    border-radius:20px;
+    padding:22px;
+}
+
+.form-heading{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    border-bottom:1px solid #24334d;
+    padding-bottom:17px;
+    margin-bottom:20px;
+}
+
+.form-heading-icon{
+    width:42px;
+    height:42px;
+    border-radius:11px;
+    background:#0b2d5c;
+    border:1px solid #176acb;
+    color:#57a5ff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+}
+
+.form-heading h3{
+    font-size:18px;
+}
+
+.form-heading p{
+    color:#8292ad;
+    font-size:11px;
+    margin-top:3px;
+}
+
+.form-group{
+    margin-bottom:17px;
+}
+
+.form-group label{
+    display:block;
+    color:#aebbd0;
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    height:48px;
+    border-radius:11px;
+    border:1px solid #2b4162;
+    outline:none;
+    background:#09152b;
+    color:#fff;
+    padding:0 14px;
+    font-size:14px;
+}
+
+.form-group input::placeholder{
+    color:#596a84;
+}
+
+.form-group input:focus,
+.form-group select:focus{
+    border-color:#168eff;
+    box-shadow:0 0 0 2px #168eff15;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+}
+
+/* SECURITY */
+
+.security-note{
+    display:flex;
+    gap:11px;
+    padding:14px;
+    border-radius:12px;
+    background:#062b2d;
+    border:1px solid #087263;
+    margin-top:4px;
+}
+
+.security-note-icon{
+    color:#00e6a0;
+    font-size:19px;
+}
+
+.security-note b{
+    color:#00e6a0;
+    font-size:12px;
+}
+
+.security-note p{
+    color:#91a9ad;
+    font-size:11px;
+    line-height:1.5;
+    margin-top:3px;
+}
+
+/* BUTTON */
+
+.save-btn{
+    width:100%;
+    height:52px;
+    margin-top:20px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#168eff,#2455df);
+    color:#fff;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 10px 25px #168eff25;
+}
+
+.save-btn:active{
+    transform:scale(.98);
+}
+
+/* CANCEL */
+
+.cancel-btn{
+    width:100%;
+    height:48px;
+    margin-top:11px;
+    border-radius:12px;
+    border:1px solid #2a3e5d;
+    background:#0b172d;
+    color:#9eabc0;
+    font-size:14px;
+    cursor:pointer;
+}
+
+/* MESSAGE */
+
+.message{
+    display:none;
+    padding:13px;
+    margin-top:15px;
+    border-radius:10px;
+    text-align:center;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .container{
+        width:94%;
+        margin-top:22px;
+    }
+
+    .method-options{
+        gap:7px;
+    }
+
+    .method-option label{
+        min-height:80px;
+        font-size:10px;
+    }
+
+    .method-icon{
+        font-size:22px;
+    }
+
+    .form-card{
+        padding:17px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="top-header">
+
+    <button class="back-btn" onclick="goBack()">
+        ‹
+    </button>
+
+    <div class="logo-area">
+
+        <div class="logo">
+            G
+        </div>
+
+        <div class="logo-text">
+            <h1>GLOBAL <span>PAY</span></h1>
+            <p>Secure Payments</p>
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <!-- TITLE -->
+
+    <div class="page-title">
+
+        <h2>Add Payment Method</h2>
+
+        <p>
+            Add your preferred bank or payment method
+        </p>
+
+    </div>
+
+
+    <!-- PAYMENT TYPE -->
+
+    <div class="method-card">
+
+        <h3>Select Payment Method</h3>
+
+        <div class="method-options">
+
+            <div class="method-option">
+
+                <input
+                    type="radio"
+                    name="method"
+                    id="bankMethod"
+                    value="bank"
+                    checked
+                    onchange="changeMethod()"
+                >
+
+                <label for="bankMethod">
+
+                    <span class="method-icon">🏦</span>
+
+                    Bank Account
+
+                </label>
+
+            </div>
+
+
+            <div class="method-option">
+
+                <input
+                    type="radio"
+                    name="method"
+                    id="upiMethod"
+                    value="upi"
+                    onchange="changeMethod()"
+                >
+
+                <label for="upiMethod">
+
+                    <span class="method-icon">↗</span>
+
+                    UPI
+
+                </label>
+
+            </div>
+
+
+            <div class="method-option">
+
+                <input
+                    type="radio"
+                    name="method"
+                    id="walletMethod"
+                    value="wallet"
+                    onchange="changeMethod()"
+                >
+
+                <label for="walletMethod">
+
+                    <span class="method-icon">▣</span>
+
+                    Wallet
+
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- FORM -->
+
+    <div class="form-card">
+
+        <div class="form-heading">
+
+            <div class="form-heading-icon">
+                🏦
+            </div>
+
+            <div>
+                <h3 id="formTitle">
+                    Bank Account
+                </h3>
+
+                <p>
+                    Enter your payment details
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- BANK FORM -->
+
+        <div id="bankForm">
+
+            <div class="form-group">
+
+                <label>
+                    Account Holder Name
+                </label>
+
+                <input
+                    type="text"
+                    id="accountHolder"
+                    placeholder="Enter account holder name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Bank Name
+                </label>
+
+                <input
+                    type="text"
+                    id="bankName"
+                    placeholder="Enter bank name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Account Number
+                </label>
+
+                <input
+                    type="password"
+                    id="accountNumber"
+                    inputmode="numeric"
+                    placeholder="Enter account number"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Confirm Account Number
+                </label>
+
+                <input
+                    type="password"
+                    id="confirmAccountNumber"
+                    inputmode="numeric"
+                    placeholder="Re-enter account number"
+                >
+
+            </div>
+
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label>
+                        IFSC Code
+                    </label>
+
+                    <input
+                        type="text"
+                        id="ifsc"
+                        placeholder="SBIN0000000"
+                        maxlength="11"
+                        style="text-transform:uppercase"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        Account Type
+                    </label>
+
+                    <select id="accountType">
+
+                        <option value="">
+                            Select
+                        </option>
+
+                        <option value="Savings">
+                            Savings
+                        </option>
+
+                        <option value="Current">
+                            Current
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- UPI FORM -->
+
+        <div id="upiForm" style="display:none">
+
+            <div class="form-group">
+
+                <label>
+                    UPI ID
+                </label>
+
+                <input
+                    type="text"
+                    id="upiId"
+                    placeholder="example@upi"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- WALLET FORM -->
+
+        <div id="walletForm" style="display:none">
+
+            <div class="form-group">
+
+                <label>
+                    Wallet Name
+                </label>
+
+                <select id="walletName">
+
+                    <option value="">
+                        Select Wallet
+                    </option>
+
+                    <option value="Paytm">
+                        Paytm
+                    </option>
+
+                    <option value="PhonePe">
+                        PhonePe
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    Wallet Number / ID
+                </label>
+
+                <input
+                    type="text"
+                    id="walletId"
+                    placeholder="Enter wallet details"
+                >
+
+            </div>
+
+        </div>
+
+
+        <!-- SECURITY -->
+
+        <div class="security-note">
+
+            <div class="security-note-icon">
+                ◆
+            </div>
+
+            <div>
+
+                <b>Your information is secure</b>
+
+                <p>
+                    Your payment details are stored locally
+                    for this demo interface.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="message"
+            class="message">
+        </div>
+
+
+        <button
+            class="save-btn"
+            onclick="savePaymentMethod()">
+
+            Save Payment Method
+
+        </button>
+
+
+        <button
+            class="cancel-btn"
+            onclick="goBack()">
+
+            Cancel
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* =========================
+   BACK
+========================= */
+
+function goBack(){
+
+    window.location.href = "profile.html";
+
+}
+
+
+/* =========================
+   CHANGE METHOD
+========================= */
+
+function changeMethod(){
+
+    const method =
+        document.querySelector(
+            'input[name="method"]:checked'
+        ).value;
+
+    const bankForm =
+        document.getElementById("bankForm");
+
+    const upiForm =
+        document.getElementById("upiForm");
+
+    const walletForm =
+        document.getElementById("walletForm");
+
+    const title =
+        document.getElementById("formTitle");
+
+    const icon =
+        document.querySelector(
+            ".form-heading-icon"
+        );
+
+    bankForm.style.display = "none";
+    upiForm.style.display = "none";
+    walletForm.style.display = "none";
+
+
+    if(method === "bank"){
+
+        bankForm.style.display = "block";
+
+        title.textContent =
+            "Bank Account";
+
+        icon.textContent = "🏦";
+
+    }
+
+
+    if(method === "upi"){
+
+        upiForm.style.display = "block";
+
+        title.textContent =
+            "UPI Payment";
+
+        icon.textContent = "↗";
+
+    }
+
+
+    if(method === "wallet"){
+
+        walletForm.style.display = "block";
+
+        title.textContent =
+            "Digital Wallet";
+
+        icon.textContent = "▣";
+
+    }
+
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+function showMessage(text, success){
+
+    const message =
+        document.getElementById("message");
+
+    message.style.display = "block";
+
+    message.textContent = text;
+
+    if(success){
+
+        message.style.color = "#00e6a0";
+        message.style.background = "#06352f";
+        message.style.border =
+            "1px solid #08765f";
+
+    }else{
+
+        message.style.color = "#ff6680";
+        message.style.background = "#3a1028";
+        message.style.border =
+            "1px solid #9b3150";
+
+    }
+
+}
+
+
+/* =========================
+   SAVE PAYMENT METHOD
+========================= */
+
+function savePaymentMethod(){
+
+    const currentUser =
+        localStorage.getItem("userid");
+
+    if(!currentUser){
+
+        window.location.href =
+            "index.html";
+
+        return;
+    }
+
+
+    const method =
+        document.querySelector(
+            'input[name="method"]:checked'
+        ).value;
+
+
+    let paymentData = {
+
+        userId: currentUser,
+
+        method: method,
+
+        addedAt:
+            new Date().toISOString()
+
+    };
+
+
+    /* BANK */
+
+    if(method === "bank"){
+
+        const holder =
+            document.getElementById(
+                "accountHolder"
+            ).value.trim();
+
+        const bank =
+            document.getElementById(
+                "bankName"
+            ).value.trim();
+
+        const account =
+            document.getElementById(
+                "accountNumber"
+            ).value.trim();
+
+        const confirmAccount =
+            document.getElementById(
+                "confirmAccountNumber"
+            ).value.trim();
+
+        const ifsc =
+            document.getElementById(
+                "ifsc"
+            ).value.trim().toUpperCase();
+
+        const type =
+            document.getElementById(
+                "accountType"
+            ).value;
+
+
+        if(
+            !holder ||
+            !bank ||
+            !account ||
+            !confirmAccount ||
+            !ifsc ||
+            !type
+        ){
+
+            showMessage(
+                "Please fill all bank details.",
+                false
+            );
+
+            return;
+        }
+
+
+        if(account !== confirmAccount){
+
+            showMessage(
+                "Account numbers do not match.",
+                false
+            );
+
+            return;
+        }
+
+
+        paymentData.accountHolder = holder;
+        paymentData.bankName = bank;
+        paymentData.accountNumber = account;
+        paymentData.ifsc = ifsc;
+        paymentData.accountType = type;
+
+    }
+
+
+    /* UPI */
+
+    if(method === "upi"){
+
+        const upi =
+            document.getElementById(
+                "upiId"
+            ).value.trim();
+
+        if(!upi){
+
+            showMessage(
+                "Please enter your UPI ID.",
+                false
+            );
+
+            return;
+        }
+
+        paymentData.upiId = upi;
+
+    }
+
+
+    /* WALLET */
+
+    if(method === "wallet"){
+
+        const wallet =
+            document.getElementById(
+                "walletName"
+            ).value;
+
+        const walletId =
+            document.getElementById(
+                "walletId"
+            ).value.trim();
+
+        if(!wallet || !walletId){
+
+            showMessage(
+                "Please enter wallet details.",
+                false
+            );
+
+            return;
+        }
+
+        paymentData.walletName = wallet;
+        paymentData.walletId = walletId;
+
+    }
+
+
+    /* SAVE */
+
+    localStorage.setItem(
+        "globalPayPayment_" + currentUser,
+        JSON.stringify(paymentData)
+    );
+
+
+    showMessage(
+        "✓ Payment method added successfully.",
+        true
+    );
+
+
+    setTimeout(function(){
+
+        window.location.href =
+            "profile.html";
+
+    }, 1200);
+
+}
+
+</script>
+
+</body>
+  </html>
