@@ -1666,6 +1666,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     loadProfile();
 
+    const userId = localStorage.getItem("userid");
+
+    if(userId){
+
+        const savedPhoto =
+            localStorage.getItem("profilePhoto_" + userId);
+
+        if(savedPhoto){
+            showProfilePhoto(savedPhoto);
+        }
+
+    }
+
 });
 
 function changeProfilePhoto(event){
