@@ -727,9 +727,9 @@ button{
         </div>
 
         <div class="profile-id">
-            Profile ID:
-            <span>GP982734</span>
-            &nbsp; 📋
+    Profile ID:
+    <span id="profileUserId">-</span>
+    &nbsp; 📋
         </div>
 
     </div>
@@ -749,7 +749,10 @@ button{
 
                 <button class="camera">📷</button>
 
-                <h2>Ajay Singh <span style="color:#00e69b">✔</span></h2>
+                <h2>
+    <span id="profileName">User</span>
+    <span style="color:#00e69b">✔</span>
+                </h2>
 
                 <div class="verified">
                     ✓ Verified Account
@@ -1140,11 +1143,11 @@ button{
 <script>
 
 
-function loadProfile(){
+function loadProfile() {
 
     const userId = localStorage.getItem("userid");
 
-    if(!userId){
+    if (!userId) {
         window.location.href = "index.html";
         return;
     }
@@ -1153,78 +1156,129 @@ function loadProfile(){
         "globalPayUser_" + userId
     );
 
-    if(!savedData){
+    if (!savedData) {
         alert("User data not found.");
         window.location.href = "index.html";
         return;
     }
 
-    const user = JSON.parse(savedData);
+    let user;
 
-    // Name
+    try {
+        user = JSON.parse(savedData);
+    } catch (error) {
+        console.error("User data error:", error);
+        alert("User data is corrupted.");
+        return;
+    }
+
+
+    /* =========================
+       PROFILE NAME
+    ========================= */
+
     document.getElementById("profileName").textContent =
-        user.fullName || "User";
+        user.fullName || user.name || "User";
 
-    // User ID
+
+    /* =========================
+       USER ID
+    ========================= */
+
     document.getElementById("profileUserId").textContent =
         user.userId || userId;
-
-    // Email
-    document.getElementById("profileEmail").textContent =
-        user.email || "-";
-
-    // Mobile
-    document.getElementById("profileMobile").textContent =
-        user.mobile || "-";
-
-    // Location
-    document.getElementById("profileLocation").textContent =
-        "India";
-
-    // Personal information
-    document.getElementById("detailName").textContent =
-        user.fullName || "-";
 
     document.getElementById("detailUserId").textContent =
         user.userId || userId;
 
+
+    /* =========================
+       EMAIL
+    ========================= */
+
+    document.getElementById("profileEmail").textContent =
+        user.email || "-";
+
     document.getElementById("detailEmail").textContent =
         user.email || "-";
 
-    document.getElementById("detailMobile").textContent =
-        user.mobile || "-";
 
-    // Member Since
-    if(user.registeredAt){
+    /* =========================
+       MOBILE
+    ========================= */
+
+    const mobile =
+        user.mobile ||
+        user.phone ||
+        user.phoneNumber ||
+        "-";
+
+    document.getElementById("profileMobile").textContent =
+        mobile;
+
+    document.getElementById("detailMobile").textContent =
+        mobile;
+
+
+    /* =========================
+       FULL NAME
+    ========================= */
+
+    document.getElementById("detailName").textContent =
+        user.fullName ||
+        user.name ||
+        "-";
+
+
+    /* =========================
+       LOCATION
+    ========================= */
+
+    document.getElementById("profileLocation").textContent =
+        user.location ||
+        user.country ||
+        "India";
+
+
+    /* =========================
+       MEMBER SINCE
+    ========================= */
+
+    if (user.registeredAt) {
 
         const date = new Date(user.registeredAt);
 
-        const formattedDate = date.toLocaleDateString(
-            "en-IN",
-            {
-                day:"2-digit",
-                month:"short",
-                year:"numeric"
-            }
-        );
+        if (!isNaN(date.getTime())) {
+
+            document.getElementById("memberSince").textContent =
+                date.toLocaleDateString("en-IN", {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric"
+                });
+
+        } else {
+
+            document.getElementById("memberSince").textContent =
+                "-";
+        }
+
+    } else {
 
         document.getElementById("memberSince").textContent =
-            formattedDate;
-
-    }else{
-
-        document.getElementById("memberSince").textContent =
-            "Registration Date";
-
+            "-";
     }
 
 }
 
 
-// Logout
-function logout(){
+/* =========================
+   LOGOUT
+========================= */
 
-    if(confirm("Are you sure you want to logout?")){
+function logout() {
+
+    if (confirm("Are you sure you want to logout?")) {
 
         localStorage.removeItem("userid");
 
@@ -1234,18 +1288,28 @@ function logout(){
 }
 
 
-// Theme
-function toggleTheme(){
+/* =========================
+   THEME
+========================= */
+
+function toggleTheme() {
 
     document.body.classList.toggle("light");
-
 }
 
 
-// Load profile automatically
-loadProfile();
+/* =========================
+   LOAD PROFILE
+========================= */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    loadProfile();
+
+});
 
 </script>
+
 
 </body>
   </html>
