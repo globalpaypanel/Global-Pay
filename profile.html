@@ -1323,15 +1323,21 @@ if (lastLogin) {
 ========================= */
 
 function logout() {
-
-    if (confirm("Are you sure you want to logout?")) {
-
-        localStorage.removeItem("userid");
-
-        window.location.href = "index.html";
-    }
-
+    document.getElementById("logoutModal").classList.add("show");
 }
+
+function closeLogoutPopup() {
+    document.getElementById("logoutModal").classList.remove("show");
+}
+
+function confirmLogout() {
+
+    document.getElementById("logoutModal").classList.remove("show");
+
+    localStorage.removeItem("userid");
+
+    window.location.href = "index.html";
+    }
 
 
 /* =========================
@@ -1356,6 +1362,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </script>
 
+<!-- LOGOUT POPUP -->
+<div id="logoutModal" class="logout-modal">
 
+    <div class="logout-popup">
+
+        <div class="logout-icon">
+            ⇥
+        </div>
+
+        <h2>Logout</h2>
+
+        <p>Are you sure you want to logout?</p>
+
+        <div class="logout-actions">
+            <button class="cancel-btn" onclick="closeLogoutPopup()">
+                Cancel
+            </button>
+
+            <button class="confirm-logout-btn" onclick="confirmLogout()">
+                Logout
+            </button>
+        </div>
+
+    </div>
+
+</div>
 </body>
   </html>
