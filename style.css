@@ -1566,22 +1566,22 @@ body.light-mode .bottom-nav {
     align-items:center;
     justify-content:center;
 
-    color:#ff5c7a;
+    color:#38d9ff;
 
     background:
         linear-gradient(
             135deg,
-            rgba(255,75,110,.22),
-            rgba(185,35,70,.10)
+            rgba(56,217,255,.20),
+            rgba(64,95,255,.10)
         );
 
     border:
         1px solid
-        rgba(255,80,110,.28);
+        rgba(56,217,255,.30);
 
     box-shadow:
         0 0 18px
-        rgba(255,60,95,.10);
+        rgba(56,190,255,.12);
 }
 
 .withdraw-icon svg{
@@ -1591,6 +1591,6 @@ body.light-mode .bottom-nav {
     filter:
         drop-shadow(
             0 0 6px
-            rgba(255,70,105,.45)
+            rgba(56,217,255,.45)
         );
 }
