@@ -1594,3 +1594,41 @@ body.light-mode .bottom-nav {
             rgba(56,217,255,.45)
         );
 }
+
+
+.deposit-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:50px;
+    height:50px;
+
+    border-radius:15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(20,220,145,.18),
+            rgba(0,130,95,.08)
+        );
+
+    border:
+        1px solid
+        rgba(66,235,170,.30);
+
+    box-shadow:
+        0 0 20px
+        rgba(20,220,145,.12);
+}
+
+.deposit-icon svg{
+    width:30px;
+    height:30px;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(45,235,160,.38)
+        );
+}
