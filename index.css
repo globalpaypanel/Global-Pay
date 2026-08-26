@@ -1153,3 +1153,47 @@ button {
     width:21px;
     height:21px;
 }
+
+
+/* ================= ANDROID ICON ================= */
+
+.android-icon{
+    width:42px;
+    height:42px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#55e879;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(85,232,121,.18),
+            rgba(35,190,90,.08)
+        );
+
+    border:1px solid
+        rgba(85,232,121,.28);
+
+    border-radius:12px;
+
+    flex-shrink:0;
+
+    box-shadow:
+        0 0 16px
+        rgba(65,220,100,.12);
+}
+
+.android-icon svg{
+    width:24px;
+    height:24px;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(85,232,121,.40)
+        );
+    }
+
