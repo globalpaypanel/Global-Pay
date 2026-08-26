@@ -1444,3 +1444,15 @@ body.light-mode .bottom-nav {
     background: rgba(255,255,255,.95);
     border-color: #dce3ef;
     }
+
+.bill-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.bill-icon svg{
+    width:52px;
+    height:52px;
+    display:block;
+}
