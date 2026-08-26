@@ -1124,3 +1124,32 @@ button {
     }
 
   }
+
+
+    /* ================= LOGIN KEY ICON ================= */
+
+.login-key-icon{
+    width:22px;
+    height:22px;
+
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#ffffff;
+
+    margin-right:8px;
+
+    vertical-align:middle;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(255,255,255,.35)
+        );
+}
+
+.login-key-icon svg{
+    width:21px;
+    height:21px;
+}
