@@ -72,63 +72,70 @@ if (savedLogin) {
         </div>
 
 
-        <span class="admin-icon">
+        <button
+    type="button"
+    class="admin-btn"
+    onclick="window.location.href='admin.html'">
 
-    <svg viewBox="0 0 48 48"
-         fill="none"
-         xmlns="http://www.w3.org/2000/svg">
+    <span class="admin-icon">
 
-        <!-- User Head -->
-        <circle
-            cx="24"
-            cy="15"
-            r="7"
-            fill="#42D9FF"/>
+        <svg viewBox="0 0 48 48"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg"
+             pointer-events="none">
 
-        <!-- User Body -->
-        <path
-            d="M11 38
-               C11 30.8 16.8 25 24 25
-               C31.2 25 37 30.8 37 38"
-            fill="url(#adminUserGradient)"/>
+            <circle
+                cx="24"
+                cy="15"
+                r="7"
+                fill="#42D9FF"/>
 
-        <!-- Admin Badge -->
-        <circle
-            cx="35"
-            cy="34"
-            r="8"
-            fill="#7B4DFF"
-            stroke="#FFFFFF"
-            stroke-width="1.5"/>
+            <path
+                d="M11 38
+                   C11 30.8 16.8 25 24 25
+                   C31.2 25 37 30.8 37 38"
+                fill="url(#adminUserGradient)"/>
 
-        <path
-            d="M35 29.5V38.5
-               M30.5 34H39.5"
-            stroke="#FFD83D"
-            stroke-width="2"
-            stroke-linecap="round"/>
+            <circle
+                cx="35"
+                cy="34"
+                r="8"
+                fill="#7B4DFF"
+                stroke="#FFFFFF"
+                stroke-width="1.5"/>
 
-        <defs>
+            <path
+                d="M35 29.5V38.5
+                   M30.5 34H39.5"
+                stroke="#FFD83D"
+                stroke-width="2"
+                stroke-linecap="round"/>
 
-            <linearGradient
-                id="adminUserGradient"
-                x1="11"
-                y1="25"
-                x2="37"
-                y2="38"
-                gradientUnits="userSpaceOnUse">
+            <defs>
 
-                <stop stop-color="#00D9FF"/>
-                <stop offset="0.5" stop-color="#367CFF"/>
-                <stop offset="1" stop-color="#8A42FF"/>
+                <linearGradient
+                    id="adminUserGradient"
+                    x1="11"
+                    y1="25"
+                    x2="37"
+                    y2="38"
+                    gradientUnits="userSpaceOnUse">
 
-            </linearGradient>
+                    <stop stop-color="#00D9FF"/>
+                    <stop offset="0.5" stop-color="#367CFF"/>
+                    <stop offset="1" stop-color="#8A42FF"/>
 
-        </defs>
+                </linearGradient>
 
-    </svg>
+            </defs>
 
-        </span>
+        </svg>
+
+    </span>
+
+    <span>PANEL ADMIN</span>
+
+        </button>
 
     
     </header>
