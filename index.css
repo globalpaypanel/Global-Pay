@@ -1362,29 +1362,4 @@ button {
     }
 
 
-/* ================= LOGIN SUCCESS MESSAGE ================= */
 
-.message {
-    min-height: 20px;
-    margin-top: 14px;
-
-    text-align: center;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    color: #00e995;
-
-    padding: 10px 14px;
-
-    border-radius: 10px;
-
-    background: rgba(0, 233, 149, 0.08);
-
-    border: 1px solid rgba(0, 233, 149, 0.22);
-
-    box-shadow:
-        0 0 18px rgba(0, 233, 149, 0.08);
-
-    transition: all .25s ease;
-}
