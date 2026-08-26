@@ -262,6 +262,91 @@ input::placeholder{
     box-shadow:none;
         }
 
+<style>
+/* ===== SUCCESS POPUP ===== */
+
+.success-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: rgba(0, 0, 0, 0.68);
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.success-overlay.show {
+    display: flex;
+}
+
+.success-popup {
+    width: 100%;
+    max-width: 390px;
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 28px 24px 22px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+    animation: popupIn 0.25s ease-out;
+}
+
+.success-icon {
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 16px;
+    border-radius: 50%;
+    background: #e9fff1;
+    color: #16a34a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.success-popup h3 {
+    margin: 0 0 10px;
+    color: #111827;
+    font-size: 23px;
+}
+
+.success-popup p {
+    margin: 5px 0;
+    color: #4b5563;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.success-popup .welcome {
+    margin-top: 12px;
+    color: #111827;
+    font-weight: 500;
+}
+
+.success-ok {
+    width: 100%;
+    margin-top: 22px;
+    border: none;
+    border-radius: 12px;
+    padding: 13px;
+    background: linear-gradient(135deg, #1877f2, #4f46e5);
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@keyframes popupIn {
+    from {
+        opacity: 0;
+        transform: scale(0.92);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
     
 </style>
 </head>
@@ -500,7 +585,7 @@ const userData = {
     localStorage.setItem("globalPayPromoCode", promoCode);
 
     // Success
-    alert("✅ Registration Successful!\n\nWelcome to Global Pay.");
+    showSuccessPopup();
 
     // Go to login
     location.replace("index.html");
@@ -508,5 +593,31 @@ const userData = {
 </script>
 
 
+<script>
+
+function showSuccessPopup() {
+
+    const popup =
+        document.getElementById("successOverlay");
+
+    if (popup) {
+        popup.classList.add("show");
+    }
+}
+
+function closeSuccessPopup() {
+
+    const popup =
+        document.getElementById("successOverlay");
+
+    if (popup) {
+        popup.classList.remove("show");
+    }
+
+    // Registration ke baad login page
+    window.location.href = "index.html";
+}
+
+</script>
 </body>
         </html>
