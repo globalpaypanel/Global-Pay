@@ -1557,3 +1557,40 @@ body.light-mode .bottom-nav {
             rgba(255,55,80,.45)
         );
 }
+
+
+/* ================= WITHDRAW ICON ================= */
+
+.withdraw-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#ff5c7a;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,75,110,.22),
+            rgba(185,35,70,.10)
+        );
+
+    border:
+        1px solid
+        rgba(255,80,110,.28);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,60,95,.10);
+}
+
+.withdraw-icon svg{
+    width:25px;
+    height:25px;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(255,70,105,.45)
+        );
+}
