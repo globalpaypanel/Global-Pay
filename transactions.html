@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY - Transactions</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 50% 10%,#12234d,#071127 45%,#030817);
+    color:#fff;
+    padding-bottom:90px;
+}
+
+.header{
+    height:82px;
+    display:flex;
+    align-items:center;
+    padding:15px 20px;
+    border-bottom:1px solid #1c2d4b;
+}
+
+.back{
+    width:45px;
+    height:45px;
+    border:1px solid #294363;
+    border-radius:12px;
+    background:#0d1930;
+    color:#fff;
+    font-size:30px;
+}
+
+.header-text{
+    margin-left:14px;
+}
+
+.header-text h1{
+    font-size:22px;
+}
+
+.header-text p{
+    color:#8fa1bd;
+    font-size:12px;
+    margin-top:4px;
+}
+
+.container{
+    width:92%;
+    max-width:650px;
+    margin:25px auto;
+}
+
+.transaction-card{
+    background:linear-gradient(145deg,#101d3a,#0a142a);
+    border:1px solid #27456c;
+    border-radius:22px;
+    padding:45px 25px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.empty-icon{
+    width:82px;
+    height:82px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:38px;
+    color:#4da2ff;
+    background:#0c2b55;
+    border:1px solid #267ee0;
+}
+
+.transaction-card h2{
+    font-size:23px;
+    margin-bottom:10px;
+}
+
+.transaction-card .main-text{
+    color:#a7b5ca;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.status{
+    margin:25px auto;
+    padding:13px 18px;
+    max-width:400px;
+    border-radius:12px;
+    background:#2c2110;
+    border:1px solid #77571c;
+    color:#ffc94d;
+    font-size:13px;
+}
+
+.run-account{
+    width:100%;
+    max-width:360px;
+    height:50px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#168eff,#2852df);
+    color:white;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.bottom-nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:76px;
+    display:flex;
+    background:#0b152c;
+    border-top:1px solid #203451;
+    z-index:100;
+}
+
+.nav-item{
+    flex:1;
+    border:0;
+    background:none;
+    color:#8493ad;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:5px;
+    cursor:pointer;
+}
+
+.nav-item span{
+    font-size:24px;
+}
+
+.nav-item small{
+    font-size:11px;
+}
+
+.nav-item.active{
+    color:#168eff;
+}
+
+@media(max-width:500px){
+
+    .transaction-card{
+        padding:40px 20px;
+    }
+
+    .transaction-card h2{
+        font-size:21px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <button class="back" onclick="history.back()">‹</button>
+
+    <div class="header-text">
+        <h1>Transactions</h1>
+        <p>Transaction History</p>
+    </div>
+
+</header>
+
+
+<main class="container">
+
+    <div class="transaction-card">
+
+        <div class="empty-icon">
+            ☷
+        </div>
+
+        <h2>No Transactions Found</h2>
+
+        <p class="main-text">
+            No transaction history is available yet.
+            <br>
+            Your transactions will appear here
+            after your account is running.
+        </p>
+
+        <div class="status">
+            Account is not running yet.
+            <br>
+            Run your account to start transactions.
+        </div>
+
+        <button
+            class="run-account"
+            onclick="window.location.href='runningaccount1.html'">
+
+            Run Account
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<nav class="bottom-nav">
+
+    <button
+        class="nav-item"
+        onclick="window.location.href='home.html'">
+
+        <span>⌂</span>
+        <small>Home</small>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        onclick="window.location.href='deposit1.html'">
+
+        <span>⇩</span>
+        <small>Deposit</small>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        onclick="window.location.href='withdraw.html'">
+
+        <span>⇧</span>
+        <small>Withdraw</small>
+
+    </button>
+
+
+    <button
+        class="nav-item active"
+        onclick="window.location.href='transactions.html'">
+
+        <span>☷</span>
+        <small>Transactions</small>
+
+    </button>
+
+
+    <button
+        class="nav-item"
+        onclick="window.location.href='profile.html'">
+
+        <span>♙</span>
+        <small>Profile</small>
+
+    </button>
+
+</nav>
+
+</body>
+      </html>
