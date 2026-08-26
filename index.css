@@ -1240,3 +1240,62 @@ button {
         );
 }
 
+
+
+/* ================= INPUT PROFESSIONAL ICONS ================= */
+
+.input-icon{
+    width:22px;
+    height:22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#9ba8c7;
+
+    flex-shrink:0;
+}
+
+.input-icon svg{
+    width:21px;
+    height:21px;
+}
+
+.user-icon{
+    color:#42cfff;
+}
+
+.password-icon{
+    color:#a875ff;
+}
+
+
+/* ================= EYE ICON ================= */
+
+.eye-btn{
+    width:32px;
+    height:32px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:0;
+
+    background:none;
+    border:none;
+
+    color:#aab5cc;
+
+    cursor:pointer;
+}
+
+.eye-btn svg{
+    width:22px;
+    height:22px;
+}
+
+.eye-btn:hover{
+    color:#42cfff;
+}
