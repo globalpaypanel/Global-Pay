@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Global Pay - Bill Payment</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 10% 5%,rgba(72,80,255,.25),transparent 30%),
+        radial-gradient(circle at 90% 20%,rgba(0,200,255,.15),transparent 30%),
+        linear-gradient(145deg,#020713,#07152b,#030712);
+    color:#fff;
+}
+
+.page{
+    min-height:100vh;
+    padding-bottom:30px;
+}
+
+/* HEADER */
+
+.header{
+    height:75px;
+    padding:12px 18px;
+    display:flex;
+    align-items:center;
+    gap:13px;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    background:rgba(3,10,25,.72);
+    backdrop-filter:blur(15px);
+}
+
+.back{
+    width:45px;
+    height:45px;
+    border-radius:14px;
+    border:1px solid #304362;
+    background:rgba(255,255,255,.04);
+    color:#fff;
+    font-size:29px;
+    cursor:pointer;
+}
+
+.logo{
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+    font-weight:800;
+    background:linear-gradient(135deg,#6544ff,#087dff);
+    box-shadow:0 0 22px rgba(80,80,255,.3);
+}
+
+.header-text{
+    flex:1;
+}
+
+.header-text h1{
+    font-size:20px;
+}
+
+.header-text p{
+    color:#8798b2;
+    font-size:11px;
+    margin-top:3px;
+}
+
+/* SCREENS */
+
+.screen{
+    display:none;
+    padding:25px 18px;
+    max-width:650px;
+    margin:auto;
+}
+
+.screen.active{
+    display:block;
+}
+
+/* HERO */
+
+.hero{
+    margin-bottom:24px;
+}
+
+.hero h2{
+    font-size:28px;
+    margin-bottom:8px;
+}
+
+.hero h2 span{
+    color:#258cff;
+}
+
+.hero p{
+    color:#91a2bd;
+    line-height:1.5;
+    font-size:14px;
+}
+
+/* CARD */
+
+.card{
+    padding:20px;
+    border:1px solid #263b59;
+    border-radius:22px;
+    background:rgba(255,255,255,.035);
+    box-shadow:0 15px 45px rgba(0,0,0,.22);
+}
+
+/* OPERATORS */
+
+.operator-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+}
+
+.operator{
+    min-height:110px;
+    padding:15px;
+    border-radius:18px;
+    border:1px solid #293e5d;
+    background:rgba(255,255,255,.035);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.operator:hover{
+    transform:translateY(-2px);
+    border-color:#4c70ff;
+}
+
+.operator-logo{
+    width:43px;
+    height:43px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:14px;
+    margin-bottom:11px;
+}
+
+.airtel{background:#c90025;}
+.jio{background:#0d72e8;}
+.vi{background:#e72d5a;}
+.bsnl{background:#0879bd;}
+.mtnl{background:#1469a7;}
+
+.operator strong{
+    display:block;
+    font-size:15px;
+}
+
+.operator small{
+    display:block;
+    margin-top:4px;
+    color:#8191aa;
+}
+
+/* FILTER */
+
+.filter-title{
+    margin:22px 0 12px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.filters{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:4px;
+}
+
+.filters button{
+    flex-shrink:0;
+    padding:11px 15px;
+    border-radius:12px;
+    border:1px solid #304563;
+    background:rgba(255,255,255,.035);
+    color:#aebbd0;
+    cursor:pointer;
+}
+
+.filters button.active{
+    color:#fff;
+    border-color:#5c60ff;
+    background:linear-gradient(135deg,#613dff,#087cff);
+}
+
+/* PLANS */
+
+.plan-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    margin-top:18px;
+}
+
+.plan{
+    padding:17px;
+    border-radius:18px;
+    border:1px solid #293f5e;
+    background:rgba(255,255,255,.035);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.plan:hover{
+    border-color:#357fff;
+    transform:translateY(-1px);
+}
+
+.plan-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.plan-name{
+    font-size:16px;
+    font-weight:bold;
+}
+
+.plan-price{
+    font-size:20px;
+    font-weight:800;
+}
+
+.plan-price del{
+    display:block;
+    color:#71839d;
+    font-size:11px;
+    font-weight:normal;
+    text-align:right;
+}
+
+.off{
+    display:inline-block;
+    margin-top:8px;
+    color:#00e89a;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.plan-details{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:7px;
+    margin-top:14px;
+}
+
+.detail{
+    padding:9px 5px;
+    text-align:center;
+    border-radius:10px;
+    background:rgba(0,0,0,.15);
+}
+
+.detail b{
+    display:block;
+    font-size:12px;
+}
+
+.detail span{
+    color:#7e90aa;
+    font-size:10px;
+}
+
+/* MOBILE */
+
+.phone-box{
+    margin-top:18px;
+}
+
+.label{
+    display:block;
+    color:#a9b6ca;
+    font-size:13px;
+    margin-bottom:8px;
+}
+
+.phone-input{
+    display:flex;
+    height:59px;
+    border:1px solid #304563;
+    border-radius:15px;
+    background:rgba(255,255,255,.035);
+    overflow:hidden;
+}
+
+.country{
+    width:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-right:1px solid #304563;
+    color:#d5deeb;
+    font-weight:bold;
+}
+
+.phone-input input{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:#fff;
+    padding:0 14px;
+    font-size:16px;
+}
+
+.phone-input input::placeholder{
+    color:#71829c;
+}
+
+.continue{
+    width:100%;
+    height:57px;
+    margin-top:15px;
+    border:0;
+    border-radius:15px;
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    background:linear-gradient(135deg,#643cff,#087eff);
+    cursor:pointer;
+}
+
+/* PAYMENT */
+
+.selected-plan{
+    padding:17px;
+    margin-bottom:18px;
+    border-radius:17px;
+    border:1px solid #29415e;
+    background:rgba(255,255,255,.035);
+}
+
+.selected-plan h3{
+    margin-bottom:7px;
+}
+
+.selected-plan p{
+    color:#8495ad;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.qr-card{
+    text-align:center;
+}
+
+.qr-title{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.qr-subtitle{
+    color:#899ab4;
+    margin-top:6px;
+    font-size:12px;
+}
+
+.qr-wrap{
+    width:240px;
+    height:240px;
+    padding:10px;
+    margin:20px auto;
+    background:#fff;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.qr-wrap img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+
+.scan-animation{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    color:#00e89a;
+    font-size:13px;
+    font-weight:bold;
+}
+
+.scan-dot{
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:#00e89a;
+    animation:pulse 1s infinite;
+}
+
+@keyframes pulse{
+    50%{opacity:.25;transform:scale(.65);}
+}
+
+/* UTR */
+
+.utr-box{
+    margin-top:20px;
+    text-align:left;
+}
+
+.utr-box input{
+    width:100%;
+    height:57px;
+    border-radius:14px;
+    border:1px solid #304563;
+    outline:none;
+    background:rgba(255,255,255,.035);
+    color:#fff;
+    padding:0 15px;
+    font-size:15px;
+}
+
+.utr-box input.invalid{
+    border-color:#ff4e60;
+}
+
+.utr-error{
+    display:none;
+    margin-top:6px;
+    color:#ff5262;
+    font-size:12px;
+}
+
+.utr-error.show{
+    display:block;
+}
+
+.submit{
+    width:100%;
+    height:57px;
+    margin-top:12px;
+    border:0;
+    border-radius:15px;
+    color:#fff;
+    font-weight:bold;
+    font-size:16px;
+    background:linear-gradient(135deg,#087cff,#00a98b);
+    cursor:pointer;
+}
+
+/* NOTICE */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(8px);
+}
+
+.overlay.show{
+    display:flex;
+}
+
+.notice{
+    width:100%;
+    max-width:380px;
+    padding:25px;
+    border-radius:23px;
+    text-align:center;
+    background:#091426;
+    border:1px solid #29425f;
+    box-shadow:0 25px 80px rgba(0,0,0,.55);
+    animation:pop .25s ease;
+}
+
+@keyframes pop{
+    from{transform:scale(.9);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+.notice-icon{
+    width:65px;
+    height:65px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    background:rgba(0,232,154,.10);
+    border:1px solid rgba(0,232,154,.35);
+    color:#00e89a;
+}
+
+.notice h2{
+    margin-top:15px;
+}
+
+.notice p{
+    color:#91a1b9;
+    line-height:1.5;
+    margin-top:8px;
+    font-size:13px;
+}
+
+.notice button{
+    width:100%;
+    height:48px;
+    margin-top:18px;
+    border:0;
+    border-radius:13px;
+    color:#fff;
+    font-weight:bold;
+    background:linear-gradient(135deg,#623dff,#087cff);
+}
+
+/* SUCCESS */
+
+.success{
+    text-align:center;
+    padding-top:70px;
+}
+
+.success-icon{
+    width:90px;
+    height:90px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    color:#00e89a;
+    font-size:48px;
+    background:rgba(0,232,154,.10);
+    border:1px solid rgba(0,232,154,.35);
+}
+
+.success h2{
+    margin-top:20px;
+    font-size:25px;
+}
+
+.success p{
+    margin-top:10px;
+    color:#91a2bd;
+    line-height:1.6;
+}
+
+.home-btn{
+    width:100%;
+    max-width:400px;
+    height:55px;
+    margin-top:25px;
+    border:0;
+    border-radius:15px;
+    background:linear-gradient(135deg,#623dff,#087cff);
+    color:#fff;
+    font-weight:bold;
+    font-size:15px;
+}
+
+@media(max-width:430px){
+    .screen{
+        padding:22px 14px;
+    }
+
+    .hero h2{
+        font-size:25px;
+    }
+
+    .plan-details{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .qr-wrap{
+        width:220px;
+        height:220px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<header class="header">
+
+    <button class="back" onclick="goBack()">‹</button>
+
+    <div class="logo">G</div>
+
+    <div class="header-text">
+        <h1>Bill Payment</h1>
+        <p>Mobile Recharge & Payments</p>
+    </div>
+
+</header>
+
+
+<!-- SCREEN 1 -->
+
+<section id="operatorScreen" class="screen active">
+
+    <div class="hero">
+        <h2>Mobile <span>Recharge</span></h2>
+        <p>Select your operator and choose a suitable recharge plan.</p>
+    </div>
+
+    <div class="card">
+
+        <div class="operator-grid">
+
+            <div class="operator" onclick="selectOperator('Airtel')">
+                <div class="operator-logo airtel">airtel</div>
+                <strong>Airtel</strong>
+                <small>Mobile Recharge</small>
+            </div>
+
+            <div class="operator" onclick="selectOperator('Jio')">
+                <div class="operator-logo jio">JIO</div>
+                <strong>Jio</strong>
+                <small>Mobile Recharge</small>
+            </div>
+
+            <div class="operator" onclick="selectOperator('Vi')">
+                <div class="operator-logo vi">Vi</div>
+                <strong>Vi</strong>
+                <small>Mobile Recharge</small>
+            </div>
+
+            <div class="operator" onclick="selectOperator('BSNL')">
+                <div class="operator-logo bsnl">BSNL</div>
+                <strong>BSNL</strong>
+                <small>Mobile Recharge</small>
+            </div>
+
+            <div class="operator" onclick="selectOperator('MTNL')">
+                <div class="operator-logo mtnl">MTNL</div>
+                <strong>MTNL</strong>
+                <small>Mobile Recharge</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SCREEN 2 -->
+
+<section id="planScreen" class="screen">
+
+    <div class="hero">
+        <h2 id="operatorTitle">Recharge Plans</h2>
+        <p>Select validity to view available plans.</p>
+    </div>
+
+    <div class="card">
+
+        <div class="filter-title">
+            Choose Recharge Validity
+        </div>
+
+        <div class="filters">
+
+            <button class="active" onclick="filterPlans('1 Month',this)">
+                1 Month
+            </button>
+
+            <button onclick="filterPlans('2 Months',this)">
+                2 Months
+            </button>
+
+            <button onclick="filterPlans('3 Months',this)">
+                3 Months
+            </button>
+
+            <button onclick="filterPlans('6 Months',this)">
+                6 Months
+            </button>
+
+            <button onclick="filterPlans('1 Year',this)">
+                1 Year
+            </button>
+
+        </div>
+
+        <div id="planList" class="plan-list"></div>
+
+    </div>
+
+</section>
+
+
+<!-- SCREEN 3 -->
+
+<section id="numberScreen" class="screen">
+
+    <div class="hero">
+        <h2>Enter Mobile <span>Number</span></h2>
+        <p>Enter the 10-digit mobile number for recharge.</p>
+    </div>
+
+    <div class="card">
+
+        <div class="selected-plan" id="numberPlan"></div>
+
+        <div class="phone-box">
+
+            <label class="label">
+                Mobile Number
+            </label>
+
+            <div class="phone-input">
+
+                <div class="country">
+                    +91
+                </div>
+
+                <input
+                    id="mobileNumber"
+                    type="tel"
+                    inputmode="numeric"
+                    maxlength="10"
+                    placeholder="Enter 10 digit number"
+                    oninput="this.value=this.value.replace(/\D/g,'')"
+                >
+
+            </div>
+
+            <button class="continue" onclick="continueToPayment()">
+                Continue
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SCREEN 4 -->
+
+<section id="paymentScreen" class="screen">
+
+    <div class="hero">
+        <h2>Scan & <span>Pay</span></h2>
+        <p>Scan the QR code using your payment application.</p>
+    </div>
+
+    <div class="selected-plan" id="paymentPlan"></div>
+
+    <div class="card qr-card">
+
+        <div class="qr-title">
+            Scan QR to Pay
+        </div>
+
+        <div class="qr-subtitle">
+            Scan and complete the payment
+        </div>
+
+        <div class="qr-wrap">
+            <img
+                src="YOUR_QR_IMAGE.png"
+                alt="Payment QR"
+            >
+        </div>
+
+        <div class="scan-animation">
+            <span class="scan-dot"></span>
+            Scan & Pay
+        </div>
+
+        <div class="utr-box">
+
+            <label class="label">
+                Enter UTR / Transaction Reference Number
+            </label>
+
+            <input
+                id="utr"
+                type="text"
+                maxlength="16"
+                inputmode="numeric"
+                placeholder="Enter UTR number"
+                oninput="validateUTRInput()"
+            >
+
+            <div id="utrError" class="utr-error">
+                Invalid UTR number. Please enter a valid 12–16 digit UTR.
+            </div>
+
+            <button class="submit" onclick="submitPayment()">
+                Submit Payment
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SCREEN 5 -->
+
+<section id="successScreen" class="screen">
+
+    <div class="success">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>Payment Successful</h2>
+
+        <p>
+            Your recharge has been completed successfully.
+        </p>
+
+        <button class="home-btn" onclick="location.href='home.html'">
+            Back to Home
+        </button>
+
+    </div>
+
+</section>
+
+</div>
+
+
+<!-- NOTICE -->
+
+<div id="noticeOverlay" class="overlay">
+
+    <div class="notice">
+
+        <div class="notice-icon">!</div>
+
+        <h2 id="noticeTitle">Notice</h2>
+
+        <p id="noticeText"></p>
+
+        <button onclick="closeNotice()">
+            OK
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/*
+    DEMO DATA ONLY.
+
+    Real/current operator plans should be supplied
+    by an authorised recharge API/backend.
+*/
+
+const plans = {
+
+    Airtel: [
+        ["1 Month","₹199","₹332","2GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹299","₹498","1.5GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹349","₹582","2GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹399","₹665","2.5GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹449","₹748","3GB/day","28 Days","Unlimited Calls"],
+        ["2 Months","₹598","₹997","1.5GB/day","56 Days","Unlimited Calls"],
+        ["2 Months","₹698","₹1163","2GB/day","56 Days","Unlimited Calls"],
+        ["3 Months","₹839","₹1398","2GB/day","84 Days","Unlimited Calls"],
+        ["3 Months","₹999","₹1665","2.5GB/day","84 Days","Unlimited Calls"],
+        ["6 Months","₹1799","₹2998","2GB/day","168 Days","Unlimited Calls"],
+        ["1 Year","₹3599","₹5998","2GB/day","365 Days","Unlimited Calls"]
+    ],
+
+    Jio: [
+        ["1 Month","₹189","₹315","2GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹249","₹415","1.5GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹299","₹498","1.5GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹349","₹582","2GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹399","₹665","2.5GB/day","28 Days","Unlimited Calls"],
+        ["2 Months","₹499","₹832","1.5GB/day","56 Days","Unlimited Calls"],
+        ["2 Months","₹699","₹1165","2GB/day","56 Days","Unlimited Calls"],
+        ["3 Months","₹899","₹1498","2GB/day","84 Days","Unlimited Calls"],
+        ["3 Months","₹999","₹1665","2.5GB/day","84 Days","Unlimited Calls"],
+        ["6 Months","₹1599","₹2665","2GB/day","168 Days","Unlimited Calls"],
+        ["1 Year","₹3199","₹5332","2GB/day","365 Days","Unlimited Calls"]
+    ],
+
+    Vi: [
+        ["1 Month","₹199","₹332","2GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹299","₹498","1.5GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹349","₹582","2GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹399","₹665","2.5GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹449","₹748","3GB/day","28 Days","Unlimited Calls"],
+        ["2 Months","₹599","₹998","1.5GB/day","56 Days","Unlimited Calls"],
+        ["2 Months","₹699","₹1165","2GB/day","56 Days","Unlimited Calls"],
+        ["3 Months","₹859","₹1432","2GB/day","84 Days","Unlimited Calls"],
+        ["3 Months","₹999","₹1665","2.5GB/day","84 Days","Unlimited Calls"],
+        ["6 Months","₹1699","₹2832","2GB/day","168 Days","Unlimited Calls"],
+        ["1 Year","₹3399","₹5665","2GB/day","365 Days","Unlimited Calls"]
+    ],
+
+    BSNL: [
+        ["1 Month","₹107","₹178","1GB/day","20 Days","Unlimited Calls"],
+        ["1 Month","₹147","₹245","2GB/day","30 Days","Unlimited Calls"],
+        ["1 Month","₹199","₹332","2GB/day","30 Days","Unlimited Calls"],
+        ["1 Month","₹299","₹498","3GB/day","30 Days","Unlimited Calls"],
+        ["2 Months","₹399","₹665","2GB/day","60 Days","Unlimited Calls"],
+        ["2 Months","₹499","₹832","2GB/day","60 Days","Unlimited Calls"],
+        ["3 Months","₹599","₹998","2GB/day","90 Days","Unlimited Calls"],
+        ["3 Months","₹699","₹1165","3GB/day","90 Days","Unlimited Calls"],
+        ["6 Months","₹1199","₹1998","2GB/day","180 Days","Unlimited Calls"],
+        ["1 Year","₹1999","₹3332","2GB/day","365 Days","Unlimited Calls"]
+    ],
+
+    MTNL: [
+        ["1 Month","₹149","₹248","1GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹199","₹332","1.5GB/day","28 Days","Unlimited Calls"],
+        ["1 Month","₹249","₹415","2GB/day","28 Days","Unlimited Calls"],
+        ["2 Months","₹399","₹665","1.5GB/day","56 Days","Unlimited Calls"],
+        ["2 Months","₹499","₹832","2GB/day","56 Days","Unlimited Calls"],
+        ["3 Months","₹599","₹998","1.5GB/day","84 Days","Unlimited Calls"],
+        ["3 Months","₹699","₹1165","2GB/day","84 Days","Unlimited Calls"],
+        ["6 Months","₹999","₹1665","1GB/day","180 Days","Unlimited Calls"],
+        ["6 Months","₹1299","₹2165","2GB/day","180 Days","Unlimited Calls"],
+        ["1 Year","₹1999","₹3332","2GB/day","365 Days","Unlimited Calls"]
+    ]
+
+};
+
+
+let selectedOperator = "";
+let selectedPlan = null;
+let currentFilter = "1 Month";
+
+
+function showScreen(id){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+            screen.classList.remove("active");
+        });
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+
+function selectOperator(operator){
+
+    selectedOperator = operator;
+
+    document.getElementById("operatorTitle").innerText =
+        operator + " Recharge Plans";
+
+    currentFilter = "1 Month";
+
+    document
+        .querySelectorAll(".filters button")
+        .forEach((button,index)=>{
+            button.classList.toggle("active",index === 0);
+        });
+
+    renderPlans();
+
+    showScreen("planScreen");
+}
+
+
+function filterPlans(filter,button){
+
+    currentFilter = filter;
+
+    document
+        .querySelectorAll(".filters button")
+        .forEach(x => x.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderPlans();
+}
+
+
+function renderPlans(){
+
+    const list =
+        document.getElementById("planList");
+
+    list.innerHTML = "";
+
+    const operatorPlans =
+        plans[selectedOperator] || [];
+
+    const filtered =
+        operatorPlans.filter(plan => plan[0] === currentFilter);
+
+    if(filtered.length === 0){
+
+        list.innerHTML =
+            "<p style='color:#8b9bb2;text-align:center;padding:25px'>No plans available.</p>";
+
+        return;
+    }
+
+    filtered.forEach((plan,index)=>{
+
+        const validity = plan[0];
+        const price = plan[1];
+        const original = plan[2];
+        const data = plan[3];
+        const days = plan[4];
+        const calls = plan[5];
+
+        const div =
+            document.createElement("div");
+
+        div.className = "plan";
+
+        div.innerHTML = `
+
+            <div class="plan-top">
+
+                <div class="plan-name">
+                    ${selectedOperator} ${validity}
+                </div>
+
+                <div class="plan-price">
+                    ${price}
+                    <del>${original}</del>
+                </div>
+
+            </div>
+
+            <div class="off">
+                40% OFF
+            </div>
+
+            <div class="plan-details">
+
+                <div class="detail">
+                    <b>${data}</b>
+                    <span>Daily Data</span>
+                </div>
+
+                <div class="detail">
+                    <b>${days}</b>
+                    <span>Validity</span>
+                </div>
+
+                <div class="detail">
+                    <b>${calls}</b>
+                    <span>Voice</span>
+                </div>
+
+            </div>
+        `;
+
+        div.onclick = function(){
+
+            selectedPlan = {
+                operator:selectedOperator,
+                validity:validity,
+                price:price,
+                data:data,
+                days:days,
+                calls:calls
+            };
+
+            document.getElementById("numberPlan").innerHTML = `
+                <h3>${selectedOperator} Recharge</h3>
+                <p>
+                    Plan: ${validity}<br>
+                    Amount: <strong>${price}</strong><br>
+                    Data: ${data}<br>
+                    Validity: ${days}
+                </p>
+            `;
+
+            showScreen("numberScreen");
+        };
+
+        list.appendChild(div);
+
+    });
+
+}
+
+
+function continueToPayment(){
+
+    const number =
+        document.getElementById("mobileNumber").value.trim();
+
+    if(!/^[0-9]{10}$/.test(number)){
+
+        showNotice(
+            "Invalid Mobile Number",
+            "Please enter a valid 10-digit mobile number."
+        );
+
+        return;
+    }
+
+    document.getElementById("paymentPlan").innerHTML = `
+        <h3>${selectedPlan.operator} Recharge</h3>
+        <p>
+            Mobile: +91 ${number}<br>
+            Plan: ${selectedPlan.validity}<br>
+            Amount: <strong>${selectedPlan.price}</strong><br>
+            Data: ${selectedPlan.data}<br>
+            Validity: ${selectedPlan.days}
+        </p>
+    `;
+
+    showScreen("paymentScreen");
+}
+
+
+function validateUTRInput(){
+
+    const input =
+        document.getElementById("utr");
+
+    const error =
+        document.getElementById("utrError");
+
+    const value =
+        input.value.trim();
+
+    if(value.length === 0){
+
+        input.classList.remove("invalid");
+        error.classList.remove("show");
+
+        return;
+    }
+
+    if(!/^[0-9]{12,16}$/.test(value)){
+
+        input.classList.add("invalid");
+        error.classList.add("show");
+
+    }else{
+
+        input.classList.remove("invalid");
+        error.classList.remove("show");
+
+    }
+}
+
+
+function submitPayment(){
+
+    const input =
+        document.getElementById("utr");
+
+    const error =
+        document.getElementById("utrError");
+
+    const utr =
+        input.value.trim();
+
+    /*
+        DEMO ONLY:
+        This fixed UTR is accepted for testing.
+    */
+
+    if(utr !== "098765432100"){
+
+        input.classList.add("invalid");
+
+        error.innerText =
+            "Invalid UTR number. Please enter the correct transaction reference.";
+
+        error.classList.add("show");
+
+        return;
+    }
+
+    showScreen("successScreen");
+}
+
+
+function showNotice(title,text){
+
+    document.getElementById("noticeTitle")
+        .innerText = title;
+
+    document.getElementById("noticeText")
+        .innerText = text;
+
+    document
+        .getElementById("noticeOverlay")
+        .classList.add("show");
+}
+
+
+function closeNotice(){
+
+    document
+        .getElementById("noticeOverlay")
+        .classList.remove("show");
+}
+
+
+function goBack(){
+
+    const screens =
+        [
+            "operatorScreen",
+            "planScreen",
+            "numberScreen",
+            "paymentScreen",
+            "successScreen"
+        ];
+
+    let current =
+        screens.findIndex(id =>
+            document.getElementById(id).classList.contains("active")
+        );
+
+    if(current <= 0){
+
+        location.href = "home.html";
+
+        return;
+    }
+
+    showScreen(screens[current - 1]);
+}
+
+</script>
+
+</body>
+  </html>
