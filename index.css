@@ -1348,3 +1348,13 @@ button {
         0 0 25px
         rgba(80,120,255,.30);
     }
+
+
+.admin-btn {
+    cursor: pointer;
+}
+
+.admin-icon,
+.admin-icon svg {
+    pointer-events: none;
+    }
