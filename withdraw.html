@@ -468,6 +468,144 @@ body{
 .withdraw-submit-btn .btn-icon{
     margin-right:8px;
 }
+
+
+/* =========================
+   WITHDRAW NOTICE POPUP
+========================= */
+
+#withdrawNotice{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:rgba(0,0,0,.72);
+    backdrop-filter:blur(6px);
+
+    animation:noticeFade .25s ease;
+}
+
+.withdraw-notice-box{
+    width:100%;
+    max-width:390px;
+
+    padding:28px 22px;
+
+    text-align:center;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101d35,
+            #071225
+        );
+
+    border:1px solid rgba(55,145,255,.45);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.55),
+        0 0 30px rgba(0,120,255,.15);
+
+    animation:noticePop .3s ease;
+}
+
+.withdraw-notice-icon{
+    width:58px;
+    height:58px;
+
+    margin:0 auto 15px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:50%;
+
+    color:#fff;
+    font-size:30px;
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            135deg,
+            #673cff,
+            #087cff
+        );
+
+    box-shadow:
+        0 0 25px rgba(80,100,255,.35);
+}
+
+.withdraw-notice-box h2{
+    margin-bottom:12px;
+
+    color:#fff;
+    font-size:22px;
+}
+
+.withdraw-notice-box p{
+    color:#aab8cd;
+
+    font-size:15px;
+    line-height:1.6;
+
+    margin-bottom:22px;
+}
+
+.withdraw-notice-box button{
+    width:100%;
+
+    height:50px;
+
+    border:0;
+    border-radius:13px;
+
+    color:#fff;
+
+    font-size:16px;
+    font-weight:bold;
+
+    background:
+        linear-gradient(
+            90deg,
+            #673cff,
+            #087cff,
+            #00c987
+        );
+
+    cursor:pointer;
+}
+
+@keyframes noticeFade{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes noticePop{
+    from{
+        opacity:0;
+        transform:scale(.85);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
     
 </style>
 </head>
@@ -1099,31 +1237,18 @@ function setMax(){
 // SUBMIT
 // -----------------------------
 
+
 function submitWithdrawal(){
 
+    const amountInput =
+        document.getElementById("amount");
+
     const amount =
-        Number(
-            document.getElementById("amount").value
-        );
+        Number(amountInput.value);
 
-
-    if(
-        !amount ||
-        amount < 100 ||
-        amount > 50000
-    ){
-
-        alert(
-            "❌ Invalid amount.\n\n" +
-            "Minimum: ₹100\n" +
-            "Maximum: ₹50,000"
-        );
-
-        return;
-    }
-
-
-    // BANK
+    /* =========================
+       FIRST CHECK ALL DETAILS
+    ========================= */
 
     if(selectedMethod === "bank"){
 
@@ -1133,36 +1258,48 @@ function submitWithdrawal(){
         validateConfirmAccount();
         validateIFSC();
 
+        const bankValid =
+            document.getElementById("bankNameField")
+                .classList.contains("valid");
+
+        const holderValid =
+            document.getElementById("holderField")
+                .classList.contains("valid");
+
+        const accountValid =
+            document.getElementById("accountField")
+                .classList.contains("valid");
+
+        const confirmValid =
+            document.getElementById("confirmAccountField")
+                .classList.contains("valid");
+
+        const ifscValid =
+            document.getElementById("ifscField")
+                .classList.contains("valid");
+
+
         if(
-            !document
-                .getElementById("bankNameField")
-                .classList.contains("valid") ||
-
-            !document
-                .getElementById("holderField")
-                .classList.contains("valid") ||
-
-            !document
-                .getElementById("accountField")
-                .classList.contains("valid") ||
-
-            !document
-                .getElementById("confirmAccountField")
-                .classList.contains("valid") ||
-
-            !document
-                .getElementById("ifscField")
-                .classList.contains("valid")
+            !bankValid ||
+            !holderValid ||
+            !accountValid ||
+            !confirmValid ||
+            !ifscValid
         ){
 
-            alert("❌ Please correct the red fields.");
+            showNotice(
+                "Complete Details",
+                "Please fill in all withdrawal details correctly before submitting your request."
+            );
+
             return;
         }
-
     }
 
 
-    // UPI
+    /* =========================
+       UPI
+    ========================= */
 
     if(selectedMethod === "upi"){
 
@@ -1174,83 +1311,136 @@ function submitWithdrawal(){
                 .classList.contains("valid")
         ){
 
-            alert("❌ Please enter a valid UPI ID.");
+            showNotice(
+                "Complete Details",
+                "Please enter a valid UPI ID before submitting your request."
+            );
+
             return;
         }
-
     }
 
 
-    // BINANCE
+    /* =========================
+       BINANCE
+    ========================= */
 
     if(selectedMethod === "binance"){
 
         validateBinanceUID();
         validateBinanceName();
 
-        if(
-            !document
-                .getElementById("binanceUidField")
-                .classList.contains("valid") ||
+        const uidValid =
+            document.getElementById("binanceUidField")
+                .classList.contains("valid");
 
-            !document
-                .getElementById("binanceNameField")
-                .classList.contains("valid")
-        ){
+        const nameValid =
+            document.getElementById("binanceNameField")
+                .classList.contains("valid");
 
-            alert("❌ Please correct the red fields.");
+
+        if(!uidValid || !nameValid){
+
+            showNotice(
+                "Complete Details",
+                "Please fill in all Binance withdrawal details correctly before submitting your request."
+            );
+
             return;
         }
-
     }
 
 
-    alert(
-        "✅ Withdrawal Request Submitted\n\n" +
-        "Method: " +
-        selectedMethod.toUpperCase() +
-        "\nAmount: ₹" +
-        amount.toFixed(2)
+    /* =========================
+       AMOUNT CHECK
+       ONLY AFTER DETAILS
+    ========================= */
+
+    if(
+        !amount ||
+        amount < 100 ||
+        amount > 50000
+    ){
+
+        showNotice(
+            "Invalid Amount",
+            "Please enter a valid withdrawal amount.\n\nMinimum: ₹100\nMaximum: ₹50,000"
+        );
+
+        return;
+    }
+
+
+    /* =========================
+       SUCCESS
+    ========================= */
+
+    showNotice(
+        "Withdrawal Request",
+        "Your withdrawal request has been submitted successfully."
     );
 
 }
 
 
-// -----------------------------
-// LOAD BALANCE
-// -----------------------------
+/* =========================
+   NOTICE POPUP
+========================= */
 
-function loadBalance(){
+function showNotice(title,message){
 
-    const userId =
-        localStorage.getItem("userid");
+    const old =
+        document.getElementById("withdrawNotice");
 
-    if(!userId) return;
+    if(old){
+        old.remove();
+    }
 
-    const data =
-        localStorage.getItem(
-            "globalPayUser_" + userId
-        );
 
-    if(data){
+    const popup =
+        document.createElement("div");
 
-        const user =
-            JSON.parse(data);
+    popup.id = "withdrawNotice";
 
-        const balance =
-            Number(user.balance || 0);
+    popup.innerHTML = `
 
-        document.getElementById("balance")
-            .innerText = balance.toFixed(2);
+        <div class="withdraw-notice-box">
 
-        document.getElementById("available")
-            .innerText = balance.toFixed(2);
+            <div class="withdraw-notice-icon">
+                !
+            </div>
 
+            <h2>${title}</h2>
+
+            <p>${message.replace(/\n/g,"<br>")}</p>
+
+            <button onclick="closeWithdrawNotice()">
+                OK
+            </button>
+
+        </div>
+    `;
+
+
+    document.body.appendChild(popup);
+}
+
+
+/* =========================
+   CLOSE NOTICE
+========================= */
+
+function closeWithdrawNotice(){
+
+    const popup =
+        document.getElementById("withdrawNotice");
+
+    if(popup){
+        popup.remove();
     }
 
 }
 
-loadBalance();
 
 </script>
 
