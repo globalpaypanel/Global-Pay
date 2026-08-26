@@ -1370,6 +1370,15 @@ function submitWithdrawal(){
         return;
     }
 
+    if(amount > Number(document.getElementById("available").innerText.replace(/,/g,""))){
+
+    showNotice(
+        "Insufficient Balance",
+        "Please check your balance."
+    );
+
+    return;
+}
 
     /* =========================
        SUCCESS
