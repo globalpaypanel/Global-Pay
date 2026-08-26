@@ -10,11 +10,24 @@
 </head>
 
 <script>
-if (
-    localStorage.getItem("globalPayRegistered") !== "true" &&
-    localStorage.getItem("allowLoginPage") !== "true"
-) {
-    location.replace("register.html");
+const savedLogin =
+    localStorage.getItem("rememberedLogin");
+
+if (savedLogin) {
+
+    const data = JSON.parse(savedLogin);
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+        document.getElementById("userid").value =
+            data.userid || "";
+
+        document.getElementById("password").value =
+            data.password || "";
+
+        document.getElementById("remember").checked = true;
+
+    });
 }
 </script>
 
