@@ -899,58 +899,70 @@ let currentValidity = 1;
 
 const planTemplates = {
 
-    Airtel:[
-        [199,28,"2 GB Total","Unlimited Calls","100 SMS/day"],
-        [299,28,"1 GB/day","Unlimited Calls","100 SMS/day"],
-        [349,28,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [409,28,"2.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [449,28,"3 GB/day","Unlimited Calls","100 SMS/day"],
-        [579,56,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [649,56,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [859,84,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [979,84,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [1999,365,"24 GB Total","Unlimited Calls","100 SMS/day"],
-        [3599,365,"2 GB/day","Unlimited Calls","100 SMS/day"]
-    ],
+  Airtel: [
+    { price: 199, validity: "28 Days", data: "2 GB Total", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 299, validity: "28 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 349, validity: "28 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 409, validity: "28 Days", data: "2.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 449, validity: "28 Days", data: "3 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 579, validity: "56 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 649, validity: "56 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 859, validity: "84 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 979, validity: "84 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 1199, validity: "84 Days", data: "2.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 1799, validity: "365 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" }
+  ],
 
-    Jio:[
-        [199,28,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [249,28,"1 GB/day","Unlimited Calls","100 SMS/day"],
-        [299,28,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [349,28,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [399,28,"2.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [579,56,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [629,56,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [859,84,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [999,84,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [1899,365,"2 GB/day","Unlimited Calls","100 SMS/day"]
-    ],
+  Jio: [
+    { price: 198, validity: "14 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 239, validity: "22 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 299, validity: "28 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 329, validity: "28 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 349, validity: "28 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 399, validity: "28 Days", data: "2.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 450, validity: "36 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 459, validity: "28 Days", data: "2 GB/day + 5 GB", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 579, validity: "56 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 666, validity: "70 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 889, validity: "84 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 899, validity: "90 Days", data: "2 GB/day + 20 GB", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 999, validity: "98 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 1029, validity: "84 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 3599, validity: "365 Days", data: "2.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" }
+  ],
 
-    Vi:[
-        [199,28,"1 GB/day","Unlimited Calls","100 SMS/day"],
-        [299,28,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [349,28,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [409,28,"2.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [479,56,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [649,84,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [1799,365,"1.5 GB/day","Unlimited Calls","100 SMS/day"]
-    ],
+  Vi: [
+    { price: 349, validity: "28 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 365, validity: "28 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 399, validity: "28 Days", data: "Unlimited Data", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 408, validity: "28 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 449, validity: "28 Days", data: "Unlimited Data", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 859, validity: "84 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 979, validity: "84 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 998, validity: "84 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 1099, validity: "84 Days", data: "Unlimited Data", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 1198, validity: "70 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 3599, validity: "365 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 3799, validity: "365 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" }
+  ],
 
-    BSNL:[
-        [147,30,"5 GB Total","Unlimited Calls","100 SMS/day"],
-        [197,30,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [397,60,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [599,84,"3 GB/day","Unlimited Calls","100 SMS/day"],
-        [1499,365,"2 GB/day","Unlimited Calls","100 SMS/day"]
-    ],
+  BSNL: [
+    { price: 147, validity: "30 Days", data: "5 GB Total", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 197, validity: "30 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 225, validity: "28 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 397, validity: "30 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 599, validity: "84 Days", data: "3 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 1499, validity: "365 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 2399, validity: "412 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" }
+  ],
 
-    MTNL:[
-        [199,28,"1 GB/day","Unlimited Calls","100 SMS/day"],
-        [299,28,"1.5 GB/day","Unlimited Calls","100 SMS/day"],
-        [399,56,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [699,84,"2 GB/day","Unlimited Calls","100 SMS/day"],
-        [1599,365,"1.5 GB/day","Unlimited Calls","100 SMS/day"]
-    ]
+  MTNL: [
+    { price: 199, validity: "28 Days", data: "1 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 299, validity: "28 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 399, validity: "56 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 699, validity: "84 Days", data: "2 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" },
+    { price: 1599, validity: "365 Days", data: "1.5 GB/day", calls: "Unlimited Calls", sms: "100 SMS/day" }
+  ]
 
 };
 
