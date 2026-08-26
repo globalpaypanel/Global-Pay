@@ -1,0 +1,807 @@
+/* ================================
+   GLOBAL PAY - BILL PAYMENT
+   COMPLETE CSS
+================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    min-height: 100%;
+    background: #050a18;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    background:
+        radial-gradient(circle at 15% 10%, rgba(45, 90, 255, 0.18), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(110, 50, 255, 0.15), transparent 30%),
+        linear-gradient(135deg, #050a18, #080d20 50%, #050817);
+    overflow-x: hidden;
+}
+
+/* Main page */
+
+.bill-page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 22px 18px 115px;
+}
+
+/* Back button */
+
+.back-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(80, 140, 255, 0.35);
+    background: rgba(20, 32, 65, 0.9);
+    color: #ffffff;
+    font-size: 22px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+/* Header */
+
+.bill-header {
+    margin-bottom: 28px;
+}
+
+.bill-header h1 {
+    font-size: 38px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 8px;
+}
+
+.bill-header h1 span {
+    color: #4d8dff;
+}
+
+.bill-header p {
+    color: #9ba9c8;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Main card */
+
+.recharge-card {
+    background: rgba(15, 27, 55, 0.88);
+    border: 1px solid rgba(77, 141, 255, 0.22);
+    border-radius: 24px;
+    padding: 22px;
+    box-shadow:
+        0 15px 45px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+/* Section title */
+
+.section-title {
+    font-size: 22px;
+    font-weight: 750;
+    margin-bottom: 16px;
+}
+
+.section-subtitle {
+    color: #8f9dbb;
+    font-size: 14px;
+    margin-bottom: 18px;
+}
+
+/* Operator grid */
+
+.operator-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-bottom: 26px;
+}
+
+/* Operator button */
+
+.operator-btn {
+    appearance: none;
+    -webkit-appearance: none;
+
+    width: 100%;
+    min-height: 100px;
+
+    border-radius: 18px;
+    border: 1px solid rgba(100, 130, 190, 0.28);
+
+    background: linear-gradient(
+        145deg,
+        rgba(26, 43, 82, 0.95),
+        rgba(11, 22, 47, 0.95)
+    );
+
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.operator-btn:hover {
+    transform: translateY(-2px);
+    border-color: #4d8dff;
+}
+
+.operator-btn:active {
+    transform: scale(0.97);
+}
+
+.operator-btn.active {
+    border-color: #438aff;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(42, 90, 210, 0.45),
+            rgba(77, 50, 180, 0.35)
+        );
+
+    box-shadow:
+        0 0 0 2px rgba(65, 137, 255, 0.12),
+        0 10px 30px rgba(48, 101, 255, 0.18);
+}
+
+.operator-logo {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 13px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    background: rgba(255,255,255,0.08);
+}
+
+.operator-name {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Different operator icon styles */
+
+.airtel .operator-logo {
+    background: rgba(255, 50, 80, 0.16);
+    color: #ff4b67;
+}
+
+.jio .operator-logo {
+    background: rgba(35, 130, 255, 0.16);
+    color: #4da0ff;
+}
+
+.vi .operator-logo {
+    background: rgba(255, 170, 0, 0.15);
+    color: #ffbd32;
+}
+
+.bsnl .operator-logo {
+    background: rgba(30, 190, 255, 0.15);
+    color: #40c9ff;
+}
+
+.mtnl .operator-logo {
+    background: rgba(160, 100, 255, 0.15);
+    color: #ad7cff;
+}
+
+/* Plans */
+
+.plans-section {
+    display: none;
+    margin-top: 25px;
+}
+
+.plans-section.show {
+    display: block;
+}
+
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+}
+
+.plan-card {
+    padding: 18px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(100, 130, 190, 0.22);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(22, 38, 74, 0.95),
+            rgba(9, 18, 40, 0.95)
+        );
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.plan-card:hover {
+    border-color: #438aff;
+    transform: translateY(-2px);
+}
+
+.plan-card.active {
+    border-color: #36a0ff;
+    box-shadow:
+        0 0 0 2px rgba(54,160,255,0.12);
+}
+
+.plan-duration {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.plan-price {
+    font-size: 24px;
+    font-weight: 800;
+    margin-top: 9px;
+}
+
+.plan-discount {
+    color: #27df8b;
+    font-size: 13px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.plan-old {
+    color: #7d8aa7;
+    text-decoration: line-through;
+    font-size: 13px;
+    margin-left: 5px;
+}
+
+/* Mobile number */
+
+.mobile-section {
+    display: none;
+    margin-top: 26px;
+}
+
+.mobile-section.show {
+    display: block;
+}
+
+.mobile-input-box {
+    display: flex;
+    align-items: center;
+
+    height: 58px;
+
+    border-radius: 16px;
+
+    border: 1px solid rgba(100, 130, 190, 0.28);
+
+    background: rgba(5, 13, 30, 0.8);
+
+    overflow: hidden;
+}
+
+.country-code {
+    padding: 0 15px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+.mobile-input-box input {
+    flex: 1;
+
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    padding: 0 15px;
+
+    font-size: 17px;
+}
+
+.mobile-input-box input::placeholder {
+    color: #66738f;
+}
+
+/* Continue button */
+
+.continue-btn {
+    width: 100%;
+    height: 58px;
+
+    margin-top: 17px;
+
+    border: none;
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1677ff,
+            #5839e8
+        );
+
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(42, 105, 255, 0.2);
+
+    transition: 0.2s ease;
+}
+
+.continue-btn:hover {
+    transform: translateY(-2px);
+}
+
+.continue-btn:active {
+    transform: scale(0.98);
+}
+
+/* Payment section */
+
+.payment-section {
+    display: none;
+    margin-top: 28px;
+
+    text-align: center;
+}
+
+.payment-section.show {
+    display: block;
+}
+
+.payment-card {
+    padding: 22px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 35, 68, 0.96),
+            rgba(8, 17, 38, 0.96)
+        );
+
+    border: 1px solid rgba(77,141,255,0.25);
+}
+
+.payment-title {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 8px;
+}
+
+.payment-text {
+    color: #98a6c3;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+/* QR */
+
+.qr-box {
+    width: 220px;
+    height: 220px;
+
+    margin: 0 auto 18px;
+
+    background: #ffffff;
+
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,0.35);
+}
+
+.qr-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Scan animation */
+
+.scan-box {
+    position: relative;
+
+    width: 220px;
+    height: 220px;
+
+    margin: 0 auto 18px;
+
+    overflow: hidden;
+
+    border-radius: 18px;
+}
+
+.scan-line {
+    position: absolute;
+
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background: #20e88a;
+
+    box-shadow:
+        0 0 12px #20e88a,
+        0 0 25px #20e88a;
+
+    animation: scan 2s infinite ease-in-out;
+}
+
+@keyframes scan {
+
+    0% {
+        top: 8px;
+    }
+
+    50% {
+        top: calc(100% - 8px);
+    }
+
+    100% {
+        top: 8px;
+    }
+}
+
+/* UTR */
+
+.utr-section {
+    margin-top: 22px;
+
+    text-align: left;
+}
+
+.utr-section label {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 700;
+
+    margin-bottom: 9px;
+}
+
+.utr-input {
+    width: 100%;
+    height: 56px;
+
+    border-radius: 15px;
+
+    border: 1px solid rgba(100,130,190,0.28);
+
+    background: rgba(5,13,30,0.85);
+
+    color: #ffffff;
+
+    outline: none;
+
+    padding: 0 15px;
+
+    font-size: 16px;
+}
+
+.utr-input:focus {
+    border-color: #418cff;
+}
+
+.utr-error {
+    display: none;
+
+    color: #ff5368;
+
+    font-size: 13px;
+
+    margin-top: 7px;
+}
+
+.utr-error.show {
+    display: block;
+}
+
+/* Payment submit */
+
+.payment-btn {
+    width: 100%;
+    height: 56px;
+
+    margin-top: 14px;
+
+    border: none;
+    border-radius: 15px;
+
+    background: linear-gradient(
+        90deg,
+        #00a875,
+        #00d58c
+    );
+
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+/* Success notice */
+
+.success-notice {
+    display: none;
+
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: calc(100% - 40px);
+    max-width: 390px;
+
+    padding: 28px 22px;
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #132b29,
+            #071a18
+        );
+
+    border: 1px solid rgba(0,230,150,0.35);
+
+    text-align: center;
+
+    z-index: 9999;
+
+    box-shadow:
+        0 25px 70px rgba(0,0,0,0.65);
+}
+
+.success-notice.show {
+    display: block;
+}
+
+.success-icon {
+    width: 65px;
+    height: 65px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,220,140,0.14);
+
+    color: #23e796;
+
+    font-size: 35px;
+}
+
+.success-notice h3 {
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.success-notice p {
+    color: #a6b9b4;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Bottom navigation */
+
+.bottom-nav {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 82px;
+
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+    padding: 7px 8px;
+
+    background:
+        rgba(7, 16, 37, 0.97);
+
+    border-top: 1px solid rgba(90,120,180,0.2);
+
+    backdrop-filter: blur(16px);
+}
+
+.nav-item {
+    flex: 1;
+
+    max-width: 100px;
+
+    height: 67px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    color: #7785a4;
+
+    text-decoration: none;
+
+    border-radius: 16px;
+
+    transition: 0.2s ease;
+}
+
+.nav-item.active {
+    color: #4b91ff;
+
+    background:
+        rgba(50,110,255,0.09);
+}
+
+.nav-icon {
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 23px;
+}
+
+.nav-label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Overlay */
+
+.notice-overlay {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.65);
+
+    z-index: 9998;
+}
+
+.notice-overlay.show {
+    display: block;
+}
+
+/* Mobile */
+
+@media (max-width: 650px) {
+
+    .bill-page {
+        padding: 15px 14px 105px;
+    }
+
+    .bill-header h1 {
+        font-size: 34px;
+    }
+
+    .recharge-card {
+        padding: 17px;
+        border-radius: 20px;
+    }
+
+    .operator-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .operator-btn {
+        min-height: 90px;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .qr-box,
+    .scan-box {
+        width: 210px;
+        height: 210px;
+    }
+}
+
+/* Very small phones */
+
+@media (max-width: 380px) {
+
+    .bill-header h1 {
+        font-size: 30px;
+    }
+
+    .operator-grid {
+        gap: 8px;
+    }
+
+    .operator-btn {
+        min-height: 82px;
+    }
+
+    .operator-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .nav-label {
+        font-size: 10px;
+    }
+  }
