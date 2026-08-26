@@ -1360,3 +1360,49 @@ button {
 .admin-icon svg {
     pointer-events: none;
     }
+
+
+
+.message {
+    min-height: 20px;
+
+    margin-top: 14px;
+    padding: 11px 16px;
+
+    text-align: center;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    color: #52ffb4;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 233, 149, .12),
+            rgba(0, 180, 130, .05)
+        );
+
+    border:
+        1px solid rgba(0, 233, 149, .30);
+
+    border-radius: 12px;
+
+    box-shadow:
+        0 0 20px rgba(0, 233, 149, .10);
+
+    animation: loginSuccess .3s ease;
+}
+
+@keyframes loginSuccess {
+
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
