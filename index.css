@@ -1068,11 +1068,13 @@ button {
     }
 
 
-    .admin-btn span {
+    .admin-btn > span:not(.admin-icon) {
+    display: none;
+}
 
-        display: none;
-    }
-
+.admin-btn .admin-icon {
+    display: flex;
+}
 
     .login-main {
 
