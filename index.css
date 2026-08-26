@@ -1197,3 +1197,46 @@ button {
         );
     }
 
+
+/* ================= WELCOME LOCK ICON ================= */
+
+.lock-icon{
+    width:58px;
+    height:58px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    color:#5ee7ff;
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(45,170,255,.18),
+            rgba(115,55,255,.18)
+        );
+
+    border:1px solid
+        rgba(75,190,255,.45);
+
+    box-shadow:
+        0 0 22px
+        rgba(50,180,255,.18);
+}
+
+.lock-icon svg{
+    width:30px;
+    height:30px;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(70,210,255,.55)
+        );
+}
+
