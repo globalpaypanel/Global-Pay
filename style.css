@@ -1517,3 +1517,43 @@ body.light-mode .bottom-nav {
         0 0 24px
         rgba(0,210,255,.18);
 }
+
+
+.delete-icon{
+    width:46px;
+    height:46px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    color:#ff4f67;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,65,90,.22),
+            rgba(180,30,55,.10)
+        );
+
+    border:
+        1px solid
+        rgba(255,75,95,.30);
+
+    box-shadow:
+        0 0 18px
+        rgba(255,55,80,.10);
+}
+
+.delete-icon svg{
+    width:25px;
+    height:25px;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(255,55,80,.45)
+        );
+}
