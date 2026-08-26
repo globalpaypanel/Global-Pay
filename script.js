@@ -34,10 +34,12 @@ function login() {
         return;
     }
 
-    // Login successful
-    msg.style.color = "#00ff88";
-    msg.innerHTML =
-        "✅ Login Successful...";
+    // Remember Me check
+const remember = document.getElementById("remember");
+
+if (!remember.checked) {
+    localStorage.removeItem("rememberedUser");
+}
 
     // Current logged-in user save
     localStorage.setItem(
