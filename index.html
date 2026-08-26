@@ -73,11 +73,80 @@ if (savedLogin) {
 
 
         <button
-            class="admin-btn"
-            onclick="location.href='admin.html'">
+    class="admin-btn"
+    onclick="location.href='admin.html'">
 
-            🛡️
-            <span>PANEL ADMIN</span>
+    <span class="admin-icon">
+
+        <svg viewBox="0 0 48 48"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <!-- Shield -->
+            <path
+                d="M24 4L39 10V21
+                   C39 31 33 39 24 44
+                   C15 39 9 31 9 21V10L24 4Z"
+                fill="url(#shieldGradient)"
+                stroke="#42DFFF"
+                stroke-width="2"/>
+
+            <!-- Gear -->
+            <circle
+                cx="27"
+                cy="24"
+                r="7"
+                fill="#7C4DFF"/>
+
+            <circle
+                cx="27"
+                cy="24"
+                r="2.5"
+                fill="#FFD43B"/>
+
+            <path
+                d="M27 14V11
+                   M27 37V34
+                   M17 24H14
+                   M40 24H37
+                   M20 17L18 15
+                   M36 33L34 31
+                   M34 17L36 15
+                   M18 33L20 31"
+                stroke="#FFD43B"
+                stroke-width="2"
+                stroke-linecap="round"/>
+
+            <defs>
+
+                <linearGradient
+                    id="shieldGradient"
+                    x1="9"
+                    y1="4"
+                    x2="39"
+                    y2="44"
+                    gradientUnits="userSpaceOnUse">
+
+                    <stop
+                        stop-color="#00D9FF"/>
+
+                    <stop
+                        offset="0.5"
+                        stop-color="#4169FF"/>
+
+                    <stop
+                        offset="1"
+                        stop-color="#9B35FF"/>
+
+                </linearGradient>
+
+            </defs>
+
+        </svg>
+
+    </span>
+
+    <span>PANEL ADMIN</span>
 
         </button>
 
