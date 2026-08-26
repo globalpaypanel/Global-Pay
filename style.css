@@ -1456,3 +1456,64 @@ body.light-mode .bottom-nav {
     height:52px;
     display:block;
 }
+
+
+/* ================= SERVICE WORK ICON ================= */
+
+.service-icon{
+    width:46px;
+    height:46px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    color:#35d9ff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,220,255,.22),
+            rgba(38,91,255,.12)
+        );
+
+    border:
+        1px solid
+        rgba(39,215,255,.30);
+
+    box-shadow:
+        0 0 18px
+        rgba(0,210,255,.10);
+}
+
+
+.service-icon svg{
+    width:25px;
+    height:25px;
+
+    color:#35d9ff;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(0,215,255,.45)
+        );
+}
+
+
+.menu-grid button:hover .service-icon{
+    color:#69e6ff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,225,255,.30),
+            rgba(65,90,255,.18)
+        );
+
+    box-shadow:
+        0 0 24px
+        rgba(0,210,255,.18);
+}
