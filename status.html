@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>GLOBAL PAY SERVICES</title>
+
+
+<style>
+
+/* =========================================================
+   ULTRA GLOBAL PAY
+   SINGLE FILE VERSION
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    min-height:100%;
+}
+
+body{
+
+    min-height:100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color:#ffffff;
+
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 0%,
+            rgba(139,92,246,.22),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 95% 18%,
+            rgba(0,229,255,.13),
+            transparent 27%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(79,70,229,.12),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            145deg,
+            #05050a 0%,
+            #090812 48%,
+            #030308 100%
+        );
+}
+
+
+/* =========================================================
+   BACKGROUND LIGHT EFFECTS
+========================================================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:260px;
+    height:260px;
+
+    top:120px;
+    right:-150px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0,217,255,.12),
+            transparent 68%
+        );
+
+    filter:blur(15px);
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:240px;
+    height:240px;
+
+    bottom:-120px;
+    left:-120px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(126,82,255,.15),
+            transparent 68%
+        );
+
+    filter:blur(15px);
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header{
+
+    position:relative;
+
+    padding:
+        17px
+        18px
+        18px;
+
+    text-align:center;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(11,10,20,.98),
+            rgba(7,7,13,.94)
+        );
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.065);
+
+    overflow:hidden;
+}
+
+
+/* Header glow */
+
+.header::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:280px;
+    height:130px;
+
+    top:-100px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(139,92,246,.35),
+            transparent 68%
+        );
+
+    filter:blur(8px);
+
+    pointer-events:none;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo-box{
+
+    position:relative;
+
+    width:40px;
+    height:40px;
+
+    margin:
+        0 auto
+        8px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8254ff,
+            #18d7ed
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    box-shadow:
+        0 8px 25px
+        rgba(116,76,255,.34);
+}
+
+
+.logo-box::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:1px;
+
+    border-radius:12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+}
+
+
+.logo-box svg{
+
+    position:relative;
+
+    width:22px;
+    height:22px;
+
+    fill:none;
+
+    stroke:#ffffff;
+
+    stroke-width:1.65;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+    z-index:2;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.brand{
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+.brand h1{
+
+    font-size:20px;
+
+    line-height:1;
+
+    font-weight:800;
+
+    letter-spacing:1.8px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #d9d2ff,
+            #ffffff
+        );
+
+    -webkit-background-clip:text;
+
+    background-clip:text;
+
+    -webkit-text-fill-color:transparent;
+}
+
+
+.brand p{
+
+    margin-top:5px;
+
+    color:#a79bd1;
+
+    font-size:8px;
+
+    font-weight:700;
+
+    letter-spacing:4px;
+}
+
+
+/* Header line */
+
+.header-line{
+
+    width:40px;
+    height:2px;
+
+    margin:
+        10px
+        auto
+        0;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #8a5cff,
+            #21d9ee
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(125,83,255,.65);
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container{
+
+    width:100%;
+
+    max-width:680px;
+
+    margin:auto;
+
+    padding:
+        23px
+        14px
+        40px;
+}
+
+
+/* =========================================================
+   SERVICE HEADER
+========================================================= */
+
+.services-header{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    justify-content:space-between;
+
+    margin:
+        0
+        4px
+        15px;
+}
+
+
+.services-title h2{
+
+    font-size:19px;
+
+    font-weight:750;
+
+    letter-spacing:.2px;
+}
+
+
+.services-title p{
+
+    margin-top:4px;
+
+    color:#777487;
+
+    font-size:11px;
+}
+
+
+.service-count{
+
+    padding:
+        6px
+        9px;
+
+    border-radius:9px;
+
+    color:#b9a5ff;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,92,246,.12),
+            rgba(0,210,255,.06)
+        );
+
+    border:
+        1px solid
+        rgba(139,92,246,.22);
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:.5px;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
+
+.card{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:76px;
+
+    margin-bottom:12px;
+
+    padding:
+        11px
+        12px;
+
+    display:flex;
+
+    align-items:center;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(25,24,36,.97),
+            rgba(11,11,18,.98)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.075);
+
+    box-shadow:
+        0 9px 25px
+        rgba(0,0,0,.32),
+
+        inset 0 1px 0
+        rgba(255,255,255,.035);
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    transition:
+        transform .18s ease,
+        border-color .18s ease,
+        box-shadow .18s ease;
+}
+
+
+/* top shine */
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:12%;
+
+    width:55%;
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.16),
+            transparent
+        );
+}
+
+
+/* left glow */
+
+.card::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:18px;
+
+    width:2px;
+    height:40px;
+
+    border-radius:0 5px 5px 0;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(139,92,246,.8),
+            transparent
+        );
+}
+
+
+.card:hover{
+
+    transform:
+        translateY(-2px);
+
+    border-color:
+        rgba(139,92,246,.28);
+
+    box-shadow:
+        0 14px 34px
+        rgba(0,0,0,.42),
+
+        0 0 20px
+        rgba(100,70,220,.05);
+}
+
+
+.card:active{
+
+    transform:
+        scale(.972);
+}
+
+
+/* =========================================================
+   ICON
+========================================================= */
+
+.icon{
+
+    position:relative;
+
+    flex-shrink:0;
+
+    width:47px;
+    height:47px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    overflow:hidden;
+}
+
+
+.icon::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    filter:blur(14px);
+
+    opacity:.55;
+}
+
+
+.icon svg{
+
+    position:relative;
+
+    width:24px;
+    height:24px;
+
+    fill:none;
+
+    stroke-width:1.75;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+
+    z-index:2;
+}
+
+
+/* =========================================================
+   ACCOUNT TESTING - PURPLE
+========================================================= */
+
+.icon-testing{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(143,92,255,.24),
+            rgba(82,42,190,.08)
+        );
+
+    border:
+        1px solid
+        rgba(143,92,255,.32);
+}
+
+
+.icon-testing svg{
+
+    stroke:#b486ff;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(143,92,255,.50)
+        );
+}
+
+
+.icon-testing::after{
+
+    background:#8b5cf6;
+}
+
+
+/* =========================================================
+   FUND CHANGE - GREEN
+========================================================= */
+
+.icon-fund{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(38,220,147,.23),
+            rgba(11,122,82,.08)
+        );
+
+    border:
+        1px solid
+        rgba(38,220,147,.30);
+}
+
+
+.icon-fund svg{
+
+    stroke:#43e8a8;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(38,220,147,.48)
+        );
+}
+
+
+.icon-fund::after{
+
+    background:#22c985;
+}
+
+
+/* =========================================================
+   UPI - CYAN
+========================================================= */
+
+.icon-upi{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(21,208,246,.23),
+            rgba(0,116,161,.08)
+        );
+
+    border:
+        1px solid
+        rgba(21,208,246,.30);
+}
+
+
+.icon-upi svg{
+
+    stroke:#36dfff;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(21,208,246,.50)
+        );
+}
+
+
+.icon-upi::after{
+
+    background:#13cde9;
+}
+
+
+/* =========================================================
+   ACCOUNT - BLUE
+========================================================= */
+
+.icon-account{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(62,132,255,.24),
+            rgba(22,69,164,.08)
+        );
+
+    border:
+        1px solid
+        rgba(62,132,255,.31);
+}
+
+
+.icon-account svg{
+
+    stroke:#5fa1ff;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(62,132,255,.50)
+        );
+}
+
+
+.icon-account::after{
+
+    background:#347eff;
+}
+
+
+/* =========================================================
+   USDT - LIME
+========================================================= */
+
+.icon-usdt{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(182,231,67,.22),
+            rgba(74,125,21,.08)
+        );
+
+    border:
+        1px solid
+        rgba(182,231,67,.30);
+}
+
+
+.icon-usdt svg{
+
+    stroke:#c3ef55;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(182,231,67,.50)
+        );
+}
+
+
+.icon-usdt::after{
+
+    background:#a9df39;
+}
+
+
+/* =========================================================
+   STATEMENT - ORANGE
+========================================================= */
+
+.icon-statement{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,161,64,.23),
+            rgba(174,77,17,.08)
+        );
+
+    border:
+        1px solid
+        rgba(255,161,64,.30);
+}
+
+
+.icon-statement svg{
+
+    stroke:#ffb45f;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(255,161,64,.50)
+        );
+}
+
+
+.icon-statement::after{
+
+    background:#ff9e3f;
+}
+
+
+/* =========================================================
+   STATUS - PINK
+========================================================= */
+
+.icon-status{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,74,157,.22),
+            rgba(171,35,98,.08)
+        );
+
+    border:
+        1px solid
+        rgba(255,74,157,.30);
+}
+
+
+.icon-status svg{
+
+    stroke:#ff6bb2;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(255,74,157,.50)
+        );
+}
+
+
+.icon-status::after{
+
+    background:#ff3f96;
+}
+
+
+/* =========================================================
+   SHARE - GOLD
+========================================================= */
+
+.icon-share{
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,194,65,.22),
+            rgba(171,104,17,.08)
+        );
+
+    border:
+        1px solid
+        rgba(255,194,65,.30);
+}
+
+
+.icon-share svg{
+
+    stroke:#ffd260;
+
+    filter:
+        drop-shadow(
+            0 0 6px
+            rgba(255,194,65,.50)
+        );
+}
+
+
+.icon-share::after{
+
+    background:#ffc13d;
+}
+
+
+/* =========================================================
+   CARD TEXT
+========================================================= */
+
+.card-content{
+
+    flex:1;
+
+    min-width:0;
+
+    margin-left:13px;
+}
+
+
+.card-content h3{
+
+    color:#ffffff;
+
+    font-size:15.5px;
+
+    font-weight:700;
+
+    line-height:1.2;
+}
+
+
+.card-content p{
+
+    margin-top:4px;
+
+    color:#777589;
+
+    font-size:10.5px;
+
+    line-height:1.2;
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.arrow{
+
+    flex-shrink:0;
+
+    width:29px;
+    height:29px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    margin-left:7px;
+
+    border-radius:50%;
+
+    color:#a995d7;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.05);
+
+    font-size:23px;
+
+    line-height:1;
+
+    padding-bottom:2px;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.backBtn{
+
+    width:100%;
+
+    height:56px;
+
+    margin-top:4px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:9px;
+
+    border:none;
+
+    border-radius:17px;
+
+    color:#ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8358f5,
+            #4a5ce1
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    box-shadow:
+        0 13px 30px
+        rgba(100,70,225,.28),
+
+        inset 0 1px 0
+        rgba(255,255,255,.18);
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:
+        transform .16s ease;
+}
+
+
+.backBtn:active{
+
+    transform:
+        scale(.97);
+}
+
+
+.backBtn svg{
+
+    width:19px;
+    height:19px;
+
+    fill:none;
+
+    stroke:#ffffff;
+
+    stroke-width:2;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+}
+
+
+/* =========================================================
+   POPUP OVERLAY
+========================================================= */
+
+.popupOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+
+    background:
+        rgba(2,2,7,.84);
+
+    backdrop-filter:
+        blur(11px);
+
+    -webkit-backdrop-filter:
+        blur(11px);
+
+    z-index:9999;
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.popupCard{
+
+    width:100%;
+
+    max-width:390px;
+
+    padding:
+        27px
+        22px
+        22px;
+
+    text-align:center;
+
+    border-radius:23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #211a36,
+            #0b0b13
+        );
+
+    border:
+        1px solid
+        rgba(154,116,255,.23);
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.72);
+}
+
+
+.popup-icon{
+
+    width:56px;
+    height:56px;
+
+    margin:
+        0 auto
+        15px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border-radius:17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(139,92,246,.22),
+            rgba(0,211,231,.08)
+        );
+
+    border:
+        1px solid
+        rgba(139,92,246,.25);
+}
+
+
+.popup-icon svg{
+
+    width:29px;
+    height:29px;
+
+    fill:none;
+
+    stroke:#a981ff;
+
+    stroke-width:1.7;
+
+    stroke-linecap:round;
+
+    stroke-linejoin:round;
+}
+
+
+.popupCard h2{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+}
+
+
+.popupCard > p{
+
+    color:#9993a9;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+    margin-bottom:17px;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.popupCard input{
+
+    width:100%;
+
+    height:49px;
+
+    padding:
+        0
+        14px;
+
+    margin-bottom:10px;
+
+    outline:none;
+
+    color:#ffffff;
+
+    background:
+        rgba(0,0,0,.32);
+
+    border:
+        1px solid
+        rgba(255,255,255,.10);
+
+    border-radius:12px;
+
+    font-size:13px;
+}
+
+
+.popupCard input::placeholder{
+
+    color:#6f6b79;
+}
+
+
+.popupCard input:focus{
+
+    border-color:
+        rgba(139,92,246,.75);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(139,92,246,.08);
+}
+
+
+/* =========================================================
+   POPUP BUTTONS
+========================================================= */
+
+.greenBtn,
+.grayBtn{
+
+    width:100%;
+
+    height:47px;
+
+    border:none;
+
+    border-radius:12px;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+
+.greenBtn{
+
+    color:#ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8255f3,
+            #4759df
+        );
+
+    box-shadow:
+        0 8px 22px
+        rgba(104,73,226,.24);
+}
+
+
+.grayBtn{
+
+    margin-top:9px;
+
+    color:#aaa5b5;
+
+    background:
+        rgba(255,255,255,.055);
+}
+
+
+#accountError{
+
+    min-height:17px;
+
+    margin:
+        0
+        0
+        7px;
+
+    color:#ff6d86;
+
+    font-size:11px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:420px){
+
+    .header{
+
+        padding:
+            16px
+            14px
+            17px;
+    }
+
+
+    .logo-box{
+
+        width:39px;
+        height:39px;
+
+        border-radius:12px;
+    }
+
+
+    .logo-box svg{
+
+        width:21px;
+        height:21px;
+    }
+
+
+    .brand h1{
+
+        font-size:19px;
+
+        letter-spacing:1.5px;
+    }
+
+
+    .brand p{
+
+        font-size:8px;
+
+        letter-spacing:3.5px;
+    }
+
+
+    .container{
+
+        padding:
+            21px
+            12px
+            35px;
+    }
+
+
+    .services-title h2{
+
+        font-size:18px;
+    }
+
+
+    .services-title p{
+
+        font-size:10px;
+    }
+
+
+    .card{
+
+        min-height:73px;
+
+        padding:
+            11px
+            12px;
+
+        border-radius:17px;
+    }
+
+
+    .icon{
+
+        width:44px;
+        height:44px;
+
+        border-radius:13px;
+    }
+
+
+    .icon svg{
+
+        width:23px;
+        height:23px;
+    }
+
+
+    .card-content{
+
+        margin-left:11px;
+    }
+
+
+    .card-content h3{
+
+        font-size:15px;
+    }
+
+
+    .card-content p{
+
+        font-size:10px;
+    }
+
+
+    .arrow{
+
+        width:28px;
+        height:28px;
+
+        font-size:22px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALL PHONES
+========================================================= */
+
+@media(max-width:350px){
+
+    .card-content p{
+
+        display:none;
+    }
+
+
+    .card{
+
+        min-height:69px;
+    }
+
+
+    .service-count{
+
+        display:none;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="header">
+
+
+    <div class="logo-box">
+
+        <svg viewBox="0 0 24 24">
+
+            <path d="M3 21h18"/>
+
+            <path d="M5 21V9h14v12"/>
+
+            <path d="M3 9l9-6 9 6"/>
+
+            <path d="M8 13h2"/>
+
+            <path d="M14 13h2"/>
+
+            <path d="M8 17h2"/>
+
+            <path d="M14 17h2"/>
+
+        </svg>
+
+    </div>
+
+
+    <div class="brand">
+
+        <h1>GLOBAL PAY</h1>
+
+        <p>SERVICES</p>
+
+    </div>
+
+
+    <div class="header-line"></div>
+
+
+</header>
+
+
+
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main class="container">
+
+
+    <div class="services-header">
+
+        <div class="services-title">
+
+            <h2>Services</h2>
+
+            <p>
+                Select a service to continue
+            </p>
+
+        </div>
+
+
+        <div class="service-count">
+            08 SERVICES
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         1 ACCOUNT TESTING
+    ==================================================== -->
+
+    <div
+        class="card"
+        onclick="location.href='testing-activate.html'"
+    >
+
+        <div class="icon icon-testing">
+
+            <svg viewBox="0 0 24 24">
+
+                <rect
+                    x="4"
+                    y="3"
+                    width="16"
+                    height="18"
+                    rx="2"
+                />
+
+                <path d="M8 7h8"/>
+
+                <path d="M8 11h4"/>
+
+                <path d="M8 15l2 2 4-4"/>
+
+            </svg>
+
+        </div>
+
+
+        <div class="card-content">
+
+            <h3>
+                Account Testing
+            </h3>
+
+            <p>
+                Test and verify account
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         2 FUND CHANGE
+    ==================================================== -->
+
+    <div
+        class="card"
+        onclick="location.href='fund-activate.html'"
+    >
+
+        <div class="icon icon-fund">
+
+            <svg viewBox="0 0 24 24">
+
+                <rect
+                    x="3"
+                    y="6"
+                    width="18"
+                    height="12"
+                    rx="2"
+                />
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="3"
+                />
+
+                <path d="M7 9h.01"/>
+
+                <path d="M17 15h.01"/>
+
+            </svg>
+
+        </div>
+
+
+        <div class="card-content">
+
+            <h3>
+                Fund Change
+            </h3>
+
+            <p>
+                Manage fund services
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         3 UPI WORK
+    ==================================================== -->
+
+    <div
+        class="card"
+        onclick="location.href='activation.html'"
+    >
+
+        <div class="icon icon-upi">
+
+            <svg viewBox="0 0 24 24">
+
+                <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="2"
+                />
+
+                <path d="M3 9h18"/>
+
+                <path d="M7 14h4"/>
+
+                <path d="M15 13l2 2-2 2"/>
+
+            </svg>
+
+        </div>
+
+
+        <div class="card-content">
+
+            <h3>
+                UPI Work
+            </h3>
+
+            <p>
+                UPI and payment services
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         4 ACCOUNT WORK
+    ==================================================== -->
+
+    <div
+        class="card"
+        onclick="location.href='account-activate.html'"
+    >
+
+        <div class="icon icon-account">
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M3 21h18"/>
+
+                <path d="M5 21V9"/>
+
+                <path d="M9 21V9"/>
+
+                <path d="M15 21V9"/>
+
+                <path d="M19 21V9"/>
+
+                <path d="M3 9l9-6 9 6"/>
+
+                <path d="M2 21h20"/>
+
+            </svg>
+
+        </div>
+
+
+        <div class="card-content">
+
+            <h3>
+                Account Work
+            </h3>
+
+            <p>
+                Manage account services
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         5 USDT WORK
+    ==================================================== -->
+
+    <div
+        class="card"
+        onclick="location.href='usdtwork-activate.html'"
+    >
+
+        <div class="icon icon-usdt">
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="12"
+                    cy="12"
+                    r="9"
+                />
+
+                <path d="M8 8h8"/>
+
+                <path d="M12 8v9"/>
+
+                <path d="M9 12h6"/>
+
+            </svg>
+
+        </div>
+
+
+        <div class="card-content">
+
+            <h3>
+                USDT Work
+            </h3>
+
+            <p>
+                Digital asset services
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         6 STATEMENT
+    ==================================================== -->
+
+    <div
+        class="card"
+        onclick="location.href='statement.html'"
+    >
+
+        <div class="icon icon-statement">
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M6 2h9l4 4v16H6z"/>
+
+                <path d="M14 2v5h5"/>
+
+                <path d="M9 12h6"/>
+
+                <path d="M9 16h6"/>
+
+                <path d="M9 8h2"/>
+
+            </svg>
+
+        </div>
+
+
+        <div class="card-content">
+
+            <h3>
+                Statement
+            </h3>
+
+            <p>
+                View account statement
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         7 CHECK STATUS
+    ==================================================== -->
+
+    <div
+        class="card"
+        onclick="location.href='check-status.html'"
+    >
+
+        <div class="icon icon-status">
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M4 19V5"/>
+
+                <path d="M4 19h17"/>
+
+                <path d="M7 15l4-4 3 2 5-6"/>
+
+                <circle
+                    cx="7"
+                    cy="15"
+                    r="1"
+                />
+
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="1"
+                />
+
+                <circle
+                    cx="14"
+                    cy="13"
+                    r="1"
+                />
+
+                <circle
+                    cx="19"
+                    cy="7"
+                    r="1"
+                />
+
+            </svg>
+
+        </div>
+
+
+        <div class="card-content">
+
+            <h3>
+                Check Status
+            </h3>
+
+            <p>
+                Check service status
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         8 SHARE LINK
+    ==================================================== -->
+
+    <div
+        class="card"
+        onclick="location.href='share.html'"
+    >
+
+        <div class="icon icon-share">
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="6"
+                    cy="12"
+                    r="3"
+                />
+
+                <circle
+                    cx="18"
+                    cy="6"
+                    r="3"
+                />
+
+                <circle
+                    cx="18"
+                    cy="18"
+                    r="3"
+                />
+
+                <path
+                    d="M8.5 10.5l6.5-3"
+                />
+
+                <path
+                    d="M8.5 13.5l6.5 3"
+                />
+
+            </svg>
+
+        </div>
+
+
+        <div class="card-content">
+
+            <h3>
+                Share Link
+            </h3>
+
+            <p>
+                Share your service link
+            </p>
+
+        </div>
+
+
+        <div class="arrow">
+            ›
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================
+         BACK BUTTON
+    ==================================================== -->
+
+    <button
+        class="backBtn"
+        onclick="location.href='home.html'"
+    >
+
+        <svg viewBox="0 0 24 24">
+
+            <path d="M19 12H5"/>
+
+            <path d="M12 19l-7-7 7-7"/>
+
+        </svg>
+
+        <span>
+            Back to Home
+        </span>
+
+    </button>
+
+
+</main>
+
+
+
+<!-- =======================================================
+     ACTIVATION POPUP
+======================================================= -->
+
+<div
+    id="popup"
+    class="popupOverlay"
+>
+
+    <div class="popupCard">
+
+
+        <div class="popup-icon">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M12 3l9 4v5c0 5-3.5 8-9 9-5.5-1-9-4-9-9V7l9-4z"
+                />
+
+                <path d="M12 8v4"/>
+
+                <circle
+                    cx="12"
+                    cy="16"
+                    r=".8"
+                />
+
+            </svg>
+
+        </div>
+
+
+        <h2>
+            Activation Required
+        </h2>
+
+
+        <p>
+            Active karne ke liye
+            account activate karein.
+        </p>
+
+
+        <button
+            class="greenBtn"
+            onclick="location.href='deposit.html'"
+        >
+            Activate
+        </button>
+
+
+        <button
+            class="grayBtn"
+            onclick="closePopup()"
+        >
+            Close
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     ACCOUNT SECURITY POPUP
+======================================================= -->
+
+<div
+    id="accountPopup"
+    class="popupOverlay"
+>
+
+    <div class="popupCard">
+
+
+        <div class="popup-icon">
+
+            <svg viewBox="0 0 24 24">
+
+                <rect
+                    x="5"
+                    y="10"
+                    width="14"
+                    height="11"
+                    rx="2"
+                />
+
+                <path
+                    d="M8 10V7a4 4 0 0 1 8 0v3"
+                />
+
+                <path
+                    d="M12 14v3"
+                />
+
+            </svg>
+
+        </div>
+
+
+        <h2>
+            Global Pay Security
+        </h2>
+
+
+        <p>
+            Enter Activation Code
+        </p>
+
+
+        <input
+            type="password"
+            id="accountCode"
+            placeholder="Activation Code"
+        >
+
+
+        <p id="accountError"></p>
+
+
+        <button
+            class="greenBtn"
+            onclick="checkAccountCode()"
+        >
+            VERIFY & CONTINUE
+        </button>
+
+
+        <button
+            class="grayBtn"
+            onclick="closeAccountPopup()"
+        >
+            Cancel
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
+
+<script>
+
+
+/* =========================================================
+   ACTIVATION POPUP
+========================================================= */
+
+function openPopup(){
+
+    document
+        .getElementById("popup")
+        .style.display = "flex";
+
+}
+
+
+function closePopup(){
+
+    document
+        .getElementById("popup")
+        .style.display = "none";
+
+}
+
+
+/* =========================================================
+   ACCOUNT POPUP
+========================================================= */
+
+function openAccountPopup(){
+
+    document
+        .getElementById("accountPopup")
+        .style.display = "flex";
+
+}
+
+
+function closeAccountPopup(){
+
+    document
+        .getElementById("accountPopup")
+        .style.display = "none";
+
+}
+
+
+/* =========================================================
+   ACCOUNT CODE
+========================================================= */
+
+function checkAccountCode(){
+
+    const code =
+        document
+        .getElementById("accountCode")
+        .value
+        .trim();
+
+    const error =
+        document
+        .getElementById("accountError");
+
+
+    if(code === ""){
+
+        error.innerText =
+            "Please enter activation code.";
+
+        return;
+
+    }
+
+
+    error.innerText = "";
+
+}
+
+
+/* =========================================================
+   CLOSE POPUP ON OUTSIDE CLICK
+========================================================= */
+
+document
+.getElementById("popup")
+.addEventListener(
+    "click",
+    function(e){
+
+        if(e.target === this){
+
+            closePopup();
+
+        }
+
+    }
+);
+
+
+document
+.getElementById("accountPopup")
+.addEventListener(
+    "click",
+    function(e){
+
+        if(e.target === this){
+
+            closeAccountPopup();
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+  </html>
