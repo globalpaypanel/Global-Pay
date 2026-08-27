@@ -234,6 +234,32 @@
 
                 </div>
 
+                <!-- UTR NUMBER -->
+<div class="utr-section">
+
+    <label for="utrNumber">UTR Number</label>
+
+    <input
+        type="text"
+        id="utrNumber"
+        maxlength="18"
+        inputmode="numeric"
+        pattern="[0-9]{12,18}"
+        placeholder="Enter 12–18 digit UTR number"
+        oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,18)"
+    >
+
+    <p id="utrError" class="utr-error"></p>
+
+    <button
+        type="button"
+        class="utr-continue"
+        onclick="validateUTR()">
+        CONTINUE
+    </button>
+
+</div>
+
                 <div class="payment-features">
                     <span class="secure">♢ Secure</span>
                     <span class="fast">ϟ Fast</span>
