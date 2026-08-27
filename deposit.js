@@ -1,4 +1,4 @@
-const UPI_ID = "8271692042-2@ybl";
+const UPI_ID = "Q924152710@ybl";
 const AMOUNT = "2500";
 const PAYEE_NAME = "Global Pay";
 
