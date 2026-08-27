@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Global Pay - Share Link</title>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial, Helvetica, sans-serif;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(0,145,255,.20), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(115,55,255,.20), transparent 30%),
+        #050a18;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+
+/* BACKGROUND GLOW */
+
+.glow{
+    position:fixed;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.25;
+    pointer-events:none;
+}
+
+.glow1{
+    background:#087cff;
+    top:-120px;
+    left:-100px;
+}
+
+.glow2{
+    background:#713cff;
+    right:-120px;
+    bottom:-120px;
+}
+
+
+/* MAIN CARD */
+
+.share-card{
+
+    width:92%;
+    max-width:430px;
+
+    padding:32px 26px 25px;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(21,35,70,.94),
+            rgba(7,15,34,.97)
+        );
+
+    border:1px solid rgba(100,150,230,.22);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.55),
+        inset 0 1px 0 rgba(255,255,255,.05);
+
+    backdrop-filter:blur(20px);
+
+    position:relative;
+}
+
+
+/* TOP LINE */
+
+.share-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:12%;
+
+    width:76%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #19aaff,
+            #7145ff,
+            transparent
+        );
+
+    border-radius:20px;
+}
+
+
+/* ICON */
+
+.share-icon{
+
+    width:78px;
+    height:78px;
+
+    margin:0 auto 20px;
+
+    border-radius:23px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0,180,255,.18),
+            rgba(116,60,255,.20)
+        );
+
+    border:1px solid rgba(75,180,255,.30);
+
+    box-shadow:
+        0 0 35px rgba(30,150,255,.15);
+}
+
+.share-icon svg{
+
+    width:42px;
+    height:42px;
+
+    filter:
+        drop-shadow(
+            0 0 8px rgba(45,190,255,.5)
+        );
+}
+
+
+/* TITLE */
+
+.title{
+    text-align:center;
+}
+
+.title h1{
+
+    font-size:27px;
+
+    letter-spacing:.3px;
+
+    margin-bottom:8px;
+}
+
+.title h1 span{
+
+    background:
+        linear-gradient(
+            90deg,
+            #19aaff,
+            #7d4dff
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+
+    color:transparent;
+}
+
+.title p{
+
+    color:#8997b3;
+
+    font-size:13px;
+
+    line-height:1.6;
+
+    margin-bottom:27px;
+}
+
+
+/* LINK AREA */
+
+.link-label{
+
+    color:#aebbd1;
+
+    font-size:12px;
+
+    margin-bottom:8px;
+
+    display:block;
+}
+
+.link-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px;
+
+    background:
+        rgba(3,10,25,.75);
+
+    border:1px solid rgba(100,140,200,.20);
+
+    border-radius:14px;
+
+    margin-bottom:18px;
+}
+
+.link-box input{
+
+    flex:1;
+
+    min-width:0;
+
+    height:43px;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    color:#dce7fa;
+
+    font-size:12px;
+
+    padding:0 8px;
+}
+
+.copy-small{
+
+    width:43px;
+    height:43px;
+
+    border:none;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #168cff,
+            #6540ee
+        );
+
+    color:#fff;
+
+    transition:.2s;
+}
+
+.copy-small:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 7px 20px rgba(50,100,255,.30);
+}
+
+.copy-small svg{
+
+    width:20px;
+    height:20px;
+}
+
+
+/* MAIN COPY BUTTON */
+
+.copy-btn{
+
+    width:100%;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #087fe9,
+            #693cff
+        );
+
+    color:#fff;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:.3px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:9px;
+
+    box-shadow:
+        0 12px 28px rgba(45,80,220,.25);
+
+    transition:.25s;
+}
+
+.copy-btn:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 17px 35px rgba(45,80,220,.38);
+}
+
+.copy-btn svg{
+
+    width:20px;
+    height:20px;
+}
+
+
+/* BACK BUTTON */
+
+.back-btn{
+
+    width:100%;
+
+    height:50px;
+
+    margin-top:12px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(100,140,200,.20);
+
+    background:
+        rgba(25,39,70,.65);
+
+    color:#b7c5db;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    transition:.2s;
+}
+
+.back-btn:hover{
+
+    background:rgba(35,52,88,.85);
+
+    border-color:rgba(50,160,255,.40);
+
+    color:#fff;
+}
+
+.back-btn svg{
+
+    width:18px;
+    height:18px;
+}
+
+
+/* SECURITY */
+
+.security{
+
+    margin-top:21px;
+
+    padding-top:17px;
+
+    border-top:
+        1px solid rgba(100,130,190,.12);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:7px;
+
+    color:#63728d;
+
+    font-size:10px;
+
+    letter-spacing:.3px;
+}
+
+.security svg{
+
+    width:14px;
+    height:14px;
+
+    color:#36dca0;
+}
+
+
+/* MOBILE */
+
+@media(max-width:420px){
+
+    .share-card{
+        padding:28px 20px 22px;
+    }
+
+    .share-icon{
+        width:70px;
+        height:70px;
+    }
+
+    .title h1{
+        font-size:24px;
+    }
+
+    .link-box input{
+        font-size:11px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="glow glow1"></div>
+<div class="glow glow2"></div>
+
+
+<div class="share-card">
+
+
+    <!-- SHARE ICON -->
+
+    <div class="share-icon">
+
+        <svg viewBox="0 0 48 48"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <circle
+                cx="10"
+                cy="24"
+                r="5"
+                stroke="#42D9FF"
+                stroke-width="2.5"/>
+
+            <circle
+                cx="38"
+                cy="11"
+                r="5"
+                stroke="#9A68FF"
+                stroke-width="2.5"/>
+
+            <circle
+                cx="38"
+                cy="37"
+                r="5"
+                stroke="#4D7CFF"
+                stroke-width="2.5"/>
+
+            <path
+                d="M14.5 21.8L33.5 13.2"
+                stroke="#42D9FF"
+                stroke-width="2.5"
+                stroke-linecap="round"/>
+
+            <path
+                d="M14.5 26.2L33.5 34.8"
+                stroke="#667CFF"
+                stroke-width="2.5"
+                stroke-linecap="round"/>
+
+        </svg>
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <div class="title">
+
+        <h1>
+            Share <span>Global Pay</span>
+        </h1>
+
+        <p>
+            Share your official Global Pay link
+            with customers and users.
+        </p>
+
+    </div>
+
+
+    <!-- LINK -->
+
+    <label class="link-label">
+        YOUR SHARE LINK
+    </label>
+
+    <div class="link-box">
+
+        <input
+            id="link"
+            type="text"
+            readonly
+            value="https://globalpaypanel.github.io/Global-Pay/">
+
+        <button
+            class="copy-small"
+            onclick="copyLink()">
+
+            <svg viewBox="0 0 24 24"
+                 fill="none"
+                 xmlns="http://www.w3.org/2000/svg">
+
+                <rect
+                    x="8"
+                    y="8"
+                    width="11"
+                    height="11"
+                    rx="2"
+                    stroke="currentColor"
+                    stroke-width="1.8"/>
+
+                <path
+                    d="M16 8V6
+                       C16 4.9 15.1 4 14 4H6
+                       C4.9 4 4 4.9 4 6V14
+                       C4 15.1 4.9 16 6 16H8"
+                    stroke="currentColor"
+                    stroke-width="1.8"/>
+
+            </svg>
+
+        </button>
+
+    </div>
+
+
+    <!-- COPY -->
+
+    <button
+        class="copy-btn"
+        onclick="copyLink()">
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <rect
+                x="8"
+                y="8"
+                width="11"
+                height="11"
+                rx="2"
+                stroke="currentColor"
+                stroke-width="1.8"/>
+
+            <path
+                d="M16 8V6
+                   C16 4.9 15.1 4 14 4H6
+                   C4.9 4 4 4.9 4 6V14
+                   C4 15.1 4.9 16 6 16H8"
+                stroke="currentColor"
+                stroke-width="1.8"/>
+
+        </svg>
+
+        COPY SHARE LINK
+
+    </button>
+
+
+    <!-- BACK -->
+
+    <button
+        class="back-btn"
+        onclick="history.back()">
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <path
+                d="M19 12H5"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"/>
+
+            <path
+                d="M11 6L5 12L11 18"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+
+        </svg>
+
+        BACK
+
+    </button>
+
+
+    <!-- SECURITY -->
+
+    <div class="security">
+
+        <svg viewBox="0 0 24 24"
+             fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <path
+                d="M12 3L19 6V11
+                   C19 15.5 16.2 19 12 21
+                   C7.8 19 5 15.5 5 11V6L12 3Z"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linejoin="round"/>
+
+            <path
+                d="M8.5 12L11 14.5L15.5 9.5"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"/>
+
+        </svg>
+
+        SECURE GLOBAL PAY LINK
+
+    </div>
+
+</div>
+
+
+<script>
+
+async function copyLink(){
+
+    const link =
+        document.getElementById("link").value;
+
+    try{
+
+        await navigator.clipboard.writeText(link);
+
+    }catch(error){
+
+        const input =
+            document.getElementById("link");
+
+        input.select();
+        input.setSelectionRange(0,99999);
+
+        document.execCommand("copy");
+    }
+
+
+    Swal.fire({
+
+        title:"Link Copied",
+
+        html:`
+            <div style="
+                display:flex;
+                flex-direction:column;
+                align-items:center;
+                gap:10px;
+            ">
+
+                <div style="
+                    width:55px;
+                    height:55px;
+                    border-radius:50%;
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                    background:linear-gradient(135deg,#00c98d,#00a873);
+                    box-shadow:0 0 25px rgba(0,220,150,.25);
+                ">
+
+                    <svg width="28" height="28"
+                         viewBox="0 0 24 24"
+                         fill="none">
+
+                        <path
+                            d="M5 12.5L9.5 17L19 7"
+                            stroke="white"
+                            stroke-width="2.3"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"/>
+
+                    </svg>
+
+                </div>
+
+                <p style="
+                    margin:0;
+                    font-size:14px;
+                    color:#b9c7dc;
+                ">
+                    Your Global Pay share link
+                    has been copied successfully.
+                </p>
+
+            </div>
+        `,
+
+        background:"#101a30",
+
+        color:"#ffffff",
+
+        showConfirmButton:false,
+
+        timer:2200,
+
+        width:"350px",
+
+        customClass:{
+            popup:"premium-popup"
+        }
+
+    });
+
+}
+
+</script>
+
+</body>
+  </html>
