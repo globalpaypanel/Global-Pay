@@ -1205,3 +1205,17 @@ body {
     box-shadow:
         0 0 0 3px rgba(0,223,154,.07);
     }
+
+
+.utr-box.invalid input {
+    color: #ff5b70;
+}
+
+.utr-box.valid input {
+    color: #ffffff;
+}
+
+.utr-section input {
+    -webkit-appearance: none;
+    appearance: none;
+    }
