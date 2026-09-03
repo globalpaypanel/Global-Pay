@@ -1,0 +1,2958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Global Pay - Withdraw</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    min-height:100vh;
+    padding-bottom:90px;
+    color:#fff;
+    background:
+        radial-gradient(circle at 15% 10%,rgba(55,80,255,.28),transparent 32%),
+        radial-gradient(circle at 85% 25%,rgba(0,210,255,.16),transparent 30%),
+        linear-gradient(145deg,#020713,#07152b,#030712);
+}
+
+button{
+    font-family:inherit;
+    cursor:pointer;
+}
+
+
+/* HEADER */
+
+.header{
+    display:flex;
+    align-items:center;
+    padding:20px 18px;
+    gap:15px;
+}
+
+.back{
+    width:50px;
+    height:50px;
+    border:1px solid #263c5c;
+    border-radius:15px;
+    background:rgba(255,255,255,.04);
+    color:#fff;
+    font-size:30px;
+}
+
+.header-title{
+    flex:1;
+}
+
+.header-title h1{
+    font-size:28px;
+}
+
+.header-title p{
+    color:#91a2bd;
+    margin-top:5px;
+    font-size:14px;
+}
+
+.secure{
+    text-align:center;
+    color:#9aaac1;
+    font-size:11px;
+}
+
+.secure b{
+    display:block;
+    font-size:25px;
+    color:#00e89a;
+}
+
+
+/* BALANCE */
+
+.balance-card{
+    margin:5px 18px 25px;
+    padding:24px;
+    border-radius:23px;
+    border:1px solid rgba(0,160,255,.45);
+    background:
+        linear-gradient(
+            120deg,
+            rgba(25,75,170,.18),
+            rgba(110,45,200,.14)
+        );
+    box-shadow:0 0 30px rgba(0,120,255,.10);
+}
+
+.balance-label{
+    color:#9baac1;
+    font-size:15px;
+}
+
+.balance{
+    font-size:42px;
+    font-weight:800;
+    margin:9px 0 15px;
+}
+
+.active{
+    display:inline-block;
+    padding:7px 13px;
+    border-radius:20px;
+    color:#00e89a;
+    background:rgba(0,255,150,.06);
+    border:1px solid rgba(0,255,150,.25);
+    font-size:13px;
+}
+
+
+/* COMMISSION INFO */
+
+.commission-info{
+    margin:0 18px 25px;
+    padding:15px;
+    border-radius:16px;
+    border:1px solid rgba(0,220,150,.20);
+    background:rgba(0,255,150,.035);
+}
+
+.commission-info-title{
+    color:#fff;
+    font-weight:bold;
+    font-size:14px;
+    margin-bottom:10px;
+}
+
+.commission-row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    padding:7px 0;
+    color:#94a4bc;
+    font-size:13px;
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.commission-row:last-child{
+    border-bottom:0;
+}
+
+.commission-row strong{
+    color:#00e89a;
+}
+
+
+/* SECTION */
+
+.section{
+    margin:0 18px 26px;
+}
+
+.section-title{
+    font-size:19px;
+    font-weight:bold;
+    margin-bottom:14px;
+}
+
+
+/* METHODS */
+
+.methods{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:9px;
+}
+
+.method{
+    min-height:145px;
+    padding:13px 6px;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    background:rgba(255,255,255,.035);
+    border:1px solid #263957;
+    transition:.25s;
+}
+
+.method.active{
+    border:2px solid #6570ff;
+    background:rgba(90,75,255,.10);
+    box-shadow:0 0 20px rgba(80,70,255,.22);
+}
+
+.method:hover{
+    transform:translateY(-2px);
+}
+
+.logo-icon{
+    width:55px;
+    height:55px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-weight:bold;
+    font-size:27px;
+}
+
+.bank-icon{
+    background:rgba(0,145,255,.13);
+}
+
+.upi-icon{
+    background:linear-gradient(135deg,#673cff,#008cff);
+    font-size:17px;
+}
+
+.usdt-icon{
+    color:#26a17b;
+    background:rgba(38,161,123,.09);
+    border:1px solid rgba(38,161,123,.35);
+    font-size:25px;
+}
+
+.method h3{
+    margin-top:11px;
+    font-size:15px;
+}
+
+.method p{
+    color:#8494ae;
+    font-size:11px;
+    margin-top:6px;
+}
+
+
+/* AMOUNT */
+
+.amount-row{
+    display:flex;
+    gap:10px;
+}
+
+.amount-input{
+    flex:1;
+    height:62px;
+    display:flex;
+    align-items:center;
+    border:1px solid #293e5d;
+    border-radius:15px;
+    background:rgba(255,255,255,.035);
+}
+
+.amount-input span{
+    color:#ffc400;
+    font-size:27px;
+    font-weight:bold;
+    padding-left:17px;
+}
+
+.amount-input input{
+    width:100%;
+    height:100%;
+    border:0;
+    outline:0;
+    background:transparent;
+    color:#fff;
+    font-size:17px;
+    padding:0 12px;
+}
+
+.max{
+    width:72px;
+    border:1px solid #7052ff;
+    border-radius:15px;
+    background:linear-gradient(135deg,#623aff,#267eff);
+    color:#fff;
+    font-weight:bold;
+}
+
+.limits{
+    display:flex;
+    justify-content:space-between;
+    margin-top:10px;
+    color:#9ba9c0;
+    font-size:13px;
+}
+
+.limits .minimum{
+    color:#00e89a;
+}
+
+.limits .maximum{
+    color:#ffc400;
+}
+
+.available{
+    margin-top:11px;
+    padding:11px 14px;
+    border-radius:12px;
+    border:1px solid rgba(0,255,150,.18);
+    background:rgba(0,255,150,.035);
+    color:#9aaac1;
+    font-size:13px;
+}
+
+.available strong{
+    float:right;
+    color:#00e89a;
+}
+
+
+/* DETAILS */
+
+.detail-box{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.field{
+    position:relative;
+}
+
+.field input{
+    width:100%;
+    height:58px;
+    border-radius:14px;
+    border:1px solid #293e5d;
+    outline:none;
+    background:rgba(255,255,255,.035);
+    color:#fff;
+    padding:0 16px;
+    font-size:15px;
+    transition:.2s;
+}
+
+.field input:focus{
+    border-color:#348cff;
+    box-shadow:0 0 15px rgba(40,130,255,.12);
+}
+
+.field input::placeholder{
+    color:#71819b;
+}
+
+.field.valid input{
+    border-color:#00d084;
+    box-shadow:0 0 12px rgba(0,208,132,.10);
+}
+
+.field.invalid input{
+    border-color:#ff4d5e;
+    box-shadow:0 0 13px rgba(255,60,80,.12);
+}
+
+.field .check{
+    display:none;
+    position:absolute;
+    right:15px;
+    top:19px;
+    color:#00e89a;
+}
+
+.field.valid .check{
+    display:block;
+}
+
+.error{
+    display:none;
+    color:#ff5262;
+    font-size:11px;
+    margin-top:5px;
+    padding-left:4px;
+}
+
+.field.invalid .error{
+    display:block;
+}
+
+
+/* BUTTON */
+
+.withdraw-submit-btn{
+    width:calc(100% - 36px);
+    margin:0 18px 20px;
+    padding:15px 18px;
+    border:1px solid rgba(0,217,255,.30);
+    border-radius:15px;
+    color:#fff;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:.3px;
+    background:
+        linear-gradient(
+            135deg,
+            rgba(89,72,255,.95),
+            rgba(0,140,255,.95),
+            rgba(0,208,132,.90)
+        );
+    box-shadow:
+        0 10px 30px rgba(0,140,255,.20),
+        inset 0 1px 0 rgba(255,255,255,.18);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.withdraw-submit-btn:hover{
+    transform:translateY(-2px);
+    filter:brightness(1.08);
+}
+
+.withdraw-submit-btn:active{
+    transform:scale(.98);
+}
+
+
+/* NAV */
+
+.nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:73px;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    background:rgba(5,15,31,.97);
+    border-top:1px solid #1e304a;
+    z-index:50;
+}
+
+.nav-item{
+    text-align:center;
+    color:#7889a4;
+    font-size:10px;
+    cursor:pointer;
+}
+
+.nav-item span{
+    display:block;
+    font-size:23px;
+    margin-bottom:3px;
+}
+
+.nav-item.active{
+    color:#159cff;
+}
+
+
+/* POPUP */
+
+#withdrawNotice{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(7px);
+    animation:noticeFade .25s ease;
+}
+
+.withdraw-notice-box{
+    width:100%;
+    max-width:400px;
+    max-height:90vh;
+    overflow:auto;
+    padding:28px 22px;
+    text-align:center;
+    border-radius:22px;
+    background:linear-gradient(145deg,#101d35,#071225);
+    border:1px solid rgba(55,145,255,.45);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.55),
+        0 0 30px rgba(0,120,255,.15);
+    animation:noticePop .3s ease;
+}
+
+.success-icon{
+    width:68px;
+    height:68px;
+    margin:0 auto 15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    color:#fff;
+    font-size:36px;
+    font-weight:bold;
+    background:linear-gradient(135deg,#00c987,#00e89a);
+    box-shadow:0 0 30px rgba(0,220,150,.30);
+}
+
+.withdraw-notice-box h2{
+    margin-bottom:10px;
+    color:#fff;
+    font-size:22px;
+}
+
+.success-amount{
+    color:#00e89a;
+    font-size:30px;
+    font-weight:800;
+    margin:8px 0 18px;
+}
+
+.withdraw-summary{
+    text-align:left;
+    padding:15px;
+    border-radius:14px;
+    background:rgba(255,255,255,.045);
+    border:1px solid #263957;
+    margin-bottom:20px;
+}
+
+.withdraw-summary div{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    font-size:13px;
+}
+
+.withdraw-summary div:last-child{
+    border-bottom:0;
+}
+
+.withdraw-summary span:first-child{
+    color:#8fa1bb;
+}
+
+.withdraw-summary span:last-child{
+    color:#fff;
+    text-align:right;
+    word-break:break-word;
+}
+
+.withdraw-notice-box p{
+    color:#aab8cd;
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:20px;
+}
+
+.withdraw-notice-box button{
+    width:100%;
+    height:50px;
+    border:0;
+    border-radius:13px;
+    color:#fff;
+    font-size:16px;
+    font-weight:bold;
+    background:linear-gradient(90deg,#673cff,#087cff,#00c987);
+}
+
+
+/* ANIMATION */
+
+@keyframes noticeFade{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes noticePop{
+    from{
+        opacity:0;
+        transform:scale(.85);
+    }
+
+    to{
+        opacity:1;
+        transform:scale(1);
+    }
+}
+
+
+/* MOBILE */
+
+@media(max-width:430px){
+
+    .header-title h1{
+        font-size:25px;
+    }
+
+    .secure{
+        display:none;
+    }
+
+    .balance{
+        font-size:37px;
+    }
+
+    .method{
+        min-height:140px;
+    }
+
+    .logo-icon{
+        width:50px;
+        height:50px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<div class="header">
+
+    <button
+        class="back"
+        onclick="location.href='home.html'"
+    >
+        ‹
+    </button>
+
+
+    <div class="header-title">
+
+        <h1>
+            Withdraw
+        </h1>
+
+        <p>
+            Securely withdraw your funds
+        </p>
+
+    </div>
+
+
+    <div class="secure">
+
+        <b>🛡</b>
+
+        SECURE
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     BALANCE
+========================================= -->
+
+<div class="balance-card">
+
+    <div class="balance-label">
+        Available Balance
+    </div>
+
+
+    <div class="balance">
+
+        ₹<span id="balance">0.00</span>
+
+    </div>
+
+
+    <span class="active">
+        ● Account Active
+    </span>
+
+</div>
+
+
+
+<!-- =========================================
+     COMMISSION BREAKDOWN
+========================================= -->
+
+<div class="commission-info">
+
+    <div class="commission-info-title">
+        Commission Balance
+    </div>
+
+
+    <div class="commission-row">
+
+        <span>
+            Account Work Commission
+        </span>
+
+        <strong>
+            ₹<span id="accountCommission">
+                0.00
+            </span>
+        </strong>
+
+    </div>
+
+
+    <div class="commission-row">
+
+        <span>
+            UPI Work Commission
+        </span>
+
+        <strong>
+            ₹<span id="upiCommission">
+                0.00
+            </span>
+        </strong>
+
+    </div>
+
+
+    <div class="commission-row">
+
+        <span>
+            Total Commission
+        </span>
+
+        <strong>
+            ₹<span id="totalCommission">
+                0.00
+            </span>
+        </strong>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     METHOD
+========================================= -->
+
+<div class="section">
+
+    <div class="section-title">
+        1. Select Withdrawal Method
+    </div>
+
+
+    <div class="methods">
+
+
+        <div
+            class="method active"
+            onclick="selectMethod(this,'bank')"
+        >
+
+            <div class="logo-icon bank-icon">
+                🏦
+            </div>
+
+            <h3>
+                Bank Transfer
+            </h3>
+
+            <p>
+                Direct bank transfer
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="method"
+            onclick="selectMethod(this,'upi')"
+        >
+
+            <div class="logo-icon upi-icon">
+                UPI
+            </div>
+
+            <h3>
+                UPI Transfer
+            </h3>
+
+            <p>
+                Instant UPI transfer
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="method"
+            onclick="selectMethod(this,'usdt')"
+        >
+
+            <div class="logo-icon usdt-icon">
+                ₮
+            </div>
+
+            <h3>
+                USDT
+            </h3>
+
+            <p>
+                USDT transfer
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     AMOUNT
+========================================= -->
+
+<div class="section">
+
+    <div class="section-title">
+        2. Enter Amount
+    </div>
+
+
+    <div class="amount-row">
+
+        <div class="amount-input">
+
+            <span>
+                ₹
+            </span>
+
+
+            <input
+                id="amount"
+                type="number"
+                min="100"
+                max="50000"
+                placeholder="Enter amount"
+                oninput="validateAmount()"
+            >
+
+        </div>
+
+
+        <button
+            class="max"
+            onclick="setMax()"
+        >
+            MAX
+        </button>
+
+    </div>
+
+
+    <div class="limits">
+
+        <span class="minimum">
+            Minimum ₹100
+        </span>
+
+        <span class="maximum">
+            Maximum ₹50,000
+        </span>
+
+    </div>
+
+
+    <div class="available">
+
+        Available Balance:
+
+        <strong>
+            ₹<span id="available">
+                0.00
+            </span>
+        </strong>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     DETAILS
+========================================= -->
+
+<div class="section">
+
+    <div class="section-title">
+        3. Enter Withdrawal Details
+    </div>
+
+
+    <!-- BANK -->
+
+    <div
+        id="bankDetails"
+        class="detail-box"
+    >
+
+
+        <div
+            class="field"
+            id="bankNameField"
+        >
+
+            <input
+                id="bankName"
+                type="text"
+                placeholder="Bank Name"
+                oninput="validateBankName()"
+            >
+
+            <span class="check">
+                ✓
+            </span>
+
+            <div class="error">
+                Enter a valid bank name.
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="field"
+            id="holderField"
+        >
+
+            <input
+                id="holderName"
+                type="text"
+                placeholder="Account Holder Name"
+                oninput="validateHolder()"
+            >
+
+            <span class="check">
+                ✓
+            </span>
+
+            <div class="error">
+                Enter a valid holder name.
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="field"
+            id="accountField"
+        >
+
+            <input
+                id="accountNumber"
+                type="text"
+                inputmode="numeric"
+                maxlength="18"
+                placeholder="Account Number"
+                oninput="validateAccount()"
+            >
+
+            <span class="check">
+                ✓
+            </span>
+
+            <div class="error">
+                Account number must contain 9–18 digits.
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="field"
+            id="confirmAccountField"
+        >
+
+            <input
+                id="confirmAccount"
+                type="text"
+                inputmode="numeric"
+                maxlength="18"
+                placeholder="Confirm Account Number"
+                oninput="validateConfirmAccount()"
+            >
+
+            <span class="check">
+                ✓
+            </span>
+
+            <div class="error">
+                Account numbers do not match.
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="field"
+            id="ifscField"
+        >
+
+            <input
+                id="ifsc"
+                type="text"
+                maxlength="11"
+                placeholder="IFSC Code"
+                oninput="validateIFSC()"
+            >
+
+            <span class="check">
+                ✓
+            </span>
+
+            <div class="error">
+                Enter a valid IFSC code.
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- UPI -->
+
+    <div
+        id="upiDetails"
+        class="detail-box"
+        style="display:none;"
+    >
+
+        <div
+            class="field"
+            id="upiField"
+        >
+
+            <input
+                id="upiId"
+                type="text"
+                placeholder="Enter UPI ID"
+                oninput="validateUPI()"
+            >
+
+            <span class="check">
+                ✓
+            </span>
+
+            <div class="error">
+                Enter a valid UPI ID, e.g. name@upi
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- USDT -->
+
+    <div
+        id="usdtDetails"
+        class="detail-box"
+        style="display:none;"
+    >
+
+        <div
+            class="field"
+            id="usdtAddressField"
+        >
+
+            <input
+                id="usdtAddress"
+                type="text"
+                placeholder="Enter USDT Wallet Address"
+                oninput="validateUSDTAddress()"
+            >
+
+            <span class="check">
+                ✓
+            </span>
+
+            <div class="error">
+                Enter a valid USDT wallet address.
+            </div>
+
+        </div>
+
+
+
+        <div
+            class="field"
+            id="usdtNetworkField"
+        >
+
+            <input
+                id="usdtNetwork"
+                type="text"
+                placeholder="Network (e.g. TRC20 / ERC20)"
+                oninput="validateUSDTNetwork()"
+            >
+
+            <span class="check">
+                ✓
+            </span>
+
+            <div class="error">
+                Enter the USDT network.
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================
+     SUBMIT
+========================================= -->
+
+<button
+    type="button"
+    class="withdraw-submit-btn"
+    onclick="submitWithdrawal()"
+>
+    ⇧ Submit Withdrawal Request
+</button>
+
+
+
+<!-- =========================================
+     NAV
+========================================= -->
+
+<div class="nav">
+
+
+    <div
+        class="nav-item"
+        onclick="location.href='home.html'"
+    >
+
+        <span>
+            ⌂
+        </span>
+
+        Home
+
+    </div>
+
+
+
+    <div
+        class="nav-item"
+        onclick="location.href='deposit.html'"
+    >
+
+        <span>
+            ⇩
+        </span>
+
+        Deposit
+
+    </div>
+
+
+
+    <div class="nav-item active">
+
+        <span>
+            ⇧
+        </span>
+
+        Withdraw
+
+    </div>
+
+
+
+    <div
+        class="nav-item"
+        onclick="location.href='transactions.html'"
+    >
+
+        <span>
+            ☷
+        </span>
+
+        Transactions
+
+    </div>
+
+
+
+    <div
+        class="nav-item"
+        onclick="location.href='profile.html'"
+    >
+
+        <span>
+            ♙
+        </span>
+
+        Profile
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================================
+   GLOBAL SETTINGS
+===================================================== */
+
+let selectedMethod = "bank";
+
+
+/*
+   Account Work ne directly commission ko
+   is balance key mein save kiya hai.
+*/
+
+const WITHDRAW_BALANCE_KEY =
+    "globalPayWithdrawBalance";
+
+
+/*
+   Account Work total commission
+*/
+
+const ACCOUNT_COMMISSION_KEY =
+    "accountWorkCommission";
+
+
+/*
+   UPI Work total commission
+*/
+
+const UPI_COMMISSION_KEY =
+    "upiCommission";
+
+
+/*
+   UPI page ka combined totalCommission
+*/
+
+const UPI_TOTAL_COMMISSION_KEY =
+    "totalCommission";
+
+
+/*
+   Kitni UPI commission already Withdraw balance
+   mein sync ki gayi hai.
+
+   Isse same commission baar-baar add nahi hogi.
+*/
+
+const UPI_SYNCED_COMMISSION_KEY =
+    "globalPayUPICommissionSynced";
+
+
+/* =====================================================
+   NUMBER
+===================================================== */
+
+function safeNumber(value){
+
+    const n = Number(value);
+
+    if(
+        Number.isFinite(n)
+    ){
+
+        return n;
+
+    }
+
+    return 0;
+
+}
+
+
+/* =====================================================
+   FORMAT
+===================================================== */
+
+function formatINR(value){
+
+    return safeNumber(value).toLocaleString(
+        "en-IN",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
+
+}
+
+
+/* =====================================================
+   READ LOCAL STORAGE NUMBER
+===================================================== */
+
+function getStoredNumber(key){
+
+    try{
+
+        const value =
+            localStorage.getItem(key);
+
+
+        if(
+            value === null ||
+            value === ""
+        ){
+
+            return 0;
+
+        }
+
+
+        /*
+           Direct number
+        */
+
+        if(
+            !isNaN(Number(value))
+        ){
+
+            return safeNumber(value);
+
+        }
+
+
+        /*
+           JSON
+        */
+
+        const parsed =
+            JSON.parse(value);
+
+
+        if(
+            typeof parsed === "number"
+        ){
+
+            return safeNumber(parsed);
+
+        }
+
+
+        /*
+           Object ke andar common fields
+        */
+
+        if(
+            parsed &&
+            typeof parsed === "object"
+        ){
+
+            const fields = [
+
+                "commission",
+                "totalCommission",
+                "total",
+                "amount",
+                "earned",
+                "earnings"
+
+            ];
+
+
+            for(
+                const field of fields
+            ){
+
+                if(
+                    parsed[field] !== undefined
+                ){
+
+                    const number =
+                        Number(
+                            parsed[field]
+                        );
+
+
+                    if(
+                        Number.isFinite(number)
+                    ){
+
+                        return number;
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }catch(error){
+
+        return 0;
+
+    }
+
+
+    return 0;
+
+}
+
+
+/* =====================================================
+   ACCOUNT WORK COMMISSION
+===================================================== */
+
+function getAccountWorkCommission(){
+
+    return getStoredNumber(
+        ACCOUNT_COMMISSION_KEY
+    );
+
+}
+
+
+/* =====================================================
+   UPI WORK COMMISSION
+===================================================== */
+
+function getUPIWorkCommission(){
+
+    /*
+       Pehle upiCommission check.
+    */
+
+    let commission =
+        getStoredNumber(
+            UPI_COMMISSION_KEY
+        );
+
+
+    /*
+       Agar upiCommission available nahi hai,
+       to totalCommission check.
+    */
+
+    if(
+        commission <= 0
+    ){
+
+        commission =
+            getStoredNumber(
+                UPI_TOTAL_COMMISSION_KEY
+            );
+
+    }
+
+
+    return commission;
+
+}
+
+
+/* =====================================================
+   BASE WITHDRAW BALANCE
+===================================================== */
+
+function getBaseWithdrawBalance(){
+
+    const value =
+        localStorage.getItem(
+            WITHDRAW_BALANCE_KEY
+        );
+
+
+    if(
+        value === null
+    ){
+
+        localStorage.setItem(
+            WITHDRAW_BALANCE_KEY,
+            "0"
+        );
+
+        return 0;
+
+    }
+
+
+    return Math.max(
+        0,
+        safeNumber(value)
+    );
+
+}
+
+
+/* =====================================================
+   SYNC UPI COMMISSION
+===================================================== */
+
+function syncUPICommission(){
+
+    const currentUPICommission =
+        getUPIWorkCommission();
+
+
+    const alreadySynced =
+        getStoredNumber(
+            UPI_SYNCED_COMMISSION_KEY
+        );
+
+
+    /*
+       Sirf new commission add hoga.
+
+       Example:
+
+       Old UPI commission = 100
+       Synced = 100
+       New commission = 150
+
+       Sirf ₹50 add hoga.
+    */
+
+    const newCommission =
+        Math.max(
+            0,
+            currentUPICommission -
+            alreadySynced
+        );
+
+
+    if(
+        newCommission > 0
+    ){
+
+        const currentBalance =
+            getBaseWithdrawBalance();
+
+
+        const newBalance =
+            currentBalance +
+            newCommission;
+
+
+        localStorage.setItem(
+            WITHDRAW_BALANCE_KEY,
+            newBalance.toFixed(2)
+        );
+
+
+        localStorage.setItem(
+            UPI_SYNCED_COMMISSION_KEY,
+            currentUPICommission.toFixed(2)
+        );
+
+    }
+
+
+    /*
+       Agar commission reset hua ho,
+       synced value ko reset kar do.
+    */
+
+    if(
+        currentUPICommission <
+        alreadySynced
+    ){
+
+        localStorage.setItem(
+            UPI_SYNCED_COMMISSION_KEY,
+            currentUPICommission.toFixed(2)
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TOTAL AVAILABLE BALANCE
+===================================================== */
+
+function getWithdrawBalance(){
+
+    /*
+       UPI commission pehle sync.
+    */
+
+    syncUPICommission();
+
+
+    /*
+       Account Work already
+       globalPayWithdrawBalance mein
+       add ho raha hai.
+    */
+
+    return getBaseWithdrawBalance();
+
+}
+
+
+/* =====================================================
+   UPDATE DISPLAY
+===================================================== */
+
+function updateWithdrawBalance(){
+
+    const accountCommission =
+        getAccountWorkCommission();
+
+
+    const upiCommission =
+        getUPIWorkCommission();
+
+
+    const totalCommission =
+        accountCommission +
+        upiCommission;
+
+
+    const balance =
+        getWithdrawBalance();
+
+
+    document.getElementById(
+        "balance"
+    ).textContent =
+        formatINR(balance);
+
+
+    document.getElementById(
+        "available"
+    ).textContent =
+        formatINR(balance);
+
+
+    document.getElementById(
+        "accountCommission"
+    ).textContent =
+        formatINR(
+            accountCommission
+        );
+
+
+    document.getElementById(
+        "upiCommission"
+    ).textContent =
+        formatINR(
+            upiCommission
+        );
+
+
+    document.getElementById(
+        "totalCommission"
+    ).textContent =
+        formatINR(
+            totalCommission
+        );
+
+}
+
+
+/* =====================================================
+   METHOD SWITCH
+===================================================== */
+
+function selectMethod(
+    element,
+    method
+){
+
+    document
+        .querySelectorAll(".method")
+        .forEach(
+            item =>
+                item.classList.remove(
+                    "active"
+                )
+        );
+
+
+    element.classList.add(
+        "active"
+    );
+
+
+    selectedMethod =
+        method;
+
+
+    document.getElementById(
+        "bankDetails"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "upiDetails"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "usdtDetails"
+    ).style.display =
+        "none";
+
+
+    if(
+        method === "bank"
+    ){
+
+        document.getElementById(
+            "bankDetails"
+        ).style.display =
+            "flex";
+
+    }
+
+
+    if(
+        method === "upi"
+    ){
+
+        document.getElementById(
+            "upiDetails"
+        ).style.display =
+            "flex";
+
+    }
+
+
+    if(
+        method === "usdt"
+    ){
+
+        document.getElementById(
+            "usdtDetails"
+        ).style.display =
+            "flex";
+
+    }
+
+}
+
+
+/* =====================================================
+   VALIDATION HELPER
+===================================================== */
+
+function setValid(
+    id,
+    valid
+){
+
+    const field =
+        document.getElementById(id);
+
+
+    if(
+        valid
+    ){
+
+        field.classList.add(
+            "valid"
+        );
+
+        field.classList.remove(
+            "invalid"
+        );
+
+    }else{
+
+        field.classList.remove(
+            "valid"
+        );
+
+        field.classList.add(
+            "invalid"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   BANK NAME
+===================================================== */
+
+function validateBankName(){
+
+    const value =
+        document.getElementById(
+            "bankName"
+        ).value.trim();
+
+
+    setValid(
+        "bankNameField",
+        /^[A-Za-z ]{3,60}$/.test(
+            value
+        )
+    );
+
+}
+
+
+/* =====================================================
+   HOLDER
+===================================================== */
+
+function validateHolder(){
+
+    const value =
+        document.getElementById(
+            "holderName"
+        ).value.trim();
+
+
+    setValid(
+        "holderField",
+        /^[A-Za-z ]{2,60}$/.test(
+            value
+        )
+    );
+
+}
+
+
+/* =====================================================
+   ACCOUNT
+===================================================== */
+
+function validateAccount(){
+
+    const value =
+        document.getElementById(
+            "accountNumber"
+        ).value;
+
+
+    setValid(
+        "accountField",
+        /^[0-9]{9,18}$/.test(
+            value
+        )
+    );
+
+
+    validateConfirmAccount();
+
+}
+
+
+/* =====================================================
+   CONFIRM ACCOUNT
+===================================================== */
+
+function validateConfirmAccount(){
+
+    const account =
+        document.getElementById(
+            "accountNumber"
+        ).value;
+
+
+    const confirm =
+        document.getElementById(
+            "confirmAccount"
+        ).value;
+
+
+    setValid(
+        "confirmAccountField",
+
+        /^[0-9]{9,18}$/.test(
+            confirm
+        ) &&
+        account === confirm
+    );
+
+}
+
+
+/* =====================================================
+   IFSC
+===================================================== */
+
+function validateIFSC(){
+
+    const input =
+        document.getElementById(
+            "ifsc"
+        );
+
+
+    input.value =
+        input.value
+            .toUpperCase();
+
+
+    setValid(
+        "ifscField",
+        /^[A-Z]{4}0[A-Z0-9]{6}$/.test(
+            input.value.trim()
+        )
+    );
+
+}
+
+
+/* =====================================================
+   UPI
+===================================================== */
+
+function validateUPI(){
+
+    const value =
+        document.getElementById(
+            "upiId"
+        ).value.trim();
+
+
+    setValid(
+        "upiField",
+
+        /^[A-Za-z0-9._-]{2,}@[A-Za-z0-9.-]{2,}$/
+            .test(value)
+    );
+
+}
+
+
+/* =====================================================
+   USDT ADDRESS
+===================================================== */
+
+function validateUSDTAddress(){
+
+    const value =
+        document.getElementById(
+            "usdtAddress"
+        ).value.trim();
+
+
+    setValid(
+        "usdtAddressField",
+
+        /^(T[1-9A-HJ-NP-Za-km-z]{33}|0x[a-fA-F0-9]{40})$/
+            .test(value)
+    );
+
+}
+
+
+/* =====================================================
+   USDT NETWORK
+===================================================== */
+
+function validateUSDTNetwork(){
+
+    const input =
+        document.getElementById(
+            "usdtNetwork"
+        );
+
+
+    input.value =
+        input.value
+            .trim()
+            .toUpperCase();
+
+
+    setValid(
+        "usdtNetworkField",
+
+        /^(TRC20|ERC20|BEP20)$/
+            .test(
+                input.value
+            )
+    );
+
+}
+
+
+/* =====================================================
+   AMOUNT
+===================================================== */
+
+function validateAmount(){
+
+    const input =
+        document.getElementById(
+            "amount"
+        );
+
+
+    const amount =
+        Number(
+            input.value
+        );
+
+
+    const balance =
+        getWithdrawBalance();
+
+
+    if(
+        !amount ||
+        amount < 100 ||
+        amount > 50000 ||
+        amount > balance
+    ){
+
+        input.style.borderColor =
+            "#ff4d5e";
+
+    }else{
+
+        input.style.borderColor =
+            "#00d084";
+
+    }
+
+}
+
+
+/* =====================================================
+   MAX
+===================================================== */
+
+function setMax(){
+
+    const balance =
+        getWithdrawBalance();
+
+
+    const amount =
+        Math.min(
+            balance,
+            50000
+        );
+
+
+    document.getElementById(
+        "amount"
+    ).value =
+        amount;
+
+
+    validateAmount();
+
+}
+
+
+/* =====================================================
+   SUBMIT WITHDRAWAL
+===================================================== */
+
+function submitWithdrawal(){
+
+    /*
+       Latest commission sync
+    */
+
+    syncUPICommission();
+
+
+    const amount =
+        Number(
+            document.getElementById(
+                "amount"
+            ).value
+        );
+
+
+    const currentBalance =
+        getWithdrawBalance();
+
+
+    /* -----------------------------------------
+       BANK VALIDATION
+    ----------------------------------------- */
+
+    if(
+        selectedMethod === "bank"
+    ){
+
+        validateBankName();
+        validateHolder();
+        validateAccount();
+        validateConfirmAccount();
+        validateIFSC();
+
+
+        const fields = [
+
+            "bankNameField",
+            "holderField",
+            "accountField",
+            "confirmAccountField",
+            "ifscField"
+
+        ];
+
+
+        const valid =
+            fields.every(
+                id =>
+                    document
+                        .getElementById(id)
+                        .classList
+                        .contains(
+                            "valid"
+                        )
+            );
+
+
+        if(!valid){
+
+            showNotice(
+                "Complete Details",
+                "Please fill in all bank withdrawal details correctly."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* -----------------------------------------
+       UPI VALIDATION
+    ----------------------------------------- */
+
+    if(
+        selectedMethod === "upi"
+    ){
+
+        validateUPI();
+
+
+        if(
+            !document
+                .getElementById(
+                    "upiField"
+                )
+                .classList
+                .contains(
+                    "valid"
+                )
+        ){
+
+            showNotice(
+                "Complete Details",
+                "Please enter a valid UPI ID before submitting."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* -----------------------------------------
+       USDT VALIDATION
+    ----------------------------------------- */
+
+    if(
+        selectedMethod === "usdt"
+    ){
+
+        validateUSDTAddress();
+        validateUSDTNetwork();
+
+
+        const addressValid =
+            document
+                .getElementById(
+                    "usdtAddressField"
+                )
+                .classList
+                .contains(
+                    "valid"
+                );
+
+
+        const networkValid =
+            document
+                .getElementById(
+                    "usdtNetworkField"
+                )
+                .classList
+                .contains(
+                    "valid"
+                );
+
+
+        if(
+            !addressValid ||
+            !networkValid
+        ){
+
+            showNotice(
+                "Complete Details",
+                "Please enter a valid USDT wallet address and network."
+            );
+
+            return;
+
+        }
+
+    }
+
+
+    /* -----------------------------------------
+       AMOUNT VALIDATION
+    ----------------------------------------- */
+
+    if(
+        !amount ||
+        amount < 100 ||
+        amount > 50000
+    ){
+
+        showNotice(
+            "Invalid Amount",
+            "Minimum: ₹100<br>Maximum: ₹50,000"
+        );
+
+        return;
+
+    }
+
+
+    if(
+        amount > currentBalance
+    ){
+
+        showNotice(
+            "Insufficient Balance",
+            "Your available balance is ₹" +
+            formatINR(
+                currentBalance
+            )
+        );
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       SUBTRACT WITHDRAWAL
+    ----------------------------------------- */
+
+    const newBalance =
+        currentBalance -
+        amount;
+
+
+    /*
+       IMPORTANT:
+
+       Current total balance ko save kar rahe hain.
+
+       Isse withdrawal ke baad commission bhi
+       balance ka part bana rahega.
+    */
+
+    localStorage.setItem(
+        WITHDRAW_BALANCE_KEY,
+        newBalance.toFixed(2)
+    );
+
+
+    /*
+       Agar future mein Account Work commission
+       same balance mein add karta hai,
+       woh next commission ke time automatically
+       balance badha dega.
+    */
+
+    updateWithdrawBalance();
+
+
+    /* -----------------------------------------
+       SAVE WITHDRAWAL
+    ----------------------------------------- */
+
+    const withdrawal = {
+
+        id:
+            "WD" +
+            Date.now(),
+
+        amount:
+            amount,
+
+        method:
+            selectedMethod,
+
+        date:
+            new Date().toISOString()
+
+    };
+
+
+    /* BANK */
+
+    if(
+        selectedMethod === "bank"
+    ){
+
+        withdrawal.bankName =
+            document.getElementById(
+                "bankName"
+            ).value.trim();
+
+
+        withdrawal.holderName =
+            document.getElementById(
+                "holderName"
+            ).value.trim();
+
+
+        withdrawal.accountNumber =
+            document.getElementById(
+                "accountNumber"
+            ).value.trim();
+
+
+        withdrawal.ifsc =
+            document.getElementById(
+                "ifsc"
+            ).value.trim();
+
+    }
+
+
+    /* UPI */
+
+    if(
+        selectedMethod === "upi"
+    ){
+
+        withdrawal.upiId =
+            document.getElementById(
+                "upiId"
+            ).value.trim();
+
+    }
+
+
+    /* USDT */
+
+    if(
+        selectedMethod === "usdt"
+    ){
+
+        withdrawal.usdtAddress =
+            document.getElementById(
+                "usdtAddress"
+            ).value.trim();
+
+
+        withdrawal.usdtNetwork =
+            document.getElementById(
+                "usdtNetwork"
+            ).value.trim();
+
+    }
+
+
+    /* -----------------------------------------
+       HISTORY
+    ----------------------------------------- */
+
+    let history = [];
+
+
+    try{
+
+        history =
+            JSON.parse(
+                localStorage.getItem(
+                    "globalPayWithdrawals"
+                )
+            ) || [];
+
+    }catch(error){
+
+        history = [];
+
+    }
+
+
+    history.push(
+        withdrawal
+    );
+
+
+    localStorage.setItem(
+        "globalPayWithdrawals",
+        JSON.stringify(
+            history
+        )
+    );
+
+
+    /* -----------------------------------------
+       SUCCESS
+    ----------------------------------------- */
+
+    showSuccessPopup(
+        amount,
+        withdrawal,
+        newBalance
+    );
+
+}
+
+
+/* =====================================================
+   SUCCESS POPUP
+===================================================== */
+
+function showSuccessPopup(
+    amount,
+    withdrawal,
+    newBalance
+){
+
+    const old =
+        document.getElementById(
+            "withdrawNotice"
+        );
+
+
+    if(old){
+
+        old.remove();
+
+    }
+
+
+    let methodName =
+        "";
+
+
+    if(
+        withdrawal.method === "bank"
+    ){
+
+        methodName =
+            "Bank Transfer";
+
+    }
+
+
+    if(
+        withdrawal.method === "upi"
+    ){
+
+        methodName =
+            "UPI Transfer";
+
+    }
+
+
+    if(
+        withdrawal.method === "usdt"
+    ){
+
+        methodName =
+            "USDT";
+
+    }
+
+
+    let detailsHTML =
+        "";
+
+
+    if(
+        withdrawal.method === "bank"
+    ){
+
+        detailsHTML = `
+
+        <div>
+
+            <span>
+                Bank Name
+            </span>
+
+            <span>
+                ${escapeHTML(
+                    withdrawal.bankName
+                )}
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Holder Name
+            </span>
+
+            <span>
+                ${escapeHTML(
+                    withdrawal.holderName
+                )}
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Account Number
+            </span>
+
+            <span>
+                ${escapeHTML(
+                    withdrawal.accountNumber
+                )}
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                IFSC
+            </span>
+
+            <span>
+                ${escapeHTML(
+                    withdrawal.ifsc
+                )}
+            </span>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if(
+        withdrawal.method === "upi"
+    ){
+
+        detailsHTML = `
+
+        <div>
+
+            <span>
+                UPI ID
+            </span>
+
+            <span>
+                ${escapeHTML(
+                    withdrawal.upiId
+                )}
+            </span>
+
+        </div>
+
+        `;
+
+    }
+
+
+    if(
+        withdrawal.method === "usdt"
+    ){
+
+        detailsHTML = `
+
+        <div>
+
+            <span>
+                USDT Address
+            </span>
+
+            <span>
+                ${escapeHTML(
+                    withdrawal.usdtAddress
+                )}
+            </span>
+
+        </div>
+
+
+        <div>
+
+            <span>
+                Network
+            </span>
+
+            <span>
+                ${escapeHTML(
+                    withdrawal.usdtNetwork
+                )}
+            </span>
+
+        </div>
+
+        `;
+
+    }
+
+
+    const popup =
+        document.createElement(
+            "div"
+        );
+
+
+    popup.id =
+        "withdrawNotice";
+
+
+    popup.innerHTML = `
+
+    <div class="withdraw-notice-box">
+
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+
+        <h2>
+            Withdrawal Successful
+        </h2>
+
+
+        <div class="success-amount">
+
+            ₹${formatINR(
+                amount
+            )}
+
+        </div>
+
+
+        <div class="withdraw-summary">
+
+
+            <div>
+
+                <span>
+                    Status
+                </span>
+
+                <span
+                    style="color:#00e89a"
+                >
+                    Successful
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Method
+                </span>
+
+                <span>
+                    ${methodName}
+                </span>
+
+            </div>
+
+
+            ${detailsHTML}
+
+
+            <div>
+
+                <span>
+                    Remaining Balance
+                </span>
+
+                <span
+                    style="color:#00e89a"
+                >
+                    ₹${formatINR(
+                        newBalance
+                    )}
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <p>
+            Your withdrawal request has been submitted successfully.
+        </p>
+
+
+        <button
+            onclick="closeWithdrawNotice()"
+        >
+            OK
+        </button>
+
+
+    </div>
+
+    `;
+
+
+    document.body.appendChild(
+        popup
+    );
+
+}
+
+
+/* =====================================================
+   NOTICE
+===================================================== */
+
+function showNotice(
+    title,
+    message
+){
+
+    const old =
+        document.getElementById(
+            "withdrawNotice"
+        );
+
+
+    if(old){
+
+        old.remove();
+
+    }
+
+
+    const popup =
+        document.createElement(
+            "div"
+        );
+
+
+    popup.id =
+        "withdrawNotice";
+
+
+    popup.innerHTML = `
+
+    <div class="withdraw-notice-box">
+
+
+        <div
+            class="success-icon"
+            style="
+                background:linear-gradient(
+                    135deg,
+                    #ff9f00,
+                    #ff4d5e
+                );
+            "
+        >
+            !
+        </div>
+
+
+        <h2>
+            ${escapeHTML(
+                title
+            )}
+        </h2>
+
+
+        <p>
+            ${message}
+        </p>
+
+
+        <button
+            onclick="closeWithdrawNotice()"
+        >
+            OK
+        </button>
+
+
+    </div>
+
+    `;
+
+
+    document.body.appendChild(
+        popup
+    );
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   CLOSE POPUP
+===================================================== */
+
+function closeWithdrawNotice(){
+
+    const popup =
+        document.getElementById(
+            "withdrawNotice"
+        );
+
+
+    if(popup){
+
+        popup.remove();
+
+    }
+
+}
+
+
+/* =====================================================
+   AUTO UPDATE
+===================================================== */
+
+window.addEventListener(
+    "storage",
+    function(){
+
+        updateWithdrawBalance();
+
+    }
+);
+
+
+window.addEventListener(
+    "focus",
+    function(){
+
+        updateWithdrawBalance();
+
+    }
+);
+
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(
+            !document.hidden
+        ){
+
+            updateWithdrawBalance();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   PAGE LOAD
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        updateWithdrawBalance();
+
+    }
+);
+
+</script>
+
+</body>
+  </html>
