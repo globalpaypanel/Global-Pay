@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Global Pay - Account Work</title>
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    background:#05070f;
+    color:#fff;
+    overflow-x:hidden;
+
+    background-image:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(37,99,235,.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 80% 10%,
+            rgba(124,58,237,.18),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(0,255,200,.08),
+            transparent 35%
+        );
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+
+    position:sticky;
+    top:0;
+    z-index:999;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 20px;
+
+    background:rgba(10,15,30,.78);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:
+        1px solid
+        rgba(255,255,255,.08);
+}
+
+.logoArea h1{
+
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:1px;
+}
+
+.logoArea p{
+
+    font-size:12px;
+
+    color:#8aa4d8;
+
+    margin-top:3px;
+}
+
+
+.activeBtn{
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-weight:700;
+
+    color:#fff;
+
+    cursor:pointer;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00c853,
+            #00e676
+        );
+
+    box-shadow:
+        0 0 25px
+        rgba(0,255,100,.45);
+
+    animation:
+        activeGlow 1.8s infinite;
+
+    transition:.3s;
+}
+
+.activeBtn:disabled{
+
+    cursor:not-allowed;
+
+    animation:none;
+
+    background:
+        linear-gradient(
+            135deg,
+            #991b1b,
+            #ef4444
+        );
+
+    box-shadow:
+        0 0 20px
+        rgba(255,0,0,.35);
+}
+
+
+@keyframes activeGlow{
+
+    0%,100%{
+
+        transform:scale(1);
+
+        box-shadow:
+            0 0 20px
+            rgba(0,255,120,.45);
+    }
+
+    50%{
+
+        transform:scale(1.06);
+
+        box-shadow:
+            0 0 40px
+            rgba(0,255,120,.85);
+    }
+}
+
+
+/* =========================
+   BANK CARD
+========================= */
+
+.bankCard{
+
+    margin:20px;
+
+    padding:22px;
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff3b0 0%,
+            #d4af37 20%,
+            #ffd966 38%,
+            #b8860b 55%,
+            #ffe699 72%,
+            #c99a00 88%,
+            #fff1a8 100%
+        );
+
+    background-size:300% 300%;
+
+    animation:
+        goldMove 7s
+        ease-in-out
+        infinite;
+
+    border:
+        1px solid
+        #ffe58a;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0,0,0,.45),
+
+        0 0 25px
+        rgba(255,193,7,.45),
+
+        inset 0 1px 2px
+        rgba(255,255,255,.8);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+@keyframes goldMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+}
+
+
+.bankCard::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-120%;
+
+    width:60%;
+    height:100%;
+
+    background:
+        rgba(255,255,255,.10);
+
+    transform:
+        skewX(-25deg);
+
+    animation:
+        shine 4s linear infinite;
+}
+
+@keyframes shine{
+
+    100%{
+        left:170%;
+    }
+}
+
+
+.bankLeft h2{
+
+    color:#fff;
+
+    font-size:22px;
+
+    margin-bottom:10px;
+
+    text-shadow:
+        0 1px 2px
+        rgba(0,0,0,.35);
+}
+
+.bankLeft p{
+
+    font-size:14px;
+
+    margin-top:6px;
+
+    color:#3b2a00;
+
+    font-weight:600;
+}
+
+
+.bankLogo{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:34px;
+
+    background:
+        rgba(255,255,255,.22);
+
+    border:
+        1px solid
+        rgba(255,255,255,.5);
+
+    box-shadow:
+        0 0 20px
+        rgba(255,255,255,.25);
+
+    backdrop-filter:blur(10px);
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary{
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:16px;
+
+    padding:
+        0 20px 20px;
+}
+
+
+.card{
+
+    background:
+        rgba(255,255,255,.06);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:20px;
+
+    padding:20px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.35);
+}
+
+
+.card span{
+
+    font-size:14px;
+
+    color:#8aa4d8;
+}
+
+
+.card h2{
+
+    margin-top:10px;
+
+    font-size:28px;
+
+    color:#00ff9d;
+}
+
+
+/* =========================
+   TRANSACTIONS
+========================= */
+
+.transactionHeader{
+
+    padding:0 20px;
+
+    margin-bottom:15px;
+}
+
+.transactionHeader h2{
+
+    font-size:22px;
+
+    font-weight:700;
+}
+
+
+#transactionList{
+
+    padding:
+        0 16px 30px;
+}
+
+
+.transactionCard{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:
+        rgba(255,255,255,.05);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:14px;
+
+    margin-bottom:12px;
+
+    backdrop-filter:blur(15px);
+
+    box-shadow:
+        0 10px 20px
+        rgba(0,0,0,.25);
+
+    animation:
+        fadeUp .4s ease;
+}
+
+
+.creditCard{
+
+    border-left:
+        6px solid
+        #00ff88;
+}
+
+
+.debitCard{
+
+    border-left:
+        6px solid
+        #ff3b3b;
+}
+
+
+.leftInfo h3{
+
+    font-size:16px;
+
+    margin-bottom:5px;
+}
+
+
+.leftInfo p{
+
+    font-size:12px;
+
+    color:#b8c7e6;
+
+    line-height:18px;
+}
+
+
+.rightInfo{
+
+    text-align:right;
+}
+
+
+.amountCredit{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#00ff88;
+}
+
+
+.amountDebit{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#ff3b3b;
+}
+
+
+.timeText{
+
+    font-size:11px;
+
+    margin-top:5px;
+
+    color:#9ca3af;
+}
+
+
+/* =========================
+   LIMIT POPUP
+========================= */
+
+.limitPopup{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+        rgba(0,0,0,.75);
+
+    backdrop-filter:blur(12px);
+
+    z-index:99999;
+}
+
+
+.limitBox{
+
+    width:90%;
+
+    max-width:360px;
+
+    padding:28px;
+
+    border-radius:24px;
+
+    background:#101826;
+
+    text-align:center;
+
+    box-shadow:
+        0 0 50px
+        rgba(255,0,0,.35);
+
+    animation:
+        popupShow .4s ease;
+}
+
+
+.limitBox h2{
+
+    color:#ff4d4d;
+
+    margin-bottom:12px;
+}
+
+
+.limitBox p{
+
+    color:#ddd;
+
+    line-height:24px;
+
+    margin-bottom:20px;
+}
+
+
+.limitBox button{
+
+    width:100%;
+
+    padding:14px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:17px;
+
+    font-weight:bold;
+
+    background:#2563eb;
+
+    color:#fff;
+
+    cursor:pointer;
+}
+
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(25px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+@keyframes popupShow{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            scale(.7);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:430px){
+
+    .logoArea h1{
+        font-size:20px;
+    }
+
+    .logoArea p{
+        font-size:10px;
+    }
+
+    .activeBtn{
+        padding:9px 12px;
+        font-size:11px;
+    }
+
+    .bankCard{
+        margin:15px;
+        padding:18px;
+    }
+
+    .bankLeft h2{
+        font-size:18px;
+    }
+
+    .bankLeft p{
+        font-size:12px;
+    }
+
+    .bankLogo{
+        width:58px;
+        height:58px;
+        font-size:28px;
+    }
+
+    .summary{
+        gap:10px;
+        padding:0 15px 15px;
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    .card h2{
+        font-size:22px;
+    }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <div class="logoArea">
+
+        <h1>
+            GLOBAL PAY
+        </h1>
+
+        <p>
+            Secure Banking Dashboard
+        </p>
+
+    </div>
+
+
+    <button
+        id="activeBtn"
+        class="activeBtn"
+    >
+        🟢 ACTIVE
+    </button>
+
+</header>
+
+
+
+<!-- =========================
+     BANK CARD
+========================= -->
+
+<div class="bankCard">
+
+    <div class="bankLeft">
+
+        <h2 id="holderName">
+            Loading...
+        </h2>
+
+        <p id="bankName">
+            Loading Bank...
+        </p>
+
+        <p id="accountNumber">
+            XXXX XXXX XXXX
+        </p>
+
+        <p id="ifscCode">
+            IFSC
+        </p>
+
+    </div>
+
+
+    <div class="bankRight">
+
+        <div class="chip"></div>
+
+        <div class="bankLogo">
+            🏦
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     SUMMARY
+========================= -->
+
+<div class="summary">
+
+    <div class="card">
+
+        <span>
+            Gaming Fund
+        </span>
+
+        <h2 id="gamingFund">
+            ₹0
+        </h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <span>
+            Commission (5%)
+        </span>
+
+        <h2 id="commission">
+            ₹0
+        </h2>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     TRANSACTIONS
+========================= -->
+
+<div class="transactionHeader">
+
+    <h2>
+        Transactions
+    </h2>
+
+</div>
+
+
+<div id="transactionList">
+
+</div>
+
+
+
+<!-- =========================
+     LIMIT POPUP
+========================= -->
+
+<div
+    id="limitPopup"
+    class="limitPopup"
+>
+
+    <div class="limitBox">
+
+        <h2>
+            ⚠ ACCOUNT LIMIT CROSSED
+        </h2>
+
+        <p>
+
+            Maximum Transaction Limit
+            <br>
+
+            ₹5,00,000 Completed
+
+        </p>
+
+        <button id="limitOk">
+            OK
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   GLOBAL PAY ACCOUNT WORK
+===================================================== */
+
+
+/* =========================
+   ACCOUNT DETAILS
+========================= */
+
+const holderName =
+    localStorage.getItem("holderName")
+    || "Account Holder";
+
+
+const bankName =
+    localStorage.getItem("bankName")
+    || "Bank";
+
+
+const accountNumber =
+    localStorage.getItem("accountNumber")
+    || "0000";
+
+
+const ifscCode =
+    localStorage.getItem("ifsc")
+    || "IFSC";
+
+
+document.getElementById(
+    "holderName"
+).innerText =
+    holderName;
+
+
+document.getElementById(
+    "bankName"
+).innerText =
+    bankName;
+
+
+const last4 =
+    accountNumber.slice(-4);
+
+
+document.getElementById(
+    "accountNumber"
+).innerText =
+    "XXXX XXXX " + last4;
+
+
+document.getElementById(
+    "ifscCode"
+).innerText =
+    ifscCode;
+
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const activeBtn =
+    document.getElementById(
+        "activeBtn"
+    );
+
+
+const transactionList =
+    document.getElementById(
+        "transactionList"
+    );
+
+
+const gamingFundBox =
+    document.getElementById(
+        "gamingFund"
+    );
+
+
+const commissionBox =
+    document.getElementById(
+        "commission"
+    );
+
+
+const popup =
+    document.getElementById(
+        "limitPopup"
+    );
+
+
+const popupBtn =
+    document.getElementById(
+        "limitOk"
+    );
+
+
+
+/* =========================
+   VARIABLES
+========================= */
+
+let running = false;
+
+let gamingFund = 0;
+
+let commission = 0;
+
+let totalCredit = 0;
+
+const LIMIT = 500000;
+
+const COMMISSION_RATE = 0.05;
+
+
+
+/* =========================
+   LOAD SAVED DATA
+========================= */
+
+gamingFund =
+    Number(
+        localStorage.getItem(
+            "accountWorkGamingFund"
+        )
+    ) || 0;
+
+
+commission =
+    Number(
+        localStorage.getItem(
+            "accountWorkCommission"
+        )
+    ) || 0;
+
+
+totalCredit =
+    Number(
+        localStorage.getItem(
+            "accountWorkTotalCredit"
+        )
+    ) || 0;
+
+
+
+/* =========================
+   WITHDRAW BALANCE ENGINE
+=========================
+
+   Account Work commission ko
+   Withdraw balance me add karta hai.
+
+   IMPORTANT:
+   Commission har transaction par
+   sirf ek baar add hota hai.
+========================= */
+
+let withdrawBalance =
+    Number(
+        localStorage.getItem(
+            "globalPayWithdrawBalance"
+        )
+    );
+
+
+if(
+    !Number.isFinite(withdrawBalance)
+){
+
+    withdrawBalance = 0;
+
+}
+
+
+/* =========================
+   MONEY FORMAT
+========================= */
+
+function money(value){
+
+    return "₹" +
+        Number(value)
+        .toLocaleString(
+            "en-IN",
+            {
+                minimumFractionDigits:0,
+                maximumFractionDigits:2
+            }
+        );
+}
+
+
+
+/* =========================
+   SAVE DATA
+========================= */
+
+function saveData(){
+
+    localStorage.setItem(
+        "accountWorkGamingFund",
+        gamingFund
+    );
+
+
+    localStorage.setItem(
+        "accountWorkCommission",
+        commission
+    );
+
+
+    localStorage.setItem(
+        "accountWorkTotalCredit",
+        totalCredit
+    );
+
+
+    localStorage.setItem(
+        "globalPayWithdrawBalance",
+        withdrawBalance
+    );
+
+}
+
+
+
+/* =========================
+   UPDATE DISPLAY
+========================= */
+
+function updateDisplay(){
+
+    gamingFundBox.innerText =
+        money(gamingFund);
+
+
+    commissionBox.innerText =
+        money(commission);
+
+}
+
+
+
+/* =========================
+   RANDOM AMOUNTS
+========================= */
+
+const amounts = [
+
+    500,
+    999,
+    1000,
+    1499,
+    2000,
+    2500,
+    3000,
+    4000,
+    5000
+
+];
+
+
+function randomAmount(){
+
+    return amounts[
+        Math.floor(
+            Math.random() *
+            amounts.length
+        )
+    ];
+
+}
+
+
+
+/* =========================
+   RANDOM PEOPLE
+========================= */
+
+const names = [
+
+    "Rahul Kumar",
+    "Rohit Sharma",
+    "Amit Singh",
+    "Ajay Kumar",
+    "Abhishek Raj",
+    "Ankit Verma",
+    "Vikas Gupta",
+    "Sanjay Patel",
+    "Rakesh Yadav",
+    "Deepak Kumar",
+    "Sonu Kumar",
+    "Karan Singh",
+    "Aakash Verma",
+    "Aman Raj",
+    "Pankaj Kumar",
+    "Rajesh Singh",
+    "Mukesh Kumar",
+    "Ashok Patel",
+    "Vinod Sharma",
+    "Shivam Raj",
+    "Priya Singh",
+    "Neha Kumari",
+    "Pooja Sharma",
+    "Rani Kumari",
+    "Anjali Verma",
+    "Muskan Kumari",
+    "Sneha Gupta",
+    "Kajal Singh",
+    "Nisha Patel",
+    "Komal Raj",
+    "Payal Kumari",
+    "Suman Devi",
+    "Sapna Kumari",
+    "Rekha Devi",
+    "Ritu Singh",
+    "Anu Kumari",
+    "Aarti Verma",
+    "Khushi Raj",
+    "Sakshi Singh",
+    "Preeti Sharma",
+    "Nitin Kumar",
+    "Mohit Raj",
+    "Ravi Kumar",
+    "Anurag Singh",
+    "Shubham Kumar",
+    "Akash Kumar",
+    "Vivek Raj",
+    "Harsh Gupta",
+    "Nikhil Sharma",
+    "Prakash Singh",
+    "Suraj Kumar",
+    "Rohit Raj",
+    "Aman Gupta",
+    "Ritesh Kumar",
+    "Manoj Singh",
+    "Dilip Kumar",
+    "Anmol Raj",
+    "Kundan Kumar",
+    "Saurabh Singh",
+    "Golu Kumar"
+
+];
+
+
+
+/* =========================
+   BANKS
+========================= */
+
+const banks = [
+
+    "State Bank of India",
+    "HDFC Bank",
+    "ICICI Bank",
+    "Axis Bank",
+    "Punjab National Bank",
+    "Bank of Baroda",
+    "Canara Bank",
+    "Indian Bank",
+    "Union Bank",
+    "IDFC FIRST Bank",
+    "Kotak Mahindra Bank",
+    "Yes Bank",
+    "Bank of India",
+    "Central Bank of India",
+    "Federal Bank",
+    "South Indian Bank",
+    "RBL Bank",
+    "AU Small Finance Bank",
+    "IndusInd Bank",
+    "UCO Bank"
+
+];
+
+
+
+const ifscPrefix = [
+
+    "SBIN",
+    "HDFC",
+    "ICIC",
+    "UTIB",
+    "PUNB",
+    "BARB",
+    "CNRB",
+    "IDIB",
+    "UBIN",
+    "IDFB",
+    "KKBK",
+    "YESB"
+
+];
+
+
+
+function randomName(){
+
+    return names[
+        Math.floor(
+            Math.random() *
+            names.length
+        )
+    ];
+
+}
+
+
+
+function randomBank(){
+
+    return banks[
+        Math.floor(
+            Math.random() *
+            banks.length
+        )
+    ];
+
+}
+
+
+
+function randomIFSC(){
+
+    return ifscPrefix[
+        Math.floor(
+            Math.random() *
+            ifscPrefix.length
+        )
+    ]
+    +
+    "0"
+    +
+    Math.floor(
+        100000 +
+        Math.random() * 900000
+    );
+
+}
+
+
+
+function randomAccount(){
+
+    return "XXXX XXXX " +
+        Math.floor(
+            1000 +
+            Math.random() * 9000
+        );
+
+}
+
+
+
+/* =========================
+   CREATE CREDIT
+========================= */
+
+function createCredit(){
+
+    if(!running){
+
+        return;
+    }
+
+
+    if(totalCredit >= LIMIT){
+
+        stopEngine();
+
+        return;
+    }
+
+
+    let amount =
+        randomAmount();
+
+
+    const remaining =
+        LIMIT - totalCredit;
+
+
+    if(amount > remaining){
+
+        amount = remaining;
+
+    }
+
+
+    if(amount <= 0){
+
+        stopEngine();
+
+        return;
+
+    }
+
+
+    const person =
+        randomName();
+
+
+    const bank =
+        randomBank();
+
+
+    const account =
+        randomAccount();
+
+
+    const ifsc =
+        randomIFSC();
+
+
+    const now =
+        new Date();
+
+
+    const date =
+        now.toLocaleDateString(
+            "en-IN"
+        );
+
+
+    const time =
+        now.toLocaleTimeString(
+            "en-IN"
+        );
+
+
+    /* =========================
+       CREDIT
+    ========================= */
+
+    gamingFund += amount;
+
+    totalCredit += amount;
+
+
+    /* =========================
+       COMMISSION
+    ========================= */
+
+    const commissionEarned =
+        amount *
+        COMMISSION_RATE;
+
+
+    commission +=
+        commissionEarned;
+
+
+    /* =========================
+       WITHDRAW BALANCE
+       
+       Commission yahi add hota hai.
+    ========================= */
+
+    withdrawBalance +=
+        commissionEarned;
+
+
+    /* =========================
+       SAVE
+    ========================= */
+
+    saveData();
+
+
+    updateDisplay();
+
+
+    /* =========================
+       CREDIT TRANSACTION
+    ========================= */
+
+    transactionList.insertAdjacentHTML(
+        "afterbegin",
+        `
+
+        <div class="transactionCard creditCard">
+
+            <div class="leftInfo">
+
+                <h3>
+                    🟢 CREDIT
+                </h3>
+
+                <p>
+                    ${person}
+                </p>
+
+                <p>
+                    ${bank}
+                </p>
+
+                <p>
+                    ${account}
+                </p>
+
+                <p>
+                    ${ifsc}
+                </p>
+
+            </div>
+
+
+            <div class="rightInfo">
+
+                <div class="amountCredit">
+                    + ${money(amount)}
+                </div>
+
+                <div class="timeText">
+                    ${date}<br>
+                    ${time}
+                </div>
+
+            </div>
+
+        </div>
+
+        `
+    );
+
+
+    /* =========================
+       DEBIT
+    ========================= */
+
+    setTimeout(
+        function(){
+
+            createDebit(amount);
+
+        },
+        1500
+    );
+
+}
+
+
+
+/* =========================
+   DEBIT
+========================= */
+
+function createDebit(amount){
+
+    const now =
+        new Date();
+
+
+    const date =
+        now.toLocaleDateString(
+            "en-IN"
+        );
+
+
+    const time =
+        now.toLocaleTimeString(
+            "en-IN"
+        );
+
+
+    transactionList.insertAdjacentHTML(
+        "afterbegin",
+        `
+
+        <div class="transactionCard debitCard">
+
+            <div class="leftInfo">
+
+                <h3>
+                    🔴 DEBIT
+                </h3>
+
+                <p>
+                    BALAJI SUPER MARKET
+                </p>
+
+                <p>
+                    ICICI Bank
+                </p>
+
+                <p>
+                    440005003462
+                </p>
+
+                <p>
+                    ICIC0004400
+                </p>
+
+            </div>
+
+
+            <div class="rightInfo">
+
+                <div class="amountDebit">
+                    - ${money(amount)}
+                </div>
+
+                <div class="timeText">
+                    ${date}<br>
+                    ${time}
+                </div>
+
+            </div>
+
+        </div>
+
+        `
+    );
+
+
+    /* Maximum 50 transactions */
+
+    while(
+        transactionList.children.length > 50
+    ){
+
+        transactionList.removeChild(
+            transactionList.lastChild
+        );
+
+    }
+
+
+    if(totalCredit >= LIMIT){
+
+        stopEngine();
+
+        showLimitPopup();
+
+        return;
+
+    }
+
+
+    const delay =
+        Math.floor(
+            Math.random() * 4000
+        ) + 1000;
+
+
+    setTimeout(
+        createCredit,
+        delay
+    );
+
+}
+
+
+
+/* =========================
+   START ENGINE
+========================= */
+
+activeBtn.onclick =
+function(){
+
+    if(running){
+
+        return;
+
+    }
+
+
+    if(totalCredit >= LIMIT){
+
+        showLimitPopup();
+
+        return;
+
+    }
+
+
+    running = true;
+
+
+    activeBtn.innerHTML =
+        "🟢 RUNNING";
+
+
+    setTimeout(
+        createCredit,
+        10000
+    );
+
+};
+
+
+
+/* =========================
+   STOP ENGINE
+========================= */
+
+function stopEngine(){
+
+    running = false;
+
+
+    activeBtn.innerHTML =
+        "🔴 LIMIT";
+
+
+    activeBtn.disabled =
+        true;
+
+}
+
+
+
+/* =========================
+   LIMIT POPUP
+========================= */
+
+function showLimitPopup(){
+
+    popup.style.display =
+        "flex";
+
+}
+
+
+popupBtn.onclick =
+function(){
+
+    popup.style.display =
+        "none";
+
+};
+
+
+
+/* =========================
+   INITIAL DISPLAY
+========================= */
+
+updateDisplay();
+
+
+/* =========================
+   IF LIMIT ALREADY REACHED
+========================= */
+
+if(totalCredit >= LIMIT){
+
+    stopEngine();
+
+}
+
+
+
+/* =========================
+   CONSOLE INFO
+========================= */
+
+console.log(
+    "Account Work Commission:",
+    commission
+);
+
+console.log(
+    "Withdraw Balance:",
+    withdrawBalance
+);
+
+</script>
+
+</body>
+  </html>
